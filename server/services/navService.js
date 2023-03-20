@@ -9,7 +9,12 @@ class navService {
 
         const data = await request.execute('[dbo].[nav_children_of_subr]');
 
-        return data;
+        const res = data.output.str.split(',').map((id) => {
+            if (id !== '') return Number(id);
+            return 0;
+        });
+
+        return res;
     }
 
     async navShowChildren({ id, brand, lang }) {

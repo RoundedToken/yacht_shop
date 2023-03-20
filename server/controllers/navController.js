@@ -3,7 +3,7 @@ import navService from '../services/navService.js';
 class navController {
     async navChildrenOfSubr(req, res, next) {
         try {
-            const reqData = req.body;
+            const reqData = req.query;
 
             const sqlResData = await navService.navChildrenOfSubr(reqData);
 
@@ -15,7 +15,7 @@ class navController {
 
     async navShowChildren(req, res, next) {
         try {
-            const reqData = req.body;
+            const reqData = req.query;
 
             const sqlResData = await navService.navShowChildren(reqData);
 
