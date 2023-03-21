@@ -1,19 +1,7 @@
-import React, { FC, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
 import CategoriesList from '../components/Categories/CategoriesList';
-import { setNavId } from '../redux/navSlice';
 
-interface ICategoryPage {
-    id: number;
-}
-
-const CategoryPage: FC<ICategoryPage> = ({ id }) => {
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(setNavId(id));
-    }, [dispatch, id]);
-
+const CategoryPage = () => {
     return (
         <div>
             <CategoriesList />

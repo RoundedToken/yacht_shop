@@ -27,7 +27,7 @@ class navController {
 
     async navGoodsList(req, res, next) {
         try {
-            const reqData = req.body;
+            const reqData = req.query;
 
             const sqlResData = await navService.navGoodsList(reqData);
 
@@ -39,7 +39,7 @@ class navController {
 
     async navShowTovar(req, res, next) {
         try {
-            const reqData = req.body;
+            const reqData = req.query;
 
             const sqlResData = await navService.navShowTovar(reqData);
 

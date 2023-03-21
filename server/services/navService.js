@@ -48,7 +48,7 @@ class navService {
     async navGoodsList({ subr, brand, fw, inSubr, ip, lang }) {
         const request = new sql.Request();
 
-        request.input('subr', sql.VarChar, subr);
+        request.input('subr', sql.VarChar, subr.toString());
         request.input('b', sql.VarChar, brand);
         request.input('fw', sql.VarChar, fw);
         request.input('insubr', sql.Int, inSubr);
@@ -66,7 +66,7 @@ class navService {
             parsedRecord.brand = record.Katalog;
             parsedRecord.code = record.Kood;
             parsedRecord.eur = record.eur;
-            parsedRecord.pic = record.pic;
+            parsedRecord.src = record.pic;
             parsedRecord.inStock = inStock ? true : false;
 
             return parsedRecord;
@@ -82,9 +82,17 @@ class navService {
         request.input('tovar', sql.Int, tovar);
         request.input('lang', sql.VarChar, lang);
 
-        const data = await request.execute('[dbo].[nav_show_tovar]');
+        const data = (await request.execute('[dbo].[nav_show_tovar]')).recordset[0];
 
-        return data.recordset[0];
+        const res = {};
+        res.name = data.name;
+        res.code = data.marka;
+        res.brand = data.brand;
+        res.price = data.price;
+        res.brandLogo = data.logo;
+        res.inStockCount = data.ostSP;
+
+        return res;
     }
 }
 
