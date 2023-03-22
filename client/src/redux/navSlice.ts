@@ -4,11 +4,13 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 export interface INavState {
     categoryId: number;
     hasChildren: boolean;
+    brand: string;
 }
 
 const initialState: INavState = {
     categoryId: 0,
     hasChildren: true,
+    brand: 'notSelected',
 };
 
 export const navSlice = createSlice({
@@ -22,9 +24,13 @@ export const navSlice = createSlice({
         setNavHasChildren(state, action: PayloadAction<boolean>) {
             state.hasChildren = action.payload;
         },
+
+        setBrand(state, action: PayloadAction<string>) {
+            state.brand = action.payload;
+        },
     },
 });
 
-export const { setNavId, setNavHasChildren } = navSlice.actions;
+export const { setNavId, setNavHasChildren, setBrand } = navSlice.actions;
 
 export default navSlice.reducer;

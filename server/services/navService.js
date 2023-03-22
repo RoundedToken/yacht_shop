@@ -11,7 +11,6 @@ class navService {
 
         const res = data.output.str.split(',').map((id) => {
             if (id !== '') return Number(id);
-            return 0;
         });
 
         return res;
@@ -31,7 +30,7 @@ class navService {
             const str = Object.entries(record)[0][1];
             if (!str) return record;
 
-            parsedRecord.id = Number(str.match(/id=(.*?)(>)/)[1]);
+            parsedRecord.id = Number(str.match(/id=(.[0-9]*)/)[1]);
             parsedRecord.name = str
                 .substring(str.indexOf('<a'), str.indexOf('</a>') + 5)
                 .match(/>(.*?)(<\/a>)/)[1];
@@ -42,7 +41,6 @@ class navService {
         });
 
         return res;
-        return data;
     }
 
     async navGoodsList({ subr, brand, fw, inSubr, ip, lang }) {
@@ -65,7 +63,7 @@ class navService {
             parsedRecord.name = record.Nimi;
             parsedRecord.brand = record.Katalog;
             parsedRecord.code = record.Kood;
-            parsedRecord.eur = record.eur;
+            parsedRecord.price = record.EUR;
             parsedRecord.src = record.pic;
             parsedRecord.inStock = inStock ? true : false;
 
@@ -73,7 +71,6 @@ class navService {
         });
 
         return res;
-        return data;
     }
 
     async navShowTovar({ tovar, lang }) {
@@ -91,6 +88,23 @@ class navService {
         res.price = data.price;
         res.brandLogo = data.logo;
         res.inStockCount = data.ostSP;
+
+        return res;
+    }
+
+    async navBrandOfSubr({ subr }) {
+        const request = new sql.Request();
+
+        request.input('subr', sql.VarChar, subr.toString());
+        request.input('b', sql.VarChar, '');
+
+        const data = (await request.execute('[dbo].[nav_brands_of_subr]')).recordset;
+
+        const res = [];
+        data.forEach((record) => {
+            const brand = record.link.match(/>(.*)<\/a>/);
+            if (brand) res.push(brand[1]);
+        });
 
         return res;
     }

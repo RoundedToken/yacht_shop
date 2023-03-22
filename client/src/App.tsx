@@ -3,6 +3,7 @@ import Body from './components/Body/Body';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import { routerApi } from './services/routerService';
+import './app.scss';
 
 function App() {
     const { isSuccess, isLoading } = routerApi.useFetchAllIdQuery();

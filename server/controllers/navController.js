@@ -1,6 +1,6 @@
 import navService from '../services/navService.js';
 
-class navController {
+class NavController {
     async navChildrenOfSubr(req, res, next) {
         try {
             const reqData = req.query;
@@ -48,6 +48,18 @@ class navController {
             next(error);
         }
     }
+
+    async navBrandsOfSubr(req, res, next) {
+        try {
+            const reqData = req.query;
+
+            const sqlResData = await navService.navBrandOfSubr(reqData);
+
+            return res.json(sqlResData);
+        } catch (error) {
+            next(error);
+        }
+    }
 }
 
-export default new navController();
+export default new NavController();

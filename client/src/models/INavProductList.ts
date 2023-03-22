@@ -7,6 +7,7 @@ export interface INavProductListRes {
     code: string;
     src: string;
     inStock: boolean;
+    price: number;
 }
 
 export interface INavProductListReq {

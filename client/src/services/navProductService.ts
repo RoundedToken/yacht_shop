@@ -2,7 +2,7 @@ import { INavProductRes, INavProductReq } from './../models/INavProduct';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
 
 export const navProductApi = createApi({
-    reducerPath: 'navProductsApi',
+    reducerPath: 'navProductApi',
     baseQuery: fetchBaseQuery({
         baseUrl: process.env.REACT_APP_SERVER_URL,
     }),
