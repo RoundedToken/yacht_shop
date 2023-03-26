@@ -1,52 +1,34 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { TLang } from '../../models/TLang';
-import { setLang } from '../../redux/langSlice';
-import { RootState } from '../../redux/store';
 import { routeConstants } from '../../routes/constants';
+import HeaderLogo from './HeaderLogo';
+import styles from './Header.module.scss';
+import HeaderNavList from './HeaderNavList';
+import Text from '../Text/Text';
 
 const Header = () => {
     const navigate = useNavigate();
-    const lang = useSelector((state: RootState) => state.langSlice.lang);
-    const dispatch = useDispatch();
-
-    const catalogOnClick = () => {
-        navigate(routeConstants.CATEGORIES_ROUTE + '/0');
-    };
-
     const mainOnClick = () => {
         navigate(routeConstants.MAIN_ROUTE);
     };
 
-    const cableCrimpingOnClick = () => {
-        navigate(routeConstants.CABLE_CRIMPING_ROUTE);
-    };
-
-    const cartOnClick = () => {
-        navigate(routeConstants.CART_ROUTE);
-    };
-
-    const contactsOnClick = () => {
-        navigate(routeConstants.CONTACTS_ROUTE);
-    };
-
-    const langOnChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        dispatch(setLang(e.target.value as TLang));
-    };
-
     return (
-        <div>
-            <button onClick={mainOnClick}>Main</button>
-            <button onClick={catalogOnClick}>Catalog</button>
-            <button onClick={cableCrimpingOnClick}>Cable Crimping</button>
-            <button onClick={cartOnClick}>Cart</button>
-            <button onClick={contactsOnClick}>Contacts</button>
-            <select value={lang} onChange={langOnChange}>
-                <option>rus</option>
-                <option>eng</option>
-                <option>est</option>
-            </select>
+        <div className={styles.Header}>
+            <div onClick={mainOnClick} className={styles.Header__Left}>
+                <HeaderLogo className={styles.Header__Logo} width={806 * 0.2} height={696 * 0.2} />
+            </div>
+
+            <div className={styles.Header__Right}>
+                <div className={styles.Header__Name} onClick={mainOnClick}>
+                    <Text
+                        rus="Все для яхт и яхтсменов"
+                        eng="All for boats and sailors"
+                        est="Kõik paatide ja meremeeste jaoks"
+                    />
+                </div>
+
+                <HeaderNavList styles={styles} />
+            </div>
         </div>
     );
 };

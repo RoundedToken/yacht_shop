@@ -9,7 +9,7 @@ export const navCategoriesApi = createApi({
     endpoints: (build) => ({
         fetchCategories: build.query<INavCategoriesRes[], INavCategoriesReq>({
             query: ({ id, brand, lang }) => ({
-                url: '/nav_showChildren',
+                url: '/nav_showChildren_plain',
                 params: { id, brand, lang },
             }),
         }),

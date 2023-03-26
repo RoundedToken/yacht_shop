@@ -6,9 +6,9 @@ export const navBrandsApi = createApi({
         baseUrl: process.env.REACT_APP_SERVER_URL,
     }),
     endpoints: (build) => ({
-        fetchBrands: build.query<string[], number>({
+        fetchBrands: build.query<{ brand: string }[], number>({
             query: (subr) => ({
-                url: '/nav_brands_of_subr',
+                url: '/nav_brands_of_subr_plain',
                 params: { subr },
             }),
         }),

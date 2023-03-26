@@ -5,22 +5,19 @@ import { Route, Routes } from 'react-router-dom';
 import CategoryPage from '../pages/CategoryPage';
 import CartPage from '../pages/CartPage';
 import ContactsPage from '../pages/ContactsPage';
-import CableCrimpingPage from '../pages/CableCrimpingPage';
+import CableCrimpingPage from '../pages/CrimpingPage';
 import ProductListPage from '../pages/ProductListPage';
 import ProductPage from '../pages/ProductPage';
 
 const AppRoutes = () => {
     return (
         <Routes>
+            <Route path={routeConstants.CATEGORIES_ROUTE + '/:id'} element={<CategoryPage />} />
             <Route
-                path={routeConstants.CATEGORIES_ROUTE + '/:categoryId'}
-                element={<CategoryPage />}
-            />
-            <Route
-                path={routeConstants.PRODUCT_LIST_ROUTE + '/:productListId'}
+                path={routeConstants.PRODUCT_LIST_ROUTE + '/:id'}
                 element={<ProductListPage />}
             />
-            <Route path={routeConstants.PRODUCT_ROUTE + '/:productId'} element={<ProductPage />} />
+            <Route path={routeConstants.PRODUCT_ROUTE + '/:id'} element={<ProductPage />} />
             <Route path={routeConstants.MAIN_ROUTE} element={<MainPage />} />
             <Route path={routeConstants.CART_ROUTE} element={<CartPage />} />
             <Route path={routeConstants.CONTACTS_ROUTE} element={<ContactsPage />} />

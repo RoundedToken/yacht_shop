@@ -1,0 +1,9 @@
+.Body {
+    width: calc(100% - 181px - 20px - 6px);
+    margin-top: 140px;
+    margin-left: 181px;
+    background-color: white;
+    border: 3px solid var(--blue);
+    position: relative;
+    z-index: 1;
+}

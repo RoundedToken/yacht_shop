@@ -13,11 +13,11 @@ class NavController {
         }
     }
 
-    async navShowChildren(req, res, next) {
+    async navShowChildrenPlain(req, res, next) {
         try {
             const reqData = req.query;
 
-            const sqlResData = await navService.navShowChildren(reqData);
+            const sqlResData = await navService.navShowChildrenPlain(reqData);
 
             return res.json(sqlResData);
         } catch (error) {
@@ -49,11 +49,11 @@ class NavController {
         }
     }
 
-    async navBrandsOfSubr(req, res, next) {
+    async navBrandsOfSubrPlain(req, res, next) {
         try {
             const reqData = req.query;
 
-            const sqlResData = await navService.navBrandOfSubr(reqData);
+            const sqlResData = await navService.navBrandsOfSubrPlain(reqData);
 
             return res.json(sqlResData);
         } catch (error) {

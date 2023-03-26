@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { TCategoryId } from '../../models/TCategoryId';
+import { TId } from '../../models/TId';
 import { setBrand } from '../../redux/navSlice';
 import { RootState } from '../../redux/store';
 import { navCategoriesApi } from '../../services/navCategoriesService';
 import CategoriesItem from './CategoriesItem';
 
 const CategoriesList = () => {
-    const params = useParams<TCategoryId>();
+    const id = Number(useParams<TId>().id);
     const lang = useSelector((state: RootState) => state.langSlice.lang);
     const brand = useSelector((state: RootState) => state.navSlice.brand);
     const dispatch = useDispatch();
@@ -18,7 +18,7 @@ const CategoriesList = () => {
         error,
         isFetching,
     } = navCategoriesApi.useFetchCategoriesQuery({
-        id: Number(params.categoryId),
+        id: id,
         brand: brand === 'notSelected' ? '' : brand,
         lang: lang,
     });

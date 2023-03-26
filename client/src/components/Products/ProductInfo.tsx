@@ -1,15 +1,15 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { TProductId } from '../../models/TProductId';
+import { TId } from '../../models/TId';
 import { webProductInfoApi } from '../../services/webProductInfo';
 
 const ProductInfo = () => {
-    const params = useParams<TProductId>();
+    const id = Number(useParams<TId>().id);
     const {
         data: productInfo,
         isFetching,
         error,
-    } = webProductInfoApi.useFetchProductInfoQuery({ tovar: Number(params.productId) });
+    } = webProductInfoApi.useFetchProductInfoQuery({ tovar: id });
 
     return (
         <div>

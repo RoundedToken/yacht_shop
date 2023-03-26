@@ -1,18 +1,20 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import BrandSelect from '../components/BrandSelect/BrandSelect';
+import BrandSelect from '../components/Body/BrandSelect';
+import CatalogTicker from '../components/Tickers/CatalogTicker';
 import CategoriesList from '../components/Categories/CategoriesList';
-import { TCategoryId } from '../models/TCategoryId';
+import { TId } from '../models/TId';
 import { routerApi } from '../services/routerService';
 
 const CategoryPage = () => {
     const { data: allId } = routerApi.useFetchAllIdQuery();
-    const categoryId = Number(useParams<TCategoryId>().categoryId);
-    const hasBrands = allId?.includes(Number(categoryId));
+    const id = Number(useParams<TId>().id);
+    const hasBrands = allId?.includes(id);
 
     return (
         <div>
-            {hasBrands && <BrandSelect id={categoryId} />}
+            {id === 0 && <CatalogTicker />}
+            {hasBrands && <BrandSelect id={id} />}
             <CategoriesList />
         </div>
     );

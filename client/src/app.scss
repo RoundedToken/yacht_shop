@@ -1,5 +1,11 @@
 body {
     margin: 0;
+    font-family: 'Nunito', sans-serif;
+
+    --blue: rgb(2, 32, 128);
+    --yellow: rgb(254, 153, 1);
+    --blueFilter: invert(15%) sepia(49%) saturate(4274%) hue-rotate(221deg) brightness(81%)
+        contrast(112%);
 }
 
 th,

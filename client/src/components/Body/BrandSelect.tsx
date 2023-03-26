@@ -31,13 +31,13 @@ const BrandSelect: FC<IBrandSelect> = ({ id }) => {
                     />
 
                     {brands.map((brand, i) => (
-                        <div key={brand + i}>
-                            <label key={i}>{brand}</label>
+                        <div key={brand.brand + i}>
+                            <label key={i}>{brand.brand}</label>
                             <input
                                 onChange={brandSelectOnChange}
                                 type="radio"
-                                key={brand}
-                                value={brand}
+                                key={brand.brand}
+                                value={brand.brand}
                                 name="brandSelect"
                             />
                         </div>

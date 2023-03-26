@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { TProductListId } from '../../models/TProductListId';
+import { TId } from '../../models/TId';
 import { setBrand } from '../../redux/navSlice';
 import { RootState } from '../../redux/store';
 import { routeConstants } from '../../routes/constants';
 import { navProductListApi } from '../../services/navProductListService';
 
 const ProductList = () => {
-    const params = useParams<TProductListId>();
+    const id = Number(useParams<TId>().id);
     const lang = useSelector((state: RootState) => state.langSlice.lang);
     const brand = useSelector((state: RootState) => state.navSlice.brand);
     const dispatch = useDispatch();
@@ -18,7 +18,7 @@ const ProductList = () => {
         isFetching,
         error,
     } = navProductListApi.useFetchProductListQuery({
-        subr: Number(params.productListId),
+        subr: id,
         brand: brand === 'notSelected' ? '' : brand,
         fw: '',
         inSubr: '',
