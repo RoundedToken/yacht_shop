@@ -23,6 +23,15 @@
     justify-content: space-between;
     align-items: center;
     padding-inline: 10px;
+
+    &:hover {
+        .Active {
+            .Header__Left__Arrow {
+                visibility: hidden;
+            }
+            text-decoration: none;
+        }
+    }
 }
 
 .Header__Right {
@@ -133,4 +142,11 @@
 
 .Header__Lang__Option[id='disabledLang'] {
     display: none;
+}
+
+.Active {
+    .Header__Left__Arrow {
+        visibility: visible;
+    }
+    text-decoration: underline;
 }

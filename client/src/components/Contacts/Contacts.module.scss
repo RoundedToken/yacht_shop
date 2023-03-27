@@ -1,0 +1,60 @@
+.Content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    color: var(--blue);
+    font-size: 18px;
+    font-weight: 400;
+
+    img {
+        filter: var(--blueFilter);
+    }
+}
+
+.Google__Map {
+    width: 100%;
+
+    iframe {
+        width: 100%;
+        border-radius: 15px;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.23);
+    }
+}
+
+.Shop__Img {
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.23);
+    margin-top: 45px;
+}
+
+.Bottom__Container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    a {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 5px;
+        color: var(--blue);
+        text-decoration: none;
+    }
+}
+
+.Address {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Working__Mode {
+    margin-left: 35px;
+}

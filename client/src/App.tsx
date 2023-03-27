@@ -12,11 +12,11 @@ function App() {
         <div className="App">
             {isLoading && <h1>Loading...</h1>}
             {isSuccess && (
-                <>
+                <div className="wrapper">
                     <Header />
                     <Body />
                     <Footer />
-                </>
+                </div>
             )}
         </div>
     );

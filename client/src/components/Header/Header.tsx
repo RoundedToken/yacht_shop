@@ -13,7 +13,7 @@ const Header = () => {
     };
 
     return (
-        <div className={styles.Header}>
+        <header className={styles.Header}>
             <div onClick={mainOnClick} className={styles.Header__Left}>
                 <HeaderLogo className={styles.Header__Logo} width={806 * 0.2} height={696 * 0.2} />
             </div>
@@ -29,7 +29,7 @@ const Header = () => {
 
                 <HeaderNavList styles={styles} />
             </div>
-        </div>
+        </header>
     );
 };
 

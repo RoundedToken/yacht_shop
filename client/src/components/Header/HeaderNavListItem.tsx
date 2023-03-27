@@ -1,4 +1,5 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import leftArrowImg from '../../assets/HeaderImg/leftArrow.png';
 
 interface IHeaderNavListItem {
@@ -6,13 +7,24 @@ interface IHeaderNavListItem {
     styles: {
         readonly [key: string]: string;
     };
-    onClick?: React.MouseEventHandler;
     src: string;
+    route: string;
+    param?: string;
 }
 
-const HeaderNavListItem: FC<IHeaderNavListItem> = ({ children, styles, onClick, src }) => {
+const HeaderNavListItem: FC<IHeaderNavListItem> = ({ children, styles, src, route, param }) => {
+    const isActive = '/' + useLocation().pathname.split('/')[1] === route ? true : false;
+    const navigate = useNavigate();
+
+    const itemOnClick = () => {
+        navigate(route + (param ?? ''));
+    };
+
     return (
-        <span className={styles.Header__Nav__List__Item} onClick={onClick}>
+        <span
+            className={`${isActive && styles.Active} ${styles.Header__Nav__List__Item}`}
+            onClick={itemOnClick}
+        >
             <img src={src} alt="" width={32} height={32} />
             {children}
             <img

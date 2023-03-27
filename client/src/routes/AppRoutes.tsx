@@ -21,7 +21,7 @@ const AppRoutes = () => {
             <Route path={routeConstants.MAIN_ROUTE} element={<MainPage />} />
             <Route path={routeConstants.CART_ROUTE} element={<CartPage />} />
             <Route path={routeConstants.CONTACTS_ROUTE} element={<ContactsPage />} />
-            <Route path={routeConstants.CABLE_CRIMPING_ROUTE} element={<CableCrimpingPage />} />
+            <Route path={routeConstants.CRIMPING_ROUTE} element={<CableCrimpingPage />} />
         </Routes>
     );
 };

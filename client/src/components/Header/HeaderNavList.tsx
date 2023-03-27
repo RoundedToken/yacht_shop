@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { routeConstants } from '../../routes/constants';
 import HeaderLang from './HeaderLang';
 import HeaderNavListItem from './HeaderNavListItem';
@@ -16,36 +15,30 @@ interface IHeaderNavList {
 }
 
 const HeaderNavList: FC<IHeaderNavList> = ({ styles }) => {
-    const navigate = useNavigate();
-
-    const catalogOnClick = () => {
-        navigate(routeConstants.CATEGORIES_ROUTE + '/0');
-    };
-    const cableCrimpingOnClick = () => {
-        navigate(routeConstants.CABLE_CRIMPING_ROUTE);
-    };
-    const cartOnClick = () => {
-        navigate(routeConstants.CART_ROUTE);
-    };
-    const contactsOnClick = () => {
-        navigate(routeConstants.CONTACTS_ROUTE);
-    };
-
     return (
         <div className={styles.Header__Nav__List}>
-            <HeaderNavListItem src={catalogImg} styles={styles} onClick={catalogOnClick}>
+            <HeaderNavListItem
+                route={routeConstants.CATEGORIES_ROUTE}
+                src={catalogImg}
+                styles={styles}
+                param="/0"
+            >
                 <Text rus="Каталог" eng="Catalog" est="Kataloog" />
             </HeaderNavListItem>
 
-            <HeaderNavListItem src={ropeImg} styles={styles} onClick={cableCrimpingOnClick}>
+            <HeaderNavListItem route={routeConstants.CRIMPING_ROUTE} src={ropeImg} styles={styles}>
                 <Text rus="Обжим тросов" eng="Rope crimping" est="Trossid krimpsutamine" />
             </HeaderNavListItem>
 
-            <HeaderNavListItem src={contactsImg} styles={styles} onClick={contactsOnClick}>
+            <HeaderNavListItem
+                route={routeConstants.CONTACTS_ROUTE}
+                src={contactsImg}
+                styles={styles}
+            >
                 <Text rus="Контакты" eng="Contacts" est="Kontaktid" />
             </HeaderNavListItem>
 
-            <HeaderNavListItem src={cartImg} styles={styles} onClick={cartOnClick}>
+            <HeaderNavListItem route={routeConstants.CART_ROUTE} src={cartImg} styles={styles}>
                 <Text rus="Корзина" eng="Cart" est="Ostukorv" />
             </HeaderNavListItem>
 
