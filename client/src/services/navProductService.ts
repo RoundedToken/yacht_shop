@@ -1,4 +1,4 @@
-import { INavProductRes, INavProductReq } from './../models/INavProduct';
+import { INavProductRes, INavProductReq } from '../models/interfaces/RTKQuery/INavProduct';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
 
 export const navProductApi = createApi({

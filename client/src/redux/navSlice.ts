@@ -1,11 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-
-export interface INavState {
-    categoryId: number;
-    hasChildren: boolean;
-    brand: string;
-}
+import { INavState } from '../models/interfaces/slices/INavState';
 
 const initialState: INavState = {
     categoryId: 0,

@@ -5,13 +5,13 @@ import { sqlConfig } from './config.js';
 import sql from 'mssql';
 import cors from 'cors';
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 const app = express();
 
 app.use(
     cors({
         credentials: true,
-        origin: process.env.CLIENT_URL,
+        origin: '*',
     })
 );
 app.use(express.json());
@@ -20,7 +20,7 @@ app.use('/api', router);
 const start = () => {
     try {
         sql.connect(sqlConfig, console.log('DB connected'));
-        app.listen(PORT, console.log(`Server started on ${PORT}`));
+        app.listen(PORT, ['192.168.1.37', 'localhost'], console.log(`Server started on ${PORT}`));
     } catch (error) {
         console.log(error);
     }

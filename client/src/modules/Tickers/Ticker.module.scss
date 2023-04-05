@@ -1,0 +1,48 @@
+@import '../../styles/index.scss';
+
+.Ticker__Container {
+    @include fontDesktopXL($blue);
+    position: fixed;
+    writing-mode: vertical-lr;
+    height: 100%;
+    left: 3vw;
+    transform: rotate(-180deg);
+    top: 0px;
+    opacity: 0.2;
+    z-index: -1;
+
+    .Ticker {
+        height: 100%;
+        width: 4vw;
+        text-align: center;
+        overflow: hidden;
+        white-space: nowrap;
+        position: relative;
+        text-shadow: 0.2vw 0.2vw 0.2vw rgb(169, 169, 169);
+        z-index: -1;
+
+        .Ticker__Wrapper {
+            display: inline-block;
+            width: 4vw;
+            height: 200%;
+            position: absolute;
+            overflow-y: hidden;
+            animation: ticker 20s linear infinite;
+            z-index: -1;
+
+            div {
+                height: 50%;
+                z-index: -1;
+            }
+
+            @keyframes ticker {
+                0% {
+                    bottom: -50%;
+                }
+                100% {
+                    bottom: -100%;
+                }
+            }
+        }
+    }
+}

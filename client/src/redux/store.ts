@@ -1,3 +1,5 @@
+import stylesSlice from './stylesSlice';
+import cartSlice from './cartSlice';
 import { navProductApi } from './../services/navProductService';
 import langSlice from './langSlice';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
@@ -7,6 +9,8 @@ import navSlice from './navSlice';
 import { navProductListApi } from '../services/navProductListService';
 import { webProductInfoApi } from '../services/webProductInfo';
 import { navBrandsApi } from '../services/navBrandsService';
+import { webCartProductList } from '../services/webCartProductList';
+import { webOrderApi } from '../services/webOrder';
 
 const rootReducer = combineReducers({
     [navCategoriesApi.reducerPath]: navCategoriesApi.reducer,
@@ -15,8 +19,12 @@ const rootReducer = combineReducers({
     [navProductApi.reducerPath]: navProductApi.reducer,
     [webProductInfoApi.reducerPath]: webProductInfoApi.reducer,
     [navBrandsApi.reducerPath]: navBrandsApi.reducer,
+    [webCartProductList.reducerPath]: webCartProductList.reducer,
+    [webOrderApi.reducerPath]: webOrderApi.reducer,
     navSlice,
     langSlice,
+    cartSlice,
+    stylesSlice,
 });
 
 export const setupStore = () => {
@@ -29,7 +37,9 @@ export const setupStore = () => {
                 navProductListApi.middleware,
                 navProductApi.middleware,
                 webProductInfoApi.middleware,
-                navBrandsApi.middleware
+                navBrandsApi.middleware,
+                webCartProductList.middleware,
+                webOrderApi.middleware
             ),
     });
 };

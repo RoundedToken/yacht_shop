@@ -1,0 +1,12 @@
+@import '../../styles/index.scss';
+
+.body {
+    width: $widthRight;
+    margin-top: 6vw;
+    margin-left: $widthLeft;
+    background-color: $white;
+    position: relative;
+    z-index: 1;
+    flex-grow: 0;
+    flex-shrink: 0;
+}

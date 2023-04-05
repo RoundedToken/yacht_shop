@@ -78,7 +78,7 @@ class navService {
 
         const data = (await request.execute('[dbo].[nav_show_tovar]')).recordset[0];
 
-        const image = data.logo.match(/src=\"(.*?)\"/);
+        const image = data.logo ? data.logo.match(/src=\"(.*?)\"/) : null;
 
         const res = {};
         res.name = data.name;

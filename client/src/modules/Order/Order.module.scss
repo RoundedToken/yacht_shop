@@ -1,0 +1,168 @@
+@import '../../styles/index.scss';
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 5000; /* Sit on top */
+    padding-top: 5vh; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: hidden; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+    cursor: auto;
+
+    .modalContentContainer {
+        background-color: $white;
+        margin: auto;
+        padding-block: 2.5vh;
+        border: 0.1vw solid #888;
+        border-radius: 0.5vw;
+        width: 60%;
+        max-height: 85vh;
+        overflow: auto;
+
+        .modalClose {
+            @include hover;
+            position: fixed;
+            right: 21vw;
+            top: 6.5vh;
+            filter: $redFilter;
+            width: 3vw;
+        }
+
+        .response {
+            @include flexCenterCenter;
+            @include fontDesktopXL($blue);
+        }
+
+        .modalContent {
+            @include columnCenterCenter;
+            gap: 2vw;
+
+            .title {
+                @include fontDesktopXL($blue);
+            }
+
+            .orderList {
+                @include fontDesktopM($blue);
+                thead {
+                    tr {
+                        background-color: transparent !important;
+                    }
+
+                    th:first-child {
+                        background-color: transparent !important;
+                        border-right: none;
+                    }
+                }
+
+                th {
+                    background-color: $yellow;
+                    text-align: start;
+
+                    &:first-child {
+                        background-color: transparent;
+                    }
+                }
+
+                tr {
+                    &:nth-child(even) {
+                        background-color: $orderTrEven;
+                    }
+
+                    &:nth-child(odd) {
+                        background-color: $orderTrOdd;
+                    }
+
+                    &:last-child {
+                        background-color: transparent;
+
+                        td {
+                            border-right: none;
+
+                            &:nth-child(1) {
+                                background-color: transparent !important;
+                            }
+                            &:nth-child(4) {
+                                background-color: $yellow;
+                                border-right: 0.1vw solid gray;
+                                font-weight: bold;
+                            }
+                            &:nth-child(5) {
+                                background-color: $yellow;
+                                border-right: 0.1vw solid gray;
+                                font-weight: bold;
+                            }
+                            &:nth-child(6) {
+                                background-color: $yellow;
+                                font-weight: bold;
+                            }
+                        }
+                    }
+                }
+
+                th,
+                td {
+                    padding-inline: 0.5vw;
+                    border-right: 0.1vw solid gray;
+
+                    &:first-child {
+                        background-color: $yellow !important;
+                        font-weight: bold;
+                    }
+
+                    &:last-child {
+                        border-right: none;
+                    }
+                }
+            }
+
+            .orderForm {
+                @include columnCenterCenter;
+                @include fontDesktopXM($blue);
+                gap: 1vw;
+
+                input,
+                textarea {
+                    @include fontDesktopM($blue);
+                    border: 0.2vw solid $blue;
+                    border-radius: 0.2vw;
+                }
+
+                .formName,
+                .formEmail,
+                .formPhone {
+                    @include flexStartCenter;
+                    width: 100%;
+                    gap: 1vw;
+
+                    input {
+                        padding: 0.1vw;
+                        width: 100%;
+                    }
+                }
+
+                .formComments {
+                    textarea {
+                        padding: 0.1vw;
+                        width: 20vw;
+                        height: 5vw;
+                        resize: none;
+                    }
+                }
+
+                .formSubmit {
+                    @include fontDesktopXM($blue);
+                    @include hover;
+                    padding: 0.1vw;
+                    border: 0.2vw solid $blue;
+                    border-radius: 0.2vw;
+                    background-color: transparent;
+                }
+            }
+        }
+    }
+}

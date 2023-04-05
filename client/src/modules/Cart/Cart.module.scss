@@ -1,0 +1,110 @@
+@import '../../styles/index.scss';
+
+.cart {
+    @include columnCenterCenter;
+    gap: 2vw;
+
+    a {
+        color: $blue;
+    }
+
+    .productList {
+        @include fontDesktopXM($blue);
+        border-spacing: 4vw 2vw;
+
+        table {
+            position: relative;
+        }
+        th {
+            position: sticky;
+            top: 7.5vw;
+            background-color: $white;
+            z-index: 2;
+        }
+
+        td {
+            vertical-align: middle;
+        }
+
+        th {
+            @include fontDesktopL($blue);
+        }
+
+        .productName {
+            @include flexStartCenter;
+            gap: 1vw;
+            max-width: 40vw;
+        }
+
+        .remove {
+            @include hover;
+            filter: $redFilter;
+            width: 2vw;
+        }
+
+        .productPrice,
+        .totalAmount {
+            text-align: center;
+        }
+
+        .productImg {
+            width: 6vw;
+            height: 6vw;
+        }
+    }
+
+    .cartSummary {
+        @include columnCenterCenter;
+        @include fontDesktopL($blue);
+
+        .totalCount,
+        .totalSum {
+            @include flexCenterCenter;
+        }
+    }
+
+    .cartMenu {
+        @include flexBetweenCenter;
+        @include fontDesktopL($blue);
+        width: 100%;
+
+        img {
+            filter: $blueFilter;
+            width: 3vw;
+        }
+
+        .emptyTheCart,
+        .checkout {
+            @include hover;
+            @include flexCenterCenter;
+            gap: 1vw;
+        }
+    }
+
+    .emptyCart {
+        @include columnCenterCenter;
+        gap: 15vw;
+
+        img {
+            width: 3vw;
+            filter: $blueFilter;
+        }
+
+        .emptyCartTitle {
+            @include fontDesktopXL($blue);
+        }
+
+        .emptyCartMenu {
+            @include flexCenterCenter;
+            gap: 30vw;
+
+            .restoreCart,
+            .toCatalog {
+                @include flexCenterCenter;
+                @include fontDesktopL($blue);
+                gap: 1vw;
+                cursor: pointer;
+            }
+        }
+    }
+}

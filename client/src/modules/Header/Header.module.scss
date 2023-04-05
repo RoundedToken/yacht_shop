@@ -1,0 +1,174 @@
+@import '../../styles/index.scss';
+
+.header {
+    z-index: $zIndexHeader;
+    background-color: $white;
+    height: $hightHeader;
+
+    .headerStatic {
+        height: calc(3.69vw + 1.2vw);
+
+        .headerLogo {
+            img {
+                width: $widthLeft;
+            }
+        }
+
+        .headerName {
+            @include flexCenterCenter;
+            @include fontDesktopXL($white);
+            height: $hightHeaderName;
+            top: $hightHeaderNameTop;
+            left: $widthLeft;
+            width: $widthRight;
+            background-color: $yellow;
+            cursor: pointer;
+            position: absolute;
+            border-radius: 5vw 5vw 0 0;
+        }
+    }
+
+    .headerSticky {
+        background-color: $white;
+        width: 100%;
+        height: calc($hightHeader - (($hightHeaderName + $hightHeaderNameTop)));
+        float: left;
+
+        .navBar {
+            @include flexBetweenCenter;
+            width: $widthRight;
+            height: calc($hightHeader - (($hightHeaderName + $hightHeaderNameTop)));
+
+            .navItem {
+                @include flexCenterCenter;
+                @include fontDesktopL($blue);
+                @include active;
+                @include hover;
+
+                img {
+                    height: 1em;
+                    filter: $blueFilter;
+                }
+            }
+
+            .headerLang {
+                @include flexCenterCenter;
+                position: relative;
+
+                img {
+                    height: 2vw;
+                    filter: $blueFilter;
+                }
+
+                &:hover {
+                    .langOptions {
+                        @include columnStartStart;
+                    }
+
+                    .langUpArrow {
+                        display: block;
+                    }
+
+                    .langDownArrow {
+                        display: none;
+                    }
+                }
+
+                .langUpArrow {
+                    display: none;
+                }
+
+                .langSelect {
+                    @include fontDesktopL($blue);
+
+                    .langOption {
+                        @include fontDesktopL($blue);
+                        cursor: pointer;
+
+                        &[id='disabledLang'] {
+                            display: none;
+                        }
+                    }
+                }
+
+                .langOptions {
+                    display: none;
+                    position: absolute;
+                    background-color: $white;
+                }
+            }
+        }
+
+        .searchBar {
+            @include flexStartCenter;
+            background-color: $blue;
+            height: calc($hightHeader - (($hightHeaderName + $hightHeaderNameTop)));
+            padding-left: $widthLeft;
+
+            .historyMenu {
+                @include flexCenterCenter;
+                gap: 0.2vw;
+
+                img {
+                    width: $widthImgDesktop;
+                    cursor: pointer;
+                    filter: $whiteFilter;
+                }
+            }
+
+            .searchMenu {
+                @include fontDesktopM($white);
+                @include flexStartCenter;
+                margin-left: 5vw;
+
+                input[type='text'] {
+                    @include fontDesktopM($white);
+                    font-family: $fontFamilyRounded;
+                    border: 0.2vw solid $white;
+                    height: 1.5vw;
+                    border-radius: 0.2vw;
+                    background-color: transparent;
+                    margin-left: 0.5vw;
+                }
+
+                button {
+                    @include hover;
+                    @include fontDesktopM($white);
+                    height: 2vw;
+                    border-radius: 0.2vw;
+                    border: 0.2vw solid $white;
+                    margin-left: 0.5vw;
+                    background-color: transparent;
+                }
+
+                input[type='checkbox'] {
+                    margin-left: 2.5vw;
+                    width: 1.5vw;
+                    height: 1.5vw;
+                }
+
+                label {
+                    margin-left: 0.5vw;
+                }
+
+                .info {
+                    margin-left: 2.5vw;
+
+                    + div {
+                        display: none;
+                        margin-left: 0.5vw;
+                    }
+
+                    &:hover + div {
+                        display: block;
+                    }
+                }
+
+                img {
+                    width: $widthImgDesktop;
+                    filter: $whiteFilter;
+                }
+            }
+        }
+    }
+}

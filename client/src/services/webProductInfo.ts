@@ -1,8 +1,8 @@
-import { IWebProductInfoReq } from './../models/IWebProductInfo';
+import { IWebProductInfoReq } from '../models/interfaces/RTKQuery/IWebProductInfo';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
 
 export const webProductInfoApi = createApi({
-    reducerPath: 'webProductInfosApi',
+    reducerPath: 'webProductInfoApi',
     baseQuery: fetchBaseQuery({
         baseUrl: process.env.REACT_APP_SERVER_URL,
     }),

@@ -1,21 +1,27 @@
 import React from 'react';
-import Body from './components/Body/Body';
-import Footer from './components/Footer/Footer';
-import Header from './components/Header/Header';
+import Body from './modules/Body/Body';
+import Footer from './modules/Footer/Footer';
+import Header from './modules/Header/Header';
 import { routerApi } from './services/routerService';
-import './app.scss';
+import './App.scss';
+import Order from './modules/Order/Order';
 
 function App() {
-    const { isSuccess, isLoading } = routerApi.useFetchAllIdQuery();
+    const { isSuccess, isLoading, error } = routerApi.useFetchAllIdQuery();
 
     return (
         <div className="App">
             {isLoading && <h1>Loading...</h1>}
+            {error && <h1>`${JSON.stringify(error)}`</h1>}
             {isSuccess && (
                 <div className="wrapper">
                     <Header />
+
                     <Body />
+
                     <Footer />
+
+                    <Order />
                 </div>
             )}
         </div>

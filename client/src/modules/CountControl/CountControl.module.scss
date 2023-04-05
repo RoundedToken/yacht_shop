@@ -1,0 +1,25 @@
+@import '../../styles/index.scss';
+
+.countControl {
+    @include flexCenterCenter;
+
+    .item {
+        @include flexCenterCenter;
+        height: 3vw;
+        width: 3vw;
+    }
+
+    img {
+        @include hover;
+        filter: $blueFilter;
+        width: 2vw;
+    }
+
+    input {
+        @include fontDesktopXM($blue);
+        text-align: center;
+        cursor: pointer;
+        width: 100%;
+        height: 100%;
+    }
+}

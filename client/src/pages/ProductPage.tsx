@@ -1,9 +1,13 @@
-import React from 'react';
-import Product from '../components/Products/Product';
-import ProductInfo from '../components/Products/ProductInfo';
-import CatalogTicker from '../components/Tickers/CatalogTicker';
+import React, { useEffect } from 'react';
+import Product from '../modules/Products/Product';
+import ProductInfo from '../modules/Products/ProductInfo';
+import CatalogTicker from '../modules/Tickers/CatalogTicker';
 
 const ProductPage = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <div>
             <CatalogTicker />

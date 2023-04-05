@@ -1,0 +1,68 @@
+/* FLEX */
+@mixin flexCenterCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@mixin flexBetweenCenter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+@mixin flexStartCenter {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+@mixin columnStartStart {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+@mixin columnBetweenNormal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: normal;
+}
+@mixin columnCenterCenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/* FONTS */
+@mixin fontDesktopXL($color) {
+    font-size: $fontSizeDesktopXL;
+    font-weight: $fontWeightXL;
+    color: $color;
+}
+@mixin fontDesktopL($color) {
+    font-size: $fontSizeDesktopL;
+    font-weight: $fontWeightL;
+    color: $color;
+}
+@mixin fontDesktopXM($color) {
+    font-size: $fontSizeDesktopXM;
+    font-weight: $fontWeightXM;
+    color: $color;
+}
+@mixin fontDesktopM($color) {
+    font-size: $fontSizeDesktopM;
+    font-weight: $fontWeightM;
+    color: $color;
+}
+
+@mixin active {
+    cursor: pointer;
+    &:active {
+        background-color: red;
+    }
+}
+@mixin hover {
+    cursor: pointer;
+    &:hover {
+        transform: scale(1.1);
+    }
+}

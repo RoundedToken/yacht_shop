@@ -1,7 +1,7 @@
-import { ILangState } from './../models/ILangState';
-import { TLang } from './../models/TLang';
+import { ILangState } from '../models/interfaces/slices/ILangState';
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import { TLang } from '../models/types/TLang';
 
 const initialState: ILangState = {
     lang: localStorage.lang ? localStorage.lang : 'rus',
