@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import Text from '../../Text/Text';
+import Text from '../../../UI/Text/Text';
 import { IProductListHeader } from '../interfaces/IProductListHeader';
 
 const ProductListHeader: FC<IProductListHeader> = ({ styles }) => {
@@ -21,6 +21,8 @@ const ProductListHeader: FC<IProductListHeader> = ({ styles }) => {
                 <th>
                     <Text rus="Всего" eng="Total" est="Kokku" />
                 </th>
+
+                <th></th>
 
                 <th></th>
             </tr>

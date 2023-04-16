@@ -16,7 +16,7 @@
 
         .headerName {
             @include flexCenterCenter;
-            @include fontDesktopXL($white);
+            @include fontDesktopXXL($white);
             height: $hightHeaderName;
             top: $hightHeaderNameTop;
             left: $widthLeft;

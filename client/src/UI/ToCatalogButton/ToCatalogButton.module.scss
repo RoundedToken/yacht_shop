@@ -1,0 +1,13 @@
+@import '../../styles/index.scss';
+
+.toCatalog {
+    @include flexCenterCenter;
+    color: $blue;
+    gap: 1vw;
+    cursor: pointer;
+
+    img {
+        width: 3vw;
+        filter: $blueFilter;
+    }
+}

@@ -8,7 +8,7 @@ import {
 } from '../../../redux/cartSlice';
 import { RootState } from '../../../redux/store';
 import { webOrderApi } from '../../../services/webOrder';
-import Text from '../../Text/Text';
+import Text from '../../../UI/Text/Text';
 import { IOrderForm } from '../interfaces/IOrderForm';
 
 const OrderForm: FC<IOrderForm> = ({ styles }) => {

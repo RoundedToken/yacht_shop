@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { IOrder } from './interfaces/IOrder';
 import { deleteResponse } from '../../redux/cartSlice';
 import { RootState } from '../../redux/store';
-import Text from '../Text/Text';
+import Text from '../../UI/Text/Text';
 import styles from './Order.module.scss';
 import OrderForm from './components/OrderForm';
-import closeImg from '../../assets/CartImg/close.png';
+import closeImg from '../../assets/images/close.png';
 import { switchOrderModalDisplay } from '../../redux/stylesSlice';
 import OrderList from './components/OrderList';
 

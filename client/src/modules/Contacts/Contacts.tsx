@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './Contacts.module.scss';
-import GoogleMap from './GoogleMap';
-import shopImg from '../../assets/ContactsImg/shop.jpg';
-import Text from '../Text/Text';
-import contactsImg from '../../assets/HeaderImg/contacts.png';
-import mailImg from '../../assets/ContactsImg/mail.png';
-import phoneImg from '../../assets/ContactsImg/phone.png';
-import locationImg from '../../assets/ContactsImg/location.png';
+import GoogleMap from './components/GoogleMap';
+import shopImg from '../../assets/images/shop.jpg';
+import Text from '../../UI/Text/Text';
+import images from '../../assets/images/contacts.png';
+import mailImg from '../../assets/images/mail.png';
+import phoneImg from '../../assets/images/phone.png';
+import locationImg from '../../assets/images/location.png';
 
 const Contacts = () => {
     return (
@@ -29,7 +29,7 @@ const Contacts = () => {
                     </div>
                     <div className={styles.Item}>
                         <a href="https://wa.me/79854549470" target="_blank" rel="noreferrer">
-                            <img src={contactsImg} alt="" width={28} height={28} />
+                            <img src={images} alt="" width={28} height={28} />
                             <Text rus="Наш Whats'up" eng="Our Whats'up" est="Meie Whats'up" />
                         </a>
                     </div>

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import BrandSelect from '../modules/BrandSelect/BrandSelect';
+import BrandSelect from '../UI/BrandSelect/BrandSelect';
 import ProductList from '../modules/ProductList/ProductList';
 import { TId } from '../models/types/TId';
 import { routerApi } from '../services/routerService';

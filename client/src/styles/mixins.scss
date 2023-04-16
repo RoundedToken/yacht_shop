@@ -33,6 +33,11 @@
     align-items: center;
 }
 /* FONTS */
+@mixin fontDesktopXXL($color) {
+    font-size: $fontSizeDesktopXXL;
+    font-weight: $fontWeightXXL;
+    color: $color;
+}
 @mixin fontDesktopXL($color) {
     font-size: $fontSizeDesktopXL;
     font-weight: $fontWeightXL;
@@ -52,6 +57,26 @@
     font-size: $fontSizeDesktopM;
     font-weight: $fontWeightM;
     color: $color;
+}
+@mixin fontDesktopS($color) {
+    font-size: $fontSizeDesktopS;
+    font-weight: $fontWeightS;
+    color: $color;
+}
+@mixin fontDesktopXS($color) {
+    font-size: $fontSizeDesktopXS;
+    font-weight: $fontWeightXS;
+    color: $color;
+}
+
+/* IMAGES */
+@mixin productImgInList {
+    width: 100px;
+    height: 100px;
+}
+@mixin menuControlImg {
+    width: 40px;
+    height: 40px;
 }
 
 @mixin active {

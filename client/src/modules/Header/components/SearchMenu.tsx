@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { ISearchMenu } from '../interfaces/ISearchMenu';
-import loupeImg from '../../../assets/HeaderImg/loupe.png';
-import Text from '../../Text/Text';
-import infoImg from '../../../assets/HeaderImg/info.png';
+import loupeImg from '../../../assets/images/loupe.png';
+import Text from '../../../UI/Text/Text';
+import infoImg from '../../../assets/images/info.png';
 
 const SearchMenu: FC<ISearchMenu> = ({ styles }) => {
     const formOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {

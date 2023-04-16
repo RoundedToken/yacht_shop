@@ -1,19 +1,18 @@
 import React, { FC } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import closeImg from '../../../assets/CartImg/close.png';
+import closeImg from '../../../assets/images/close.png';
 import { routeConstants } from '../../../models/enums/EConstants';
 import { removeFromCart } from '../../../redux/cartSlice';
-import { RootState } from '../../../redux/store';
-import CountControl from '../../CountControl/CountControl';
+import CountControl from '../../../UI/CountControl/CountControl';
+import FavoritesButton from '../../../UI/FavoritesButton/FavoritesButton';
 import { ICartProduct } from '../interfaces/ICartProduct';
 
-const CartProduct: FC<ICartProduct> = ({ id, styles, src, name, price }) => {
-    const count =
-        useSelector(
-            (state: RootState) =>
-                state.cartSlice.productList.find((product) => product.id === id)?.count
-        ) ?? 0;
+const CartProduct: FC<ICartProduct> = ({ id, styles, src, name, price, count }) => {
+    const formatter = new Intl.NumberFormat('et', {
+        style: 'currency',
+        currency: 'EUR',
+    });
     const dispatch = useDispatch();
 
     const removeOnClick = () => {
@@ -22,21 +21,24 @@ const CartProduct: FC<ICartProduct> = ({ id, styles, src, name, price }) => {
 
     return (
         <tr className={styles.cartProduct}>
-            <td className={styles.productName}>
-                <Link to={routeConstants.PRODUCT_ROUTE + `/${id}`}>
+            <td>
+                <Link className={styles.productName} to={routeConstants.PRODUCT_ROUTE + `/${id}`}>
                     <img className={styles.productImg} src={src} alt="" />
+                    {name}
                 </Link>
-                
-                <Link to={routeConstants.PRODUCT_ROUTE + `/${id}`}>{name}</Link>
             </td>
 
             <td>
                 <CountControl id={id} />
             </td>
 
-            <td className={styles.productPrice}>{price.toFixed(2)}&nbsp;&euro;</td>
+            <td className={styles.productPrice}>{formatter.format(price)}</td>
 
-            <td className={styles.totalAmount}>{(count * price).toFixed(2)}&nbsp;&euro;</td>
+            <td className={styles.totalAmount}>{formatter.format(count * price)}</td>
+
+            <td>
+                <FavoritesButton id={id} />
+            </td>
 
             <td>
                 <img src={closeImg} onClick={removeOnClick} className={styles.remove} alt="" />

@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
-import translationImg from '../../../assets/HeaderImg/translation.png';
-import downArrowImg from '../../../assets/HeaderImg/downArrow.png';
-import upArrowImg from '../../../assets/HeaderImg/upArrow.png';
+import translationImg from '../../../assets/images/translation.png';
+import downArrowImg from '../../../assets/images/downArrow.png';
+import upArrowImg from '../../../assets/images/upArrow.png';
 import { IHeaderLang } from '../interfaces/IHeaderLang';
 import LangOption from './LangOption';
 

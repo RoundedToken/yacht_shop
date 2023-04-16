@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import Product from '../modules/Products/Product';
-import ProductInfo from '../modules/Products/ProductInfo';
+import Product from '../modules/Product/Product';
+import ProductInfo from '../modules/Product/components/ProductInfo';
 import CatalogTicker from '../modules/Tickers/CatalogTicker';
 
 const ProductPage = () => {

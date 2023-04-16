@@ -4,8 +4,8 @@ import { ICountControl } from './ICountControl';
 import { decrementCount, incrementCount, setCount } from '../../redux/cartSlice';
 import { RootState } from '../../redux/store';
 import styles from './CountControl.module.scss';
-import minusImg from '../../assets/CountControlImg/minus.png';
-import plusImg from '../../assets/CountControlImg/plus.png';
+import minusImg from '../../assets/images/minus.png';
+import plusImg from '../../assets/images/plus.png';
 
 const CountControl: FC<ICountControl> = ({ id }) => {
     const count = useSelector(

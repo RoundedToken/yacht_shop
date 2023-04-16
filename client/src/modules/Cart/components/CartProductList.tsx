@@ -3,7 +3,7 @@ import { ICartProductList } from '../interfaces/ICartProductList';
 import CartProduct from './CartProduct';
 import ProductListHeader from './ProductListHeader';
 
-const CartProductList: FC<ICartProductList> = ({ styles, productList }) => {
+const CartProductList: FC<ICartProductList> = ({ styles, productList, data }) => {
     return (
         <table className={styles.productList}>
             <ProductListHeader styles={styles} />
@@ -13,10 +13,11 @@ const CartProductList: FC<ICartProductList> = ({ styles, productList }) => {
                     <CartProduct
                         key={product.id}
                         id={product.id}
-                        name={product.name}
-                        src={product.src}
+                        name={data.find((item) => item.id === product.id)?.name || ''}
+                        src={data.find((item) => item.id === product.id)?.src || ''}
                         price={product.price}
                         styles={styles}
+                        count={product.count}
                     />
                 ))}
             </tbody>

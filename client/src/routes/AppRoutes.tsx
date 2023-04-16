@@ -8,6 +8,7 @@ import ContactsPage from '../pages/ContactsPage';
 import CableCrimpingPage from '../pages/CrimpingPage';
 import ProductListPage from '../pages/ProductListPage';
 import ProductPage from '../pages/ProductPage';
+import FavoritesPage from '../pages/FavoritesPage';
 
 const AppRoutes = () => {
     return (
@@ -27,6 +28,7 @@ const AppRoutes = () => {
             <Route path={routeConstants.CART_ROUTE} element={<CartPage />} />
             <Route path={routeConstants.CONTACTS_ROUTE} element={<ContactsPage />} />
             <Route path={routeConstants.CRIMPING_ROUTE} element={<CableCrimpingPage />} />
+            <Route path={routeConstants.FAVORITES_ROUTE} element={<FavoritesPage />} />
 
             <Route path="*" element={<Navigate to={routeConstants.CATEGORIES_ROUTE + '/0'} />} />
         </Routes>

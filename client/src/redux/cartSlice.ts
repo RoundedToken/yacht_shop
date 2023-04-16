@@ -8,6 +8,7 @@ const initialState: ICartState = {
         : [],
     response: undefined,
     responseIsLoading: false,
+    update: localStorage.cartUpdate ? localStorage.cartUpdate : false,
 };
 
 export const cartSlice = createSlice({
@@ -47,8 +48,9 @@ export const cartSlice = createSlice({
             localStorage.cartProductList = JSON.stringify(state.productList);
         },
 
-        setCartFromStorage(state, action: PayloadAction<ICartProduct[]>) {
-            state.productList = [...action.payload];
+        setCartFromStorage(state) {
+            state.productList = JSON.parse(localStorage.cartProductList);
+            state.update = localStorage.cartUpdate === 'true' ? true : false;
         },
 
         emptyCart(state) {
@@ -77,6 +79,14 @@ export const cartSlice = createSlice({
         switchResponseIsLoading(state, action: PayloadAction<boolean>) {
             state.responseIsLoading = action.payload;
         },
+        toTrueCartUpdate(state) {
+            state.update = true;
+            localStorage.cartUpdate = state.update;
+        },
+        toFalseCartUpdate(state) {
+            state.update = false;
+            localStorage.cartUpdate = state.update;
+        },
     },
 });
 
@@ -93,6 +103,8 @@ export const {
     setResponse,
     deleteResponse,
     switchResponseIsLoading,
+    toTrueCartUpdate,
+    toFalseCartUpdate,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

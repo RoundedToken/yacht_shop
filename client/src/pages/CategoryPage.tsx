@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import BrandSelect from '../modules/BrandSelect/BrandSelect';
+import BrandSelect from '../UI/BrandSelect/BrandSelect';
 import CatalogTicker from '../modules/Tickers/CatalogTicker';
 import { TId } from '../models/types/TId';
 import { routerApi } from '../services/routerService';
-import CategoryList from '../modules/Categories/CategoryList';
+import CategoryList from '../modules/CategoryList/CategoryList';
 
 const CategoryPage = () => {
     const { data: allId } = routerApi.useFetchAllIdQuery();

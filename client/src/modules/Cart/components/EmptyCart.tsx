@@ -1,13 +1,11 @@
 import React, { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import catalogImg from '../../../assets/HeaderImg/catalog.png';
-import restoreImg from '../../../assets/CartImg/restore.png';
+import restoreImg from '../../../assets/images/restore.png';
 import { IEmptyCart } from '../interfaces/IEmptyCart';
 import { RootState } from '../../../redux/store';
 import { restoreCart } from '../../../redux/cartSlice';
-import { routeConstants } from '../../../models/enums/EConstants';
-import Text from '../../Text/Text';
+import Text from '../../../UI/Text/Text';
+import ToCatalogButton from '../../../UI/ToCatalogButton/ToCatalogButton';
 
 const EmptyCart: FC<IEmptyCart> = ({ styles }) => {
     const dispatch = useDispatch();
@@ -38,10 +36,7 @@ const EmptyCart: FC<IEmptyCart> = ({ styles }) => {
                     </div>
                 )}
 
-                <Link to={routeConstants.CATEGORIES_ROUTE} className={styles.toCatalog}>
-                    <img src={catalogImg} alt="" />
-                    <Text rus="Перейти в каталог" eng="Go to catalog" est="Mine kataloogi" />
-                </Link>
+                <ToCatalogButton />
             </div>
         </div>
     );

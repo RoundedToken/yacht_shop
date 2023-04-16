@@ -16,11 +16,11 @@
         .waves {
             .wave {
                 position: absolute;
-                top: -2vw;
+                top: -1.9vw;
                 left: 0;
                 width: 100%;
                 height: 2vw;
-                background: url('../../assets/ContactsImg/wave.png');
+                background: url('../../assets/images/wave.png');
                 background-size: 40vw 2vw;
                 filter: $waveFilter;
             }

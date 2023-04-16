@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { routeConstants } from '../../../models/enums/EConstants';
-import ropeboxLogoImg from '../../../assets/HeaderImg/ropeboxLogo.jpg';
+import ropeboxLogoImg from '../../../assets/images/ropeboxLogo.jpg';
 import { IHeaderLogo } from '../interfaces/IHeaderLogo';
 
 const HeaderLogo: FC<IHeaderLogo> = ({ styles }) => {

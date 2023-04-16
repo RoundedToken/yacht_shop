@@ -9,4 +9,5 @@ export interface ICartState {
     productListCopy: ICartProduct[];
     response?: string;
     responseIsLoading: boolean;
+    update: boolean;
 }

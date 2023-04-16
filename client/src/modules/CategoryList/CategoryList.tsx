@@ -5,8 +5,8 @@ import { TId } from '../../models/types/TId';
 import { setBrand } from '../../redux/navSlice';
 import { RootState } from '../../redux/store';
 import { navCategoriesApi } from '../../services/navCategoriesService';
-import styles from './Categories.module.scss';
-import CategoryItem from './CategoryItem';
+import styles from './CategoryList.module.scss';
+import CategoryItem from './components/CategoryItem';
 
 const CategoryList = () => {
     const id = Number(useParams<TId>().id);

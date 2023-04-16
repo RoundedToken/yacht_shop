@@ -1,3 +1,4 @@
+import favoritesSlice from './favoritesSlice';
 import stylesSlice from './stylesSlice';
 import cartSlice from './cartSlice';
 import { navProductApi } from './../services/navProductService';
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
     langSlice,
     cartSlice,
     stylesSlice,
+    favoritesSlice,
 });
 
 export const setupStore = () => {

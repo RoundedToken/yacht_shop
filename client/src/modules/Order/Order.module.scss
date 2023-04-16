@@ -35,7 +35,7 @@
 
         .response {
             @include flexCenterCenter;
-            @include fontDesktopXL($blue);
+            @include fontDesktopXXL($blue);
         }
 
         .modalContent {
@@ -43,7 +43,7 @@
             gap: 2vw;
 
             .title {
-                @include fontDesktopXL($blue);
+                @include fontDesktopXXL($blue);
             }
 
             .orderList {

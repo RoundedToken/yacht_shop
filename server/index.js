@@ -5,7 +5,7 @@ import { sqlConfig } from './config.js';
 import sql from 'mssql';
 import cors from 'cors';
 
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5000;
 const app = express();
 
 app.use(

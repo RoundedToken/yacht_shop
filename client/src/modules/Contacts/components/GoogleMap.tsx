@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { IGoogleMap } from './IGoogleMap';
+import { IGoogleMap } from '../interfaces/IGoogleMap';
 
 const GoogleMap: FC<IGoogleMap> = ({ styles }) => {
     return (

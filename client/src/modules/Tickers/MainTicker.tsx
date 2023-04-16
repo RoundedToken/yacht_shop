@@ -1,5 +1,5 @@
 import React from 'react';
-import Text from '../Text/Text';
+import Text from '../../UI/Text/Text';
 import styles from './Ticker.module.scss';
 
 const MainTicker = () => {

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { routeConstants } from '../../../models/enums/EConstants';
-import Text from '../../Text/Text';
+import Text from '../../../UI/Text/Text';
 import { IHeaderName } from '../interfaces/IHeaderName';
 
 const HeaderName: FC<IHeaderName> = ({ styles }) => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { TId } from '../../models/types/TId';
-import { webProductInfoApi } from '../../services/webProductInfo';
+import { TId } from '../../../models/types/TId';
+import { webProductInfoApi } from '../../../services/webProductInfo';
 
 const ProductInfo = () => {
     const id = Number(useParams<TId>().id);

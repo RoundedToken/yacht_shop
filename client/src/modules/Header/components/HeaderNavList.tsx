@@ -1,11 +1,12 @@
 import React, { FC } from 'react';
 import HeaderLang from './HeaderLang';
-import cartImg from '../../../assets/HeaderImg/cart.png';
-import catalogImg from '../../../assets/HeaderImg/catalog.png';
-import ropeImg from '../../../assets/HeaderImg/rope.png';
-import mapImg from '../../../assets/HeaderImg/map.png';
+import cartImg from '../../../assets/images/cart.png';
+import catalogImg from '../../../assets/images/catalog.png';
+import ropeImg from '../../../assets/images/rope.png';
+import mapImg from '../../../assets/images/map.png';
+import heartFilledImg from '../../../assets/images/heart_filled.png';
 import { routeConstants } from '../../../models/enums/EConstants';
-import Text from '../../Text/Text';
+import Text from '../../../UI/Text/Text';
 import HeaderNavListItem from './HeaderNavListItem';
 import { IHeaderNavList } from '../interfaces/IHeaderNavList';
 
@@ -30,6 +31,14 @@ const HeaderNavList: FC<IHeaderNavList> = ({ styles }) => {
 
             <HeaderNavListItem route={routeConstants.CART_ROUTE} src={cartImg} styles={styles}>
                 <Text rus="Корзина" eng="Cart" est="Ostukorv" />
+            </HeaderNavListItem>
+
+            <HeaderNavListItem
+                route={routeConstants.FAVORITES_ROUTE}
+                src={heartFilledImg}
+                styles={styles}
+            >
+                <Text rus="Избранное" eng="Favorites" est="Lemmikud" />
             </HeaderNavListItem>
 
             <HeaderLang styles={styles} />

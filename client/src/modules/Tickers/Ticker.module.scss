@@ -1,7 +1,7 @@
 @import '../../styles/index.scss';
 
 .Ticker__Container {
-    @include fontDesktopXL($blue);
+    @include fontDesktopXXL($blue);
     position: fixed;
     writing-mode: vertical-lr;
     height: 100%;

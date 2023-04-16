@@ -1,10 +1,10 @@
 import React from 'react';
-import Text from '../Text/Text';
+import Text from '../../UI/Text/Text';
 import styles from './Footer.module.scss';
-import contactsImg from '../../assets/HeaderImg/contacts.png';
-import mailImg from '../../assets/ContactsImg/mail.png';
-import phoneImg from '../../assets/ContactsImg/phone.png';
-import locationImg from '../../assets/ContactsImg/location.png';
+import contactsImg from '../../assets/images/contacts.png';
+import mailImg from '../../assets/images/mail.png';
+import phoneImg from '../../assets/images/phone.png';
+import locationImg from '../../assets/images/location.png';
 
 const Footer = () => {
     return (

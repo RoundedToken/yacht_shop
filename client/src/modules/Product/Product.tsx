@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { TId } from '../../models/types/TId';
 import { RootState } from '../../redux/store';
 import { navProductApi } from '../../services/navProductService';
-import ProductNotFound from './ProductNotFound';
+import ProductNotFound from './components/ProductNotFound';
 
 const Product = () => {
     const id = Number(useParams<TId>().id);

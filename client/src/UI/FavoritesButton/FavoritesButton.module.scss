@@ -1,0 +1,15 @@
+@import '../../styles/index.scss';
+
+.removeButton {
+    @include hover;
+    filter: $redFilter;
+    width: 40px;
+    height: 40px;
+}
+
+.addButton {
+    @include hover;
+    filter: $blueFilter;
+    width: 40px;
+    height: 40px;
+}
