@@ -6,11 +6,11 @@
 3. Implement a powerful shopping cart system with favorites
 4. Make the project as scalable as possible for future features
 5. Implement stable front-end localization
-6. <sup>*soon*</sup>&nbsp; Speed up the database
-7. <sup>*soon*</sup>&nbsp; Organize a thoughtful system of images
-8. <sup>*soon*</sup>&nbsp; Implement a new navigation model
-9. <sup>*possibly*</sup>&nbsp; Implement payment and delivery system
-10. <sup>*possibly*</sup>&nbsp; Realise authorization system 
+6. Speed up the database access and realize fast Client-Server Model
+7. Improve existing services and complement basic navigation, sorting and search capabilities
+8. <sup>*soon*</sup>&nbsp; Organize a thoughtful system of images
+9. <sup>*optionaly*</sup>&nbsp; Implement payment and delivery system
+10. <sup>*optionaly*</sup>&nbsp; Realize authorization system 
 
 ## Front-end stack 
 
