@@ -1,56 +1,48 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { TId } from '../../models/types/TId';
-import { setBrand } from '../../redux/navSlice';
 import { RootState } from '../../redux/store';
-import { navCategoriesApi } from '../../services/navCategoriesService';
 import styles from './CategoryList.module.scss';
 import CategoryItem from './components/CategoryItem';
 
 const CategoryList = () => {
     const id = Number(useParams<TId>().id);
-    const lang = useSelector((state: RootState) => state.langSlice.lang);
-    const brand = useSelector((state: RootState) => state.navSlice.brand);
-    const dispatch = useDispatch();
+    const category = useSelector((state: RootState) => state.navSlice.categoryList).find(
+        (category) => category.id === id
+    );
+    const brands = useSelector((state: RootState) => state.navSlice.brands);
 
-    const {
-        data: categories,
-        error,
-        isFetching,
-    } = navCategoriesApi.useFetchCategoriesQuery({
-        id: id,
-        brand: brand === 'notSelected' ? '' : brand,
-        lang: lang,
-    });
+    const haveCommon = (validator: string[], subject: string[]) => {
+        for (let brand of subject) {
+            if ([...validator].includes(brand)) return true;
+        }
+        return false;
+    };
 
     useEffect(() => {
-        return () => {
-            dispatch(setBrand('notSelected'));
-        };
-    }, [dispatch]);
+        window.scrollTo(0, 0);
+    }, [category]);
 
     return (
         <div>
-            {isFetching && <h1>Loading...</h1>}
-            {error && <h1>Error!</h1>}
-            {categories &&
-                !isFetching &&
-                (categories.length === 0 ? (
-                    <h1>Category Not found</h1>
-                ) : (
-                    categories.map((category) => (
+            {category &&
+                category.children &&
+                category.children
+                    .filter((child) =>
+                        brands.length === 0 ? true : haveCommon(brands, child.brands)
+                    )
+                    .map((child) => (
                         <CategoryItem
+                            key={child.id}
+                            id={child.id}
+                            hasChildren={child.children ? true : false}
+                            parentId={child.parentId}
                             styles={styles}
-                            key={category.id}
-                            id={category.id}
-                            hasChildren={category.hasChildren}
-                            src={category.src}
                         >
-                            {category.name}
+                            {child.name}
                         </CategoryItem>
-                    ))
-                ))}
+                    ))}
         </div>
     );
 };

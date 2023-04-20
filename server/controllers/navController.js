@@ -1,30 +1,6 @@
 import navService from '../services/navService.js';
 
 class NavController {
-    async navChildrenOfSubr(req, res, next) {
-        try {
-            const reqData = req.query;
-
-            const sqlResData = await navService.navChildrenOfSubr(reqData);
-
-            return res.json(sqlResData);
-        } catch (error) {
-            next(error);
-        }
-    }
-
-    async navShowChildrenPlain(req, res, next) {
-        try {
-            const reqData = req.query;
-
-            const sqlResData = await navService.navShowChildrenPlain(reqData);
-
-            return res.json(sqlResData);
-        } catch (error) {
-            next(error);
-        }
-    }
-
     async navGoodsList(req, res, next) {
         try {
             const reqData = req.query;
@@ -49,11 +25,11 @@ class NavController {
         }
     }
 
-    async navBrandsOfSubrPlain(req, res, next) {
+    async navTree(req, res, next) {
         try {
             const reqData = req.query;
 
-            const sqlResData = await navService.navBrandsOfSubrPlain(reqData);
+            const sqlResData = await navService.navTree(reqData);
 
             return res.json(sqlResData);
         } catch (error) {

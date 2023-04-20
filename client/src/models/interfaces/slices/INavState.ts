@@ -1,5 +1,6 @@
+import { Set } from 'typescript';
+import { INavTreeItem } from './../RTKQuery/INavTree';
 export interface INavState {
-    categoryId: number;
-    hasChildren: boolean;
-    brand: string;
+    categoryList: INavTreeItem[];
+    brands: string[];
 }

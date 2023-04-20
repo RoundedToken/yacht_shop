@@ -38,6 +38,79 @@
             @include flexBetweenCenter;
             width: $widthRight;
             height: calc($hightHeader - (($hightHeaderName + $hightHeaderNameTop)));
+            position: relative;
+
+            .catalog:hover {
+                z-index: 5;
+                .nestedDropdown {
+                    display: block;
+                }
+            }
+
+            .categoryDropdown {
+                @include fontDesktopXS($blue);
+                position: absolute;
+                top: 0.8vw;
+                left: 8.1vw;
+                background-color: $yellow;
+                z-index: 6;
+
+                .background {
+                    pointer-events: none;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100vw;
+                    height: 100vh;
+                    z-index: 10;
+                    background-color: rgba(0, 0, 0, 0.1);
+                }
+
+                .nestedDropdown {
+                    border: 1px solid red;
+                    display: none;
+                    list-style-type: none;
+                    margin: 0;
+                    padding: 0;
+                    z-index: 6;
+                    width: max-content;
+                }
+
+                .nestedDropdown li {
+                    cursor: pointer;
+                    width: calc(100% - 0.4vw);
+                    padding: 0.2vw;
+                    position: relative;
+                    z-index: 6;
+                }
+
+                .nestedDropdown ul {
+                    left: 100%;
+                    position: absolute;
+                    top: -1px;
+                    width: max-content;
+                    background-color: $yellow;
+                    border: 1px solid red;
+                    display: none;
+                    list-style-type: none;
+                    margin: 0;
+                    padding: 0;
+                }
+
+                .nestedDropdown ul ul {
+                    border-left: 0;
+                    left: 100%;
+                    position: absolute;
+                    top: -1px;
+                }
+
+                .nestedDropdown li:hover {
+                    background-color: rgba(0, 0, 0, 0.1);
+                    > ul {
+                        display: block;
+                    }
+                }
+            }
 
             .navItem {
                 @include flexCenterCenter;
@@ -110,63 +183,35 @@
                 gap: 0.2vw;
 
                 img {
+                    @include hover;
                     width: $widthImgDesktop;
                     cursor: pointer;
                     filter: $whiteFilter;
                 }
+
+                .loupeImg {
+                    margin-left: 0.5vw;
+                }
             }
 
-            .searchMenu {
-                @include fontDesktopM($white);
+            .breadcrumbs {
                 @include flexStartCenter;
-                margin-left: 5vw;
+                padding-left: 2vw;
+                padding-right: 1vw;
+                gap: 1.5vw;
+                max-width: 76.5vw;
+                overflow: scroll;
 
-                input[type='text'] {
-                    @include fontDesktopM($white);
-                    font-family: $fontFamilyRounded;
-                    border: 0.2vw solid $white;
-                    height: 1.5vw;
-                    border-radius: 0.2vw;
-                    background-color: transparent;
-                    margin-left: 0.5vw;
-                }
+                .breadcrumbsItem {
+                    @include flexCenterCenter;
+                    @include fontDesktopL($white);
+                    gap: 1.5vw;
 
-                button {
-                    @include hover;
-                    @include fontDesktopM($white);
-                    height: 2vw;
-                    border-radius: 0.2vw;
-                    border: 0.2vw solid $white;
-                    margin-left: 0.5vw;
-                    background-color: transparent;
-                }
-
-                input[type='checkbox'] {
-                    margin-left: 2.5vw;
-                    width: 1.5vw;
-                    height: 1.5vw;
-                }
-
-                label {
-                    margin-left: 0.5vw;
-                }
-
-                .info {
-                    margin-left: 2.5vw;
-
-                    + div {
-                        display: none;
-                        margin-left: 0.5vw;
+                    a {
+                        @include fontDesktopS($white);
+                        @include hover;
+                        white-space: nowrap;
                     }
-
-                    &:hover + div {
-                        display: block;
-                    }
-                }
-
-                img {
-                    width: $widthImgDesktop;
-                    filter: $whiteFilter;
                 }
             }
         }

@@ -1,73 +1,27 @@
 import sql from 'mssql';
+import { buildHierarchy } from '../helpers/buildHierarchy.js';
+import { formattingBrands } from '../helpers/formattingBrands.js';
+import { goodsFilter } from '../helpers/goodsFilter.js';
+import { groupingByBrands } from '../helpers/groupingByBrands.js';
+import { langParser } from '../helpers/langParser.js';
 
 class navService {
-    async navChildrenOfSubr({ pId }) {
-        const request = new sql.Request();
+    async navGoodsList({ id, lang }) {
+        const name = langParser(lang);
+        if (!name) throw new Error();
 
-        request.input('pID', sql.Int, pId);
-        request.output('str', sql.VarChar);
+        const data = (
+            await sql.query(
+                `SELECT DISTINCT goods.tovar AS id, goods.marka AS code, goods.priceEU AS price, goods.OstPARNU AS rest, goods.brand, goods.${name} AS name, par.featurevalue AS src FROM goods INNER JOIN par ON goods.tovar = par.tovar WHERE goods.subr=${id} AND goods.avail<>0 AND par.featurename LIKE 'pic%'`
+            )
+        ).recordset;
 
-        const data = await request.execute('[dbo].[nav_children_of_subr]');
+        //Collect the first records by id
+        //Create inStock
+        //Check src for URL otherwise create URL
+        const filteredData = goodsFilter(data);
 
-        const res = data.output.str.split(',').map((id) => {
-            if (id !== '') return Number(id);
-        });
-
-        return res;
-    }
-
-    async navShowChildrenPlain({ id, brand, lang }) {
-        const request = new sql.Request();
-
-        request.input('ID', sql.Int, id);
-        request.input('brand', sql.VarChar, brand);
-        request.input('lang', sql.VarChar, lang);
-
-        const data = await request.execute('[dbo].[nav_showChildren_plain]');
-
-        const res = data.recordset.map((record) => {
-            const parsedRecord = {};
-
-            parsedRecord.id = record.id;
-            parsedRecord.name = record.Категория;
-            parsedRecord.src = `${process.env.IMG_URL}/images/subr/${record.id}.${
-                id === '0' ? 'gif' : 'jpg'
-            }`;
-            parsedRecord.hasChildren = record.tlist === '1' ? false : true;
-
-            return parsedRecord;
-        });
-
-        return res;
-    }
-
-    async navGoodsList({ subr, brand, fw, inSubr, ip, lang }) {
-        const request = new sql.Request();
-
-        request.input('subr', sql.VarChar, subr.toString());
-        request.input('b', sql.VarChar, brand);
-        request.input('fw', sql.VarChar, fw);
-        request.input('insubr', sql.Int, inSubr);
-        request.input('IP', sql.VarChar, ip);
-        request.input('lang', sql.VarChar, lang);
-
-        const data = await request.execute('[dbo].[nav_goods_list]');
-
-        const res = data.recordset.map((record) => {
-            const parsedRecord = {};
-
-            parsedRecord.id = record.id;
-            parsedRecord.name = record.Nimi;
-            parsedRecord.brand = record.Katalog;
-            parsedRecord.code = record.Kood;
-            parsedRecord.price = record.EUR;
-            parsedRecord.src = record.pic;
-            parsedRecord.inStock = record.Laos === 'ON' ? true : false;
-
-            return parsedRecord;
-        });
-
-        return res;
+        return filteredData;
     }
 
     async navShowTovar({ tovar, lang }) {
@@ -85,20 +39,32 @@ class navService {
         res.code = data.marka;
         res.brand = data.brand;
         res.price = data.price;
-        res.brandLogo = image ? `${process.env.IMG_URL}/${image[1]}` : null;
+        res.brandLogo = image ? `${process.env.BRAND_IMG_URL}/${image[1]}` : null;
         res.inStockCount = data.ostSP;
 
         return res;
     }
 
-    async navBrandsOfSubrPlain({ subr }) {
-        const request = new sql.Request();
+    async navTree({ lang }) {
+        const name = langParser(lang);
+        if (!name) throw new Error();
 
-        request.input('subr', sql.VarChar, subr.toString());
+        let data = (
+            await sql.query(
+                `SELECT DISTINCT nav.id, nav.parentid, nav.${name} AS name, nav.name AS alterName, goods.brand FROM nav LEFT JOIN goods ON (goods.subr = nav.id AND goods.avail<>0) WHERE (nav.id IN (SELECT DISTINCT subr FROM goods WHERE avail<>0) OR nav.id IN (SELECT DISTINCT parentid FROM nav1 WHERE id IN (SELECT DISTINCT subr FROM goods WHERE avail<>0)))`
+            )
+        ).recordset;
 
-        const data = (await request.execute('[dbo].[nav_brands_of_subr_plain]')).recordset;
+        //Grouping by brands and filter wrong categories
+        data = groupingByBrands(data);
 
-        return data;
+        //Build the hierarchy
+        const tree = buildHierarchy(data);
+
+        //Formatting brands and sort by name
+        formattingBrands(tree);
+
+        return tree;
     }
 }
 

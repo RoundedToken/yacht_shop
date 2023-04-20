@@ -1,4 +1,5 @@
 import sql from 'mssql';
+import { langParser } from '../helpers/langParser';
 
 class WebService {
     async webTovarParameters({ tovar }) {
@@ -14,15 +15,7 @@ class WebService {
     }
 
     async webCartProductList({ idList, lang }) {
-        const name =
-            lang === 'rus'
-                ? 'Name'
-                : lang === 'eng'
-                ? 'NameENG'
-                : lang === 'est'
-                ? 'NameEST'
-                : null;
-
+        const name = langParser(lang);
         if (!name) throw new Error();
 
         const data = await sql.query(

@@ -8,13 +8,10 @@ export interface INavProductListRes {
     src: string;
     inStock: boolean;
     price: number;
+    rest: number
 }
 
 export interface INavProductListReq {
-    subr: number;
-    brand: string;
-    fw: string;
-    inSubr: string;
-    ip: string;
+    id: number;
     lang: TLang;
 }

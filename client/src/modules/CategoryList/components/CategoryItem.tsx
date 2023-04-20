@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ICategoryItem } from '../interfaces/ICategoryItem';
 import { routeConstants } from '../../../models/enums/EConstants';
 
-const CategoryItem: FC<ICategoryItem> = ({ id, children, hasChildren, src, styles }) => {
+const CategoryItem: FC<ICategoryItem> = ({ id, children, hasChildren, src, styles, parentId }) => {
     return (
         <Link
             className={styles.Category__Item}
@@ -13,7 +13,12 @@ const CategoryItem: FC<ICategoryItem> = ({ id, children, hasChildren, src, style
                     : routeConstants.PRODUCT_LIST_ROUTE + `/${id}`
             }
         >
-            <img src={src} alt="" />
+            <img
+                src={`${process.env.REACT_APP_IMG_URL}/images/subr/${id}.${
+                    parentId === 0 ? 'gif' : 'jpg'
+                }`}
+                alt=""
+            />
             {children}
         </Link>
     );

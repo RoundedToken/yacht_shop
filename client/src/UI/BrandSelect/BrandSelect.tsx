@@ -1,46 +1,44 @@
-import React, { FC } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { FC, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+import { RootState } from '../../redux/store';
 import { IBrandSelect } from './IBrandSelect';
-import { setBrand } from '../../redux/navSlice';
-import { navBrandsApi } from '../../services/navBrandsService';
+import styles from './BrandSelect.module.scss';
+import { addBrand, clearBrands, removeBrand } from '../../redux/navSlice';
 
-const BrandSelect: FC<IBrandSelect> = ({ id }) => {
-    const { data: brands, isFetching, error } = navBrandsApi.useFetchBrandsQuery(id);
+const BrandSelect: FC<IBrandSelect> = () => {
+    const location = useLocation().pathname.split('/');
+    const id = Number(location[2]);
+    const brands = useSelector((state: RootState) => state.navSlice.categoryList).find(
+        (category) => category.id === id
+    )?.brands;
     const dispatch = useDispatch();
 
-    const brandSelectOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const selectBrand = e.target.value;
-        dispatch(setBrand(selectBrand));
+    const brandOnClick = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const isChecked = e.target.checked;
+        const brand = e.target.value;
+        dispatch(isChecked ? addBrand(brand) : removeBrand(brand));
     };
 
-    return (
-        <div>
-            {isFetching && <h1>Loading...</h1>}
-            {error && <h1>Error!</h1>}
-            {brands && !isFetching && (
-                <div>
-                    <label>No Brand</label>
-                    <input
-                        type="radio"
-                        name="brandSelect"
-                        value="notSelected"
-                        onChange={brandSelectOnChange}
-                    />
+    useEffect(() => {
+        return () => {
+            dispatch(clearBrands());
+        };
+    }, [dispatch]);
 
-                    {brands.map((brand, i) => (
-                        <div key={brand.brand + i}>
-                            <label key={i}>{brand.brand}</label>
-                            <input
-                                onChange={brandSelectOnChange}
-                                type="radio"
-                                key={brand.brand}
-                                value={brand.brand}
-                                name="brandSelect"
-                            />
-                        </div>
-                    ))}
+    return (
+        <div className={styles.brandsContainer}>
+            {brands?.map((brand) => (
+                <div className={styles.brand} key={brand}>
+                    <input
+                        value={brand}
+                        type="checkbox"
+                        name={brand}
+                        onChange={(e) => brandOnClick(e)}
+                    />
+                    <label htmlFor={brand}>{brand}</label>
                 </div>
-            )}
+            ))}
         </div>
     );
 };

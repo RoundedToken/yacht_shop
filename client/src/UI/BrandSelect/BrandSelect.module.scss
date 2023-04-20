@@ -1,0 +1,19 @@
+@import '../../styles//index.scss';
+
+.brandsContainer {
+    @include columnStartStart;
+    position: fixed;
+    left: 0;
+    top: $hightHeader + 5vw;
+    max-height: 60vh;
+    max-width: $widthLeft;
+    overflow: scroll;
+
+    .brand {
+        @include flexCenterCenter;
+        gap: 0.5vw;
+        input {
+            cursor: pointer;
+        }
+    }
+}

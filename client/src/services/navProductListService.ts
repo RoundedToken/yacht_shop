@@ -11,9 +11,9 @@ export const navProductListApi = createApi({
     }),
     endpoints: (build) => ({
         fetchProductList: build.query<INavProductListRes[], INavProductListReq>({
-            query: ({ subr, brand, fw, inSubr, ip, lang }) => ({
+            query: ({ id, lang }) => ({
                 url: '/nav_goods_list',
-                params: { subr, brand, fw, inSubr, ip, lang },
+                params: { id, lang },
             }),
         }),
     }),

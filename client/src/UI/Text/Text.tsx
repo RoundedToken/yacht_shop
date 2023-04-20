@@ -4,11 +4,11 @@ import { IText } from './IText';
 import { RootState } from '../../redux/store';
 import styles from './Text.module.scss';
 
-const Text: FC<IText> = ({ rus, eng, est, onClick }) => {
+const Text: FC<IText> = ({ rus, eng, est, onClick, id }) => {
     const lang = useSelector((state: RootState) => state.langSlice.lang);
 
     return (
-        <div onClick={onClick} className={styles.Text}>
+        <div id={id} onClick={onClick} className={styles.Text}>
             {lang === 'rus' && rus}
             {lang === 'eng' && eng}
             {lang === 'est' && est}

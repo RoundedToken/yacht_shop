@@ -1,3 +1,1 @@
-export interface IBrandSelect {
-    id: number;
-}
+export interface IBrandSelect {}

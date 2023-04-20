@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { TId } from '../../models/types/TId';
-import { setBrand } from '../../redux/navSlice';
 import { RootState } from '../../redux/store';
 import { navProductListApi } from '../../services/navProductListService';
 import { setCartFromStorage } from '../../redux/cartSlice';
@@ -13,21 +12,13 @@ import ProductListItem from './components/ProductListItem';
 const ProductList = () => {
     const id = Number(useParams<TId>().id);
     const lang = useSelector((state: RootState) => state.langSlice.lang);
-    const brand = useSelector((state: RootState) => state.navSlice.brand);
     const dispatch = useDispatch();
-
     const {
         data: productList,
         isFetching,
         error,
-    } = navProductListApi.useFetchProductListQuery({
-        subr: id,
-        brand: brand === 'notSelected' ? '' : brand,
-        fw: '',
-        inSubr: '',
-        ip: '',
-        lang: lang,
-    });
+    } = navProductListApi.useFetchProductListQuery({ id, lang });
+    const brands = useSelector((state: RootState) => state.navSlice.brands);
 
     useEffect(() => {
         const setCart = () => dispatch(setCartFromStorage());
@@ -40,9 +31,7 @@ const ProductList = () => {
     }, [dispatch]);
 
     useEffect(() => {
-        return () => {
-            dispatch(setBrand('notSelected'));
-        };
+        return () => {};
     }, [dispatch]);
 
     return (
@@ -58,9 +47,15 @@ const ProductList = () => {
                         <ProductListHeader />
 
                         <tbody>
-                            {productList.map((product) => (
-                                <ProductListItem product={product} />
-                            ))}
+                            {productList
+                                .filter((product) =>
+                                    brands.length === 0
+                                        ? true
+                                        : [...brands].includes(product.brand.toLowerCase())
+                                )
+                                .map((product) => (
+                                    <ProductListItem product={product} />
+                                ))}
                         </tbody>
                     </table>
                 ))}

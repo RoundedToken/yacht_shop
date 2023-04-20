@@ -9,17 +9,19 @@ import { routeConstants } from '../../../models/enums/EConstants';
 import Text from '../../../UI/Text/Text';
 import HeaderNavListItem from './HeaderNavListItem';
 import { IHeaderNavList } from '../interfaces/IHeaderNavList';
+import CategoryDropdown from './CategoryDropdown';
 
 const HeaderNavList: FC<IHeaderNavList> = ({ styles }) => {
     return (
         <div className={styles.navBar}>
-            <HeaderNavListItem
-                route={routeConstants.CATEGORIES_ROUTE}
-                src={catalogImg}
-                styles={styles}
-            >
-                <Text rus="Каталог" eng="Catalog" est="Kataloog" />
-            </HeaderNavListItem>
+            <div className={styles.catalog}>
+                <div className={styles.navItem}>
+                    <img id="catalog" src={catalogImg} alt="" />
+                    <Text id="catalog" rus="Каталог" eng="Catalog" est="Kataloog" />
+
+                    <CategoryDropdown styles={styles} />
+                </div>
+            </div>
 
             <HeaderNavListItem route={routeConstants.CRIMPING_ROUTE} src={ropeImg} styles={styles}>
                 <Text rus="Обжим тросов" eng="Rope crimping" est="Trossid krimpsutamine" />
@@ -33,11 +35,7 @@ const HeaderNavList: FC<IHeaderNavList> = ({ styles }) => {
                 <Text rus="Корзина" eng="Cart" est="Ostukorv" />
             </HeaderNavListItem>
 
-            <HeaderNavListItem
-                route={routeConstants.FAVORITES_ROUTE}
-                src={heartFilledImg}
-                styles={styles}
-            >
+            <HeaderNavListItem route={routeConstants.FAVORITES_ROUTE} src={heartFilledImg} styles={styles}>
                 <Text rus="Избранное" eng="Favorites" est="Lemmikud" />
             </HeaderNavListItem>
 

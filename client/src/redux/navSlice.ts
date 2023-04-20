@@ -1,31 +1,36 @@
+import { INavTreeItem } from './../models/interfaces/RTKQuery/INavTree';
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { INavState } from '../models/interfaces/slices/INavState';
 
 const initialState: INavState = {
-    categoryId: 0,
-    hasChildren: true,
-    brand: 'notSelected',
+    categoryList: [],
+    brands: [],
 };
 
 export const navSlice = createSlice({
     name: 'nav',
     initialState,
     reducers: {
-        setNavId(state, action: PayloadAction<number>) {
-            state.categoryId = action.payload;
+        pushToCategoryList(state, action: PayloadAction<INavTreeItem>) {
+            state.categoryList.push(action.payload);
         },
-
-        setNavHasChildren(state, action: PayloadAction<boolean>) {
-            state.hasChildren = action.payload;
+        clearCategoryList(state) {
+            state.categoryList = [];
         },
-
-        setBrand(state, action: PayloadAction<string>) {
-            state.brand = action.payload;
+        addBrand(state, action: PayloadAction<string>) {
+            state.brands.push(action.payload);
+        },
+        removeBrand(state, action: PayloadAction<string>) {
+            state.brands.splice(state.brands.indexOf(action.payload), 1);
+        },
+        clearBrands(state) {
+            state.brands = [];
         },
     },
 });
 
-export const { setNavId, setNavHasChildren, setBrand } = navSlice.actions;
+export const { pushToCategoryList, clearCategoryList, addBrand, removeBrand, clearBrands } =
+    navSlice.actions;
 
 export default navSlice.reducer;
