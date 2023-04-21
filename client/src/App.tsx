@@ -8,6 +8,7 @@ import { navTreeApi } from './services/navTree';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from './redux/store';
 import { clearCategoryList } from './redux/navSlice';
+import SideBar from './modules/SideBar/SideBar';
 
 function App() {
     const lang = useSelector((state: RootState) => state.langSlice.lang);
@@ -26,6 +27,8 @@ function App() {
             {isSuccess && !isFetching && (
                 <div className="wrapper">
                     <Header />
+
+                    <SideBar />
 
                     <Body />
 

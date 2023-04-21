@@ -1,0 +1,8 @@
+@import '../../styles/index.scss';
+
+.sideBar {
+    position: absolute;
+    top: 12.5vw;
+    width: $widthLeft;
+    height: calc(100% - 12.5vw);
+}

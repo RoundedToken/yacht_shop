@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import Cart from '../modules/Cart/Cart';
-import CartTicker from '../modules/Tickers/CartTicker';
 
 const CartPage = () => {
     useEffect(() => {
@@ -9,8 +8,6 @@ const CartPage = () => {
 
     return (
         <div>
-            <CartTicker />
-
             <Cart />
         </div>
     );

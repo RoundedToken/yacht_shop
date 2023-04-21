@@ -1,5 +1,5 @@
 import sql from 'mssql';
-import { langParser } from '../helpers/langParser';
+import { langParser } from '../helpers/langParser.js';
 
 class WebService {
     async webTovarParameters({ tovar }) {

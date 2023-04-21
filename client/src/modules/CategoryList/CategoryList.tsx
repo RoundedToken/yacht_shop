@@ -25,7 +25,7 @@ const CategoryList = () => {
     }, [category]);
 
     return (
-        <div>
+        <div className={styles.categoryListContainer}>
             {category &&
                 category.children &&
                 category.children

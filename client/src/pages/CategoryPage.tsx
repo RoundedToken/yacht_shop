@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import CategoryList from '../modules/CategoryList/CategoryList';
-import BrandSelect from '../UI/BrandSelect/BrandSelect';
 
 const CategoryPage = () => {
     useEffect(() => {
@@ -9,7 +8,6 @@ const CategoryPage = () => {
 
     return (
         <div>
-            <BrandSelect />
             <CategoryList />
         </div>
     );

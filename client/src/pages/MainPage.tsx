@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import MainTicker from '../modules/Tickers/MainTicker';
 
 const MainPage = () => {
     useEffect(() => {
@@ -8,7 +7,6 @@ const MainPage = () => {
 
     return (
         <div>
-            <MainTicker />
             <div>MainPage</div>
         </div>
     );

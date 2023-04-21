@@ -54,7 +54,7 @@ const ProductList = () => {
                                         : [...brands].includes(product.brand.toLowerCase())
                                 )
                                 .map((product) => (
-                                    <ProductListItem product={product} />
+                                    <ProductListItem key={product.id} product={product} />
                                 ))}
                         </tbody>
                     </table>

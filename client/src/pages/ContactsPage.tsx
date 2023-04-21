@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import Contacts from '../modules/Contacts/Contacts';
-import ContactsTicker from '../modules/Tickers/ContactsTicker';
 
 const ContactsPage = () => {
     useEffect(() => {
@@ -9,7 +8,6 @@ const ContactsPage = () => {
 
     return (
         <div>
-            <ContactsTicker />
             <Contacts />
         </div>
     );

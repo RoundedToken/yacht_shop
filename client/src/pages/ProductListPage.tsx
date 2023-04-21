@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import ProductList from '../modules/ProductList/ProductList';
-import BrandSelect from '../UI/BrandSelect/BrandSelect';
 
 const ProductListPage = () => {
     useEffect(() => {
@@ -9,7 +8,6 @@ const ProductListPage = () => {
 
     return (
         <div>
-            <BrandSelect />
             <ProductList />
         </div>
     );
