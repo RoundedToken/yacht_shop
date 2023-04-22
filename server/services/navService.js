@@ -24,25 +24,19 @@ class navService {
         return filteredData;
     }
 
-    async navShowTovar({ tovar, lang }) {
-        const request = new sql.Request();
+    async navShowTovar({ id, lang }) {
+        const name = langParser(lang);
+        if (!name) throw new Error();
 
-        request.input('tovar', sql.Int, tovar);
-        request.input('lang', sql.VarChar, lang);
+        const data = (
+            await sql.query(
+                `SELECT subr AS parentId, ${name} AS name, marka AS code, brand, priceEU AS price, ostParnu AS isStockCount FROM goods WHERE tovar = ${id}`
+            )
+        ).recordset[0];
 
-        const data = (await request.execute('[dbo].[nav_show_tovar]')).recordset[0];
+        data.brandLogo = `${process.env.BRAND_IMG_URL}/${data.brand}.gif`;
 
-        const image = data.logo ? data.logo.match(/src=\"(.*?)\"/) : null;
-
-        const res = {};
-        res.name = data.name;
-        res.code = data.marka;
-        res.brand = data.brand;
-        res.price = data.price;
-        res.brandLogo = image ? `${process.env.BRAND_IMG_URL}/${image[1]}` : null;
-        res.inStockCount = data.ostSP;
-
-        return res;
+        return data;
     }
 
     async navTree({ lang }) {

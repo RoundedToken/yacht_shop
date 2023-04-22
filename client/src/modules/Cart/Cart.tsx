@@ -57,7 +57,7 @@ const Cart: FC<ICart> = () => {
         );
 
     return (
-        <div>
+        <div className={styles.cartContainer}>
             {isFetching && (
                 <div className={styles.cart}>
                     {idList.map((id) => (

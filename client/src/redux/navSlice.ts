@@ -27,6 +27,9 @@ export const navSlice = createSlice({
         clearBrands(state) {
             state.brands = [];
         },
+        setProduct(state, action: PayloadAction<{ id: number; parentId: number }>) {
+            state.product = action.payload;
+        },
     },
 });
 

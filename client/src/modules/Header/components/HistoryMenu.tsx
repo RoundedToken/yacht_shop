@@ -12,12 +12,18 @@ const HistoryMenu: FC<IHistoryMenu> = ({ styles }) => {
     const resetOnClick = () => {
         navigate('/refresh');
     };
+    const backOnClick = () => {
+        navigate(-1);
+    };
+    const nextOnClick = () => {
+        navigate(1);
+    };
 
     return (
         <div className={styles.historyMenu}>
-            <img src={leftArrowImg} alt="" />
+            <img src={leftArrowImg} alt="" onClick={backOnClick} />
 
-            <img src={rightArrowImg} alt="" />
+            <img src={rightArrowImg} alt="" onClick={nextOnClick} />
 
             <img src={resetImg} alt="" onClick={resetOnClick} />
 

@@ -8,9 +8,9 @@ export const navProductApi = createApi({
     }),
     endpoints: (build) => ({
         fetchProduct: build.query<INavProductRes, INavProductReq>({
-            query: ({ tovar, lang }) => ({
+            query: ({ id, lang }) => ({
                 url: '/nav_show_tovar',
-                params: { tovar, lang },
+                params: { id, lang },
             }),
         }),
     }),

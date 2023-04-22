@@ -1,13 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import CategoryList from '../modules/CategoryList/CategoryList';
+import styles from './pages.module.scss';
 
 const CategoryPage = () => {
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
     return (
-        <div>
+        <div className={styles.container}>
             <CategoryList />
         </div>
     );

@@ -1,11 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import styles from './pages.module.scss';
 
 const CableCrimpingPage = () => {
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
-    return <div>CableCrimpingPage</div>;
+    return <div className={styles.container}>CableCrimpingPage</div>;
 };
 
 export default CableCrimpingPage;

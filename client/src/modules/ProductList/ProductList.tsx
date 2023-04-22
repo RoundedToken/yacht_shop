@@ -30,10 +30,6 @@ const ProductList = () => {
         };
     }, [dispatch]);
 
-    useEffect(() => {
-        return () => {};
-    }, [dispatch]);
-
     return (
         <div className={styles.Product__List__Container}>
             {isFetching && <h1>Loading...</h1>}

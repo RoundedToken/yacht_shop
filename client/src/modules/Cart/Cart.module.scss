@@ -1,8 +1,11 @@
 @import '../../styles/index.scss';
 
+.cartContainer {
+    min-height: inherit;
+}
 .cart {
-    @include columnCenterCenter;
-    gap: 2vw;
+    @include columnBetweenNormal;
+    min-height: inherit;
 
     a {
         color: $blue;

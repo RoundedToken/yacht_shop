@@ -1,6 +1,7 @@
 import { TLang } from '../../types/TLang';
 
 export interface INavProductRes {
+    parentId: number;
     name: string;
     code: string;
     brand: string;
@@ -10,6 +11,6 @@ export interface INavProductRes {
 }
 
 export interface INavProductReq {
-    tovar: number;
+    id: number;
     lang: TLang;
 }

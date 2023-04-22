@@ -1,13 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import ProductList from '../modules/ProductList/ProductList';
+import styles from './pages.module.scss';
 
 const ProductListPage = () => {
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
     return (
-        <div>
+        <div className={styles.container}>
             <ProductList />
         </div>
     );

@@ -9,12 +9,7 @@ import ProductNotFound from './components/ProductNotFound';
 const Product = () => {
     const id = Number(useParams<TId>().id);
     const lang = useSelector((state: RootState) => state.langSlice.lang);
-
-    const {
-        data: product,
-        isFetching,
-        error,
-    } = navProductApi.useFetchProductQuery({ tovar: id, lang: lang });
+    const { data: product, isFetching, error } = navProductApi.useFetchProductQuery({ id, lang });
 
     return (
         <div>
