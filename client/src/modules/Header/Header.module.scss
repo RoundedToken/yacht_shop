@@ -38,76 +38,88 @@
             @include flexBetweenCenter;
             width: $widthRight;
             height: calc($hightHeader - (($hightHeaderName + $hightHeaderNameTop)));
-            position: relative;
 
-            .catalog:hover {
-                z-index: 5;
-                .nestedDropdown {
-                    display: block;
+            .catalogContainer {
+                @include flexCenterCenter;
+                position: relative;
+            }
+
+            .dropdownSwitcher {
+                @include flexCenterCenter;
+                @include hover;
+                position: relative;
+                cursor: pointer;
+
+                img {
+                    filter: $blueFilter;
+                }
+
+                input {
+                    position: absolute;
+                    opacity: 0;
+                    cursor: pointer;
+                    height: 0;
+                    width: 0;
                 }
             }
 
             .categoryDropdown {
-                @include fontDesktopXS($blue);
+                @include fontDesktopS($blue);
                 position: absolute;
-                top: 0.8vw;
-                left: 8.1vw;
+                top: -4vw;
+                left: 100%;
                 background-color: $yellow;
                 z-index: 6;
-
-                .background {
-                    pointer-events: none;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100vw;
-                    height: 100vh;
-                    z-index: 10;
-                    background-color: rgba(0, 0, 0, 0.1);
-                }
+                width: 18.4vw;
 
                 .nestedDropdown {
-                    border: 1px solid red;
+                    border: 0.2vw solid $blue;
                     display: none;
                     list-style-type: none;
                     margin: 0;
                     padding: 0;
                     z-index: 6;
-                    width: max-content;
+                    width: 18vw;
+                    top: 0;
                 }
 
                 .nestedDropdown li {
                     cursor: pointer;
                     width: calc(100% - 0.4vw);
-                    padding: 0.2vw;
+                    padding-inline: 0.2vw;
+                    padding-block: 0.1vw;
                     position: relative;
                     z-index: 6;
                 }
 
                 .nestedDropdown ul {
-                    left: 100%;
+                    left: calc(100% + 0.1vw);
                     position: absolute;
-                    top: -1px;
-                    width: max-content;
+                    top: -0.2vw;
                     background-color: $yellow;
-                    border: 1px solid red;
+                    border: 0.2vw solid $blue;
                     display: none;
                     list-style-type: none;
                     margin: 0;
                     padding: 0;
+                    width: 18vw;
                 }
 
                 .nestedDropdown ul ul {
-                    border-left: 0;
-                    left: 100%;
+                    left: calc(100% + 0.05vw);
                     position: absolute;
-                    top: -1px;
+                    top: -0.2vw;
+                    width: 18vw;
                 }
 
                 .nestedDropdown li:hover {
-                    background-color: rgba(0, 0, 0, 0.1);
+                    background-color: rgba(0, 0, 0, 0.23);
                     > ul {
                         display: block;
+                    }
+                    ul[hidden] {
+                        display: none;
+                        background-color: red;
                     }
                 }
             }

@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState: IStylesState = {
     orderModalDisplay: 'none',
+    dropdownDisplay: 'none',
 };
 
 export const stylesSlice = createSlice({
@@ -12,9 +13,12 @@ export const stylesSlice = createSlice({
         switchOrderModalDisplay(state) {
             state.orderModalDisplay = state.orderModalDisplay === 'none' ? 'block' : 'none';
         },
+        switchDropdownDisplay(state) {
+            state.dropdownDisplay = state.dropdownDisplay === 'none' ? 'block' : 'none';
+        },
     },
 });
 
-export const { switchOrderModalDisplay } = stylesSlice.actions;
+export const { switchOrderModalDisplay, switchDropdownDisplay } = stylesSlice.actions;
 
 export default stylesSlice.reducer;
