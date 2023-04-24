@@ -11,6 +11,8 @@ import { clearCategoryList } from './redux/navSlice';
 import SideBar from './modules/SideBar/SideBar';
 import { setCartFromStorage } from './redux/cartSlice';
 import { setFavoritesFromStorage } from './redux/favoritesSlice';
+import ScrollToTop from './ScrollToTop';
+import Search from './modules/Search/Search';
 
 function App() {
     const lang = useSelector((state: RootState) => state.langSlice.lang);
@@ -42,6 +44,8 @@ function App() {
             {error && <h1>`${JSON.stringify(error)}`</h1>}
             {isSuccess && !isFetching && (
                 <div className="wrapper">
+                    <ScrollToTop />
+
                     <Header />
 
                     <SideBar />
@@ -51,6 +55,8 @@ function App() {
                     <Footer />
 
                     <Order />
+
+                    <Search />
                 </div>
             )}
         </div>

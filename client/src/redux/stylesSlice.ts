@@ -4,6 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState: IStylesState = {
     orderModalDisplay: 'none',
     dropdownDisplay: 'none',
+    searchModalDisplay: 'none',
 };
 
 export const stylesSlice = createSlice({
@@ -16,9 +17,13 @@ export const stylesSlice = createSlice({
         switchDropdownDisplay(state) {
             state.dropdownDisplay = state.dropdownDisplay === 'none' ? 'block' : 'none';
         },
+        switchSearchModalDisplay(state) {
+            state.searchModalDisplay = state.searchModalDisplay === 'none' ? 'block' : 'none';
+        },
     },
 });
 
-export const { switchOrderModalDisplay, switchDropdownDisplay } = stylesSlice.actions;
+export const { switchOrderModalDisplay, switchDropdownDisplay, switchSearchModalDisplay } =
+    stylesSlice.actions;
 
 export default stylesSlice.reducer;

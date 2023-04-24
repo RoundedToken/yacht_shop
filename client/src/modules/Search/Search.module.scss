@@ -1,0 +1,41 @@
+@import '../../styles/index.scss';
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 5000; /* Sit on top */
+    padding-top: 5vh; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: hidden; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+    cursor: auto;
+
+    .modalContentContainer {
+        background-color: $white;
+        margin: auto;
+        padding-block: 2.5vh;
+        border: 0.1vw solid #888;
+        border-radius: 0.5vw;
+        width: 60%;
+        max-height: 85vh;
+        overflow: auto;
+
+        .modalClose {
+            @include hover;
+            position: fixed;
+            right: 21vw;
+            top: 6.5vh;
+            filter: $redFilter;
+            width: 3vw;
+        }
+
+        .modalContent {
+            @include columnCenterCenter;
+            gap: 2vw;
+        }
+    }
+}
