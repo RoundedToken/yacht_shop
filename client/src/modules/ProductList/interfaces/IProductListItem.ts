@@ -2,4 +2,7 @@ import { INavProductListRes } from '../../../models/interfaces/RTKQuery/INavProd
 
 export interface IProductListItem {
     product: INavProductListRes;
+    styles: {
+        readonly [key: string]: string;
+    };
 }

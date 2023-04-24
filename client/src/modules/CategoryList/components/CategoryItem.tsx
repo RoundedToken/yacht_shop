@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import { ICategoryItem } from '../interfaces/ICategoryItem';
 import { routeConstants } from '../../../models/enums/EConstants';
 
-const CategoryItem: FC<ICategoryItem> = ({ id, children, hasChildren, src, styles, parentId }) => {
+const CategoryItem: FC<ICategoryItem> = ({ id, children, hasChildren, styles, parentId }) => {
     return (
         <Link
-            className={styles.Category__Item}
+            className={styles.categoryItem}
             to={
                 hasChildren
                     ? routeConstants.CATEGORIES_ROUTE + `/${id}`

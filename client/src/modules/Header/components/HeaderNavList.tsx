@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import HeaderLang from './HeaderLang';
 import cartImg from '../../../assets/images/cart.png';
 import catalogImg from '../../../assets/images/catalog.png';

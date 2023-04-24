@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { TId } from '../../models/types/TId';
@@ -15,34 +15,26 @@ const CategoryList = () => {
 
     const haveCommon = (validator: string[], subject: string[]) => {
         for (let brand of subject) {
-            if ([...validator].includes(brand)) return true;
+            if (validator.includes(brand)) return true;
         }
         return false;
     };
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [category]);
-
     return (
         <div className={styles.categoryListContainer}>
-            {category &&
-                category.children &&
-                category.children
-                    .filter((child) =>
-                        brands.length === 0 ? true : haveCommon(brands, child.brands)
-                    )
-                    .map((child) => (
-                        <CategoryItem
-                            key={child.id}
-                            id={child.id}
-                            hasChildren={child.children ? true : false}
-                            parentId={child.parentId}
-                            styles={styles}
-                        >
-                            {child.name}
-                        </CategoryItem>
-                    ))}
+            {category?.children
+                ?.filter((child) => (brands.length === 0 ? true : haveCommon(brands, child.brands)))
+                .map((child) => (
+                    <CategoryItem
+                        key={child.id}
+                        id={child.id}
+                        hasChildren={child.children ? true : false}
+                        parentId={child.parentId}
+                        styles={styles}
+                    >
+                        {child.name}
+                    </CategoryItem>
+                ))}
         </div>
     );
 };

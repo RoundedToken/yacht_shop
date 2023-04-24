@@ -1,7 +1,6 @@
 import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCartFromStorage, toFalseCartUpdate } from '../../redux/cartSlice';
-import { setFavoritesFromStorage } from '../../redux/favoritesSlice';
+import { toFalseCartUpdate } from '../../redux/cartSlice';
 import { RootState } from '../../redux/store';
 import { webCartProductList } from '../../services/webCartProductList';
 import styles from './Cart.module.scss';
@@ -34,20 +33,6 @@ const Cart: FC<ICart> = () => {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [cartUpdate]);
-
-    //LocalStorage eventListener
-    useEffect(() => {
-        const takeFromStorage = () => {
-            dispatch(setCartFromStorage());
-            dispatch(setFavoritesFromStorage());
-        };
-
-        window.addEventListener('storage', takeFromStorage);
-
-        return () => {
-            window.removeEventListener('storage', takeFromStorage);
-        };
-    }, [dispatch]);
 
     if (!idList || idList.length === 0)
         return (

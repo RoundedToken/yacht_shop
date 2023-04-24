@@ -20,30 +20,40 @@ const CartProduct: FC<ICartProduct> = ({ id, styles, src, name, price, count }) 
     };
 
     return (
-        <tr className={styles.cartProduct}>
-            <td>
-                <Link className={styles.productName} to={routeConstants.PRODUCT_ROUTE + `/${id}`}>
-                    <img className={styles.productImg} src={src} alt="" />
-                    {name}
-                </Link>
-            </td>
+        <>
+            <tr>
+                <td colSpan={6}>
+                    <hr />
+                </td>
+            </tr>
+            <tr className={styles.cartProduct}>
+                <td>
+                    <Link
+                        className={styles.productName}
+                        to={routeConstants.PRODUCT_ROUTE + `/${id}`}
+                    >
+                        <img className={styles.productImg} src={src} alt="" />
+                        {name}
+                    </Link>
+                </td>
 
-            <td>
-                <CountControl id={id} />
-            </td>
+                <td>
+                    <CountControl id={id} />
+                </td>
 
-            <td className={styles.productPrice}>{formatter.format(price)}</td>
+                <td className={styles.productPrice}>{formatter.format(price)}</td>
 
-            <td className={styles.totalAmount}>{formatter.format(count * price)}</td>
+                <td className={styles.totalAmount}>{formatter.format(count * price)}</td>
 
-            <td>
-                <FavoritesButton id={id} />
-            </td>
+                <td>
+                    <FavoritesButton id={id} />
+                </td>
 
-            <td>
-                <img src={closeImg} onClick={removeOnClick} className={styles.remove} alt="" />
-            </td>
-        </tr>
+                <td>
+                    <img src={closeImg} onClick={removeOnClick} className={styles.remove} alt="" />
+                </td>
+            </tr>
+        </>
     );
 };
 

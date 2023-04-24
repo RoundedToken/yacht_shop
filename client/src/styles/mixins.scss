@@ -38,6 +38,13 @@
     align-items: center;
     justify-content: start;
 }
+@mixin columnBetweenCenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
 /* FONTS */
 @mixin fontDesktopXXL($color) {
     font-size: $fontSizeDesktopXXL;
@@ -95,5 +102,11 @@
     cursor: pointer;
     &:hover {
         transform: scale(1.1);
+    }
+}
+@mixin hoverMini {
+    cursor: pointer;
+    &:hover {
+        transform: scale(1.05);
     }
 }

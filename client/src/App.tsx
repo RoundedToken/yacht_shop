@@ -9,6 +9,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from './redux/store';
 import { clearCategoryList } from './redux/navSlice';
 import SideBar from './modules/SideBar/SideBar';
+import { setCartFromStorage } from './redux/cartSlice';
+import { setFavoritesFromStorage } from './redux/favoritesSlice';
 
 function App() {
     const lang = useSelector((state: RootState) => state.langSlice.lang);
@@ -19,6 +21,20 @@ function App() {
         update(lang);
         dispatch(clearCategoryList());
     }, [lang, dispatch, update]);
+
+    //LocalStorage eventListener
+    useEffect(() => {
+        const takeFromStorage = () => {
+            dispatch(setCartFromStorage());
+            dispatch(setFavoritesFromStorage());
+        };
+
+        window.addEventListener('storage', takeFromStorage);
+
+        return () => {
+            window.removeEventListener('storage', takeFromStorage);
+        };
+    }, [dispatch]);
 
     return (
         <div className="App">

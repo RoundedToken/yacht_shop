@@ -4,8 +4,10 @@
     min-height: inherit;
 }
 .cart {
-    @include columnBetweenNormal;
+    // @include columnBetweenNormal;
+    @include columnBetweenCenter;
     min-height: inherit;
+    gap: 5vw;
 
     a {
         color: $blue;
@@ -13,29 +15,41 @@
 
     .productList {
         @include fontDesktopXM($blue);
-        border-spacing: 4vw 2vw;
+        border-spacing: 0 1vw;
         position: relative;
 
-        th {
+        hr {
+            border-width: 0;
+            height: 2px;
+            background-color: $hrColor;
+        }
+
+        thead {
+            z-index: 2;
             position: sticky;
             top: 7.5vw;
             background-color: $white;
-            z-index: 2;
-        }
-
-        td {
-            vertical-align: middle;
         }
 
         th {
             @include fontDesktopL($blue);
+            white-space: nowrap;
+            padding-block: 1vw;
+            padding-inline: 2vw;
+        }
+
+        td {
+            vertical-align: middle;
+            text-align: center;
         }
 
         .productName {
             @include flexStartCenter;
             @include hover;
             gap: 1vw;
-            max-width: 30vw;
+            width: 30vw;
+            text-align: start;
+            padding-inline: 3vw;
         }
 
         .remove {

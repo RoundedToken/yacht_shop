@@ -5,9 +5,19 @@ import { routeConstants } from '../../../models/enums/EConstants';
 import { addToCart, removeFromCart, toTrueCartUpdate } from '../../../redux/cartSlice';
 import { RootState } from '../../../redux/store';
 import CountControl from '../../../UI/CountControl/CountControl';
+import FavoritesButton from '../../../UI/FavoritesButton/FavoritesButton';
 import { IProductListItem } from '../interfaces/IProductListItem';
+import closeImg from '../../../assets/images/close.png';
+import checkImg from '../../../assets/images/check.png';
+import trashImg from '../../../assets/images/trash.png';
+import addToCartImg from '../../../assets/images/addToCart.png';
+import Text from '../../../UI/Text/Text';
 
-const ProductListItem: FC<IProductListItem> = ({ product }) => {
+const ProductListItem: FC<IProductListItem> = ({ product, styles }) => {
+    const formatter = new Intl.NumberFormat('et', {
+        style: 'currency',
+        currency: 'EUR',
+    });
     const cartProductList = useSelector((state: RootState) => state.cartSlice.productList);
     const dispatch = useDispatch();
 
@@ -20,37 +30,67 @@ const ProductListItem: FC<IProductListItem> = ({ product }) => {
     };
 
     return (
-        <tr key={product.id}>
-            <td>
-                <img src={product.src} alt="" width={64} height={64} />
-            </td>
+        <>
+            <tr>
+                <td colSpan={8}>
+                    {' '}
+                    <hr />
+                </td>
+            </tr>
+            <tr>
+                <td className={styles.productName}>
+                    <Link to={routeConstants.PRODUCT_ROUTE + `/${product.id}`}>
+                        {' '}
+                        <img src={product.src} alt="" />
+                    </Link>
+                    <Link to={routeConstants.PRODUCT_ROUTE + `/${product.id}`}>
+                        {' '}
+                        {product.name}
+                    </Link>
+                </td>
 
-            <td> {product.name}</td>
+                <td>{product.brand}</td>
 
-            <td>{product.brand}</td>
+                <td>{product.code}</td>
 
-            <td>{product.code}</td>
+                <td>{formatter.format(product.price)}</td>
 
-            <td>{product.price}</td>
+                <td className={styles.productInStock}>
+                    {product.inStock ? (
+                        <img className={styles.checkImg} src={checkImg} alt="" />
+                    ) : (
+                        <img className={styles.closeImg} src={closeImg} alt="" />
+                    )}
+                </td>
 
-            <td>{product.inStock ? 'Yes' : 'No'}</td>
+                <td>
+                    <FavoritesButton id={product.id} />
+                </td>
 
-            <td>
-                {cartProductList.find((cartProduct) => cartProduct.id === product.id) ? (
-                    <button onClick={() => removeFromCartOnClick(product.id)}>Remove</button>
-                ) : (
-                    <button onClick={() => addToCartOnClick(product.id, product.price)}>Add</button>
-                )}
-            </td>
-
-            <td>
-                <CountControl id={product.id} />
-            </td>
-
-            <td>
-                <Link to={routeConstants.PRODUCT_ROUTE + `/${product.id}`}>To info</Link>
-            </td>
-        </tr>
+                <td className={styles.productCart}>
+                    {cartProductList.find((cartProduct) => cartProduct.id === product.id) ? (
+                        <div
+                            className={styles.remove}
+                            onClick={() => removeFromCartOnClick(product.id)}
+                        >
+                            <img src={trashImg} alt="" />
+                            <Text rus="Убрать" eng="Remove" est="Eemalda" />
+                        </div>
+                    ) : (
+                        <div
+                            className={styles.addToCart}
+                            onClick={() => addToCartOnClick(product.id, product.price)}
+                        >
+                            <img src={addToCartImg} alt="" />
+                            <Text rus="Добавить" eng="Add" est="Lisama" />
+                        </div>
+                    )}
+                </td>
+                <td>
+                    <CountControl id={product.id} />
+                </td>
+            </tr>
+        </>
     );
 };
 

@@ -1,6 +1,82 @@
-.Product__List {
-    th,
-    td {
-        border: 1px solid black;
+@import '../../styles/index.scss';
+
+.productListContainer {
+    @include flexCenterCenter;
+
+    table {
+        @include fontDesktopM($blue);
+        border-spacing: 0.5vw 0.5vw;
+        position: relative;
+
+        hr {
+            border-width: 0;
+            height: 2px;
+            background-color: $hrColor;
+        }
+
+        img {
+            width: 32px;
+            height: 32px;
+        }
+
+        thead {
+            z-index: 2;
+            position: sticky;
+            top: 7.5vw;
+            background-color: $white;
+        }
+        th {
+            @include fontDesktopXM($blue);
+            white-space: nowrap;
+            padding-block: 1vw;
+            padding-inline: 1vw;
+        }
+
+        td {
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .addToCart,
+        .remove {
+            @include flexCenterCenter;
+            @include hover;
+            gap: 0.5vw;
+
+            img {
+                filter: $blueFilter;
+            }
+        }
+
+        .productName {
+            @include flexStartCenter;
+            @include hover;
+            gap: 1vw;
+            width: 20vw;
+            max-width: 30vw;
+            text-align: start;
+            padding-inline: 2vw;
+
+            img {
+                width: 64px;
+                height: 64px;
+            }
+
+            a {
+                color: $blue;
+            }
+        }
+
+        .productCart {
+        }
+
+        .productInStock {
+            .checkImg {
+                filter: $greenFilter;
+            }
+            .closeImg {
+                filter: $redFilter;
+            }
+        }
     }
 }

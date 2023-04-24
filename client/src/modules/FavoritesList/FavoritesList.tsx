@@ -5,7 +5,7 @@ import { webCartProductList } from '../../services/webCartProductList';
 import FavoritesItem from './components/FavoritesItem';
 import FavoritesListHeader from './components/FavoritesListHeader';
 import styles from './FavoritesList.module.scss';
-import { setFavoritesFromStorage, toFalseTheUpdate } from '../../redux/favoritesSlice';
+import { toFalseTheUpdate } from '../../redux/favoritesSlice';
 import FavoritesEmpty from './components/FavoritesEmpty';
 
 const FavoritesList = () => {
@@ -21,14 +21,6 @@ const FavoritesList = () => {
         update({ idList: favoritesList, lang });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [lang]);
-
-    //localStorage
-    useEffect(() => {
-        const setFavorites = () => dispatch(setFavoritesFromStorage());
-        window.addEventListener('storage', setFavorites);
-
-        return () => window.removeEventListener('storage', setFavorites);
-    }, [dispatch]);
 
     //favoritesUpdate
     useEffect(() => {

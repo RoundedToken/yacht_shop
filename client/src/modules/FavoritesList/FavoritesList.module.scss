@@ -6,23 +6,32 @@
 
     table {
         @include fontDesktopXM($blue);
-        border-spacing: 4vw 2vw;
+        border-spacing: 0 1vw;
         position: relative;
 
-        th {
+        hr {
+            border-width: 0;
+            height: 2px;
+            background-color: $hrColor;
+        }
+
+        thead {
+            z-index: 2;
             position: sticky;
             top: 7.5vw;
             background-color: $white;
-            z-index: 2;
+        }
+
+        th {
+            @include fontDesktopL($blue);
+            white-space: nowrap;
+            padding-block: 1vw;
+            padding-inline: 2vw;
         }
 
         td {
             vertical-align: middle;
             text-align: center;
-        }
-
-        th {
-            @include fontDesktopL($blue);
         }
 
         .itemName {
@@ -32,6 +41,7 @@
             gap: 1vw;
             max-width: 30vw;
             text-align: start;
+            padding-inline: 3vw;
 
             img {
                 @include productImgInList;

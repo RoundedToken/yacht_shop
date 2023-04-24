@@ -11,20 +11,27 @@ const FavoritesItem: FC<IFavoritesItem> = ({ id, name, brand, code, price, style
     });
 
     return (
-        <tr>
-            <td>
-                <Link className={styles.itemName} to={routeConstants.PRODUCT_ROUTE + `/${id}`}>
-                    <img src={src} alt="" width={64} height={64} />
-                    {name}
-                </Link>
-            </td>
-            <td>{brand}</td>
-            <td>{code}</td>
-            <td>{formatter.format(price)}</td>
-            <td>
-                <FavoritesButton id={id} />
-            </td>
-        </tr>
+        <>
+            <tr>
+                <td colSpan={6}>
+                    <hr />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <Link className={styles.itemName} to={routeConstants.PRODUCT_ROUTE + `/${id}`}>
+                        <img src={src} alt="" width={64} height={64} />
+                        {name}
+                    </Link>
+                </td>
+                <td>{brand}</td>
+                <td>{code}</td>
+                <td>{formatter.format(price)}</td>
+                <td>
+                    <FavoritesButton id={id} />
+                </td>
+            </tr>
+        </>
     );
 };
 
