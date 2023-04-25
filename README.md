@@ -1,4 +1,4 @@
-# ***RopeBox***[^1] web catalog of yacht equipment
+# ***RopeBox***[^1] web store of yacht equipment
 
 ## Technical task
 1. Redesign of an [existing site](http://www.yachtshop.ee/index.asp?view=98&id=0)
