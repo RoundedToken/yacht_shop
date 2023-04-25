@@ -8,19 +8,19 @@ import { IFavoritesButton } from './IFavoritesButton';
 import styles from './FavoritesButton.module.scss';
 import { useLocation } from 'react-router-dom';
 
-const FavoritesButton: FC<IFavoritesButton> = ({ id }) => {
+const FavoritesButton: FC<IFavoritesButton> = ({ id, brand }) => {
     const inFavorites = useSelector((state: RootState) => state.favoritesSlice.favoritesList).find(
-        (item) => item === id
+        (item) => item.id === id
     );
     const locationPath = useLocation().pathname;
     const dispatch = useDispatch();
 
     const addInFavorites = () => {
-        dispatch(addFavoritesItem(id));
+        dispatch(addFavoritesItem({ id, brand }));
         if (locationPath !== '/favorites') dispatch(toTrueTheUpdate());
     };
     const removeFromFavorites = () => {
-        dispatch(removeFavoritesItem(id));
+        dispatch(removeFavoritesItem({ id, brand }));
     };
 
     return inFavorites ? (

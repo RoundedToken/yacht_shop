@@ -17,7 +17,7 @@
     .modalContentContainer {
         background-color: $white;
         margin: auto;
-        padding-block: 2.5vh;
+        padding-block: 5vh;
         border: 0.1vw solid #888;
         border-radius: 0.5vw;
         width: 60%;
@@ -36,6 +36,34 @@
         .modalContent {
             @include columnCenterCenter;
             gap: 2vw;
+        }
+
+        .searchForm {
+            @include flexCenterCenter;
+            height: 3vw;
+
+            input {
+                @include fontDesktopM($blue);
+                height: 3vw;
+                width: 60%;
+                border: 0.4vw solid $blue;
+                border-right: 0.2vw solid$blue;
+                border-radius: 1vw 0 0 1vw;
+                padding-inline: 1vw;
+            }
+
+            button {
+                @include flexCenterCenter;
+                @include hover;
+                @include fontDesktopL($blue);
+                height: calc(100% + 0.8vw);
+                width: 10%;
+                border: 0.4vw solid $blue;
+                border-left: 0.2vw solid$blue;
+                border-radius: 0 1vw 1vw 0;
+                padding-inline: 4vw;
+                background-color: $white;
+            }
         }
     }
 }

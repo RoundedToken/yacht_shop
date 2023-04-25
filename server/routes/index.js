@@ -13,5 +13,6 @@ router.get('/web_tovar_parameters', webController.webTovarParameters);
 router.get('/web_cart_product_list', webController.webCartProductList);
 router.post('/web_order', webController.webOrder);
 router.get('/get_last_sales', devController.getLastSales);
+router.get('/web_search', webController.webSearch);
 
 export default router;

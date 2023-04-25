@@ -12,11 +12,22 @@ class navService {
 
         const data = (
             await sql.query(
-                `SELECT DISTINCT goods.tovar AS id, goods.marka AS code, goods.priceEU AS price, goods.OstPARNU AS rest, goods.brand, goods.${name} AS name, par.featurevalue AS src FROM goods INNER JOIN par ON goods.tovar = par.tovar WHERE goods.subr=${id} AND goods.avail<>0 AND par.featurename LIKE 'pic%'`
+                `SELECT DISTINCT 
+                par.featurename,
+                goods.tovar AS id, 
+                goods.marka AS code, 
+                goods.priceEU AS price, 
+                goods.OstPARNU AS rest, goods.brand, 
+                goods.${name} AS name, 
+                par.featurevalue AS src 
+                FROM goods INNER JOIN par ON goods.tovar = par.tovar 
+                WHERE goods.subr=${id} AND goods.avail<>0 AND par.featurename LIKE 'pic%'
+                ORDER BY par.featurename`
             )
         ).recordset;
 
         //Collect the first records by id
+        //Delete featurename
         //Create inStock
         //Check src for URL otherwise create URL
         const filteredData = goodsFilter(data);

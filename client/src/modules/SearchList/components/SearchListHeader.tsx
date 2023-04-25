@@ -1,37 +1,36 @@
-import React, { FC } from 'react';
+import React from 'react';
 import Text from '../../../UI/Text/Text';
-import { IProductListHeader } from '../interfaces/IProductListHeader';
 
-const ProductListHeader: FC<IProductListHeader> = ({ styles }) => {
+const SearchListHeader = () => {
     return (
-        <thead className={styles.productListHeader}>
+        <thead>
             <tr>
                 <th>
                     <Text rus="Товар" eng="Product" est="Toode" />
                 </th>
-
                 <th>
                     <Text rus="Бренд" eng="Brand" est="Brändi" />
                 </th>
-
                 <th>
-                    <Text rus="Количество" eng="Amount" est="Kogus" />
+                    <Text rus="Код" eng="Code" est="Kood" />
                 </th>
-
                 <th>
                     <Text rus="Цена" eng="Price" est="Hind" />
                 </th>
 
                 <th>
-                    <Text rus="Всего" eng="Total" est="Kokku" />
+                    <Text rus="В наличии" eng="In stock" est="Laos" />
                 </th>
-
-                <th></th>
-
+                <th>
+                    <Text rus="Избранное" eng="Favorites" est="Lemmikud" />
+                </th>
+                <th>
+                    <Text rus="Корзина" eng=" Cart" est="Ostukorv" />
+                </th>
                 <th></th>
             </tr>
         </thead>
     );
 };
 
-export default ProductListHeader;
+export default SearchListHeader;

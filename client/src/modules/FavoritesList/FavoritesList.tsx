@@ -9,23 +9,26 @@ import { toFalseTheUpdate } from '../../redux/favoritesSlice';
 import FavoritesEmpty from './components/FavoritesEmpty';
 
 const FavoritesList = () => {
-    const favoritesList = useSelector((state: RootState) => state.favoritesSlice.favoritesList);
+    const favoritesIdList = useSelector(
+        (state: RootState) => state.favoritesSlice.favoritesList
+    ).map((product) => product.id);
     const lang = useSelector((state: RootState) => state.langSlice.lang);
     const favoritesUpdate = useSelector((state: RootState) => state.favoritesSlice.update);
+    const brands = useSelector((state: RootState) => state.navSlice.brands);
     const [update, { data, isFetching, error }] =
         webCartProductList.useLazyFetchCartProductListQuery();
     const dispatch = useDispatch();
 
     //Lang
     useEffect(() => {
-        update({ idList: favoritesList, lang });
+        update({ idList: favoritesIdList, lang });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [lang]);
 
     //favoritesUpdate
     useEffect(() => {
         if (favoritesUpdate) {
-            update({ idList: favoritesList, lang });
+            update({ idList: favoritesIdList, lang });
             dispatch(toFalseTheUpdate());
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -34,8 +37,8 @@ const FavoritesList = () => {
     if (isFetching)
         return (
             <div className={styles.favoritesContainer}>
-                {favoritesList.map((item) => (
-                    <h1 key={item}>Loading...</h1>
+                {favoritesIdList.map((id) => (
+                    <h1 key={id}>Loading...</h1>
                 ))}
             </div>
         );
@@ -47,18 +50,29 @@ const FavoritesList = () => {
                 <table>
                     <FavoritesListHeader styles={styles} />
                     <tbody>
-                        {data.map((item) => (
-                            <FavoritesItem
-                                key={item.id}
-                                id={item.id}
-                                styles={styles}
-                                name={item.name}
-                                brand={item.brand}
-                                code={item.code}
-                                price={item.price}
-                                src={item.src}
-                            />
-                        ))}
+                        {data
+                            .filter((product) =>
+                                brands.length === 0
+                                    ? true
+                                    : [...brands].includes(
+                                          (
+                                              data.find((item) => item.id === product.id)?.brand ||
+                                              ''
+                                          ).toLowerCase()
+                                      )
+                            )
+                            .map((item) => (
+                                <FavoritesItem
+                                    key={item.id}
+                                    id={item.id}
+                                    styles={styles}
+                                    name={item.name}
+                                    brand={item.brand}
+                                    code={item.code}
+                                    price={item.price}
+                                    src={item.src}
+                                />
+                            ))}
                     </tbody>
                 </table>
             ) : (

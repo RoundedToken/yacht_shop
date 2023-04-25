@@ -189,10 +189,11 @@
             @include flexStartCenter;
             background-color: $blue;
             height: calc($hightHeader - (($hightHeaderName + $hightHeaderNameTop)));
+            width: calc(100% + 1vw);
 
             .historyMenu {
                 @include flexCenterCenter;
-                width: $widthLeft;
+                width: ($widthLeft);
                 gap: 0.2vw;
 
                 img {

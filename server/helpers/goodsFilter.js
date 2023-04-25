@@ -8,6 +8,9 @@ export function goodsFilter(data) {
 
         if (has) return false;
         else {
+            //Delete featurename
+            delete item.featurename;
+
             //Create inStock
             item.inStock = item.rest > 0 ? true : false;
 

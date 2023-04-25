@@ -8,7 +8,7 @@ import CountControl from '../../../UI/CountControl/CountControl';
 import FavoritesButton from '../../../UI/FavoritesButton/FavoritesButton';
 import { ICartProduct } from '../interfaces/ICartProduct';
 
-const CartProduct: FC<ICartProduct> = ({ id, styles, src, name, price, count }) => {
+const CartProduct: FC<ICartProduct> = ({ id, styles, src, name, price, count, brand }) => {
     const formatter = new Intl.NumberFormat('et', {
         style: 'currency',
         currency: 'EUR',
@@ -22,20 +22,19 @@ const CartProduct: FC<ICartProduct> = ({ id, styles, src, name, price, count }) 
     return (
         <>
             <tr>
-                <td colSpan={6}>
+                <td colSpan={7}>
                     <hr />
                 </td>
             </tr>
             <tr className={styles.cartProduct}>
-                <td>
-                    <Link
-                        className={styles.productName}
-                        to={routeConstants.PRODUCT_ROUTE + `/${id}`}
-                    >
+                <td className={styles.productName}>
+                    <Link to={routeConstants.PRODUCT_ROUTE + `/${id}`}>
                         <img className={styles.productImg} src={src} alt="" />
-                        {name}
                     </Link>
+                    <Link to={routeConstants.PRODUCT_ROUTE + `/${id}`}>{name}</Link>
                 </td>
+
+                <td>{brand}</td>
 
                 <td>
                     <CountControl id={id} />
@@ -46,7 +45,7 @@ const CartProduct: FC<ICartProduct> = ({ id, styles, src, name, price, count }) 
                 <td className={styles.totalAmount}>{formatter.format(count * price)}</td>
 
                 <td>
-                    <FavoritesButton id={id} />
+                    <FavoritesButton id={id} brand={brand} />
                 </td>
 
                 <td>

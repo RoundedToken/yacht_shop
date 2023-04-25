@@ -28,7 +28,7 @@ const FavoritesItem: FC<IFavoritesItem> = ({ id, name, brand, code, price, style
                 <td>{code}</td>
                 <td>{formatter.format(price)}</td>
                 <td>
-                    <FavoritesButton id={id} />
+                    <FavoritesButton id={id} brand={brand} />
                 </td>
             </tr>
         </>

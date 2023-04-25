@@ -2,6 +2,7 @@ export interface ICartProduct {
     id: number;
     count: number;
     price: number;
+    brand: string;
 }
 
 export interface ICartState {

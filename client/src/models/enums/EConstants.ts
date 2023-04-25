@@ -7,4 +7,5 @@ export enum routeConstants {
     PRODUCT_ROUTE = '/product',
     CONTACTS_ROUTE = '/contacts',
     FAVORITES_ROUTE = '/favorites',
+    SEARCH_ROUTE = '/search',
 }

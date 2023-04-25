@@ -16,7 +16,9 @@ export const cartSlice = createSlice({
     initialState,
     reducers: {
         addToCart(state, action: PayloadAction<ICartProduct>) {
-            state.productList.push(action.payload);
+            const item = action.payload;
+            item.brand = item.brand.toLowerCase();
+            state.productList.push(item);
             localStorage.cartProductList = JSON.stringify(state.productList);
         },
 
@@ -49,8 +51,10 @@ export const cartSlice = createSlice({
         },
 
         setCartFromStorage(state) {
-            state.productList = JSON.parse(localStorage.cartProductList);
-            state.update = localStorage.cartUpdate === 'true' ? true : false;
+            if (localStorage.cartProductList) {
+                state.productList = JSON.parse(localStorage.cartProductList);
+                state.update = localStorage.cartUpdate === 'true' ? true : false;
+            }
         },
 
         emptyCart(state) {

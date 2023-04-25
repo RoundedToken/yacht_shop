@@ -3,17 +3,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { routeConstants } from '../../../models/enums/EConstants';
 import { addToCart, removeFromCart, toTrueCartUpdate } from '../../../redux/cartSlice';
-import { RootState } from '../../../redux/store';
-import CountControl from '../../../UI/CountControl/CountControl';
-import FavoritesButton from '../../../UI/FavoritesButton/FavoritesButton';
-import { IProductListItem } from '../interfaces/IProductListItem';
+import { ISearchListItem } from '../interfaces/ISearchListItem';
 import closeImg from '../../../assets/images/close.png';
 import checkImg from '../../../assets/images/check.png';
 import trashImg from '../../../assets/images/trash.png';
 import addToCartImg from '../../../assets/images/addToCart.png';
 import Text from '../../../UI/Text/Text';
+import CountControl from '../../../UI/CountControl/CountControl';
+import FavoritesButton from '../../../UI/FavoritesButton/FavoritesButton';
+import { RootState } from '../../../redux/store';
 
-const ProductListItem: FC<IProductListItem> = ({ product, styles }) => {
+const SearchListItem: FC<ISearchListItem> = ({ product, styles }) => {
     const formatter = new Intl.NumberFormat('et', {
         style: 'currency',
         currency: 'EUR',
@@ -96,4 +96,4 @@ const ProductListItem: FC<IProductListItem> = ({ product, styles }) => {
     );
 };
 
-export default ProductListItem;
+export default SearchListItem;

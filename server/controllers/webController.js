@@ -39,6 +39,18 @@ class WebController {
             next(error);
         }
     }
+
+    async webSearch(req, res, next) {
+        try {
+            const reqData = req.query;
+
+            const sqlResDat = await webService.webSearch(reqData);
+
+            return res.json(sqlResDat);
+        } catch (error) {
+            next(error);
+        }
+    }
 }
 
 export default new WebController();

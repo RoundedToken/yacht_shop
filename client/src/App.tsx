@@ -12,7 +12,7 @@ import SideBar from './modules/SideBar/SideBar';
 import { setCartFromStorage } from './redux/cartSlice';
 import { setFavoritesFromStorage } from './redux/favoritesSlice';
 import ScrollToTop from './ScrollToTop';
-import Search from './modules/Search/Search';
+import SearchModal from './UI/SearchModal/SearchModal';
 
 function App() {
     const lang = useSelector((state: RootState) => state.langSlice.lang);
@@ -56,7 +56,7 @@ function App() {
 
                     <Order />
 
-                    <Search />
+                    <SearchModal />
                 </div>
             )}
         </div>

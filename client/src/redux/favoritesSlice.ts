@@ -1,4 +1,4 @@
-import { IFavoritesState } from '../models/interfaces/slices/IFavoritesState';
+import { IFavoritesItem, IFavoritesState } from '../models/interfaces/slices/IFavoritesState';
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
@@ -11,20 +11,24 @@ export const favoritesSlice = createSlice({
     name: 'favorites',
     initialState,
     reducers: {
-        addFavoritesItem(state, action: PayloadAction<number>) {
-            state.favoritesList.push(action.payload);
+        addFavoritesItem(state, action: PayloadAction<IFavoritesItem>) {
+            const item = action.payload;
+            item.brand = item.brand.toLowerCase();
+            state.favoritesList.push(item);
             localStorage.favoritesList = JSON.stringify(state.favoritesList);
         },
-        removeFavoritesItem(state, action: PayloadAction<number>) {
+        removeFavoritesItem(state, action: PayloadAction<IFavoritesItem>) {
             state.favoritesList.splice(
-                state.favoritesList.findIndex((item) => item === action.payload),
+                state.favoritesList.findIndex((item) => item.id === action.payload.id),
                 1
             );
             localStorage.favoritesList = JSON.stringify(state.favoritesList);
         },
         setFavoritesFromStorage(state) {
-            state.favoritesList = JSON.parse(localStorage.favoritesList);
-            state.update = localStorage.favoritesUpdate === 'true' ? true : false;
+            if (localStorage.favoritesList) {
+                state.favoritesList = JSON.parse(localStorage.favoritesList);
+                state.update = localStorage.favoritesUpdate === 'true' ? true : false;
+            }
         },
         toTrueTheUpdate(state) {
             state.update = true;

@@ -10,6 +10,7 @@ import ProductListPage from '../pages/ProductListPage';
 import ProductPage from '../pages/ProductPage';
 import FavoritesPage from '../pages/FavoritesPage';
 import RefreshPage from '../pages/RefreshPage';
+import SearchPage from '../pages/SearchPage';
 
 const AppRoutes = () => {
     return (
@@ -29,6 +30,7 @@ const AppRoutes = () => {
             <Route path={routeConstants.CONTACTS_ROUTE} element={<ContactsPage />} />
             <Route path={routeConstants.CRIMPING_ROUTE} element={<CableCrimpingPage />} />
             <Route path={routeConstants.FAVORITES_ROUTE} element={<FavoritesPage />} />
+            <Route path={routeConstants.SEARCH_ROUTE + '/:query'} element={<SearchPage />} />
 
             <Route path="/refresh" element={<RefreshPage />} />
             <Route path="*" element={<Navigate to={routeConstants.CATEGORIES_ROUTE + '/0'} />} />
