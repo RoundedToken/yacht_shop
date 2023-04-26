@@ -11,7 +11,7 @@ const app = express();
 app.use(
     cors({
         credentials: true,
-        origin: '*',
+        origin: process.env.CORS_ORIGIN,
     })
 );
 app.use(express.json());
@@ -20,7 +20,7 @@ app.use('/api', router);
 const start = () => {
     try {
         sql.connect(sqlConfig, console.log('DB connected'));
-        app.listen(PORT, ['192.168.1.37', 'localhost'], console.log(`Server started on ${PORT}`));
+        app.listen(PORT, process.env.ADDRESS, console.log(`Server started on ${PORT}`));
     } catch (error) {
         console.log(error);
     }
