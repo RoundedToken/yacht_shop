@@ -1,4 +1,4 @@
-# [***RopeBox***](https://shop.yachtshop.ee/)[^1] web store of yacht equipment
+# [***RopeBox***](http://shop.yachtshop.ee/)[^1] web store of yacht equipment
 
 ## Technical task
 1. Redesign of an [old site](http://www.yachtshop.ee/index.asp?view=98&id=0)
