@@ -1,7 +1,7 @@
-# ***RopeBox***[^1] web store of yacht equipment
+# [***RopeBox***](https://shop.yachtshop.ee/)[^1] web store of yacht equipment
 
 ## Technical task
-1. Redesign of an [existing site](http://www.yachtshop.ee/index.asp?view=98&id=0)
+1. Redesign of an [old site](http://www.yachtshop.ee/index.asp?view=98&id=0)
 2. Front-end and back-end new technology stack
 3. Implement a powerful shopping cart system with favorites
 4. Make the project as scalable as possible for future features
@@ -30,4 +30,4 @@
 &emsp;
 <img background-color='#ECD53F' width='64' src='https://user-images.githubusercontent.com/117864556/231853059-42dbeb92-46e5-464c-96fb-1f96c318f2b3.svg'/>
 
-[^1]: Deployment planned in May 2023
+[^1]: Release planned in May 2023
