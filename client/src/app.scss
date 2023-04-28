@@ -46,12 +46,12 @@ body {
 
     + .sideBar {
         position: fixed;
-        margin-top: -4.85vw;
+        margin-top: -7vh;
         height: 100% !important;
     }
 
     ~ .body {
-        padding-top: 8.75vw;
+        padding-top: 12.6vh;
     }
 
     .headerSticky {
@@ -68,7 +68,7 @@ body {
             font-weight: $fontWeightXL;
             transform: scale(1);
             opacity: 1;
-            width: 10vw;
+            width: $widthLeft;
             height: calc($hightHeader - (($hightHeaderName + $hightHeaderNameTop)));
             visibility: visible;
         }
@@ -86,6 +86,6 @@ body {
 
 .wrapper {
     @include columnStartStart;
-    min-height: 100vh;
-    width: 100vw;
+    min-height: 100%;
+    width: 100%;
 }

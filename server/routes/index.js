@@ -1,5 +1,4 @@
 import { Router } from 'express';
-// import devController from '../controllers/devController.js';
 import navController from '../controllers/navController.js';
 import webController from '../controllers/webController.js';
 
@@ -12,7 +11,15 @@ router.get('/nav_tree', navController.navTree);
 router.get('/web_tovar_parameters', webController.webTovarParameters);
 router.get('/web_cart_product_list', webController.webCartProductList);
 router.post('/web_order', webController.webOrder);
-// router.get('/get_last_sales', devController.getLastSales);
 router.get('/web_search', webController.webSearch);
+
+//For dev only
+async function dev() {
+    try {
+        const devController = (await import('../controllers/devController.js')).default;
+        router.get('/get_last_sales', devController.getLastSales);
+    } catch (error) {}
+}
+await dev();
 
 export default router;

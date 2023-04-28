@@ -1,0 +1,7 @@
+@import '../../styles/index.scss';
+
+.horizontalLine {
+    border-width: 0;
+    height: 2px;
+    background-color: $hrColor;
+}

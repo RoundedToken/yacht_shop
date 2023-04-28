@@ -45,7 +45,7 @@ const CartProduct: FC<ICartProduct> = ({ id, styles, src, name, price, count, br
                 <td className={styles.totalAmount}>{formatter.format(count * price)}</td>
 
                 <td>
-                    <FavoritesButton id={id} brand={brand} />
+                    <FavoritesButton id={id} />
                 </td>
 
                 <td>

@@ -27,8 +27,6 @@ const SearchModal = () => {
         document.body.style.overflow = 'auto';
     };
     const navigateOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        console.log('123');
-
         e.preventDefault();
         navigate(routeConstants.SEARCH_ROUTE + `/${searchValue}`);
         document.body.style.overflow = 'auto';
@@ -39,10 +37,6 @@ const SearchModal = () => {
     useEffect(() => {
         if (modalRef.current) modalRef.current.style.display = searchDisplay;
     }, [searchDisplay]);
-
-    useEffect(() => {
-        console.log('formref');
-    }, [formRef]);
 
     return (
         <div ref={modalRef} className={styles.modal}>

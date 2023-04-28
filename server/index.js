@@ -1,9 +1,9 @@
 import express from 'express';
 import 'dotenv/config.js';
-import router from './routes/index.js';
 import { sqlConfig } from './config.js';
 import sql from 'mssql';
 import cors from 'cors';
+import router from './routes/index.js';
 
 const PORT = process.env.PORT || 5000;
 const app = express();

@@ -3,7 +3,7 @@ export function groupingByBrands(arr) {
     let previousId;
 
     for (let item of arr) {
-        if (![33].includes(item.id)) {
+        if (![33, 461].includes(item.id)) {
             //Filter wrong categories
             let currentId = item.id;
 

@@ -4,13 +4,16 @@
     z-index: $zIndexHeader;
     background-color: $white;
     height: $hightHeader;
+    width: 100%;
 
     .headerStatic {
-        height: calc(3.69vw + 1.2vw);
+        height: $hightHeaderName + $hightHeaderNameTop;
 
         .headerLogo {
+            @include flexCenterCenter;
+            width: $widthLeft;
             img {
-                width: $widthLeft;
+                height: $hightHeader;
             }
         }
 
@@ -19,8 +22,9 @@
             @include fontDesktopXXL($white);
             height: $hightHeaderName;
             top: $hightHeaderNameTop;
+            // left: $widthLeft;
             left: $widthLeft;
-            width: $widthRight;
+            width: calc(100% - $widthLeft - $marginRight);
             background-color: $yellow;
             cursor: pointer;
             position: absolute;
@@ -36,8 +40,9 @@
 
         .navBar {
             @include flexBetweenCenter;
-            width: $widthRight;
+            width: calc(100% - $widthLeft - $marginRight);
             height: calc($hightHeader - (($hightHeaderName + $hightHeaderNameTop)));
+            // overflow: hidden;
 
             .catalogContainer {
                 @include flexCenterCenter;
@@ -189,7 +194,7 @@
             @include flexStartCenter;
             background-color: $blue;
             height: calc($hightHeader - (($hightHeaderName + $hightHeaderNameTop)));
-            width: calc(100% + 1vw);
+            width: 100%;
 
             .historyMenu {
                 @include flexCenterCenter;
@@ -212,7 +217,7 @@
                 @include flexCenterCenter;
                 @include fontDesktopL($white);
 
-                width: $widthRight;
+                width: calc(100% - $widthLeft);
             }
 
             .breadcrumbs {

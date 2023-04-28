@@ -5,8 +5,9 @@
 }
 .cart {
     // @include columnBetweenNormal;
-    @include columnBetweenCenter;
+    @include columnCenterCenter;
     min-height: inherit;
+    height: 100%;
     gap: 5vw;
 
     a {
@@ -27,7 +28,7 @@
         thead {
             z-index: 2;
             position: sticky;
-            top: 7.5vw;
+            top: $hightHeader - $hightHeaderNameTop;
             background-color: $white;
         }
 
@@ -46,6 +47,7 @@
         .productName {
             @include flexStartCenter;
             @include hover;
+
             gap: 1vw;
             width: 30vw;
             text-align: start;

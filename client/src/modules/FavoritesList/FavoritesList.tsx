@@ -9,9 +9,7 @@ import { toFalseTheUpdate } from '../../redux/favoritesSlice';
 import FavoritesEmpty from './components/FavoritesEmpty';
 
 const FavoritesList = () => {
-    const favoritesIdList = useSelector(
-        (state: RootState) => state.favoritesSlice.favoritesList
-    ).map((product) => product.id);
+    const favoritesIdList = useSelector((state: RootState) => state.favoritesSlice.favoritesList);
     const lang = useSelector((state: RootState) => state.langSlice.lang);
     const favoritesUpdate = useSelector((state: RootState) => state.favoritesSlice.update);
     const brands = useSelector((state: RootState) => state.navSlice.brands);

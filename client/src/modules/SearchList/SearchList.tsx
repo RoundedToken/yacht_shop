@@ -35,7 +35,7 @@ const SearchList = () => {
                                 ?.filter((product) =>
                                     brands.length === 0
                                         ? true
-                                        : [...brands].includes(product.brand.toLowerCase())
+                                        : brands.includes(product.brand.toLowerCase())
                                 )
                                 .map((product) => (
                                     <SearchListItem

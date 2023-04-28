@@ -37,7 +37,7 @@ const Cart: FC<ICart> = () => {
     if (!idList || idList.length === 0)
         return (
             <div className={styles.cart}>
-                <EmptyCart styles={styles} />{' '}
+                <EmptyCart styles={styles} />
             </div>
         );
 

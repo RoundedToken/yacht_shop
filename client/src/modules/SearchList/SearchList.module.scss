@@ -5,14 +5,8 @@
 
     table {
         @include fontDesktopM($blue);
-        border-spacing: 0.5vw 0.5vw;
+        border-spacing: 0vw 0.5vw;
         position: relative;
-
-        hr {
-            border-width: 0;
-            height: 2px;
-            background-color: $hrColor;
-        }
 
         img {
             width: 32px;
@@ -22,7 +16,7 @@
         thead {
             z-index: 2;
             position: sticky;
-            top: 7.5vw;
+            top: $hightHeader - $hightHeaderNameTop;
             background-color: $white;
         }
         th {
@@ -35,6 +29,7 @@
         td {
             vertical-align: middle;
             text-align: center;
+            padding-inline: 1vw;
         }
 
         .addToCart,
@@ -55,7 +50,7 @@
             width: 20vw;
             max-width: 30vw;
             text-align: start;
-            padding-inline: 2vw;
+            margin-inline: 1vw;
 
             img {
                 width: 64px;

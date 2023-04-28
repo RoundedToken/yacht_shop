@@ -13,7 +13,7 @@ export const webCartProductList = createApi({
         fetchCartProductList: build.query<IWebCartProductListRes[], IWebCartProductListReq>({
             query: ({ idList, lang }) => ({
                 url: '/web_cart_product_list',
-                params: { idList: idList, lang: lang },
+                params: { idList, lang },
             }),
         }),
     }),

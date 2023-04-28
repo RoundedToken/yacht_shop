@@ -6,6 +6,7 @@ import { RootState } from '../../../redux/store';
 import { restoreCart } from '../../../redux/cartSlice';
 import Text from '../../../UI/Text/Text';
 import ToCatalogButton from '../../../UI/ToCatalogButton/ToCatalogButton';
+import { toTrueCartUpdate } from '../../../redux/cartSlice';
 
 const EmptyCart: FC<IEmptyCart> = ({ styles }) => {
     const dispatch = useDispatch();
@@ -16,6 +17,7 @@ const EmptyCart: FC<IEmptyCart> = ({ styles }) => {
 
     const restoreCartOnClick = () => {
         dispatch(restoreCart());
+        dispatch(toTrueCartUpdate());
     };
 
     return (

@@ -1,9 +1,4 @@
-export interface IFavoritesItem {
-    id: number;
-    brand: string;
-}
-
 export interface IFavoritesState {
-    favoritesList: IFavoritesItem[];
+    favoritesList: number[];
     update: boolean;
 }

@@ -2,7 +2,7 @@
 
 .sideBar {
     position: absolute;
-    top: 12.5vw;
+    top: $hightHeader + $hightHeader - $hightHeaderName - $hightHeaderNameTop;
     width: $widthLeft;
-    height: calc(100% - 12.5vw);
+    height: 100vh - ($hightHeader + $hightHeader - $hightHeaderName - $hightHeaderNameTop);
 }
