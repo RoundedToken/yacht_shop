@@ -3,7 +3,6 @@ import Body from './modules/Body/Body';
 import Footer from './modules/Footer/Footer';
 import Header from './modules/Header/Header';
 import './App.scss';
-import Order from './modules/Order/Order';
 import { navTreeApi } from './services/navTree';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from './redux/store';
@@ -12,7 +11,7 @@ import SideBar from './modules/SideBar/SideBar';
 import { setCartFromStorage } from './redux/cartSlice';
 import { setFavoritesFromStorage } from './redux/favoritesSlice';
 import ScrollToTop from './ScrollToTop';
-import SearchModal from './UI/SearchModal/SearchModal';
+import Modal from './modules/Modal/Modal';
 
 function App() {
     const lang = useSelector((state: RootState) => state.langSlice.lang);
@@ -54,9 +53,7 @@ function App() {
 
                     <Footer />
 
-                    <Order />
-
-                    <SearchModal />
+                    <Modal />
                 </div>
             )}
         </div>

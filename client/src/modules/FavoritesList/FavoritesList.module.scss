@@ -37,12 +37,14 @@
 
         .itemName {
             @include flexStartCenter;
-            @include hover;
-            color: $blue;
             gap: 1vw;
             max-width: 30vw;
             text-align: start;
             margin-inline: 3vw;
+
+            a {
+                @include fontDesktopXM($blue);
+            }
 
             img {
                 @include productImgInList;

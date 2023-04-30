@@ -4,7 +4,7 @@ import cartImg from '../../../assets/images/cart.png';
 import catalogImg from '../../../assets/images/catalog.png';
 import ropeImg from '../../../assets/images/rope.png';
 import mapImg from '../../../assets/images/map.png';
-import heartFilledImg from '../../../assets/images/heart_filled.png';
+import starFilledImg from '../../../assets/images/starFilled.png';
 import { routeConstants } from '../../../models/enums/EConstants';
 import Text from '../../../UI/Text/Text';
 import HeaderNavListItem from './HeaderNavListItem';
@@ -59,7 +59,7 @@ const HeaderNavList: FC<IHeaderNavList> = ({ styles }) => {
 
             <HeaderNavListItem
                 route={routeConstants.FAVORITES_ROUTE}
-                src={heartFilledImg}
+                src={starFilledImg}
                 styles={styles}
             >
                 <Text rus="Избранное" eng="Favorites" est="Lemmikud" />

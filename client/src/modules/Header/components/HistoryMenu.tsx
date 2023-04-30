@@ -6,7 +6,8 @@ import loupeImg from '../../../assets/images/loupe.png';
 import resetImg from '../../../assets/images/reset.png';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { switchSearchModalDisplay } from '../../../redux/stylesSlice';
+import { switchModalDisplay } from '../../../redux/stylesSlice';
+import { setModalType } from '../../../redux/modalSlice';
 
 const HistoryMenu: FC<IHistoryMenu> = ({ styles }) => {
     const navigate = useNavigate();
@@ -22,7 +23,8 @@ const HistoryMenu: FC<IHistoryMenu> = ({ styles }) => {
         navigate(1);
     };
     const openSearch = () => {
-        dispatch(switchSearchModalDisplay());
+        dispatch(setModalType('search'));
+        dispatch(switchModalDisplay());
         document.body.style.overflow = 'hidden';
     };
 

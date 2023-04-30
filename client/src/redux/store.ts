@@ -1,3 +1,4 @@
+import modalSlice from './modalSlice';
 import sideBarSlice from './sideBarSlice';
 import { webSearchApi } from './../services/webSearch';
 import { navTreeApi } from './../services/navTree';
@@ -27,6 +28,7 @@ const rootReducer = combineReducers({
     stylesSlice,
     favoritesSlice,
     sideBarSlice,
+    modalSlice,
 });
 
 export const setupStore = () => {

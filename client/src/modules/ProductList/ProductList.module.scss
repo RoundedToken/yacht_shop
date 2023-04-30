@@ -20,7 +20,8 @@
 
                 .pictureBlock {
                     @include flexCenterCenter;
-                    width: 25%;
+                    width: calc(25% - 2vw);
+                    padding-inline: 1vw;
                     img {
                         width: 100%;
                     }
@@ -32,6 +33,10 @@
                     padding-block: 1vh;
                     width: calc(75% - 2vw);
 
+                    a {
+                        @include fontDesktopM($blue);
+                    }
+
                     hr {
                         border: 0;
                         width: 100%;
@@ -39,13 +44,7 @@
                         background-color: $hrColor;
                     }
 
-                    .productCardName {
-                        @include fontDesktopM($blue);
-                        @include hover;
-                    }
-
-                    .productCardCode,
-                    .productCardBrand {
+                    .productCardDescription {
                         @include flexCenterCenter;
                         @include fontDesktopS($blue);
                         gap: 1vw;
@@ -109,7 +108,6 @@
 
         .productName {
             @include flexStartCenter;
-            @include hover;
             gap: 1vw;
             width: 25vw;
             max-width: 30vw;
@@ -125,15 +123,13 @@
                 color: $blue;
             }
         }
+    }
 
-        .productInStock {
-            .checkImg {
-                filter: $greenFilter;
-            }
-            .closeImg {
-                filter: $redFilter;
-            }
-        }
+    .inStockCheckImg {
+        filter: $greenFilter;
+    }
+    .inStockCloseImg {
+        filter: $redFilter;
     }
 
     .addToCart,

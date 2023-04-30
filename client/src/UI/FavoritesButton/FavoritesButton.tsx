@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import heartImg from '../../assets/images/heart.png';
-import heartFilledImg from '../../assets/images/heart_filled.png';
+import starImg from '../../assets/images/star.png';
+import starFilledImg from '../../assets/images/starFilled.png';
 import { addFavoritesItem, removeFavoritesItem, toTrueTheUpdate } from '../../redux/favoritesSlice';
 import { RootState } from '../../redux/store';
 import { IFavoritesButton } from './IFavoritesButton';
@@ -26,12 +26,12 @@ const FavoritesButton: FC<IFavoritesButton> = ({ id }) => {
     return inFavorites ? (
         <img
             className={styles.removeButton}
-            src={heartFilledImg}
+            src={starFilledImg}
             alt=""
             onClick={removeFromFavorites}
         />
     ) : (
-        <img className={styles.addButton} src={heartImg} alt="" onClick={addInFavorites} />
+        <img className={styles.addButton} src={starImg} alt="" onClick={addInFavorites} />
     );
 };
 

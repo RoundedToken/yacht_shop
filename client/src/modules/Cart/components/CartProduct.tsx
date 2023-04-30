@@ -1,18 +1,16 @@
 import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 import closeImg from '../../../assets/images/close.png';
-import { routeConstants } from '../../../models/enums/EConstants';
+import { eurFormatter } from '../../../helpers/eurFormatter';
 import { removeFromCart } from '../../../redux/cartSlice';
 import CountControl from '../../../UI/CountControl/CountControl';
 import FavoritesButton from '../../../UI/FavoritesButton/FavoritesButton';
+import HorizontalLine from '../../../UI/HorizontalLine/HorizontalLine';
+import ProductName from '../../../UI/ProductName/ProductName';
+import ProductPic from '../../../UI/ProductPic/ProductPic';
 import { ICartProduct } from '../interfaces/ICartProduct';
 
 const CartProduct: FC<ICartProduct> = ({ id, styles, src, name, price, count, brand }) => {
-    const formatter = new Intl.NumberFormat('et', {
-        style: 'currency',
-        currency: 'EUR',
-    });
     const dispatch = useDispatch();
 
     const removeOnClick = () => {
@@ -21,17 +19,13 @@ const CartProduct: FC<ICartProduct> = ({ id, styles, src, name, price, count, br
 
     return (
         <>
-            <tr>
-                <td colSpan={7}>
-                    <hr />
-                </td>
-            </tr>
+            <HorizontalLine colSpan={7} />
+
             <tr className={styles.cartProduct}>
                 <td className={styles.productName}>
-                    <Link to={routeConstants.PRODUCT_ROUTE + `/${id}`}>
-                        <img className={styles.productImg} src={src} alt="" />
-                    </Link>
-                    <Link to={routeConstants.PRODUCT_ROUTE + `/${id}`}>{name}</Link>
+                    <ProductPic src={src} />
+
+                    <ProductName id={id} name={name} />
                 </td>
 
                 <td>{brand}</td>
@@ -40,9 +34,9 @@ const CartProduct: FC<ICartProduct> = ({ id, styles, src, name, price, count, br
                     <CountControl id={id} />
                 </td>
 
-                <td className={styles.productPrice}>{formatter.format(price)}</td>
+                <td className={styles.productPrice}>{eurFormatter.format(price)}</td>
 
-                <td className={styles.totalAmount}>{formatter.format(count * price)}</td>
+                <td className={styles.totalAmount}>{eurFormatter.format(count * price)}</td>
 
                 <td>
                     <FavoritesButton id={id} />

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { eurFormatter } from '../../helpers/eurFormatter';
 import { TId } from '../../models/types/TId';
 import { RootState } from '../../redux/store';
 import { navProductApi } from '../../services/navProductService';
@@ -23,7 +24,7 @@ const Product = () => {
                         <div>Brand: {product.brand}</div>
                         <img src={product.brandLogo} alt="" width={64} height={64} />
                         <div>Code: {product.code}</div>
-                        <div>Price: {product.price}</div>
+                        <div>Price: {eurFormatter.format(product.price)}</div>
                         <div>In stock count: {product.inStockCount}</div>
                     </div>
                 ) : (

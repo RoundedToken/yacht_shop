@@ -1,5 +1,4 @@
 export interface IStylesState {
-    orderModalDisplay: 'none' | 'block';
+    modalDisplay: 'none' | 'block';
     dropdownDisplay: 'none' | 'block';
-    searchModalDisplay: 'none' | 'block';
 }

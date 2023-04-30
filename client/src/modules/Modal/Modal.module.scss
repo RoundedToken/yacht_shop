@@ -17,31 +17,31 @@
     .modalContentContainer {
         background-color: $white;
         margin: auto;
-        padding-block: 2.5vh;
+        padding-block: 5vh;
         padding-inline: 2vw;
         border: 0.1vw solid #888;
         border-radius: 0.5vw;
         width: 60%;
-        max-height: 85vh;
-        overflow: auto;
+        max-height: 80vh;
+        overflow: scroll;
 
         .modalClose {
             @include hover;
             position: fixed;
-            right: 21vw;
+            right: 19vw;
             top: 6.5vh;
             filter: $redFilter;
             width: 3vw;
         }
 
-        .response {
-            @include flexCenterCenter;
-            @include fontDesktopXXL($blue);
-        }
-
         .modalContent {
             @include columnCenterCenter;
             gap: 2vw;
+
+            img {
+                max-width: 70%;
+                max-height: 70%;
+            }
 
             .title {
                 @include fontDesktopXXL($blue);
@@ -163,6 +163,34 @@
                     border-radius: 0.2vw;
                     background-color: transparent;
                 }
+            }
+        }
+
+        .searchForm {
+            @include flexCenterCenter;
+            height: 3vw;
+
+            input {
+                @include fontDesktopM($blue);
+                height: 3vw;
+                width: 60%;
+                border: 0.4vw solid $blue;
+                border-right: 0.2vw solid$blue;
+                border-radius: 1vw 0 0 1vw;
+                padding-inline: 1vw;
+            }
+
+            button {
+                @include flexCenterCenter;
+                @include hover;
+                @include fontDesktopL($blue);
+                height: calc(100% + 0.8vw);
+                width: 10%;
+                border: 0.4vw solid $blue;
+                border-left: 0.2vw solid$blue;
+                border-radius: 0 1vw 1vw 0;
+                padding-inline: 4vw;
+                background-color: $white;
             }
         }
     }

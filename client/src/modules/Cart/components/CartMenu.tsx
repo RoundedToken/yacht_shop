@@ -5,7 +5,8 @@ import { emptyCart } from '../../../redux/cartSlice';
 import trashImg from '../../../assets/images/trash.png';
 import forwardArrowImg from '../../../assets/images/forwardArrow.png';
 import Text from '../../../UI/Text/Text';
-import { switchOrderModalDisplay } from '../../../redux/stylesSlice';
+import { setModalType } from '../../../redux/modalSlice';
+import { switchModalDisplay } from '../../../redux/stylesSlice';
 
 const CartMenu: FC<ICartMenu> = ({ styles }) => {
     const dispatch = useDispatch();
@@ -14,7 +15,8 @@ const CartMenu: FC<ICartMenu> = ({ styles }) => {
         dispatch(emptyCart());
     };
     const checkOutOnClick = () => {
-        dispatch(switchOrderModalDisplay());
+        dispatch(setModalType('order'));
+        dispatch(switchModalDisplay());
         document.body.style.overflow = 'hidden';
     };
 

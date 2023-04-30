@@ -46,12 +46,16 @@
 
         .productName {
             @include flexStartCenter;
-            @include hover;
 
             gap: 1vw;
             width: 30vw;
             text-align: start;
             margin-inline: 3vw;
+
+            img {
+                width: 8vw;
+                height: 8vw;
+            }
         }
 
         .remove {

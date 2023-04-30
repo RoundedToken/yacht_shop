@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { eurFormatter } from '../../../helpers/eurFormatter';
 import { RootState } from '../../../redux/store';
 import Text from '../../../UI/Text/Text';
 
@@ -7,10 +8,6 @@ const OrderListSummary = () => {
     const productList = useSelector((state: RootState) => state.cartSlice.productList);
     const totalCount = productList.reduce((pV, cV) => pV + cV.count, 0);
     const totalSum = productList.reduce((pV, cV) => pV + cV.count * cV.price, 0);
-    const formatter = new Intl.NumberFormat('et', {
-        style: 'currency',
-        currency: 'EUR',
-    });
 
     return (
         <tr>
@@ -26,7 +23,7 @@ const OrderListSummary = () => {
 
             <td>{totalCount}</td>
 
-            <td>{formatter.format(totalSum)}</td>
+            <td>{eurFormatter.format(totalSum)}</td>
         </tr>
     );
 };

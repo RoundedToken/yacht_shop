@@ -41,7 +41,7 @@ class navService {
 
         const data = (
             await sql.query(
-                `SELECT subr AS parentId, ${name} AS name, marka AS code, brand, priceEU AS price, ostParnu AS isStockCount FROM goods WHERE tovar = ${id}`
+                `SELECT subr AS parentId, ${name} AS name, marka AS code, brand, priceEU AS price, ostParnu AS inStockCount FROM goods WHERE tovar = ${id}`
             )
         ).recordset[0];
 

@@ -3,10 +3,11 @@ import CountControl from '../../../UI/CountControl/CountControl';
 import FavoritesButton from '../../../UI/FavoritesButton/FavoritesButton';
 import { IProductListItem } from '../interfaces/IProductListItem';
 import HorizontalLine from '../../../UI/HorizontalLine/HorizontalLine';
-import ProductName from './ProductName';
 import { eurFormatter } from '../../../helpers/eurFormatter';
 import ProductInStock from './ProductInStock';
 import ProductCart from './ProductCart';
+import ProductPic from '../../../UI/ProductPic/ProductPic';
+import ProductName from '../../../UI/ProductName/ProductName';
 
 const ProductListItem: FC<IProductListItem> = ({ product, styles }) => {
     return (
@@ -14,7 +15,9 @@ const ProductListItem: FC<IProductListItem> = ({ product, styles }) => {
             <HorizontalLine colSpan={8} />
             <tr>
                 <td className={styles.productName}>
-                    <ProductName id={product.id} src={product.src} name={product.name} />
+                    <ProductPic src={product.src} />
+
+                    <ProductName id={product.id} name={product.name} />
                 </td>
 
                 <td>{product.brand}</td>
@@ -24,7 +27,7 @@ const ProductListItem: FC<IProductListItem> = ({ product, styles }) => {
                 <td>{eurFormatter.format(product.price)}</td>
 
                 <td className={styles.productInStock}>
-                    <ProductInStock styles={styles} inStock={product.inStock} />
+                    <ProductInStock type="pic" styles={styles} inStock={product.inStock} />
                 </td>
 
                 <td>
