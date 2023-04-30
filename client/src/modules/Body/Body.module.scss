@@ -3,11 +3,12 @@
 .body {
     width: calc(100% - $widthLeft - 2vw);
     margin-top: $hightHeader - $hightHeaderName - $hightHeaderNameTop;
-    margin-bottom: 4vw;
+    margin-bottom: 4vh;
     margin-left: $widthLeft;
     background-color: $white;
     position: relative;
     z-index: 1;
-    min-height: 65vh;
+    min-height: 61vh;
     padding-inline: 1vw;
+    padding-block: 2vh;
 }

@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import Text from '../../../UI/Text/Text';
 import trashImg from '../../../assets/images/trash.png';
 import addToCartImg from '../../../assets/images/addToCart.png';
 import { IProductCart } from '../interfaces/IProductCart';
@@ -22,8 +21,6 @@ const ProductCart: FC<IProductCart> = ({ styles, product }) => {
     return cartProductList.find((cartProduct) => cartProduct.id === product.id) ? (
         <div className={styles.remove} onClick={() => removeFromCartOnClick(product.id)}>
             <img src={trashImg} alt="" />
-
-            <Text rus="Убрать" eng="Remove" est="Eemalda" />
         </div>
     ) : (
         <div
@@ -31,8 +28,6 @@ const ProductCart: FC<IProductCart> = ({ styles, product }) => {
             onClick={() => addToCartOnClick(product.id, product.price, product.brand)}
         >
             <img src={addToCartImg} alt="" />
-
-            <Text rus="Добавить" eng="Add" est="Lisama" />
         </div>
     );
 };

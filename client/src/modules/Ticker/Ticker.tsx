@@ -21,6 +21,10 @@ const Ticker = () => {
                 {location === routeConstants.CONTACTS_ROUTE && (
                     <TickerWrapper rus="контакты" eng="contacts" est="kontaktid" styles={styles} />
                 )}
+
+                {location === routeConstants.PRODUCT_ROUTE && (
+                    <TickerWrapper rus="товар" eng="product" est="Toode" styles={styles} />
+                )}
             </div>
         </div>
     );

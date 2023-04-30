@@ -1,3 +1,4 @@
+import sideBarSlice from './sideBarSlice';
 import { webSearchApi } from './../services/webSearch';
 import { navTreeApi } from './../services/navTree';
 import favoritesSlice from './favoritesSlice';
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
     cartSlice,
     stylesSlice,
     favoritesSlice,
+    sideBarSlice,
 });
 
 export const setupStore = () => {

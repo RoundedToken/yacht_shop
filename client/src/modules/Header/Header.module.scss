@@ -22,7 +22,6 @@
             @include fontDesktopXXL($white);
             height: $hightHeaderName;
             top: $hightHeaderNameTop;
-            // left: $widthLeft;
             left: $widthLeft;
             width: calc(100% - $widthLeft - $marginRight);
             background-color: $yellow;
@@ -41,8 +40,7 @@
         .navBar {
             @include flexBetweenCenter;
             width: calc(100% - $widthLeft - $marginRight);
-            height: calc($hightHeader - (($hightHeaderName + $hightHeaderNameTop)));
-            // overflow: hidden;
+            height: 100%;
 
             .catalogContainer {
                 @include flexCenterCenter;
@@ -193,12 +191,12 @@
         .searchBar {
             @include flexStartCenter;
             background-color: $blue;
-            height: calc($hightHeader - (($hightHeaderName + $hightHeaderNameTop)));
+            height: 100%;
             width: 100%;
 
             .historyMenu {
                 @include flexCenterCenter;
-                width: ($widthLeft);
+                width: $widthLeft;
                 gap: 0.2vw;
 
                 img {

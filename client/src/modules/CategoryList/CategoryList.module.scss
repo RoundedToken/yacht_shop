@@ -2,10 +2,9 @@
 
 .categoryListContainer {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 1fr 1fr;
     row-gap: 2vw;
     column-gap: 2vw;
-    padding: 2vw;
 
     .categoryItem {
         @include flexStartCenter;
@@ -15,7 +14,7 @@
         gap: 1vw;
         border-radius: 1vw;
         padding: 1vw;
-        box-shadow: 0px 3px 2px rgba(0, 42, 181, 0.545);
+        box-shadow: 0px 3px 2px $cardBoxShadow;
 
         img {
             border-radius: 1vw;

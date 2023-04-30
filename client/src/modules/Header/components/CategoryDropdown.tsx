@@ -2,7 +2,7 @@ import React, { FC, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { routeConstants } from '../../../models/enums/EConstants';
-import { pushToCategoryList } from '../../../redux/navSlice';
+import { clearBrands, pushToCategoryList } from '../../../redux/navSlice';
 import { RootState } from '../../../redux/store';
 import { switchDropdownDisplay } from '../../../redux/stylesSlice';
 import { navTreeApi } from '../../../services/navTree';
@@ -31,6 +31,7 @@ const CategoryDropdown: FC<ICategoryDropdown> = ({ styles }) => {
                             : routeConstants.PRODUCT_LIST_ROUTE + `/${idSplit[2]}`
                     );
                     dispatch(switchDropdownDisplay());
+                    dispatch(clearBrands());
                 }
             } else if (dropdownDisplay === 'block') dispatch(switchDropdownDisplay());
         };

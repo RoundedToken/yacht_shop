@@ -24,15 +24,8 @@ const ProductListHeader = () => {
                 <th>
                     <Text rus="В наличии" eng="In stock" est="Laos" />
                 </th>
-
-                <th>
-                    <Text rus="Избранное" eng="Favorites" est="Lemmikud" />
-                </th>
-
-                <th>
-                    <Text rus="Корзина" eng=" Cart" est="Ostukorv" />
-                </th>
-
+                <th></th>
+                <th></th>
                 <th></th>
             </tr>
         </thead>

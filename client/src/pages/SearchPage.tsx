@@ -1,11 +1,11 @@
 import React from 'react';
-import SearchList from '../modules/SearchList/SearchList';
+import ProductList from '../modules/ProductList/ProductList';
 import styles from './pages.module.scss';
 
 const SearchPage = () => {
     return (
         <div className={styles.container}>
-            <SearchList />
+            <ProductList />
         </div>
     );
 };

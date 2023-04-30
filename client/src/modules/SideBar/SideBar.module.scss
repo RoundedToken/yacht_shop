@@ -4,5 +4,28 @@
     position: absolute;
     top: $hightHeader + $hightHeader - $hightHeaderName - $hightHeaderNameTop;
     width: $widthLeft;
-    height: 100vh - ($hightHeader + $hightHeader - $hightHeaderName - $hightHeaderNameTop);
+    height: 100vh - ($hightHeader + $hightHeader - $hightHeaderName - $hightHeaderNameTop) - 2vh;
+    padding-top: 2vh;
+
+    .switchContainer {
+        @include flexCenterCenter;
+        gap: 1vw;
+
+        label {
+            @include hover;
+            position: relative;
+            cursor: pointer;
+        }
+
+        input {
+            width: 0;
+            height: 0;
+            position: absolute;
+        }
+
+        img {
+            width: 40px;
+            filter: $blueFilter;
+        }
+    }
 }

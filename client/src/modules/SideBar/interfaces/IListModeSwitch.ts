@@ -1,5 +1,4 @@
-export interface ISearchInStock {
-    inStock: boolean;
+export interface IListModeSwitch {
     styles: {
         readonly [key: string]: string;
     };

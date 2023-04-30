@@ -7,9 +7,9 @@ const ProductName: FC<IProductName> = ({ id, src, name }) => {
     return (
         <>
             <Link to={routeConstants.PRODUCT_ROUTE + `/${id}`}>
-                {' '}
                 <img src={src} alt="" />
             </Link>
+
             <Link to={routeConstants.PRODUCT_ROUTE + `/${id}`}> {name}</Link>
         </>
     );

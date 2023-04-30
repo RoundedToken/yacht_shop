@@ -4,6 +4,7 @@ import { routeConstants } from '../../models/enums/EConstants';
 import BrandSelect from '../BrandSelect/BrandSelect';
 import styles from './SideBar.module.scss';
 import Ticker from '../Ticker/Ticker';
+import ListModeSwitch from './components/ListModeSwitch';
 
 const SideBar = () => {
     const location = '/' + useLocation().pathname.split('/')[1];
@@ -12,7 +13,11 @@ const SideBar = () => {
         <div className={`${styles.sideBar} sideBar`}>
             {(location === routeConstants.MAIN_ROUTE ||
                 location === routeConstants.CRIMPING_ROUTE ||
-                location === routeConstants.CONTACTS_ROUTE) && <Ticker />}
+                location === routeConstants.CONTACTS_ROUTE ||
+                location === routeConstants.PRODUCT_ROUTE) && <Ticker />}
+
+            {(routeConstants.PRODUCT_LIST_ROUTE === location ||
+                routeConstants.SEARCH_ROUTE === location) && <ListModeSwitch styles={styles} />}
 
             {(routeConstants.CATEGORIES_ROUTE === location ||
                 routeConstants.PRODUCT_LIST_ROUTE === location ||

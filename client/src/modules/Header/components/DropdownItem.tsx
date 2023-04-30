@@ -19,7 +19,6 @@ const DropdownItem: FC<IDropdownItem> = ({ children, treeItem }) => {
                     ? `navigate_category_${treeItem.id} `
                     : `navigate_products_${treeItem.id}`
             }
-            // hidden={treeItem.children ? false : true}
         >
             {treeItem.name}
             <ul hidden={treeItem.children ? false : true}>{children}</ul>
