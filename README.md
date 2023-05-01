@@ -8,9 +8,11 @@
 5. Implement stable front-end localization
 6. Speed up the database access and realize fast Client-Server Model
 7. Improve existing services and complement basic navigation, sorting and search capabilities
-8. <sup>*soon*</sup>&nbsp; Organize a thoughtful system of images
-9. <sup>*optionaly*</sup>&nbsp; Implement payment and delivery system
-10. <sup>*optionaly*</sup>&nbsp; Realize authorization system 
+8. Responsive, mobile and cross-browser compatibility 
+9. <sup>*soon*</sup>&nbsp; Organize a thoughtful system of images
+10. <sup>*optionaly*</sup>&nbsp; Mobile app
+11. <sup>*optionaly*</sup>&nbsp; Implement payment and delivery system
+12. <sup>*optionaly*</sup>&nbsp; Realize authorization system 
 
 ## Front-end stack 
 
