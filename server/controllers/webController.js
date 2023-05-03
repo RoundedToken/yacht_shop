@@ -32,9 +32,9 @@ class WebController {
             const reqParams = req.query;
             const reqData = req.body;
 
-            console.log(reqData);
+            const sqlResData = await webService.webOrder(reqParams, reqData);
 
-            return res.json('Ваш заказ получен!');
+            return res.json(sqlResData);
         } catch (error) {
             next(error);
         }

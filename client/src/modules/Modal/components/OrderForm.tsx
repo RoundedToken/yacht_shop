@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { TDelivery } from '../../../models/types/TDelivery';
 import {
     copyCart,
     emptyCart,
@@ -12,7 +13,7 @@ import Text from '../../../UI/Text/Text';
 import { IOrderForm } from '../interfaces/IOrderForm';
 
 const OrderForm: FC<IOrderForm> = ({ styles }) => {
-    const [sendProductList, { data }] = webOrderApi.useFetchOrderMutation();
+    const [sendProductList, { data, isLoading, error }] = webOrderApi.useFetchOrderMutation();
     const productList = useSelector((state: RootState) => state.cartSlice.productList).map(
         (product) => {
             return { id: product.id, count: product.count };
@@ -22,8 +23,8 @@ const OrderForm: FC<IOrderForm> = ({ styles }) => {
     const dispatch = useDispatch();
     const nameRef = useRef<HTMLInputElement>(null);
     const emailRef = useRef<HTMLInputElement>(null);
-    const phoneRef = useRef<HTMLInputElement>(null);
     const commentsRef = useRef<HTMLTextAreaElement>(null);
+    const deliveryRef = useRef<HTMLSelectElement>(null);
 
     const formOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -34,8 +35,8 @@ const OrderForm: FC<IOrderForm> = ({ styles }) => {
             lang,
             name: nameRef.current?.value || '',
             email: emailRef.current?.value || '',
-            phone: phoneRef.current?.value || '',
             comments: commentsRef.current?.value || '',
+            delivery: (deliveryRef.current?.value as TDelivery) || 'pickUp',
             productList: productList,
         });
     };
@@ -46,6 +47,10 @@ const OrderForm: FC<IOrderForm> = ({ styles }) => {
             dispatch(setResponse(data));
         }
     }, [data, dispatch]);
+
+    if (isLoading) return <h1>Loading...</h1>;
+
+    if (error) return <h1>Error!</h1>;
 
     return (
         <form className={styles.orderForm} onSubmit={(e) => formOnSubmit(e)}>
@@ -72,20 +77,38 @@ const OrderForm: FC<IOrderForm> = ({ styles }) => {
                 <input ref={emailRef} type="email" name="email" required />
             </div>
 
-            <div className={styles.formPhone}>
-                <label htmlFor="phone">
-                    <Text rus="Телефон:" eng="Phone:" est="Telefon:" />
-                </label>
-
-                <input ref={phoneRef} type="text" name="phone" required />
-            </div>
-
             <div className={styles.formComments}>
                 <label htmlFor="comments">
-                    <Text rus="Комментарии:" eng="Comments:" est="Kommentaarid:" />
+                    <Text
+                        rus="Номер телефона и комментарии:"
+                        eng="Phone number and comments:"
+                        est="Telefoninumber ja kommentaarid:"
+                    />
                 </label>
 
                 <textarea ref={commentsRef} name="comments" />
+            </div>
+
+            <div>
+                <select ref={deliveryRef} required>
+                    <option value="">
+                        <Text
+                            rus="Выберите тип доставки"
+                            eng="Select delivery type"
+                            est="Valige kohaletoimetamise tüüp"
+                        />
+                    </option>
+                    <option value="pickUp">
+                        <Text rus="Самовывоз" eng="Pickup" est="Korja üles" />
+                    </option>
+                    <option value="post">
+                        <Text
+                            rus="Отправка службой Omnivia"
+                            eng="Sending by Omnivia"
+                            est="Saatmine Omnivia kaudu"
+                        />
+                    </option>
+                </select>
             </div>
 
             <button className={styles.formSubmit} type="submit">

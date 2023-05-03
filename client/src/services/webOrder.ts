@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
-import { IWebOrderReq } from '../models/interfaces/RTKQuery/IWebOrder';
+import { IWebOrderReq, IWebOrderRes } from '../models/interfaces/RTKQuery/IWebOrder';
 
 export const webOrderApi = createApi({
     reducerPath: 'webOrderApi',
@@ -7,12 +7,12 @@ export const webOrderApi = createApi({
         baseUrl: process.env.REACT_APP_SERVER_URL,
     }),
     endpoints: (build) => ({
-        fetchOrder: build.mutation<string, IWebOrderReq>({
-            query: ({ lang, name, phone, email, comments, productList }) => ({
+        fetchOrder: build.mutation<IWebOrderRes, IWebOrderReq>({
+            query: ({ lang, name, email, comments, productList, delivery }) => ({
                 url: '/web_order',
                 method: 'POST',
                 params: { lang },
-                body: { name, phone, email, comments, productList },
+                body: { name, email, comments, delivery, productList },
             }),
         }),
     }),

@@ -21,14 +21,14 @@
         padding-inline: 2vw;
         border: 0.1vw solid #888;
         border-radius: 0.5vw;
-        width: 60%;
+        width: 70%;
         max-height: 80vh;
         overflow: scroll;
 
         .modalClose {
             @include hover;
             position: fixed;
-            right: 19vw;
+            right: 14vw;
             top: 6.5vh;
             filter: $redFilter;
             width: 3vw;
@@ -44,7 +44,7 @@
             }
 
             .title {
-                @include fontDesktopXXL($blue);
+                @include fontDesktopXL($blue);
             }
 
             .orderList {
@@ -125,6 +125,7 @@
                 @include columnCenterCenter;
                 @include fontDesktopXM($blue);
                 gap: 1vw;
+                width: 30vw;
 
                 input,
                 textarea {
@@ -147,9 +148,10 @@
                 }
 
                 .formComments {
+                    width: 100%;
                     textarea {
+                        width: 100%;
                         padding: 0.1vw;
-                        width: 20vw;
                         height: 5vw;
                         resize: none;
                     }

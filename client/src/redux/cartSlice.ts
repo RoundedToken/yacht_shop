@@ -1,5 +1,6 @@
 import { ICartState, ICartProduct } from './../models/interfaces/slices/ICartState';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { IWebOrderRes } from '../models/interfaces/RTKQuery/IWebOrder';
 
 const initialState: ICartState = {
     productList: localStorage.cartProductList ? JSON.parse(localStorage.cartProductList) : [],
@@ -72,7 +73,7 @@ export const cartSlice = createSlice({
             localStorage.cartProductListCopy = JSON.stringify(state.productList);
         },
 
-        setResponse(state, action: PayloadAction<string>) {
+        setResponse(state, action: PayloadAction<IWebOrderRes>) {
             state.response = action.payload;
         },
 
