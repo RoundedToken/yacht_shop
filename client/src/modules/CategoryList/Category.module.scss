@@ -12,12 +12,13 @@
         @include hoverMini;
 
         gap: 1vw;
-        border-radius: 1vw;
-        padding: 1vw;
+        border-radius: 1vh;
+        padding-block: 1vh;
+        padding-inline: 1vw;
         box-shadow: 0px 3px 2px $cardBoxShadow;
 
         img {
-            border-radius: 1vw;
+            border-radius: 1vh;
             width: 160px;
             height: 100px;
         }

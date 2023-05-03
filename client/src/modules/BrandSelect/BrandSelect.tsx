@@ -28,7 +28,7 @@ const BrandSelect: FC<IBrandSelect> = () => {
 
     return (
         <div className={`${styles.brandsContainer} brandsContainer`}>
-            <BrandSelectHeader styles={styles} />
+            <BrandSelectHeader selectedBrands={selectedBrands} styles={styles} />
 
             {(locationPath === routeConstants.CATEGORIES_ROUTE ||
                 locationPath === routeConstants.PRODUCT_LIST_ROUTE) && (

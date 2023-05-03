@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import HeaderLang from './HeaderLang';
-import cartImg from '../../../assets/images/cart.png';
 import catalogImg from '../../../assets/images/catalog.png';
 import ropeImg from '../../../assets/images/rope.png';
 import mapImg from '../../../assets/images/map.png';
@@ -14,6 +13,7 @@ import rightArrowImg from '../../../assets/images/rightArrow.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { switchDropdownDisplay } from '../../../redux/stylesSlice';
 import { RootState } from '../../../redux/store';
+import HeaderCart from './HeaderCart';
 
 const HeaderNavList: FC<IHeaderNavList> = ({ styles }) => {
     const display = useSelector((state: RootState) => state.stylesSlice.dropdownDisplay);
@@ -53,9 +53,7 @@ const HeaderNavList: FC<IHeaderNavList> = ({ styles }) => {
                 <Text rus="Контакты" eng="Contacts" est="Kontaktid" />
             </HeaderNavListItem>
 
-            <HeaderNavListItem route={routeConstants.CART_ROUTE} src={cartImg} styles={styles}>
-                <Text rus="Корзина" eng="Cart" est="Ostukorv" />
-            </HeaderNavListItem>
+            <HeaderCart styles={styles} />
 
             <HeaderNavListItem
                 route={routeConstants.FAVORITES_ROUTE}

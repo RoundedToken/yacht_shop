@@ -9,9 +9,15 @@
 
     .switchContainer {
         @include flexCenterCenter;
-        gap: 1vw;
+        gap: 1vh;
+        background-color: $yellowLight;
+        width: calc(100% - 1vh);
+        margin-left: 1vh;
+        padding-block: 0.5vh;
+        border-radius: 0.5vh;
 
         label {
+            @include flexCenterCenter;
             @include hover;
             position: relative;
             cursor: pointer;

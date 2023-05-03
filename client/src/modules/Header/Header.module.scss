@@ -19,7 +19,7 @@
 
         .headerName {
             @include flexCenterCenter;
-            @include fontDesktopXXL($white);
+            @include fontDesktopXL($white);
             height: $hightHeaderName;
             top: $hightHeaderNameTop;
             left: $widthLeft;
@@ -41,6 +41,7 @@
             @include flexBetweenCenter;
             width: calc(100% - $widthLeft - $marginRight);
             height: 100%;
+            margin-left: $widthLeft;
 
             .catalogContainer {
                 @include flexCenterCenter;
@@ -54,6 +55,7 @@
                 cursor: pointer;
 
                 img {
+                    height: 29px;
                     filter: $blueFilter;
                 }
 
@@ -130,12 +132,19 @@
 
             .navItem {
                 @include flexCenterCenter;
-                @include fontDesktopL($blue);
-                @include active;
+                @include fontDesktopXM($blue);
                 @include hover;
 
+                .cartCounter {
+                    @include fontDesktopS($white);
+                    border-radius: 30%;
+                    background-color: $blue;
+                    padding-inline: 5px;
+                    padding-top: 1px;
+                }
+
                 img {
-                    height: 1em;
+                    height: 29px;
                     filter: $blueFilter;
                 }
             }
@@ -145,7 +154,7 @@
                 position: relative;
 
                 img {
-                    height: 2vw;
+                    height: 29px;
                     filter: $blueFilter;
                 }
 
@@ -168,10 +177,10 @@
                 }
 
                 .langSelect {
-                    @include fontDesktopL($blue);
+                    @include fontDesktopXM($blue);
 
                     .langOption {
-                        @include fontDesktopL($blue);
+                        @include fontDesktopXM($blue);
                         cursor: pointer;
 
                         &[id='disabledLang'] {
@@ -201,7 +210,7 @@
 
                 img {
                     @include hover;
-                    width: $widthImgDesktop;
+                    height: 30px;
                     cursor: pointer;
                     filter: $whiteFilter;
                 }

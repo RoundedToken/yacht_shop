@@ -2,11 +2,10 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { webCartProductList } from '../../services/webCartProductList';
-import FavoritesItem from './components/FavoritesItem';
-import FavoritesListHeader from './components/FavoritesListHeader';
 import styles from './FavoritesList.module.scss';
 import { toFalseTheUpdate } from '../../redux/favoritesSlice';
 import FavoritesEmpty from './components/FavoritesEmpty';
+import TableFavoritesList from './components/TableFavoritesList';
 
 const FavoritesList = () => {
     const favoritesIdList = useSelector((state: RootState) => state.favoritesSlice.favoritesList);
@@ -45,34 +44,7 @@ const FavoritesList = () => {
         <div className={styles.favoritesContainer}>
             {error && <h1>Error!</h1>}
             {data ? (
-                <table>
-                    <FavoritesListHeader styles={styles} />
-                    <tbody>
-                        {data
-                            .filter((product) =>
-                                brands.length === 0
-                                    ? true
-                                    : [...brands].includes(
-                                          (
-                                              data.find((item) => item.id === product.id)?.brand ||
-                                              ''
-                                          ).toLowerCase()
-                                      )
-                            )
-                            .map((item) => (
-                                <FavoritesItem
-                                    key={item.id}
-                                    id={item.id}
-                                    styles={styles}
-                                    name={item.name}
-                                    brand={item.brand}
-                                    code={item.code}
-                                    price={item.price}
-                                    src={item.src}
-                                />
-                            ))}
-                    </tbody>
-                </table>
+                <TableFavoritesList styles={styles} brands={brands} data={data} />
             ) : (
                 <FavoritesEmpty styles={styles} />
             )}

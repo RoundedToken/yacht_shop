@@ -5,6 +5,8 @@ import BrandSelect from '../BrandSelect/BrandSelect';
 import styles from './SideBar.module.scss';
 import Ticker from '../Ticker/Ticker';
 import ListModeSwitch from './components/ListModeSwitch';
+import Filter from '../Filter/Filter';
+import Sorting from '../Sorting/Sorting';
 
 const SideBar = () => {
     const location = '/' + useLocation().pathname.split('/')[1];
@@ -23,7 +25,17 @@ const SideBar = () => {
                 routeConstants.PRODUCT_LIST_ROUTE === location ||
                 routeConstants.SEARCH_ROUTE === location ||
                 routeConstants.CART_ROUTE === location ||
-                routeConstants.FAVORITES_ROUTE === location) && <BrandSelect />}
+                routeConstants.FAVORITES_ROUTE === location) && (
+                <>
+                    <BrandSelect />
+
+                    <Sorting />
+                </>
+            )}
+
+            {(routeConstants.PRODUCT_LIST_ROUTE === location ||
+                routeConstants.CART_ROUTE === location ||
+                routeConstants.SEARCH_ROUTE === location) && <Filter />}
         </div>
     );
 };
