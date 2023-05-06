@@ -12,7 +12,7 @@ export function productListFilter(
     const filteredList =
         brands.length === 0
             ? list
-            : list.filter((item) => brands.includes(item.brand.toLowerCase()));
+            : list.filter((item) => brands.includes(item.brand));
 
     return filteredList
         .filter((product) => {

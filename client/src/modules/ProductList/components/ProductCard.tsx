@@ -6,8 +6,8 @@ import ProductName from '../../../UI/ProductName/ProductName';
 import ProductPic from '../../../UI/ProductPic/ProductPic';
 import Text from '../../../UI/Text/Text';
 import { IProductCard } from '../interfaces/IProductCard';
-import ProductCart from './ProductCart';
 import ProductInStock from './ProductInStock';
+import CartButton from '../../../UI/CartButton/ProductCart';
 
 const ProductCard: FC<IProductCard> = ({ styles, product }) => {
     return (
@@ -47,7 +47,7 @@ const ProductCard: FC<IProductCard> = ({ styles, product }) => {
                 <div className={styles.productCardMenu}>
                     <FavoritesButton id={product.id} />
 
-                    <ProductCart styles={styles} product={product} />
+                    <CartButton id={product.id} brand={product.brand} price={product.price} />
 
                     <CountControl id={product.id} />
                 </div>

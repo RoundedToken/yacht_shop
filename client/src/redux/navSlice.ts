@@ -5,7 +5,6 @@ import { INavState } from '../models/interfaces/slices/INavState';
 
 const initialState: INavState = {
     categoryList: [],
-    brands: [],
 };
 
 export const navSlice = createSlice({
@@ -18,22 +17,13 @@ export const navSlice = createSlice({
         clearCategoryList(state) {
             state.categoryList = [];
         },
-        addBrand(state, action: PayloadAction<string>) {
-            state.brands.push(action.payload);
-        },
-        removeBrand(state, action: PayloadAction<string>) {
-            state.brands.splice(state.brands.indexOf(action.payload), 1);
-        },
-        clearBrands(state) {
-            state.brands = [];
-        },
+
         setProduct(state, action: PayloadAction<{ id: number; parentId: number }>) {
             state.product = action.payload;
         },
     },
 });
 
-export const { pushToCategoryList, clearCategoryList, addBrand, removeBrand, clearBrands } =
-    navSlice.actions;
+export const { pushToCategoryList, clearCategoryList } = navSlice.actions;
 
 export default navSlice.reducer;

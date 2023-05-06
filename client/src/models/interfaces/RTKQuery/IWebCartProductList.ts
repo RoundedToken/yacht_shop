@@ -7,7 +7,8 @@ export interface IWebCartProductListRes {
     code: string;
     price: number;
     inStockCount: number;
-    src: string;
+    inStock: boolean;
+    src: string[];
 }
 
 export interface IWebCartProductListReq {

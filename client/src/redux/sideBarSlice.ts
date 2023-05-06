@@ -11,7 +11,10 @@ import {
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialState: ISideBarState = {
+    //LIST_MODE
     listMode: 'grid',
+
+    //FILTER
     productListFilters: {
         inStock: false,
         notInStock: false,
@@ -24,19 +27,29 @@ const initialState: ISideBarState = {
         inFavorites: false,
         notInFavorites: false,
     },
+
+    //SORTING
     favoritesSorting: { sortKey: 'name', sortType: 'ASC' },
     cartSorting: { sortKey: 'name', sortType: 'ASC' },
     categorySorting: { sortKey: 'name', sortType: 'ASC' },
     productListSorting: { sortKey: 'name', sortType: 'ASC' },
+
+    //BRANDS
+    brands: [],
+    cartBrands: [],
+    favoritesBrands: [],
 };
 
 export const sideBarSlice = createSlice({
     name: 'sideBar',
     initialState,
     reducers: {
+        //LIST_MODE
         setListMode(state, action: PayloadAction<TListMode>) {
             state.listMode = action.payload;
         },
+
+        //FILTER
         setProductListFilter(
             state,
             action: PayloadAction<{ filter: TProductListFilter; status: boolean }>
@@ -65,6 +78,8 @@ export const sideBarSlice = createSlice({
                 notInFavorites: false,
             };
         },
+
+        //SORTING
         setCategorySorting(state, action: PayloadAction<ICategorySorting>) {
             state.categorySorting = action.payload;
         },
@@ -83,6 +98,35 @@ export const sideBarSlice = createSlice({
             state.categorySorting = { sortKey: 'name', sortType: 'ASC' };
             state.productListSorting = { sortKey: 'name', sortType: 'ASC' };
         },
+
+        //BRANDS
+        addBrand(state, action: PayloadAction<string>) {
+            state.brands.push(action.payload);
+        },
+        removeBrand(state, action: PayloadAction<string>) {
+            state.brands.splice(state.brands.indexOf(action.payload), 1);
+        },
+        clearBrands(state) {
+            state.brands = [];
+        },
+        addCartBrand(state, action: PayloadAction<string>) {
+            state.cartBrands.push(action.payload);
+        },
+        removeCartBrand(state, action: PayloadAction<string>) {
+            state.cartBrands.splice(state.brands.indexOf(action.payload), 1);
+        },
+        clearCartBrands(state) {
+            state.cartBrands = [];
+        },
+        addFavoritesBrand(state, action: PayloadAction<string>) {
+            state.favoritesBrands.push(action.payload);
+        },
+        removeFavoritesBrand(state, action: PayloadAction<string>) {
+            state.favoritesBrands.splice(state.brands.indexOf(action.payload), 1);
+        },
+        clearFavoritesBrands(state) {
+            state.favoritesBrands = [];
+        },
     },
 });
 
@@ -97,6 +141,15 @@ export const {
     setProductListSorting,
     setFavoritesSorting,
     clearSorting,
+    addBrand,
+    removeBrand,
+    clearBrands,
+    addCartBrand,
+    removeCartBrand,
+    clearCartBrands,
+    addFavoritesBrand,
+    removeFavoritesBrand,
+    clearFavoritesBrands,
 } = sideBarSlice.actions;
 
 export default sideBarSlice.reducer;

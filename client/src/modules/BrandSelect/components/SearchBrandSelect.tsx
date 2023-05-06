@@ -30,7 +30,7 @@ const SearchBrandSelect: FC<ISearchBrandSelect> = ({
                 sortByBrands(
                     Array.from(
                         new Set(
-                            searchProductList?.map((product) => product.brand.toLowerCase()) || []
+                            searchProductList?.map((product) => product.brand) || []
                         )
                     ),
                     selectedBrands

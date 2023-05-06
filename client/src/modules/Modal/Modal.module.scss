@@ -28,10 +28,10 @@
         .modalClose {
             @include hover;
             position: fixed;
-            right: 14vw;
-            top: 6.5vh;
+            right: 13.5vw;
+            top: 6vh;
             filter: $redFilter;
-            width: 3vw;
+            width: 4vh;
         }
 
         .modalContent {
@@ -193,6 +193,60 @@
                 border-radius: 0 1vw 1vw 0;
                 padding-inline: 4vw;
                 background-color: $white;
+            }
+        }
+
+        .swiper {
+            padding: 1vh;
+            background-color: #8888888d;
+            border-radius: 1vh;
+            height: 78vh;
+
+            .singleSwiper {
+                background-color: $white;
+                margin-bottom: 1vh;
+                height: 78vh;
+                border-radius: 1vh;
+            }
+
+            .topSwiper {
+                background-color: $white;
+                margin-bottom: 1vh;
+                height: 60vh;
+                border-radius: 1vh;
+            }
+
+            .swiperSlide {
+                text-align: center;
+                background-size: cover;
+                background-position: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .bottomSwiper {
+                height: 17vh;
+                border-radius: 1vh;
+
+                .swiperSlide {
+                    background-color: $white;
+                    opacity: 0.4;
+                    border-radius: 1vh;
+                    cursor: pointer;
+
+                    &:nth-child(1) {
+                        margin-left: 0;
+                    }
+                }
+
+                img {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 1vh;
+                }
             }
         }
     }

@@ -2,6 +2,7 @@
 
 .countControl {
     @include flexCenterCenter;
+    width: min-content;
 
     .item {
         @include flexCenterCenter;

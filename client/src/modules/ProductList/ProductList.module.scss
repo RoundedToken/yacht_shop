@@ -131,16 +131,4 @@
     .inStockCloseImg {
         filter: $redFilter;
     }
-
-    .addToCart,
-    .remove {
-        @include flexCenterCenter;
-        @include hover;
-        gap: 0.5vw;
-
-        img {
-            width: 32px;
-            filter: $blueFilter;
-        }
-    }
 }

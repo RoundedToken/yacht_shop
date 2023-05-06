@@ -32,7 +32,7 @@ const FavoritesBrandSelect: FC<IFavoritesBrandSelect> = ({
             {!isFetching &&
                 sortByBrands(
                     Array.from(
-                        new Set(favoritesList?.map((product) => product.brand.toLowerCase()) || [])
+                        new Set(favoritesList?.map((product) => product.brand) || [])
                     ),
                     selectedBrands
                 )?.map((brand) => (

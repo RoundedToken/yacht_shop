@@ -15,7 +15,7 @@ const ProductPic: FC<IProductPic> = ({ src }) => {
         document.body.style.overflow = 'hidden';
     };
 
-    return <img className={styles.productPic} src={src} alt="" onClick={picOnClick} />;
+    return <img className={styles.productPic} src={src[0]} alt="" onClick={picOnClick} />;
 };
 
 export default ProductPic;

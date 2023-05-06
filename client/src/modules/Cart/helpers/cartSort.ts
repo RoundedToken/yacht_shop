@@ -13,12 +13,7 @@ export function cartSort(
         const newB = data.find((item) => item.id === b.id) as IWebCartProductListRes;
         const key = sortRules.sortKey;
 
-        if (key === 'name' || key === 'brand') {
-            const strA = newA[key].toLowerCase();
-            const strB = newB[key].toLowerCase();
-
-            return sortByType(strA, strB, sortRules.sortType);
-        } else if (key === 'price') {
+        if (key === 'price') {
             const numA = newA[key];
             const numB = newB[key];
 

@@ -5,7 +5,7 @@ export interface IWebSearchRes {
     name: string;
     brand: string;
     code: string;
-    src: string;
+    src: string[];
     inStock: boolean;
     price: number;
     rest: number;

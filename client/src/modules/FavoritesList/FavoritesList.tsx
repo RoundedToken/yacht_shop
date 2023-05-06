@@ -11,7 +11,7 @@ const FavoritesList = () => {
     const favoritesIdList = useSelector((state: RootState) => state.favoritesSlice.favoritesList);
     const lang = useSelector((state: RootState) => state.langSlice.lang);
     const favoritesUpdate = useSelector((state: RootState) => state.favoritesSlice.update);
-    const brands = useSelector((state: RootState) => state.navSlice.brands);
+    const brands = useSelector((state: RootState) => state.sideBarSlice.favoritesBrands);
     const [update, { data, isFetching, error }] =
         webCartProductList.useLazyFetchCartProductListQuery();
     const dispatch = useDispatch();

@@ -8,7 +8,7 @@ import CartProduct from './CartProduct';
 import ProductListHeader from './ProductListHeader';
 
 const CartProductList: FC<ICartProductList> = ({ styles, productList, data }) => {
-    const brands = useSelector((state: RootState) => state.navSlice.brands);
+    const brands = useSelector((state: RootState) => state.sideBarSlice.cartBrands);
     const filters = useSelector((state: RootState) => state.sideBarSlice.cartListFilters);
     const favoritesList = useSelector((state: RootState) => state.favoritesSlice.favoritesList);
     const filteredList = cartListFilter(productList, brands, filters, favoritesList);
@@ -25,7 +25,7 @@ const CartProductList: FC<ICartProductList> = ({ styles, productList, data }) =>
                         key={product.id}
                         id={product.id}
                         name={data.find((item) => item.id === product.id)?.name || ''}
-                        src={data.find((item) => item.id === product.id)?.src || ''}
+                        src={data.find((item) => item.id === product.id)?.src || []}
                         price={product.price}
                         styles={styles}
                         count={product.count}

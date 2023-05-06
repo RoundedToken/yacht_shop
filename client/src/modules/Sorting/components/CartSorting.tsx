@@ -10,26 +10,13 @@ const CartSorting: FC<ICartSorting> = ({ styles }) => {
                 styles={styles}
                 value="name"
                 sortType="ASC"
-                name={<Text rus="Товар" eng="Product" est="Toode" />}
+                name={<Text rus="Название" eng="Name" est="Nimi" />}
             />
             <CartSortingItem
                 styles={styles}
                 value="name"
                 sortType="DESC"
-                name={<Text rus="Товар" eng="Product" est="Toode" />}
-            />
-
-            <CartSortingItem
-                styles={styles}
-                value="brand"
-                sortType="ASC"
-                name={<Text rus="Бренд" eng="Brand" est="Brändi" />}
-            />
-            <CartSortingItem
-                styles={styles}
-                value="brand"
-                sortType="DESC"
-                name={<Text rus="Бренд" eng="Brand" est="Brändi" />}
+                name={<Text rus="Название" eng="Name" est="Nimi" />}
             />
 
             <CartSortingItem

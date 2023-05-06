@@ -1,1 +1,1 @@
-export type TModal = 'order' | 'search' | 'pic';
+export type TModal = 'order' | 'search' | 'pic' | 'null';

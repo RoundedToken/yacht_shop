@@ -19,7 +19,7 @@ const BrandSelectItem: FC<IBrandSelectItem> = ({
     return (
         <label ref={labelRef} className={styles.container}>
             <input
-                checked={[...selectedBrands].includes(brand)}
+                checked={selectedBrands.includes(brand)}
                 value={brand}
                 type="checkbox"
                 onChange={(e) => brandOnChange(e)}

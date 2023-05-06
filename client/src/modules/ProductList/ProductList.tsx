@@ -10,7 +10,7 @@ import SearchProductList from './components/SearchProductList';
 const ProductList = () => {
     const location = '/' + useLocation().pathname.split('/')[1];
     const lang = useSelector((state: RootState) => state.langSlice.lang);
-    const brands = useSelector((state: RootState) => state.navSlice.brands);
+    const brands = useSelector((state: RootState) => state.sideBarSlice.brands);
 
     return (
         <div className={styles.productListContainer}>

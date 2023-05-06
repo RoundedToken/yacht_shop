@@ -11,4 +11,5 @@ export interface INavTreeItem {
     brands: string[];
     name: string;
     children?: INavTreeItem[];
+    src: string;
 }

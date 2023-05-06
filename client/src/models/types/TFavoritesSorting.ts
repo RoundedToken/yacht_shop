@@ -1,1 +1,1 @@
-export type TFavoritesSorting = 'name' | 'brand' | 'code' | 'price';
+export type TFavoritesSorting = 'name' | 'price';

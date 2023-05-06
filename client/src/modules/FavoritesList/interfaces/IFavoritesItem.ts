@@ -1,10 +1,6 @@
+import { IWebCartProductListRes } from './../../../models/interfaces/RTKQuery/IWebCartProductList';
 export interface IFavoritesItem {
-    id: number;
-    name: string;
-    brand: string;
-    code: string;
-    price: number;
-    src: string;
+    product: IWebCartProductListRes;
     styles: {
         readonly [key: string]: string;
     };

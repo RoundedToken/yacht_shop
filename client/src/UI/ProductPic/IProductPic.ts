@@ -1,3 +1,3 @@
 export interface IProductPic {
-    src: string;
+    src: string[];
 }

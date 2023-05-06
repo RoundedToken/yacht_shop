@@ -5,9 +5,9 @@ import { IProductListItem } from '../interfaces/IProductListItem';
 import HorizontalLine from '../../../UI/HorizontalLine/HorizontalLine';
 import { eurFormatter } from '../../../helpers/eurFormatter';
 import ProductInStock from './ProductInStock';
-import ProductCart from './ProductCart';
 import ProductPic from '../../../UI/ProductPic/ProductPic';
 import ProductName from '../../../UI/ProductName/ProductName';
+import CartButton from '../../../UI/CartButton/ProductCart';
 
 const ProductListItem: FC<IProductListItem> = ({ product, styles }) => {
     return (
@@ -35,7 +35,7 @@ const ProductListItem: FC<IProductListItem> = ({ product, styles }) => {
                 </td>
 
                 <td className={styles.productCart}>
-                    <ProductCart styles={styles} product={product} />
+                    <CartButton id={product.id} brand={product.brand} price={product.price} />
                 </td>
 
                 <td>

@@ -4,7 +4,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialState: IModalState = {
     modalType: 'pic',
-    picSrc: '',
+    picSrc: [],
 };
 
 export const modalSlice = createSlice({
@@ -14,7 +14,7 @@ export const modalSlice = createSlice({
         setModalType(state, action: PayloadAction<TModal>) {
             state.modalType = action.payload;
         },
-        setPicSrc(state, action: PayloadAction<string>) {
+        setPicSrc(state, action: PayloadAction<string[]>) {
             state.picSrc = action.payload;
         },
     },

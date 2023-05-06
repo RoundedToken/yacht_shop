@@ -29,6 +29,16 @@ const Modal = () => {
             document.body.style.overflow = 'auto';
         }
     };
+    window.onkeydown = function (e) {
+        if (e.key === 'Escape' && modalDisplay === 'block') {
+            if (response) {
+                dispatch(deleteResponse());
+                navigate(routeConstants.MAIN_ROUTE);
+            }
+            dispatch(switchModalDisplay());
+            document.body.style.overflow = 'auto';
+        }
+    };
     const closeOnClick = () => {
         if (response) {
             dispatch(deleteResponse());
@@ -41,6 +51,8 @@ const Modal = () => {
     useEffect(() => {
         if (modalRef.current) modalRef.current.style.display = modalDisplay;
     }, [modalDisplay]);
+
+    if (modalDisplay === 'none') return null;
 
     return (
         <div ref={modalRef} className={styles.modal}>

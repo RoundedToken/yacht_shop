@@ -19,11 +19,25 @@ class WebService {
         const name = langParser(lang);
         if (!name) throw new Error();
 
-        const data = await sql.query(
-            `SELECT tovar as id ,${name} as name, brand, marka as code, priceEU as price, ostPARNU as inStockCount, dbo.[pic_of_tovar_small](tovar) as src from goods WHERE tovar in (${idList})`
-        );
+        const data = (
+            await sql.query(
+                `SELECT
+            goods.tovar as id,
+            goods.${name} as name, 
+            goods.brand, 
+            goods.marka as code, 
+            goods.priceEU as price, 
+            goods.ostPARNU as inStockCount, 
+            par.featurevalue AS src 
+            FROM goods INNER JOIN par ON goods.tovar = par.tovar
+            WHERE goods.tovar in (${idList}) AND par.featurename LIKE 'pic%'
+            ORDER BY par.featurename`
+            )
+        ).recordset;
 
-        return data.recordset;
+        const filteredData = goodsFilter(data);
+
+        return filteredData;
     }
 
     async webSearch({ searchStr, lang }) {

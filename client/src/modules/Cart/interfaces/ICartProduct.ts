@@ -3,7 +3,7 @@ export interface ICartProduct {
         readonly [key: string]: string;
     };
     id: number;
-    src: string;
+    src: string[];
     name: string;
     price: number;
     count: number;

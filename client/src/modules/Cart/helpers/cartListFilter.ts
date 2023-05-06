@@ -8,9 +8,7 @@ export function cartListFilter(
     favoritesList: number[]
 ) {
     const filteredList =
-        brands.length === 0
-            ? cartList
-            : cartList.filter((item) => brands.includes(item.brand.toLowerCase()));
+        brands.length === 0 ? cartList : cartList.filter((item) => brands.includes(item.brand));
 
     return filteredList.filter((product) => {
         let status = true;

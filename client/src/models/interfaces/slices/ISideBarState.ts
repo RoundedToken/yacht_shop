@@ -47,4 +47,7 @@ export interface ISideBarState {
     cartSorting: ICartSorting;
     categorySorting: ICategorySorting;
     productListSorting: IProductListSorting;
+    brands: string[];
+    cartBrands: string[];
+    favoritesBrands: string[];
 }

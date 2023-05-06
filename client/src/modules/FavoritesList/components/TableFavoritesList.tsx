@@ -18,16 +18,7 @@ const TableFavoritesList: FC<ITableFavoritesList> = ({ styles, data, brands }) =
 
             <tbody>
                 {sortedData.map((item) => (
-                    <FavoritesItem
-                        key={item.id}
-                        id={item.id}
-                        styles={styles}
-                        name={item.name}
-                        brand={item.brand}
-                        code={item.code}
-                        price={item.price}
-                        src={item.src}
-                    />
+                    <FavoritesItem key={item.id} product={item} styles={styles} />
                 ))}
             </tbody>
         </table>

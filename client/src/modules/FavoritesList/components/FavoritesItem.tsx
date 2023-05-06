@@ -6,26 +6,26 @@ import ProductName from '../../../UI/ProductName/ProductName';
 import ProductPic from '../../../UI/ProductPic/ProductPic';
 import { IFavoritesItem } from '../interfaces/IFavoritesItem';
 
-const FavoritesItem: FC<IFavoritesItem> = ({ id, name, brand, code, price, styles, src }) => {
+const FavoritesItem: FC<IFavoritesItem> = ({ product, styles }) => {
     return (
         <>
             <HorizontalLine colSpan={6} />
 
             <tr>
                 <td className={styles.itemName}>
-                    <ProductPic src={src} />
+                    <ProductPic src={product.src} />
 
-                    <ProductName id={id} name={name} />
+                    <ProductName id={product.id} name={product.name} />
                 </td>
 
-                <td>{brand}</td>
+                <td>{product.brand}</td>
 
-                <td>{code}</td>
+                <td>{product.code}</td>
 
-                <td>{eurFormatter.format(price)}</td>
+                <td>{eurFormatter.format(product.price)}</td>
 
                 <td>
-                    <FavoritesButton id={id} />
+                    <FavoritesButton id={product.id} />
                 </td>
             </tr>
         </>

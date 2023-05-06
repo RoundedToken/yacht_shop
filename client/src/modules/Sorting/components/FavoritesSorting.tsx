@@ -10,39 +10,13 @@ const FavoritesSorting: FC<IFavoritesSorting> = ({ styles }) => {
                 styles={styles}
                 value="name"
                 sortType="ASC"
-                name={<Text rus="Товар" eng="Product" est="Toode" />}
+                name={<Text rus="Название" eng="Name" est="Nimi" />}
             />
             <FavoritesSortingItem
                 styles={styles}
                 value="name"
                 sortType="DESC"
-                name={<Text rus="Товар" eng="Product" est="Toode" />}
-            />
-
-            <FavoritesSortingItem
-                styles={styles}
-                value="brand"
-                sortType="ASC"
-                name={<Text rus="Бренд" eng="Brand" est="Brändi" />}
-            />
-            <FavoritesSortingItem
-                styles={styles}
-                value="brand"
-                sortType="DESC"
-                name={<Text rus="Бренд" eng="Brand" est="Brändi" />}
-            />
-
-            <FavoritesSortingItem
-                styles={styles}
-                value="code"
-                sortType="ASC"
-                name={<Text rus="Код" eng="Code" est="Kood" />}
-            />
-            <FavoritesSortingItem
-                styles={styles}
-                value="code"
-                sortType="DESC"
-                name={<Text rus="Код" eng="Code" est="Kood" />}
+                name={<Text rus="Название" eng="Name" est="Nimi" />}
             />
 
             <FavoritesSortingItem

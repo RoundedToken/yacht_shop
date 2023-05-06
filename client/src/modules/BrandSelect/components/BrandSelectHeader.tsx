@@ -3,11 +3,11 @@ import Text from '../../../UI/Text/Text';
 import { IBrandSelectHeader } from '../interfaces/IBrandSelectHeader';
 import closeImg from '../../../assets/images/close.png';
 import { useDispatch, useSelector } from 'react-redux';
-import { clearBrands } from '../../../redux/navSlice';
 import upArrowImg from '../../../assets/images/upArrow.png';
 import downArrowImg from '../../../assets/images/downArrow.png';
 import { RootState } from '../../../redux/store';
 import { switchBrandsDisplay } from '../../../redux/stylesSlice';
+import { clearBrands } from '../../../redux/sideBarSlice';
 
 const BrandSelectHeader: FC<IBrandSelectHeader> = ({ styles, selectedBrands }) => {
     const dispatch = useDispatch();

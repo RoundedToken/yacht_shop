@@ -15,10 +15,11 @@ class navService {
                 `SELECT DISTINCT 
                 par.featurename,
                 goods.tovar AS id, 
+                goods.${name} AS name, 
+                goods.brand, 
                 goods.marka AS code, 
                 goods.priceEU AS price, 
-                goods.OstPARNU AS rest, goods.brand, 
-                goods.${name} AS name, 
+                goods.OstPARNU AS inStockCount, 
                 par.featurevalue AS src 
                 FROM goods INNER JOIN par ON goods.tovar = par.tovar 
                 WHERE goods.subr=${id} AND goods.avail<>0 AND par.featurename LIKE 'pic%'
@@ -26,10 +27,6 @@ class navService {
             )
         ).recordset;
 
-        //Collect the first records by id
-        //Delete featurename
-        //Create inStock
-        //Check src for URL otherwise create URL
         const filteredData = goodsFilter(data);
 
         return filteredData;
@@ -41,13 +38,25 @@ class navService {
 
         const data = (
             await sql.query(
-                `SELECT subr AS parentId, ${name} AS name, marka AS code, brand, priceEU AS price, ostParnu AS inStockCount FROM goods WHERE tovar = ${id}`
+                `SELECT 
+                goods.tovar AS id,
+                goods.subr AS parentId, 
+                goods.${name} AS name, 
+                goods.marka AS code, 
+                goods.brand, 
+                goods.priceEU AS price, 
+                goods.ostParnu AS inStockCount,
+                par.featurevalue AS src 
+                FROM goods INNER JOIN par ON goods.tovar = par.tovar
+                WHERE goods.tovar = ${id} AND par.featurename LIKE 'pic%'
+                ORDER BY par.featurename`
             )
-        ).recordset[0];
+        ).recordset;
 
-        data.brandLogo = `${process.env.BRAND_IMG_URL}/${data.brand}.gif`;
+        data[0].brandLogo = `${process.env.BRAND_IMG_URL}/${data[0].brand}.gif`;
+        const filteredData = goodsFilter(data);
 
-        return data;
+        return filteredData[0];
     }
 
     async navTree({ lang }) {
@@ -56,7 +65,16 @@ class navService {
 
         let data = (
             await sql.query(
-                `SELECT DISTINCT nav.id, nav.parentid, nav.${name} AS name, nav.name AS alterName, goods.brand FROM nav LEFT JOIN goods ON (goods.subr = nav.id AND goods.avail<>0) WHERE (nav.id IN (SELECT DISTINCT subr FROM goods WHERE avail<>0) OR nav.id IN (SELECT DISTINCT parentid FROM nav1 WHERE id IN (SELECT DISTINCT subr FROM goods WHERE avail<>0)))`
+                `SELECT DISTINCT
+                nav.id, 
+                nav.parentid, 
+                nav.${name} AS name, 
+                nav.name AS alterName, 
+                goods.brand 
+                FROM nav LEFT JOIN goods ON (goods.subr = nav.id AND goods.avail<>0)
+                WHERE (nav.id IN (SELECT DISTINCT subr FROM goods WHERE avail<>0) 
+                OR nav.id IN (SELECT DISTINCT parentid 
+                FROM nav WHERE id IN (SELECT DISTINCT subr FROM goods WHERE avail<>0)))`
             )
         ).recordset;
 
@@ -66,7 +84,7 @@ class navService {
         //Build the hierarchy
         const tree = buildHierarchy(data);
 
-        //Formatting brands and sort by name
+        //Formatting brands and sort by name and creating src
         formattingBrands(tree);
 
         return tree;

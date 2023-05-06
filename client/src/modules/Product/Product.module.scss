@@ -1,0 +1,138 @@
+@import '../../styles/index.scss';
+
+.productContainer {
+    width: 60%;
+    margin-bottom: 100px;
+    margin-inline: auto;
+    display: flex;
+    border-radius: 1vh;
+
+    .swiper {
+        width: 50%;
+        aspect-ratio: 1/1;
+        position: relative;
+        margin-right: 20px;
+        padding: 1vh;
+        border-radius: 1vh;
+
+        .fullScreenImg {
+            @include hover;
+            position: absolute;
+            right: 0;
+            width: 30px;
+            z-index: 5;
+            filter: $blueFilter;
+        }
+
+        .singleSwiper {
+            margin-bottom: 1vh;
+            height: 100%;
+            border-radius: 1vh;
+        }
+
+        .topSwiper {
+            margin-bottom: 1vh;
+            height: 77%;
+            border-radius: 1vh;
+
+            width: 100%;
+        }
+
+        .swiperSlide {
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .bottomSwiper {
+            height: 20%;
+            border-radius: 1vh;
+
+            .swiperSlide {
+                opacity: 0.4;
+                border-radius: 1vh;
+                cursor: pointer;
+
+                &:nth-child(1) {
+                    margin-left: 0;
+                }
+            }
+
+            img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 1vh;
+            }
+        }
+    }
+
+    .description {
+        @include columnBetweenNormal;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        padding: 5px;
+
+        .menu {
+            @include flexBetweenCenter;
+            margin-top: 20px;
+
+            border-radius: 1vh;
+            padding: 5px;
+
+            &Price {
+                @include fontDesktopL($blue);
+            }
+        }
+
+        &Name {
+            @include fontDesktopXM($blue);
+            margin-bottom: 20px;
+
+            padding: 5px;
+            border-radius: 1vh;
+        }
+
+        &Brand {
+            @include flexBetweenCenter;
+            padding: 5px;
+            border-radius: 1vh;
+
+            img {
+                max-height: 40px;
+            }
+        }
+
+        &Detail {
+            padding: 5px;
+            border-radius: 1vh;
+        }
+
+        &Item {
+            @include fontDesktopM($blue);
+            display: flex;
+            gap: 10px;
+        }
+
+        .itemTitle {
+            @include fontDesktopM($blue);
+        }
+    }
+}
+
+.infoContainer {
+    .infoTitle {
+        @include fontDesktopXL($blue);
+        @include flexCenterCenter;
+
+        margin-bottom: 20px;
+    }
+
+    width: 60%;
+    margin-inline: auto;
+}

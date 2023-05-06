@@ -232,7 +232,7 @@
                 @include fontDesktopS($white);
                 padding-left: 1vw;
                 gap: 1.5vw;
-                max-width: $widthRight - 1vw;
+                max-width: calc($widthRight - $marginRight - 1vw);
                 overflow: scroll;
 
                 .breadcrumbsItem {
