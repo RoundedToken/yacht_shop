@@ -1,6 +1,6 @@
 import { sortByType } from '../../../helpers/sortByType';
 import { IFavoritesSorting } from '../../../models/interfaces/slices/ISideBarState';
-import { IWebCartProductListRes } from './../../../models/interfaces/RTKQuery/IWebCartProductList';
+import { IWebCartProductListRes } from '../../../models/interfaces/RTKQuery/IWebCartProductList';
 
 export function favoritesSort(
     favoritesList: IWebCartProductListRes[],

@@ -1,1 +1,1 @@
-export type TCartSorting = 'name' | 'count' | 'price' | 'sum';
+export type TCartSorting = 'name' | 'sum';

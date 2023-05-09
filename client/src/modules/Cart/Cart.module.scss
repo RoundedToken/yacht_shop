@@ -4,74 +4,15 @@
     min-height: inherit;
 }
 .cart {
-    // @include columnBetweenNormal;
     @include columnCenterCenter;
     min-height: inherit;
     height: 100%;
     gap: 5vw;
 
-    a {
-        color: $blue;
-    }
-
-    .productList {
-        @include fontDesktopXM($blue);
-        border-spacing: 0 1vw;
-        position: relative;
-
-        hr {
-            border-width: 0;
-            height: 2px;
-            background-color: $hrColor;
-        }
-
-        thead {
-            z-index: 2;
-            position: sticky;
-            top: $hightHeader - $hightHeaderNameTop;
-            background-color: $white;
-        }
-
-        th {
-            @include fontDesktopL($blue);
-            white-space: nowrap;
-            padding-block: 1vw;
-            padding-inline: 2vw;
-        }
-
-        td {
-            vertical-align: middle;
-            text-align: center;
-        }
-
-        .productName {
-            @include flexStartCenter;
-
-            gap: 1vw;
-            width: 30vw;
-            text-align: start;
-            margin-inline: 3vw;
-
-            img {
-                width: 8vw;
-                height: 8vw;
-            }
-        }
-
-        .remove {
-            @include hover;
-            filter: $redFilter;
-            width: 2vw;
-        }
-
-        .productPrice,
-        .totalAmount {
-            text-align: center;
-        }
-
-        .productImg {
-            @include productImgInList;
-        }
+    .cardProductList {
+        @include columnCenterCenter;
+        gap: 10px;
+        width: 100%;
     }
 
     .cartSummary {

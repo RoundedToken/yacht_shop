@@ -1,4 +1,4 @@
-import { IWebCartProductListRes } from './../../../models/interfaces/RTKQuery/IWebCartProductList';
+import { IWebCartProductListRes } from '../../../models/interfaces/RTKQuery/IWebCartProductList';
 
 export function brandFilter(list: IWebCartProductListRes[], brands: string[]) {
     return list.filter((product) =>

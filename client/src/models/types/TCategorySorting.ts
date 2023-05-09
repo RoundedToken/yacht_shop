@@ -1,1 +1,1 @@
-export type TCategorySorting = 'name' | 'name';
+export type TCategorySorting = 'name';

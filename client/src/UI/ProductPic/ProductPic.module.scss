@@ -2,4 +2,19 @@
 
 .productPic {
     @include hover;
+
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+    &:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-image: url('../../assets/images/addToCart.png');
+        object-fit: fill;
+        z-index: 5;
+    }
 }

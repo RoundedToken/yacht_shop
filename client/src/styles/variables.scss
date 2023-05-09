@@ -3,21 +3,21 @@ $widthRight: 89vw;
 $widthLeft: 20vh;
 $widthImgDesktop: 2vw;
 
-/* HIGHTS */
-$hightHeader: 12.5vh;
-$hightHeaderNameTop: 1.7vh;
-$hightHeaderName: 5.3vh;
+/* heightS */
+$heightHeader: 12.5vh;
+$heightHeaderNameTop: 1.7vh;
+$heightHeaderName: 5.3vh;
 
 /* MARGINS */
 $marginRight: 4vh;
 
 /* BREAKPOINTS */
-$breakPointXL: 1200px;
 $breakPointL: 1000px;
-$breakPointM: 768px;
-$breakPointS: 480px;
+$breakPointM: 750px;
+$breakPointS: 500px;
 
 /* FONT_SIZE */
+$fontSizeDesktopProductName: 18px;
 $fontSizeDesktopXXL: 48px;
 $fontSizeDesktopXL: 36px;
 $fontSizeDesktopL: 25px;
@@ -27,6 +27,7 @@ $fontSizeDesktopS: 13px;
 $fontSizeDesktopXS: 12px;
 
 /* FONT_WEIGHT */
+$fontWeightDesktopProductName: 600;
 $fontWeightXXL: 900;
 $fontWeightXL: 800;
 $fontWeightL: 600;
@@ -53,6 +54,8 @@ $orderTrOdd: rgba(2, 32, 128, 0.2);
 $hrColor: rgba(2, 31, 128, 0.508);
 $cardBoxShadow: rgba(0, 42, 181, 0.545);
 $gray: #8888888d;
+$lightGray: rgb(236, 236, 236);
+$lightBlue: rgb(49, 71, 145);
 
 /* FILTERS */
 $blueFilter: invert(15%) sepia(49%) saturate(4274%) hue-rotate(221deg) brightness(81%)
@@ -68,3 +71,5 @@ $whiteFilter: invert(100%) sepia(100%) saturate(1%) hue-rotate(306deg) brightnes
 $waveFilter: invert(24%) sepia(8%) saturate(6092%) hue-rotate(194deg) brightness(95%) contrast(107%);
 $yellowFilter: invert(72%) sepia(53%) saturate(4727%) hue-rotate(360deg) brightness(104%)
     contrast(99%);
+$lightBlueFilter: invert(21%) sepia(86%) saturate(823%) hue-rotate(198deg) brightness(100%)
+    contrast(92%);

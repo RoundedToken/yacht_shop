@@ -38,6 +38,7 @@
             @include flexCenterCenter;
             @include hover;
             gap: 2px;
+            visibility: hidden;
 
             &[hidden] {
                 visibility: hidden;
@@ -49,67 +50,47 @@
         }
     }
 
-    .container {
+    .group {
+        @include flexCenterCenter;
         @include fontDesktopS($blue);
-        position: relative;
-        padding-left: 25px;
-        cursor: pointer;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        max-width: calc(100% - 25px - 1.5vh);
-        overflow-wrap: break-word;
-        margin-left: 0.5vh;
-        margin-right: 1vh;
+        margin-left: 5px;
+        gap: 5px;
 
-        input {
-            position: absolute;
-            opacity: 0;
+        .container {
+            display: flex;
+            position: relative;
             cursor: pointer;
-            height: 0;
-            width: 0;
-        }
-
-        .checkMark {
-            position: absolute;
-            top: 0;
-            left: 0;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
             height: 1.3em;
             width: 1.3em;
-            background-color: #e0e0e0;
+
+            input {
+                position: absolute;
+                opacity: 0;
+                height: 0;
+                width: 0;
+            }
+
+            .checkMark {
+                text-align: center;
+                height: 100%;
+                width: 100%;
+                background-color: #e0e0e0;
+            }
         }
-    }
-    .container:hover input ~ .checkMark {
-        background-color: #b5b5b5;
-    }
-    .container:hover input:checked ~ .checkMark {
-        background-color: $yellowDark;
-    }
+        .container:hover input ~ .checkMark {
+            background-color: #b5b5b5;
+        }
+        .container:hover input:checked ~ .checkMark {
+            background-color: $yellowDark;
+        }
 
-    .container input:checked ~ .checkMark {
-        background-color: $blue;
-    }
-
-    .checkMark:after {
-        content: '';
-        position: absolute;
-        display: none;
-    }
-
-    .container input:checked ~ .checkMark:after {
-        display: block;
-    }
-
-    .container .checkMark:after {
-        left: 5px;
-        top: 1px;
-        width: 5px;
-        height: 10px;
-        border: solid white;
-        border-width: 0 2px 2px 0;
-        -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-        transform: rotate(45deg);
+        .container input:checked ~ .checkMark {
+            background-color: $blue;
+            color: $white;
+        }
     }
 }

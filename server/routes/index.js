@@ -17,7 +17,9 @@ router.get('/web_search', webController.webSearch);
 async function dev() {
     try {
         const devController = (await import('../controllers/devController.js')).default;
+
         router.get('/get_last_sales', devController.getLastSales);
+        router.get('/get_pics', devController.getPics);
     } catch (error) {}
 }
 await dev();

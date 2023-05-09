@@ -2,72 +2,17 @@
 
 .productListContainer {
     @include flexCenterCenter;
+    width: 100%;
 
     .productListGrid {
         width: 100%;
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        row-gap: 4vh;
-        column-gap: 1vw;
+        grid-template-columns: 1fr 1fr;
+        row-gap: 10px;
+        column-gap: 10px;
 
-        .productContainer {
-            @include columnBetweenNormal;
-            box-shadow: 0px 3px 2px $cardBoxShadow;
-            border-radius: 2vw;
-
-            .topBlock {
-                display: flex;
-
-                .pictureBlock {
-                    @include flexCenterCenter;
-                    width: calc(25% - 2vw);
-                    padding-inline: 1vw;
-                    img {
-                        width: 100%;
-                    }
-                }
-
-                .descriptionBlock {
-                    @include columnStartStart;
-                    padding-inline: 1vw;
-                    padding-block: 1vh;
-                    width: calc(75% - 2vw);
-
-                    a {
-                        @include fontDesktopM($blue);
-                    }
-
-                    hr {
-                        border: 0;
-                        width: 100%;
-                        height: 1px;
-                        background-color: $hrColor;
-                    }
-
-                    .productCardDescription {
-                        @include flexCenterCenter;
-                        @include fontDesktopS($blue);
-                        gap: 1vw;
-                    }
-                }
-            }
-
-            .bottomBlock {
-                display: flex;
-
-                .productCardPrice {
-                    @include flexCenterCenter;
-                    @include fontDesktopXM($blue);
-                    width: 25%;
-                }
-
-                .productCardMenu {
-                    @include flexAroundCenter;
-                    padding-inline: 1vw;
-                    padding-block: 1vh;
-                    width: calc(75% - 2vw);
-                }
-            }
+        @media (max-width: 1250px) {
+            grid-template-columns: 1fr;
         }
     }
 
@@ -75,6 +20,12 @@
         @include fontDesktopM($blue);
         border-spacing: 0vw 0.5vw;
         position: relative;
+        background-color: $white;
+
+        .pic {
+            height: 100%;
+            position: relative;
+        }
 
         hr {
             border-width: 0;
@@ -90,7 +41,7 @@
         thead {
             z-index: 2;
             position: sticky;
-            top: $hightHeader - $hightHeaderNameTop;
+            top: $heightHeader - $heightHeaderNameTop;
             background-color: $white;
         }
         th {

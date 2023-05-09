@@ -3,25 +3,25 @@
 .header {
     z-index: $zIndexHeader;
     background-color: $white;
-    height: $hightHeader;
+    height: $heightHeader;
     width: 100%;
 
     .headerStatic {
-        height: $hightHeaderName + $hightHeaderNameTop;
+        height: $heightHeaderName + $heightHeaderNameTop;
 
         .headerLogo {
             @include flexCenterCenter;
             width: $widthLeft;
             img {
-                height: $hightHeader;
+                height: $heightHeader;
             }
         }
 
         .headerName {
             @include flexCenterCenter;
             @include fontDesktopXL($white);
-            height: $hightHeaderName;
-            top: $hightHeaderNameTop;
+            height: $heightHeaderName;
+            top: $heightHeaderNameTop;
             left: $widthLeft;
             width: calc(100% - $widthLeft - $marginRight);
             background-color: $yellow;
@@ -34,7 +34,7 @@
     .headerSticky {
         background-color: $white;
         width: 100%;
-        height: calc($hightHeader - (($hightHeaderName + $hightHeaderNameTop)));
+        height: calc($heightHeader - (($heightHeaderName + $heightHeaderNameTop)));
         float: left;
 
         .navBar {

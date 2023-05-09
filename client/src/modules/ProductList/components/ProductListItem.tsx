@@ -15,7 +15,9 @@ const ProductListItem: FC<IProductListItem> = ({ product, styles }) => {
             <HorizontalLine colSpan={8} />
             <tr>
                 <td className={styles.productName}>
-                    <ProductPic src={product.src} />
+                    <div className={styles.pic}>
+                        <ProductPic src={product.src} />
+                    </div>
 
                     <ProductName id={product.id} name={product.name} />
                 </td>

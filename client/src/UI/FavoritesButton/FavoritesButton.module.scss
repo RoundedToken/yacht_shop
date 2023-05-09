@@ -3,13 +3,13 @@
 .removeButton {
     @include hover;
     filter: $yellowFilter;
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
 }
 
 .addButton {
     @include hover;
     filter: $blueFilter;
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
 }

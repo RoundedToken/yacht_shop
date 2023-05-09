@@ -9,14 +9,6 @@ const CategorySorting: FC<ICategorySorting> = ({ styles }) => {
             <CategorySortingItem
                 styles={styles}
                 value="name"
-                sortType="ASC"
-                name={<Text rus="Название" eng="Name" est="Nimi" />}
-            />
-
-            <CategorySortingItem
-                styles={styles}
-                value="name"
-                sortType="DESC"
                 name={<Text rus="Название" eng="Name" est="Nimi" />}
             />
         </>

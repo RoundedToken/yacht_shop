@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
 import { IPicModal } from '../interfaces/IPicModal';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { FreeMode, Navigation, Thumbs, Zoom } from 'swiper';
+import { FreeMode, Navigation, Thumbs, Zoom, Mousewheel } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
@@ -23,8 +23,9 @@ const PicModal: FC<IPicModal> = ({ styles }) => {
                 loop={true}
                 navigation={true}
                 zoom={true}
+                mousewheel={true}
                 thumbs={{ swiper: thumbsSwiper }}
-                modules={[FreeMode, Navigation, Thumbs, Zoom]}
+                modules={[FreeMode, Navigation, Thumbs, Zoom, Mousewheel]}
                 className={picL === 1 ? styles.singleSwiper : styles.topSwiper}
             >
                 {picSrc.map((src) => (

@@ -5,9 +5,9 @@ import { webCartProductList } from '../../services/webCartProductList';
 import styles from './FavoritesList.module.scss';
 import { toFalseTheUpdate } from '../../redux/favoritesSlice';
 import FavoritesEmpty from './components/FavoritesEmpty';
-import TableFavoritesList from './components/TableFavoritesList';
+import FavoritesList from './components/FavoritesList';
 
-const FavoritesList = () => {
+const Favorites = () => {
     const favoritesIdList = useSelector((state: RootState) => state.favoritesSlice.favoritesList);
     const lang = useSelector((state: RootState) => state.langSlice.lang);
     const favoritesUpdate = useSelector((state: RootState) => state.favoritesSlice.update);
@@ -44,7 +44,7 @@ const FavoritesList = () => {
         <div className={styles.favoritesContainer}>
             {error && <h1>Error!</h1>}
             {data ? (
-                <TableFavoritesList styles={styles} brands={brands} data={data} />
+                <FavoritesList styles={styles} brands={brands} data={data} />
             ) : (
                 <FavoritesEmpty styles={styles} />
             )}
@@ -52,4 +52,4 @@ const FavoritesList = () => {
     );
 };
 
-export default FavoritesList;
+export default Favorites;

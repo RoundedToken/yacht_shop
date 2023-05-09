@@ -53,7 +53,8 @@ const Cart: FC<ICart> = () => {
             {error && <h1>Error!</h1>}
             {data && !isFetching && (
                 <div className={styles.cart}>
-                    <CartProductList data={data} productList={productList} styles={styles} />
+                    {/* <CartProductList data={data} productList={productList} styles={styles} /> */}
+                    <CartProductList styles={styles} data={data} productList={productList} />
                     <CartSummary styles={styles} />
                     <CartMenu styles={styles} />
                 </div>

@@ -1,4 +1,3 @@
-import { TSort } from './../../../models/types/TSort';
 import { TCategorySorting } from './../../../models/types/TCategorySorting';
 
 export interface ICategorySortingItem {
@@ -7,5 +6,4 @@ export interface ICategorySortingItem {
     };
     name: React.ReactNode;
     value: TCategorySorting;
-    sortType: TSort;
 }

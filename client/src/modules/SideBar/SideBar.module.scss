@@ -2,10 +2,14 @@
 
 .sideBar {
     position: absolute;
-    top: $hightHeader + $hightHeader - $hightHeaderName - $hightHeaderNameTop;
+    top: $heightHeader + $heightHeader - $heightHeaderName - $heightHeaderNameTop;
     width: $widthLeft;
-    height: 100vh - ($hightHeader + $hightHeader - $hightHeaderName - $hightHeaderNameTop) - 2vh;
+    height: 100vh - ($heightHeader + $heightHeader - $heightHeaderName - $heightHeaderNameTop) - 2vh;
     padding-top: 2vh;
+
+    @media (max-width: $breakPointL) {
+        display: none;
+    }
 
     .switchContainer {
         @include flexCenterCenter;

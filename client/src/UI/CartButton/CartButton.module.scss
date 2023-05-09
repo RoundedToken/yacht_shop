@@ -8,6 +8,10 @@
 
     img {
         width: 32px;
-        filter: $blueFilter;
+        filter: $lightBlueFilter;
+
+        // @media (max-width: $breakPointL) {
+        //     width: 24px;
+        // }
     }
 }

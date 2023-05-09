@@ -13,18 +13,13 @@ export function cartSort(
         const newB = data.find((item) => item.id === b.id) as IWebCartProductListRes;
         const key = sortRules.sortKey;
 
-        if (key === 'price') {
-            const numA = newA[key];
-            const numB = newB[key];
-
-            return sortByType(numA, numB, sortRules.sortType);
-        } else if (key === 'count') {
-            return sortByType(a.count, b.count, sortRules.sortType);
-        } else if (key === 'sum') {
+        if (key === 'sum') {
             const numA = a.count * a.price;
             const numB = b.count * b.price;
 
             return sortByType(numA, numB, sortRules.sortType);
-        } else return 0;
+        }
+
+        return sortByType(newA.name, newB.name, sortRules.sortType);
     });
 }

@@ -3,6 +3,15 @@
 .countControl {
     @include flexCenterCenter;
     width: min-content;
+    border: 2px solid $lightGray;
+    border-radius: 5px;
+    padding-inline: 5px;
+
+    .button {
+        @include flexCenterCenter;
+        width: 20px;
+        height: 20px;
+    }
 
     .item {
         @include flexCenterCenter;
@@ -13,15 +22,17 @@
     img {
         @include hover;
         filter: $blueFilter;
-        height: 100%;
+        width: 18px;
+        height: 18px;
     }
 
     input {
-        @include fontDesktopXM($blue);
+        @include fontDesktopM($blue);
         @include hover;
         text-align: center;
         cursor: pointer;
         width: 100%;
         height: 100%;
+        background-color: transparent;
     }
 }
