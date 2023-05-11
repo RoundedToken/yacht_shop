@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import starImg from '../../assets/images/star.png';
-import starFilledImg from '../../assets/images/starFilled.png';
+import starImg from '../../assets/images/buttonStar.svg';
+import starFilledImg from '../../assets/images/buttonStarFilled.svg';
 import { addFavoritesItem, removeFavoritesItem, toTrueTheUpdate } from '../../redux/favoritesSlice';
 import { RootState } from '../../redux/store';
 import { IFavoritesButton } from './IFavoritesButton';

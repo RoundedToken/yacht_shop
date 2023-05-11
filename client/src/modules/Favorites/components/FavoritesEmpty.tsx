@@ -2,8 +2,8 @@ import React, { FC } from 'react';
 import Text from '../../../UI/Text/Text';
 import ToCatalogButton from '../../../UI/ToCatalogButton/ToCatalogButton';
 import { IFavoritesEmpty } from '../interfaces/IFavoritesEmpty';
-import starImg from '../../../assets/images/star.png';
-import starFilledImg from '../../../assets/images/starFilled.png';
+import starImg from '../../../assets/images/buttonStar.svg';
+import starFilledImg from '../../../assets/images/buttonStarFilled.svg';
 import arrowImg from '../../../assets/images/arrow.png';
 
 const FavoritesEmpty: FC<IFavoritesEmpty> = ({ styles }) => {

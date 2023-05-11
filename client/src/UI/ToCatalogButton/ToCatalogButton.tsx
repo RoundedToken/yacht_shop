@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { routeConstants } from '../../models/enums/EConstants';
 import Text from '../Text/Text';
-import catalogImg from '../../assets/images/catalog.png';
+import catalogImg from '../../assets/images/catalog.svg';
 import styles from './ToCatalogButton.module.scss';
 
 const ToCatalogButton = () => {

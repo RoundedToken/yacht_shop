@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { TSearchQuery } from '../../../models/types/TSearchQuery';
 import { RootState } from '../../../redux/store';
 import { webSearchApi } from '../../../services/webSearch';
+import ProductCardSkeleton from '../../ProductCard/ProductCardSkeleton';
 import { ISearchProductList } from '../interfaces/ISearchProductList';
 import CardProductList from './CardProductList';
 import TableProductList from './TableProductList';
@@ -19,7 +20,15 @@ const SearchProductList: FC<ISearchProductList> = ({ styles, brands, lang }) => 
 
     return (
         <>
-            {isFetching && <h1>Loading...</h1>}
+            {isFetching && (
+                <div className={styles.productListGrid}>
+                    {Array(8)
+                        .fill(null)
+                        .map((_, i) => (
+                            <ProductCardSkeleton key={i} />
+                        ))}
+                </div>
+            )}
             {error && <h1>Error!</h1>}
             {!isFetching &&
                 productList &&

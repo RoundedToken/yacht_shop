@@ -26,7 +26,7 @@ function App() {
     //LocalStorage eventListener
     useEffect(() => {
         const takeFromStorage = () => {
-            dispatch(setCartFromStorage());
+            dispatch(setCartFromStorage(JSON.parse(localStorage.cartProductList)));
             dispatch(setFavoritesFromStorage());
         };
 

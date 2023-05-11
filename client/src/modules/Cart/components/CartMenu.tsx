@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { ICartMenu } from '../interfaces/ICartMenu';
 import { emptyCart } from '../../../redux/cartSlice';
-import trashImg from '../../../assets/images/trash.png';
+import trashImg from '../../../assets/images/clearCart.svg';
 import forwardArrowImg from '../../../assets/images/forwardArrow.png';
 import Text from '../../../UI/Text/Text';
 import { setModalType } from '../../../redux/modalSlice';

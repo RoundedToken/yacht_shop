@@ -1,5 +1,6 @@
-import React, { FC } from 'react';
-import { useSelector } from 'react-redux';
+import React, { FC, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { toFalseCartUpdate } from '../../../redux/cartSlice';
 import { RootState } from '../../../redux/store';
 import ProductCard from '../../ProductCard/ProductCard';
 import { cartListFilter } from '../helpers/cartListFilter';
@@ -7,12 +8,17 @@ import { cartSort } from '../helpers/cartSort';
 import { ICartProductList } from '../interfaces/ICartProductList';
 
 const CartProductList: FC<ICartProductList> = ({ styles, productList, data }) => {
+    const dispatch = useDispatch();
     const brands = useSelector((state: RootState) => state.sideBarSlice.cartBrands);
     const filters = useSelector((state: RootState) => state.sideBarSlice.cartListFilters);
     const favoritesList = useSelector((state: RootState) => state.favoritesSlice.favoritesList);
     const filteredList = cartListFilter(productList, brands, filters, favoritesList);
     const sortRules = useSelector((state: RootState) => state.sideBarSlice.cartSorting);
     const sortedList = cartSort(filteredList, data, sortRules);
+
+    useEffect(() => {
+        dispatch(toFalseCartUpdate());
+    }, [dispatch]);
 
     return (
         <div className={styles.cardProductList}>

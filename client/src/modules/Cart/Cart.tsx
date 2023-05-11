@@ -1,8 +1,8 @@
 import React, { FC, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { toFalseCartUpdate } from '../../redux/cartSlice';
+import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { webCartProductList } from '../../services/webCartProductList';
+import ProductCardSkeleton from '../ProductCard/ProductCardSkeleton';
 import styles from './Cart.module.scss';
 import CartMenu from './components/CartMenu';
 import CartProductList from './components/CartProductList';
@@ -15,7 +15,6 @@ const Cart: FC<ICart> = () => {
     const idList = productList.map((product) => product.id);
     const lang = useSelector((state: RootState) => state.langSlice.lang);
     const cartUpdate = useSelector((state: RootState) => state.cartSlice.update);
-    const dispatch = useDispatch();
     const [update, { data, isFetching, error }] =
         webCartProductList.useLazyFetchCartProductListQuery();
 
@@ -29,7 +28,6 @@ const Cart: FC<ICart> = () => {
     useEffect(() => {
         if (cartUpdate) {
             update({ idList, lang });
-            dispatch(toFalseCartUpdate());
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [cartUpdate]);
@@ -41,19 +39,23 @@ const Cart: FC<ICart> = () => {
             </div>
         );
 
-    return (
-        <div className={styles.cartContainer}>
-            {isFetching && (
-                <div className={styles.cart}>
+    if (isFetching) {
+        return (
+            <div className={styles.cart}>
+                <div className={styles.cardProductList}>
                     {idList.map((id) => (
-                        <h1 key={id}>Loading...</h1>
+                        <ProductCardSkeleton key={id} />
                     ))}
                 </div>
-            )}
+            </div>
+        );
+    }
+
+    return (
+        <div className={styles.cartContainer}>
             {error && <h1>Error!</h1>}
-            {data && !isFetching && (
+            {data && (
                 <div className={styles.cart}>
-                    {/* <CartProductList data={data} productList={productList} styles={styles} /> */}
                     <CartProductList styles={styles} data={data} productList={productList} />
                     <CartSummary styles={styles} />
                     <CartMenu styles={styles} />

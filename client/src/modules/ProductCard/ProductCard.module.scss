@@ -1,6 +1,13 @@
 @import '../../styles/index.scss';
 @import './variables.scss';
 
+.skeleton {
+    flex: 1;
+    width: 100%;
+    display: block;
+    line-height: 1;
+}
+
 .rootContainer {
     @include flexStartNormal;
     border-radius: 0 10px 10px 10px;
@@ -16,14 +23,19 @@
 
     @media (max-width: $breakPointS) {
         gap: $paddingDoubleS;
-        width: calc(100% - $paddingS * 2);
+        width: calc(100% - $paddingDoubleS * 2);
         height: $heightCardS;
-        padding-inline: $paddingS;
+        padding-inline: $paddingDoubleS;
         padding-top: $paddingDoubleS;
         padding-bottom: $paddingS;
     }
 
+    .skeleton {
+        flex: 1;
+    }
+
     .leftContainer {
+        display: flex;
         min-width: $heightCard;
         width: $heightCard;
         height: 100%;
@@ -68,11 +80,7 @@
             }
 
             .price {
-                // @include flexEndNormal;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                align-items: flex-end;
+                @include columnBetweenEnd;
                 color: $blue;
                 height: 100%;
 
@@ -92,6 +100,8 @@
 
                 &__single {
                     @include fontDesktopS(gray);
+                    width: 100%;
+                    text-align: end;
                 }
             }
         }
@@ -105,16 +115,24 @@
 
             @media (max-width: $breakPointS) {
                 display: grid;
-                grid-template-columns: 1fr 5fr;
-                gap: 2px;
+                grid-template-columns: auto auto;
+                row-gap: $paddingS;
+                column-gap: 0;
             }
 
             .details {
-                min-width: 115px;
-                height: 100%;
-
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                min-width: 170px;
+                height: 45px;
                 font-size: $fontSizeDetails;
                 font-weight: $fontWeightDetails;
+
+                @media (max-width: $breakPointS) {
+                    width: 100%;
+                    grid-column: 1/3;
+                }
 
                 &__item {
                     display: flex;
@@ -141,25 +159,45 @@
                 display: none;
 
                 @media (max-width: $breakPointS) {
-                    width: 100%;
-                    min-width: 100%;
+                    width: $heightCard;
                     display: block;
                     font-size: $fontSizePriceS;
                     font-weight: $fontWeightPriceS;
                     color: $blue;
-                    text-align: end;
                     height: 100%;
+                    margin-left: -$heightCard - $paddingDoubleS;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    text-align: center;
                 }
 
                 &__single {
                     @include fontDesktopS(gray);
+                    text-align: center;
+                }
+            }
+
+            .menuSkeleton {
+                display: flex;
+                height: 45px;
+                width: $menuWidth;
+
+                @media (max-width: $breakPointM) {
+                    width: $menuWidthM;
+                }
+
+                @media (max-width: $breakPointS) {
+                    width: $menuWidthM;
+                    height: 42px;
                 }
             }
 
             .menu {
-                @include flexBetweenEnd;
+                display: flex;
+                justify-content: flex-end;
+                gap: 22px;
                 height: 100%;
-
                 width: $menuWidth;
 
                 &__item {
@@ -171,11 +209,13 @@
                 }
 
                 @media (max-width: $breakPointS) {
-                    width: calc(100%);
-                    grid-column: 1 / 3;
-                    height: calc(100% - $paddingS * 2);
-                    border-top: 1px solid rgba(75, 106, 207, 0.433);
-                    padding-top: 6px;
+                    width: $menuWidthM;
+                    justify-self: flex-end;
+                    height: 42px;
+                }
+
+                .favoritesButton {
+                    padding-bottom: 3px;
                 }
             }
         }

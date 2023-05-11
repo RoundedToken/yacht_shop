@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import HeaderLang from './HeaderLang';
-import catalogImg from '../../../assets/images/catalog.png';
+import catalogImg from '../../../assets/images/catalog.svg';
 import ropeImg from '../../../assets/images/rope.png';
-import mapImg from '../../../assets/images/map.png';
-import starFilledImg from '../../../assets/images/starFilled.png';
+import contactsImg from '../../../assets/images/contacts.svg';
+import starFilledImg from '../../../assets/images/starFilled.svg';
 import { routeConstants } from '../../../models/enums/EConstants';
 import Text from '../../../UI/Text/Text';
 import HeaderNavListItem from './HeaderNavListItem';
@@ -49,7 +49,11 @@ const HeaderNavList: FC<IHeaderNavList> = ({ styles }) => {
                 <Text rus="Обжим тросов" eng="Rope crimping" est="Trossid krimpsutamine" />
             </HeaderNavListItem>
 
-            <HeaderNavListItem route={routeConstants.CONTACTS_ROUTE} src={mapImg} styles={styles}>
+            <HeaderNavListItem
+                route={routeConstants.CONTACTS_ROUTE}
+                src={contactsImg}
+                styles={styles}
+            >
                 <Text rus="Контакты" eng="Contacts" est="Kontaktid" />
             </HeaderNavListItem>
 

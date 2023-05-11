@@ -6,6 +6,7 @@ import styles from './FavoritesList.module.scss';
 import { toFalseTheUpdate } from '../../redux/favoritesSlice';
 import FavoritesEmpty from './components/FavoritesEmpty';
 import FavoritesList from './components/FavoritesList';
+import ProductCardSkeleton from '../ProductCard/ProductCardSkeleton';
 
 const Favorites = () => {
     const favoritesIdList = useSelector((state: RootState) => state.favoritesSlice.favoritesList);
@@ -34,9 +35,11 @@ const Favorites = () => {
     if (isFetching)
         return (
             <div className={styles.favoritesContainer}>
-                {favoritesIdList.map((id) => (
-                    <h1 key={id}>Loading...</h1>
-                ))}
+                <div className={styles.favoritesList}>
+                    {favoritesIdList.map((id) => (
+                        <ProductCardSkeleton key={id} />
+                    ))}
+                </div>
             </div>
         );
 

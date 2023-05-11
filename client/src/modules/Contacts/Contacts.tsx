@@ -3,7 +3,7 @@ import styles from './Contacts.module.scss';
 import GoogleMap from './components/GoogleMap';
 import shopImg from '../../assets/images/shop.jpg';
 import Text from '../../UI/Text/Text';
-import images from '../../assets/images/contacts.png';
+import images from '../../assets/images/contacts.svg';
 import mailImg from '../../assets/images/mail.png';
 import phoneImg from '../../assets/images/phone.png';
 import locationImg from '../../assets/images/location.png';

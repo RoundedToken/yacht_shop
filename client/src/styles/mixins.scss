@@ -44,6 +44,12 @@
     justify-content: space-around;
     align-items: center;
 }
+@mixin columnBetweenEnd {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
 @mixin columnStartStart {
     display: flex;
     flex-direction: column;

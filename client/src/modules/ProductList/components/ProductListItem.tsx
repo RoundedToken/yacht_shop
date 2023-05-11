@@ -7,7 +7,7 @@ import { eurFormatter } from '../../../helpers/eurFormatter';
 import ProductInStock from './ProductInStock';
 import ProductPic from '../../../UI/ProductPic/ProductPic';
 import ProductName from '../../../UI/ProductName/ProductName';
-import CartButton from '../../../UI/CartButton/ProductCart';
+import CartButton from '../../../UI/CartButton/CartButton';
 
 const ProductListItem: FC<IProductListItem> = ({ product, styles }) => {
     return (

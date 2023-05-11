@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import trashImg from '../../assets/images/trash.png';
-import addToCartImg from '../../assets/images/addToCart.png';
+import clearCartImg from '../../assets/images/clearCart.svg';
+import addToCartImg from '../../assets/images/addToCart.svg';
 import { ICartButton } from './IProductCart';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
@@ -21,7 +21,7 @@ const CartButton: FC<ICartButton> = ({ id, price, brand }) => {
 
     return cartProductList.find((cartProduct) => cartProduct.id === id) ? (
         <div className={styles.remove} onClick={() => removeFromCartOnClick(id)}>
-            <img src={trashImg} alt="" />
+            <img src={clearCartImg} alt="" />
         </div>
     ) : (
         <div className={styles.addToCart} onClick={() => addToCartOnClick(id, price, brand)}>

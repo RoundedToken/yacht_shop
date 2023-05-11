@@ -50,9 +50,9 @@ export const cartSlice = createSlice({
             localStorage.cartProductList = JSON.stringify(state.productList);
         },
 
-        setCartFromStorage(state) {
+        setCartFromStorage(state, action: PayloadAction<ICartProduct[]>) {
             if (localStorage.cartProductList) {
-                state.productList = JSON.parse(localStorage.cartProductList);
+                state.productList = action.payload;
                 state.update = localStorage.cartUpdate === 'true' ? true : false;
             }
         },

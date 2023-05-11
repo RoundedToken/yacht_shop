@@ -14,7 +14,7 @@ $marginRight: 4vh;
 /* BREAKPOINTS */
 $breakPointL: 1000px;
 $breakPointM: 750px;
-$breakPointS: 500px;
+$breakPointS: 550px;
 
 /* FONT_SIZE */
 $fontSizeDesktopProductName: 18px;
@@ -73,3 +73,5 @@ $yellowFilter: invert(72%) sepia(53%) saturate(4727%) hue-rotate(360deg) brightn
     contrast(99%);
 $lightBlueFilter: invert(21%) sepia(86%) saturate(823%) hue-rotate(198deg) brightness(100%)
     contrast(92%);
+$lightGrayFilter: invert(100%) sepia(0%) saturate(2651%) hue-rotate(340deg) brightness(117%)
+    contrast(85%);

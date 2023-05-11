@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { eurFormatter } from '../../../helpers/eurFormatter';
-import CartButton from '../../../UI/CartButton/ProductCart';
+import CartButton from '../../../UI/CartButton/CartButton';
 import CountControl from '../../../UI/CountControl/CountControl';
 import FavoritesButton from '../../../UI/FavoritesButton/FavoritesButton';
 import { IProductName } from '../interfaces/IProductName';
