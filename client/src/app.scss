@@ -47,62 +47,14 @@ body {
     }
 }
 
-.header {
-    width: 0 !important;
-    height: 0 !important;
-
-    + .sideBar {
-        position: fixed;
-        margin-top: -7vh;
-        height: 100% !important;
-    }
-
-    ~ .body {
-        padding-top: 14.6vh;
-    }
-
-    .headerSticky {
-        position: fixed;
-        top: 0;
-        width: 100% !important;
-        margin: 0 !important;
-        background-color: $yellow !important;
-        height: calc($heightHeader - (($heightHeaderName + $heightHeaderNameTop))) !important;
-
-        .cartCounter {
-            color: $yellow !important;
-        }
-
-        > .navBarTitle {
-            @include flexCenterCenter;
-            color: $blue;
-            font-size: $fontSizeDesktopL;
-            font-weight: $fontWeightXL;
-            transform: scale(1);
-            opacity: 1;
-            width: $widthLeft;
-            height: calc($heightHeader - (($heightHeaderName + $heightHeaderNameTop)));
-            visibility: visible;
-        }
-    }
-}
-
-.navBarTitle {
-    float: left;
-    visibility: hidden;
-    // width: $widthLeft;
-    width: 0;
-    height: 0;
-    transform: scale(0);
-    opacity: 0;
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-}
-
 .wrapper {
     @include columnStartStart;
+    position: relative;
     min-height: 100%;
     width: 100%;
+    max-width: 1440px;
     background-color: $lightGray;
+    margin-inline: auto;
 }
 
 //SWIPER

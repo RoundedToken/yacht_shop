@@ -1,4 +1,4 @@
-import { INavTreeItem } from './../../../models/interfaces/RTKQuery/INavTree';
+import { INavTreeItem } from '../../../models/interfaces/RTKQuery/INavTree';
 
 export interface ICategoryList {
     categoryChildren: INavTreeItem[];

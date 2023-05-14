@@ -1,11 +1,12 @@
 import React from 'react';
-import styles from './pages.module.scss';
+import { Navigate } from 'react-router-dom';
+import { routeConstants } from '../models/enums/EConstants';
 
 const MainPage = () => {
     return (
-        <div className={styles.container}>
-            <div>MainPage</div>
-        </div>
+        <>
+            <Navigate to={routeConstants.CATEGORIES_ROUTE} />
+        </>
     );
 };
 

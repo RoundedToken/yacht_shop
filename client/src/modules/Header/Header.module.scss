@@ -1,252 +1,386 @@
 @import '../../styles/index.scss';
+@import './variables.scss';
 
-.header {
-    z-index: $zIndexHeader;
-    background-color: $white;
-    height: $heightHeader;
-    width: 100%;
+.logo {
+    position: absolute;
+    z-index: 5;
+    top: 30px;
+    left: $_header_paddingDouble;
+    height: $_header_heightImg;
 
-    .headerStatic {
-        height: $heightHeaderName + $heightHeaderNameTop;
+    @media (max-width: $breakPointL) {
+        top: $_header_paddingL;
+        left: $_header_paddingDoubleL;
+        height: $_header_heightImgL;
+        top: 24px;
+    }
 
-        .headerLogo {
-            @include flexCenterCenter;
-            width: $widthLeft;
-            img {
-                height: $heightHeader;
+    @media (max-width: $breakPointM) {
+        display: none;
+    }
+}
+
+.topContainer {
+    display: flex;
+    padding-top: 30px;
+    padding-bottom: $_header_padding;
+    padding-left: $_header_paddingDouble * 3 + $_header_imgWidth;
+    padding-right: $_header_paddingDouble;
+    background-image: $headerGradient;
+    width: calc(100% - ($_header_paddingDouble * 4 + $_header_imgWidth));
+    height: calc($_header_heightImg * 0.83 - $_header_padding - 30px);
+
+    @media (max-width: $breakPointL) {
+        padding-top: 25px;
+        padding-bottom: $_header_paddingL;
+        padding-left: $_header_imgWidthL + $_header_paddingDoubleL * 2;
+        padding-right: $_header_paddingDoubleL;
+        height: calc($_header_heightImgL * 0.83 - $_header_paddingL - 25px);
+        width: calc(100% - ($_header_paddingDoubleL * 3 + $_header_imgWidthL));
+    }
+
+    @media (max-width: $breakPointM) {
+        @include flexBetweenCenter;
+        position: fixed;
+        top: 0;
+        z-index: 3;
+        opacity: 1 !important;
+        width: calc(100% - 60px);
+        height: 40px;
+        padding-block: 0;
+        background-image: none;
+        background-color: $aqua;
+        padding-inline: 30px;
+    }
+
+    @media (max-width: $breakPointS) {
+        padding-inline: 20px;
+        width: calc(100% - 40px);
+    }
+
+    ._mobileMenu {
+        display: none;
+
+        @media (max-width: $breakPointM) {
+            @include flexBetweenCenter;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            // padding-left: 70%;
+        }
+
+        @media (max-width: $breakPointS) {
+            // padding-left: 60%;
+        }
+
+        .pageTitle {
+            display: flex;
+            font-size: 16px;
+            font-weight: 500;
+            color: $white;
+            margin-left: 10px;
+            width: 60%;
+
+            @media (max-width: $breakPointS) {
+                width: 50%;
             }
         }
 
-        .headerName {
-            @include flexCenterCenter;
-            @include fontDesktopXL($white);
-            height: $heightHeaderName;
-            top: $heightHeaderNameTop;
-            left: $widthLeft;
-            width: calc(100% - $widthLeft - $marginRight);
-            background-color: $yellow;
-            cursor: pointer;
+        .favicon {
             position: absolute;
-            border-radius: 5vw 5vw 0 0;
+            left: -15px;
+            cursor: pointer;
+
+            img {
+                height: 20px;
+                width: 20px;
+            }
+        }
+
+        ._mobileSearch {
+            filter: $yellowFilter;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+        }
+        ._mobileLang {
+            width: 29px;
+            height: 29px;
+            filter: $blueFilter;
+            cursor: pointer;
+        }
+        ._mobileContacts {
+            width: 27px;
+            height: 27px;
+            filter: $blueFilter;
+            cursor: pointer;
         }
     }
 
-    .headerSticky {
-        background-color: $white;
-        width: 100%;
-        height: calc($heightHeader - (($heightHeaderName + $heightHeaderNameTop)));
-        float: left;
+    .name {
+        color: $yellow;
+        font-size: $_header_fontSizeName;
+        font-weight: $_header_fontWeightName;
+        margin-left: 5px;
 
-        .navBar {
-            @include flexBetweenCenter;
-            width: calc(100% - $widthLeft - $marginRight);
-            height: 100%;
-            margin-left: $widthLeft;
+        @media (max-width: $breakPointL) {
+            font-size: $_header_fontSizeNameL;
+            font-weight: $_header_fontWeightNameL;
+        }
 
-            .catalogContainer {
+        @media (max-width: $breakPointM) {
+            display: none;
+        }
+
+        div {
+            padding-top: 10px;
+        }
+    }
+
+    .contacts {
+        display: flex;
+        margin-left: auto;
+
+        a {
+            display: flex;
+            color: $yellow;
+            padding-top: 12px;
+
+            @media (max-width: $breakPointL) {
+                font-size: 14px;
+            }
+
+            @media (max-width: $breakPointM) {
+                display: none;
+            }
+
+            img {
+                width: 28px;
+                height: 28px;
+                padding-top: 3px;
+                filter: $whiteFilter;
+
+                @media (max-width: $breakPointL) {
+                    width: 26px;
+                }
+
+                @media (max-width: $breakPointM) {
+                    width: 24px;
+                }
+            }
+        }
+    }
+
+    .lang {
+        margin-left: $_header_paddingDouble * 2;
+
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.2;
+        color: $white;
+
+        @media (max-width: $breakPointL) {
+            margin-left: $_header_paddingDoubleL * 2;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        @media (max-width: $breakPointM) {
+            display: none;
+        }
+
+        &__item {
+            cursor: pointer;
+        }
+
+        &__active {
+            color: $yellow;
+        }
+    }
+}
+
+.bottomContainer {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    padding-block: 5px;
+    background-color: $white;
+    padding-left: $_header_paddingDouble * 3 + $_header_imgWidth;
+    padding-right: $_header_paddingDouble + 5px;
+    width: calc(100% - ($_header_paddingDouble * 4 + $_header_imgWidth + 5px));
+    height: calc($_header_heightImg * 0.27 + 10px);
+
+    @media (max-width: $breakPointL) {
+        padding-bottom: $_header_paddingL;
+        padding-block: 4px;
+        height: calc($_header_heightImgL * 0.27 + 8px);
+        padding-left: $_header_paddingDoubleL + $_header_imgWidthL + $_header_paddingDoubleL;
+        padding-right: $_header_paddingDoubleL;
+        width: calc(100% - ($_header_paddingDoubleL * 3 + $_header_imgWidthL));
+    }
+
+    @media (max-width: $breakPointM) {
+        width: calc(100% - $_header_paddingDoubleM * 2);
+        position: fixed;
+        bottom: 0;
+        top: auto;
+        height: 65px;
+        padding-block: 3px;
+        padding-inline: $_header_paddingDoubleM;
+        background-color: $aqua !important;
+    }
+
+    .miniLogo {
+        display: none;
+        position: absolute;
+        height: 120px;
+        top: 13px;
+        left: 20px;
+        z-index: 500;
+        filter: $blueFilter;
+
+        @media (max-width: $breakPointL) {
+            left: 16px;
+            height: 100px;
+            top: 11px;
+        }
+
+        @media (max-width: $breakPointM) {
+            display: none !important;
+        }
+    }
+
+    .navBar {
+        @include flexBetweenCenter;
+        height: 100%;
+        position: relative;
+
+        img {
+            width: 25px;
+            height: 25px;
+            filter: $blueFilter;
+
+            @media (max-width: $breakPointM) {
+            }
+        }
+
+        &__item {
+            @include flexCenterCenter;
+            gap: 5px;
+
+            @media (max-width: $breakPointL) {
+                gap: 4px;
+            }
+
+            @media (max-width: $breakPointM) {
+                @include columnCenterCenter;
+                gap: 6px;
+            }
+
+            a {
                 @include flexCenterCenter;
-                position: relative;
+                color: $blue;
+                height: min-content;
+                font-size: 19px;
+                font-weight: 500;
+
+                @media (max-width: $breakPointL) {
+                    font-size: 17px;
+                    font-weight: 400;
+                }
+
+                @media (max-width: $breakPointM) {
+                    font-size: 15px;
+                }
+
+                @media (max-width: $breakPointS) {
+                    font-size: 14px;
+                    font-weight: 300;
+                }
+
+                div {
+                    height: min-content;
+                }
+            }
+        }
+
+        .catalog {
+            position: relative;
+            z-index: 5;
+
+            @media (max-width: $breakPointM) {
+                gap: 0;
+            }
+
+            input {
+                @include checkbox;
+
+                &:checked + img {
+                    filter: $yellowFilter;
+                }
             }
 
             .dropdownSwitcher {
                 @include flexCenterCenter;
-                @include hover;
-                position: relative;
                 cursor: pointer;
 
                 img {
-                    height: 29px;
-                    filter: $blueFilter;
+                    width: 26px;
+                    height: 26px;
                 }
 
-                input {
-                    position: absolute;
-                    opacity: 0;
-                    cursor: pointer;
-                    height: 0;
-                    width: 0;
+                @media (max-width: $breakPointL) {
+                    display: none;
                 }
             }
 
-            .categoryDropdown {
-                @include fontDesktopS($blue);
-                position: absolute;
-                top: 0;
-                left: 100%;
-                background-color: $yellow;
-                z-index: 6;
-                width: 18.4vw;
+            img {
+                width: 36px;
+                height: 36px;
 
-                .nestedDropdown {
-                    border: 0.2vw solid $blue;
-                    display: none;
-                    list-style-type: none;
-                    margin: 0;
-                    padding: 0;
-                    z-index: 6;
-                    width: 18vw;
-                    top: 0;
-                }
-
-                .nestedDropdown li {
-                    cursor: pointer;
-                    width: calc(100% - 0.4vw);
-                    padding-inline: 0.2vw;
-                    padding-block: 0.2vw;
-                    position: relative;
-                    z-index: 6;
-                    line-height: 1vw;
-                }
-
-                .nestedDropdown ul {
-                    left: calc(100% + 0.1vw);
-                    position: absolute;
-                    top: -0.2vw;
-                    background-color: $yellow;
-                    border: 0.2vw solid $blue;
-                    display: none;
-                    list-style-type: none;
-                    margin: 0;
-                    padding: 0;
-                    width: 18vw;
-                }
-
-                .nestedDropdown ul ul {
-                    left: calc(100% + 0.05vw);
-                    position: absolute;
-                    top: -0.2vw;
-                    width: 18vw;
-                }
-
-                .nestedDropdown li:hover {
-                    background-color: rgba(0, 0, 0, 0.23);
-                    > ul {
-                        display: block;
-                    }
-                    ul[hidden] {
-                        display: none;
-                        background-color: red;
-                    }
-                }
-            }
-
-            .navItem {
-                @include flexCenterCenter;
-                @include fontDesktopXM($blue);
-                @include hover;
-                gap: 4px;
-
-                .cartCounter {
-                    @include fontDesktopS($white);
-                    border-radius: 30%;
-                    background-color: $blue;
-                    padding-inline: 5px;
-                    padding-top: 1px;
-                    // margin-left: 2px;
-                }
-
-                img {
-                    height: 29px;
-                    filter: $blueFilter;
-                }
-            }
-
-            .headerLang {
-                @include flexCenterCenter;
-                position: relative;
-
-                img {
-                    height: 29px;
-                    filter: $blueFilter;
-                }
-
-                &:hover {
-                    .langOptions {
-                        @include columnStartStart;
-                    }
-
-                    .langUpArrow {
-                        display: block;
-                    }
-
-                    .langDownArrow {
-                        display: none;
-                    }
-                }
-
-                .langUpArrow {
-                    display: none;
-                }
-
-                .langSelect {
-                    @include fontDesktopXM($blue);
-
-                    .langOption {
-                        @include fontDesktopXM($blue);
-                        cursor: pointer;
-
-                        &[id='disabledLang'] {
-                            display: none;
-                        }
-                    }
-                }
-
-                .langOptions {
-                    display: none;
-                    position: absolute;
-                    background-color: $white;
+                @media (max-width: $breakPointM) {
+                    width: 31px;
+                    height: 31px;
                 }
             }
         }
 
-        .searchBar {
-            @include flexStartCenter;
-            background-color: $blue;
-            height: 100%;
-            width: 100%;
+        .cart {
+            .cartCounter {
+                @include fontDesktopS($white);
+                border-radius: 30%;
+                background-color: $lightBlue;
+                padding-inline: 5px;
+                padding-top: 1px;
+                margin-left: 3px;
+                font-weight: 500;
 
-            .historyMenu {
-                @include flexCenterCenter;
-                width: $widthLeft;
-                gap: 0.2vw;
+                @media (max-width: $breakPointM) {
+                    background-color: $blue;
+                }
+            }
+        }
+
+        .crimping {
+            img {
+                @media (max-width: $breakPointM) {
+                    height: 23px;
+                    width: 23px;
+                }
+            }
+        }
+
+        .activeRoute {
+            a {
+                // color: $yellow;
+                font-weight: 900;
 
                 img {
-                    @include hover;
-                    height: 30px;
-                    cursor: pointer;
-                    filter: $whiteFilter;
+                    // filter: $yellowFilter;
                 }
 
-                .loupeImg {
-                    margin-left: 0.5vw;
-                }
-            }
-
-            .pageTitle {
-                @include flexCenterCenter;
-                @include fontDesktopL($white);
-
-                width: calc(100% - $widthLeft);
-            }
-
-            .breadcrumbs {
-                @include flexStartCenter;
-                @include fontDesktopS($white);
-                padding-left: 1vw;
-                gap: 1.5vw;
-                max-width: calc($widthRight - $marginRight - 1vw);
-                overflow: scroll;
-
-                .breadcrumbsItem {
-                    @include flexCenterCenter;
-                    @include fontDesktopL($white);
-                    gap: 1.5vw;
-
-                    a {
-                        @include fontDesktopS($white);
-                        @include hover;
-                        white-space: nowrap;
-                    }
+                .cartCounter {
+                    // background-color: $yellow;
                 }
             }
         }

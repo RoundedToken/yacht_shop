@@ -1,17 +1,18 @@
 import React, { useEffect } from 'react';
 import Body from './modules/Body/Body';
 import Footer from './modules/Footer/Footer';
-import Header from './modules/Header/Header';
 import './App.scss';
 import { navTreeApi } from './services/navTree';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from './redux/store';
 import { clearCategoryList } from './redux/navSlice';
-import SideBar from './modules/SideBar/SideBar';
 import { setCartFromStorage } from './redux/cartSlice';
 import { setFavoritesFromStorage } from './redux/favoritesSlice';
 import ScrollToTop from './ScrollToTop';
 import Modal from './modules/Modal/Modal';
+import Header from './modules/Header/Header';
+import SearchBar from './modules/SearchBar/SearchBar';
+import MobileModal from './modules/MobileModal/MobileModal';
 
 function App() {
     const lang = useSelector((state: RootState) => state.langSlice.lang);
@@ -47,13 +48,15 @@ function App() {
 
                     <Header />
 
-                    <SideBar />
+                    <SearchBar />
 
                     <Body />
 
                     <Footer />
 
                     <Modal />
+
+                    <MobileModal />
                 </div>
             )}
         </div>

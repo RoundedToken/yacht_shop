@@ -1,0 +1,76 @@
+@import '../../styles/index.scss';
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 5000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.722); /* Black w/ opacity */
+    cursor: auto;
+
+    .modalContentContainer {
+        position: absolute;
+        bottom: 0;
+        background-color: $white;
+        margin-top: auto;
+        border: 1px solid #888;
+        border-radius: 20px 20px 0 0;
+        width: calc(100% - 40px);
+        overflow: scroll;
+        padding-inline: 20px;
+        padding-block: 20px;
+
+        .modalClose {
+            @include hover;
+            z-index: 2;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            filter: $yellowFilter;
+            width: 4vh;
+        }
+
+        .content {
+            color: $blue;
+
+            .modalTitle {
+                position: relative;
+                font-size: 24px;
+                font-weight: 800;
+                margin-bottom: 20px;
+                padding-left: 5px;
+            }
+
+            .itemsContainer {
+                display: flex;
+                flex-direction: column;
+
+                .item {
+                    @include hoverColor($yellow);
+                    font-size: 20px;
+                    font-weight: 300;
+                    cursor: pointer;
+                    border-top: 1px solid rgb(192, 192, 192);
+                    padding-block: 6px;
+                    padding-left: 5px;
+
+                    &:nth-child(1) {
+                        border: 0;
+                    }
+                }
+
+                input {
+                    border: 2px solid $lightGray;
+                    border-radius: 20px;
+                    height: 40px;
+                    padding-left: 20px;
+                    margin-bottom: 20px;
+                }
+            }
+        }
+    }
+}

@@ -128,10 +128,10 @@
     height: 40px;
 }
 
-@mixin active {
+@mixin activeColor($color) {
     cursor: pointer;
     &:active {
-        background-color: red;
+        color: $color;
     }
 }
 @mixin hover {
@@ -144,5 +144,17 @@
     cursor: pointer;
     &:hover {
         transform: scale(1.03);
+    }
+}
+@mixin checkbox {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+}
+@mixin hoverColor($color) {
+    cursor: pointer;
+    &:hover {
+        color: $color;
     }
 }

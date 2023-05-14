@@ -1,0 +1,123 @@
+@import '../../styles/index.scss';
+@import './variables.scss';
+
+.searchBar {
+    @include flexStartCenter;
+    position: sticky;
+    top: calc($_search_heightImg * 0.27 + 20px);
+    background-color: $aqua;
+    height: calc($_search_heightImg * 0.27 + 10px);
+    padding-block: 5px;
+    width: calc(100% - $_search_paddingDouble * 2);
+    padding-inline: $_search_paddingDouble;
+    z-index: 2;
+    gap: $_search_paddingDouble * 2;
+    box-shadow: 1px 1px 7px rgba(2, 31, 128, 0.792);
+
+    @media (max-width: $breakPointL) {
+        width: calc(100% - $_search_paddingDoubleL * 2);
+        padding-block: 4px;
+        height: calc($_search_heightImgL * 0.27 + 8px);
+        top: calc($_search_heightImgL * 0.27 + 16px);
+        padding-right: $_search_paddingDoubleL;
+        gap: 15px;
+        padding-left: 18px;
+    }
+
+    @media (max-width: $breakPointM) {
+        width: calc(100% - $_search_paddingDoubleM * 2);
+        padding-block: 3px;
+        height: calc($_search_heightImgM * 0.27 + 6px);
+        top: calc($_search_heightImgM * 0.27 + 20px);
+        padding-inline: $_search_paddingDoubleM;
+    }
+
+    @media (max-width: $breakPointM) {
+        display: none;
+    }
+
+    .searchContainer {
+        @include flexCenterCenter;
+        height: 100%;
+        position: relative;
+        min-width: $_search_imgWidth;
+
+        @media (max-width: $breakPointL) {
+            min-width: $_search_imgWidthL;
+        }
+
+        img {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            filter: $yellowFilter;
+            left: 2px;
+            cursor: pointer;
+
+            @media (max-width: $breakPointL) {
+                width: 24px;
+            }
+        }
+
+        input {
+            width: $_search_imgWidth - 15px - 33px;
+            height: 70%;
+            left: 0;
+            border-radius: 20px;
+            transition: 0.5s ease-in-out;
+            position: absolute;
+            padding-left: 33px;
+            padding-right: 10px;
+            color: $blue;
+
+            @media (max-width: $breakPointL) {
+                width: $_search_imgWidthL - 15px - 27px;
+                padding-left: 27px;
+            }
+
+            &:focus {
+                left: 50px;
+                width: 210px;
+                padding-inline: 10px;
+                position: absolute;
+
+                @media (max-width: $breakPointL) {
+                    left: 40px;
+                    width: 160px;
+                }
+            }
+        }
+    }
+
+    .pageTitle {
+        @include flexStartCenter;
+        @include fontDesktopL($white);
+
+        width: calc(100%);
+        margin-left: 5px;
+    }
+
+    .breadcrumbs {
+        @include flexStartCenter;
+        @include fontDesktopS($white);
+        gap: 7px;
+        max-width: calc(100%);
+        overflow: scroll;
+        margin-left: 5px;
+
+        .breadcrumbsItem {
+            @include flexCenterCenter;
+            @include fontDesktopXM($lightBlue);
+            gap: 7px;
+
+            a {
+                @include hoverColor($yellow);
+                @include activeColor($blue);
+                color: $lightBlue;
+                font-size: 14px;
+                font-weight: 500;
+                white-space: nowrap;
+            }
+        }
+    }
+}

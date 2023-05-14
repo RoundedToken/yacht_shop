@@ -1,0 +1,63 @@
+@import '../../styles/index.scss';
+
+.categoryDropdown {
+    @include fontDesktopS($blue);
+    position: absolute;
+    top: 0;
+    left: 100%;
+    background-color: $yellow;
+    z-index: 6;
+    width: 18.4vw;
+
+    .nestedDropdown {
+        border: 0.2vw solid $blue;
+        display: none;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        z-index: 6;
+        width: 18vw;
+        top: 0;
+    }
+
+    .nestedDropdown li {
+        cursor: pointer;
+        width: calc(100% - 0.4vw);
+        padding-inline: 0.2vw;
+        padding-block: 0.2vw;
+        position: relative;
+        z-index: 6;
+        line-height: 1vw;
+    }
+
+    .nestedDropdown ul {
+        left: calc(100% + 0.1vw);
+        position: absolute;
+        top: -0.2vw;
+        background-color: $yellow;
+        border: 0.2vw solid $blue;
+        display: none;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 18vw;
+    }
+
+    .nestedDropdown ul ul {
+        left: calc(100% + 0.05vw);
+        position: absolute;
+        top: -0.2vw;
+        width: 18vw;
+    }
+
+    .nestedDropdown li:hover {
+        background-color: rgba(0, 0, 0, 0.23);
+        > ul {
+            display: block;
+        }
+        ul[hidden] {
+            display: none;
+            background-color: red;
+        }
+    }
+}

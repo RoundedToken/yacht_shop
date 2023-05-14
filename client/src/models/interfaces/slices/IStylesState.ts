@@ -4,4 +4,5 @@ export interface IStylesState {
     brandsDisplay: 'none' | 'block';
     filterDisplay: 'none' | 'block';
     sortingDisplay: 'none' | 'flex';
+    mobileModalDisplay: 'none' | 'block';
 }

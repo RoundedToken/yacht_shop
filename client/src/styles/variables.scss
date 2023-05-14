@@ -1,16 +1,3 @@
-/* WIDTH */
-$widthRight: 89vw;
-$widthLeft: 20vh;
-$widthImgDesktop: 2vw;
-
-/* heightS */
-$heightHeader: 12.5vh;
-$heightHeaderNameTop: 1.7vh;
-$heightHeaderName: 5.3vh;
-
-/* MARGINS */
-$marginRight: 4vh;
-
 /* BREAKPOINTS */
 $breakPointL: 1000px;
 $breakPointM: 750px;
@@ -39,9 +26,6 @@ $fontWeightXS: 200;
 /* FONT_FAMILY */
 $fontFamilyRounded: 'Nunito', sans-serif;
 
-/* Z-INDEX */
-$zIndexHeader: 90;
-
 /* COLORS */
 $blue: rgb(2, 32, 128);
 $yellow: rgb(254, 153, 1);
@@ -56,11 +40,13 @@ $cardBoxShadow: rgba(0, 42, 181, 0.545);
 $gray: #8888888d;
 $lightGray: rgb(236, 236, 236);
 $lightBlue: rgb(49, 71, 145);
+$aqua: rgb(39, 172, 198);
 
 /* FILTERS */
 $blueFilter: invert(15%) sepia(49%) saturate(4274%) hue-rotate(221deg) brightness(81%)
     contrast(112%);
 $footerGradient: linear-gradient(to bottom, rgb(21, 58, 124), rgb(0, 21, 91));
+$headerGradient: linear-gradient(to top, rgb(2, 32, 128), rgb(64, 105, 240));
 $footerFilter: invert(100%) sepia(0%) saturate(2090%) hue-rotate(47deg) brightness(103%)
     contrast(105%) opacity(0.5);
 $redFilter: invert(52%) sepia(68%) saturate(4429%) hue-rotate(331deg) brightness(107%)
@@ -75,3 +61,4 @@ $lightBlueFilter: invert(21%) sepia(86%) saturate(823%) hue-rotate(198deg) brigh
     contrast(92%);
 $lightGrayFilter: invert(100%) sepia(0%) saturate(2651%) hue-rotate(340deg) brightness(117%)
     contrast(85%);
+$aquaFilter: invert(60%) sepia(32%) saturate(865%) hue-rotate(142deg) brightness(89%) contrast(102%);

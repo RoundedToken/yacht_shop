@@ -1,7 +1,7 @@
 import React from 'react';
 import Text from '../../UI/Text/Text';
 import styles from './Footer.module.scss';
-import contactsImg from '../../assets/images/contacts.svg';
+import whatsUpImg from '../../assets/images/whatsUp.png';
 import mailImg from '../../assets/images/mail.png';
 import phoneImg from '../../assets/images/phone.png';
 import locationImg from '../../assets/images/location.png';
@@ -35,7 +35,7 @@ const Footer = () => {
 
                     <div className={styles.item}>
                         <a href="https://wa.me/79854549470" target="_blank" rel="noreferrer">
-                            <img src={contactsImg} alt="" />
+                            <img src={whatsUpImg} alt="" />
                             <Text rus="Наш Whats'up" eng="Our Whats'up" est="Meie Whats'up" />
                         </a>
                     </div>

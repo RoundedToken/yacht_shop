@@ -1,12 +1,12 @@
 @import '../../styles/index.scss';
 
 .favoritesContainer {
-    @include columnCenterCenter;
+    @include columnStartStart;
     @include fontDesktopL($blue);
     min-height: inherit;
 
     .favoritesList {
-        @include columnCenterCenter;
+        @include columnStartStart;
         gap: 10px;
         width: 100%;
     }

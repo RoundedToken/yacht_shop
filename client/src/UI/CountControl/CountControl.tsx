@@ -33,8 +33,8 @@ const CountControl: FC<ICountControl> = ({ id }) => {
 
     return (
         <div className={styles.countControl}>
-            <div className={styles.button}>
-                <img src={minusImg} alt="" onClick={decrementOnClick} />
+            <div className={styles.button} onClick={decrementOnClick}>
+                &minus;
             </div>
 
             <div className={styles.item}>
@@ -47,8 +47,8 @@ const CountControl: FC<ICountControl> = ({ id }) => {
                 />
             </div>
 
-            <div className={styles.button}>
-                <img src={plusImg} alt="" onClick={incrementOnClick} />
+            <div className={styles.button} onClick={incrementOnClick}>
+                +
             </div>
         </div>
     );

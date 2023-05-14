@@ -5,7 +5,6 @@ import { switchModalDisplay } from '../../redux/stylesSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import OrderModal from './components/OrderModal';
-import SearchModal from './components/SearchModal';
 import PicModal from './components/PicModal';
 import { deleteResponse } from '../../redux/cartSlice';
 import { routeConstants } from '../../models/enums/EConstants';
@@ -60,8 +59,6 @@ const Modal = () => {
                 <img onClick={closeOnClick} className={styles.modalClose} src={closeImg} alt="" />
 
                 {modalType === 'order' && <OrderModal styles={styles} />}
-
-                {modalType === 'search' && <SearchModal styles={styles} />}
 
                 {modalType === 'pic' && <PicModal styles={styles} />}
             </div>

@@ -1,4 +1,4 @@
-import { INavTreeItem } from './../../../models/interfaces/RTKQuery/INavTree';
+import { INavTreeItem } from '../../../models/interfaces/RTKQuery/INavTree';
 
 const haveCommon = (validator: string[], subject: string[]) => {
     for (let brand of subject) {

@@ -5,12 +5,13 @@
     @include flexCenterCenter;
     position: fixed;
     writing-mode: vertical-lr;
-    height: 100%;
+    height: 85%;
     transform: rotate(-180deg);
-    top: 0px;
+    // top: 0px;
+    bottom: 0;
     opacity: 0.2;
     z-index: 1;
-    width: $widthLeft;
+    width: 100px;
 
     .ticker {
         height: 100%;
@@ -27,7 +28,7 @@
             width: 100%;
             height: 200%;
             position: absolute;
-            overflow-x: hidden;
+            overflow: hidden;
             animation: ticker 20s linear infinite;
             z-index: -1;
 

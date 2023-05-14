@@ -1,11 +1,10 @@
 @import '../../styles/index.scss';
 
 .sideBar {
-    position: absolute;
-    top: $heightHeader + $heightHeader - $heightHeaderName - $heightHeaderNameTop;
-    width: $widthLeft;
-    height: 100vh - ($heightHeader + $heightHeader - $heightHeaderName - $heightHeaderNameTop) - 2vh;
-    padding-top: 2vh;
+    position: sticky;
+    z-index: 1;
+    top: 113px;
+    width: 200px;
 
     @media (max-width: $breakPointL) {
         display: none;
@@ -19,6 +18,7 @@
         margin-left: 1vh;
         padding-block: 0.5vh;
         border-radius: 0.5vh;
+        margin-bottom: 20px;
 
         label {
             @include flexCenterCenter;

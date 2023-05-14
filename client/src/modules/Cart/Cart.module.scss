@@ -10,7 +10,7 @@
     gap: 5vw;
 
     .cardProductList {
-        @include columnCenterCenter;
+        @include columnStartStart;
         gap: 10px;
         width: 100%;
     }

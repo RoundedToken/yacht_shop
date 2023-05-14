@@ -7,6 +7,7 @@ const initialState: IStylesState = {
     brandsDisplay: 'none',
     filterDisplay: 'none',
     sortingDisplay: 'none',
+    mobileModalDisplay: 'none',
 };
 
 export const stylesSlice = createSlice({
@@ -34,6 +35,9 @@ export const stylesSlice = createSlice({
             state.brandsDisplay = 'none';
             state.filterDisplay = 'none';
         },
+        switchMobileModalDisplay(state) {
+            state.mobileModalDisplay = state.mobileModalDisplay === 'none' ? 'block' : 'none';
+        },
     },
 });
 
@@ -43,6 +47,7 @@ export const {
     switchBrandsDisplay,
     switchFilterDisplay,
     switchSortingDisplay,
+    switchMobileModalDisplay,
 } = stylesSlice.actions;
 
 export default stylesSlice.reducer;

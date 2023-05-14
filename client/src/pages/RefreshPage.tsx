@@ -8,7 +8,7 @@ const RefreshPage = () => {
         navigate(-1);
     }, [navigate]);
 
-    return <div>RefreshPage</div>;
+    return <>RefreshPage</>;
 };
 
 export default RefreshPage;

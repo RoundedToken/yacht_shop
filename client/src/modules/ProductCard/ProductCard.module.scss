@@ -12,22 +12,22 @@
     @include flexStartNormal;
     border-radius: 0 10px 10px 10px;
     background-color: $white;
-    max-width: $widthCardMax;
-    gap: $paddingDouble;
-    width: calc(100% - $padding - $paddingDouble);
-    height: $heightCard;
-    padding-left: $padding;
-    padding-right: $paddingDouble;
-    padding-block: $paddingDouble;
-    margin-inline: auto;
+    max-width: $_card_widthCardMax;
+    gap: $_card_paddingDouble;
+    width: calc(100% - $_card_padding - $_card_paddingDouble);
+    height: $_card_heightCard;
+    padding-left: $_card_padding;
+    padding-right: $_card_paddingDouble;
+    padding-block: $_card_paddingDouble;
+    // margin-inline: auto;
 
     @media (max-width: $breakPointS) {
-        gap: $paddingDoubleS;
-        width: calc(100% - $paddingDoubleS * 2);
-        height: $heightCardS;
-        padding-inline: $paddingDoubleS;
-        padding-top: $paddingDoubleS;
-        padding-bottom: $paddingS;
+        gap: $_card_paddingDoubleS;
+        width: calc(100% - $_card_paddingDoubleS * 2);
+        height: $_card_heightCardS;
+        padding-inline: $_card_paddingDoubleS;
+        padding-top: $_card_paddingDoubleS;
+        padding-bottom: $_card_paddingS;
     }
 
     .skeleton {
@@ -36,15 +36,15 @@
 
     .leftContainer {
         display: flex;
-        min-width: $heightCard;
-        width: $heightCard;
+        min-width: $_card_heightCard;
+        width: $_card_heightCard;
         height: 100%;
         position: relative;
 
         @media (max-width: $breakPointS) {
-            min-width: $heightCard;
-            width: $heightCard;
-            height: $heightCard;
+            min-width: $_card_heightCard;
+            width: $_card_heightCard;
+            height: $_card_heightCard;
         }
     }
 
@@ -54,9 +54,9 @@
 
         .topContainer {
             @include flexCenterCenter;
-            gap: $padding;
+            gap: $_card_padding;
             width: 100%;
-            height: calc($heightCard / 2 - $padding / 2);
+            height: calc($_card_heightCard / 2 - $_card_padding / 2);
 
             .name {
                 width: 100%;
@@ -64,18 +64,18 @@
                 color: $lightBlue;
 
                 line-height: 100%;
-                font-size: $fontSizeName;
-                font-weight: $fontWeightName;
+                font-size: $_card_fontSizeName;
+                font-weight: $_card_fontWeightName;
 
                 @media (max-width: $breakPointM) {
-                    font-size: $fontSizeNameM;
-                    font-weight: $fontWeightNameM;
+                    font-size: $_card_fontSizeNameM;
+                    font-weight: $_card_fontWeightNameM;
                 }
 
                 @media (max-width: $breakPointS) {
                     color: $blue;
-                    font-size: $fontSizeNameS;
-                    font-weight: $fontWeightNameS;
+                    font-size: $_card_fontSizeNameS;
+                    font-weight: $_card_fontWeightNameS;
                 }
             }
 
@@ -84,14 +84,14 @@
                 color: $blue;
                 height: 100%;
 
-                min-width: $widthCardPrice;
-                font-size: $fontSizePrice;
-                font-weight: $fontWeightPrice;
+                min-width: $_card_widthCardPrice;
+                font-size: $_card_fontSizePrice;
+                font-weight: $_card_fontWeightPrice;
 
                 @media (max-width: $breakPointM) {
-                    min-width: $widthCardPriceM;
-                    font-size: $fontSizePriceM;
-                    font-weight: $fontWeightPriceM;
+                    min-width: $_card_widthCardPriceM;
+                    font-size: $_card_fontSizePriceM;
+                    font-weight: $_card_fontWeightPriceM;
                 }
 
                 @media (max-width: $breakPointS) {
@@ -108,15 +108,15 @@
 
         .bottomContainer {
             @include flexBetweenCenter;
-            gap: $padding;
+            gap: $_card_padding;
             width: 100%;
-            height: calc($heightCard / 2 - $padding / 2);
-            margin-top: $padding;
+            height: calc($_card_heightCard / 2 - $_card_padding / 2);
+            margin-top: $_card_padding;
 
             @media (max-width: $breakPointS) {
                 display: grid;
                 grid-template-columns: auto auto;
-                row-gap: $paddingS;
+                row-gap: $_card_paddingS;
                 column-gap: 0;
             }
 
@@ -126,8 +126,8 @@
                 justify-content: space-between;
                 min-width: 170px;
                 height: 45px;
-                font-size: $fontSizeDetails;
-                font-weight: $fontWeightDetails;
+                font-size: $_card_fontSizeDetails;
+                font-weight: $_card_fontWeightDetails;
 
                 @media (max-width: $breakPointS) {
                     width: 100%;
@@ -136,7 +136,7 @@
 
                 &__item {
                     display: flex;
-                    gap: $padding;
+                    gap: $_card_padding;
 
                     &__title {
                         color: $lightBlue;
@@ -150,7 +150,7 @@
                 .brand,
                 .inStock {
                     .details__item__content {
-                        font-weight: $fontWeightBrand;
+                        font-weight: $_card_fontWeightBrand;
                     }
                 }
             }
@@ -159,13 +159,13 @@
                 display: none;
 
                 @media (max-width: $breakPointS) {
-                    width: $heightCard;
+                    width: $_card_heightCard;
                     display: block;
-                    font-size: $fontSizePriceS;
-                    font-weight: $fontWeightPriceS;
+                    font-size: $_card_fontSizePriceS;
+                    font-weight: $_card_fontWeightPriceS;
                     color: $blue;
                     height: 100%;
-                    margin-left: -$heightCard - $paddingDoubleS;
+                    margin-left: -$_card_heightCard - $_card_paddingDoubleS;
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
@@ -181,14 +181,14 @@
             .menuSkeleton {
                 display: flex;
                 height: 45px;
-                width: $menuWidth;
+                width: $_card_menuWidth;
 
                 @media (max-width: $breakPointM) {
-                    width: $menuWidthM;
+                    width: $_card_menuWidthM;
                 }
 
                 @media (max-width: $breakPointS) {
-                    width: $menuWidthM;
+                    width: $_card_menuWidthM;
                     height: 42px;
                 }
             }
@@ -198,18 +198,18 @@
                 justify-content: flex-end;
                 gap: 22px;
                 height: 100%;
-                width: $menuWidth;
+                width: $_card_menuWidth;
 
                 &__item {
                     @include flexStartEnd;
                 }
 
                 @media (max-width: $breakPointM) {
-                    width: $menuWidthM;
+                    width: $_card_menuWidthM;
                 }
 
                 @media (max-width: $breakPointS) {
-                    width: $menuWidthM;
+                    width: $_card_menuWidthM;
                     justify-self: flex-end;
                     height: 42px;
                 }

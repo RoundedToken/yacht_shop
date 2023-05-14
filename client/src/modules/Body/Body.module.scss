@@ -1,18 +1,29 @@
 @import '../../styles/index.scss';
+@import '../Header/variables.scss';
 
 .body {
-    width: calc(100% - $widthLeft - 2vw);
-    margin-top: $heightHeader - $heightHeaderName - $heightHeaderNameTop;
-    margin-bottom: 4vh;
-    margin-left: $widthLeft;
+    width: calc(100% - 20px);
     position: relative;
     z-index: 1;
-    min-height: 61vh;
-    padding-inline: 1vw;
-    padding-block: 2vh;
+    display: flex;
+    gap: 20px;
+    min-height: 60vh;
+    margin-bottom: 4vh;
+    margin-top: 1vh;
 
     @media (max-width: $breakPointL) {
-        width: calc(100% - 2vw);
         margin-left: 0;
+        gap: 0;
+    }
+
+    @media (max-width: $breakPointM) {
+        margin-top: 40px;
+    }
+
+    .sideBarContainer {
+    }
+
+    .contentContainer {
+        width: 100%;
     }
 }
