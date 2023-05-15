@@ -15,7 +15,7 @@
     box-shadow: 1px 1px 7px rgba(2, 31, 128, 0.792);
 
     @media (max-width: $breakPointL) {
-        width: calc(100% - $_search_paddingDoubleL * 2);
+        width: calc(100% - $_search_paddingDoubleL * 2 - 2px);
         padding-block: 4px;
         height: calc($_search_heightImgL * 0.27 + 8px);
         top: calc($_search_heightImgL * 0.27 + 16px);
@@ -91,7 +91,9 @@
 
     .pageTitle {
         @include flexStartCenter;
-        @include fontDesktopL($white);
+        font-size: 24px;
+        font-weight: 500;
+        color: $white;
 
         width: calc(100%);
         margin-left: 5px;
@@ -107,7 +109,8 @@
 
         .breadcrumbsItem {
             @include flexCenterCenter;
-            @include fontDesktopXM($lightBlue);
+            @include fontDesktopXS($lightBlue);
+
             gap: 7px;
 
             a {

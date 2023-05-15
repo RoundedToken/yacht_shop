@@ -15,7 +15,7 @@ const BreadcrumbsItem: FC<IBreadcrumbsItem> = ({ styles, id, name, hasChildren, 
             >
                 {name}
             </Link>
-            {isLast ? '' : '\u{25CF}'}
+            {isLast ? '\u{25BC}' : '\u{25CF}'}
         </div>
     );
 };

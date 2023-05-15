@@ -13,7 +13,10 @@ const CategoryItem: FC<ICategoryItem> = ({ id, children, hasChildren, styles, pa
                     : routeConstants.PRODUCT_LIST_ROUTE + `/${id}`
             }
         >
-            <img src={src} alt="" />
+            <div className={styles.imageContainer}>
+                <div className={styles.mask} />
+                <img src={src} alt="" />
+            </div>
             {children}
         </Link>
     );

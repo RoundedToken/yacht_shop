@@ -16,7 +16,7 @@ const PageTitle: FC<IPageTitle> = ({ styles }) => {
                 <Text rus="Главная" eng="Main" est="Avaleht" />
             )}
             {locationPath === routeConstants.CRIMPING_ROUTE && (
-                <Text rus="Обжим тросов" eng="Rope crimping" est="Trossid krimpsutamine" />
+                <Text rus="Обжим тросов" eng="Rope crimping" est="Trossi pressimine" />
             )}
             {locationPath === routeConstants.CONTACTS_ROUTE && (
                 <Text rus="Контакты" eng="Contacts" est="Kontaktid" />

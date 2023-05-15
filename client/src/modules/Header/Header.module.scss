@@ -78,11 +78,11 @@
             font-size: 16px;
             font-weight: 500;
             color: $white;
-            margin-left: 10px;
-            width: 60%;
+            margin-left: 20px;
+            width: 55%;
 
             @media (max-width: $breakPointS) {
-                width: 50%;
+                width: 45%;
             }
         }
 
@@ -259,13 +259,11 @@
             width: 25px;
             height: 25px;
             filter: $blueFilter;
-
-            @media (max-width: $breakPointM) {
-            }
         }
 
         &__item {
             @include flexCenterCenter;
+
             gap: 5px;
 
             @media (max-width: $breakPointL) {
@@ -357,6 +355,7 @@
 
                 @media (max-width: $breakPointM) {
                     background-color: $blue;
+                    color: $aqua;
                 }
             }
         }
@@ -364,6 +363,7 @@
         .crimping {
             img {
                 @media (max-width: $breakPointM) {
+                    margin-top: 3px;
                     height: 23px;
                     width: 23px;
                 }

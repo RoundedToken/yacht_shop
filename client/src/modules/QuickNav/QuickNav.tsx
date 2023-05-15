@@ -24,8 +24,7 @@ const QuickNav = () => {
 
             if (idAttribute) {
                 const idSplit = idAttribute.split('_');
-                if (idAttribute === 'catalog') navigate(routeConstants.CATEGORIES_ROUTE + '/0');
-                else if (idSplit[0] === 'navigate') {
+                if (idSplit[0] === 'navigate') {
                     navigate(
                         idSplit[1] === 'category'
                             ? routeConstants.CATEGORIES_ROUTE + `/${idSplit[2]}`

@@ -19,7 +19,7 @@ const NavBar: FC<INavBar> = ({ styles }) => {
                 src={ropeImg}
                 className={`${styles.navBar__item} ${styles.crimping}`}
             >
-                <Text rus="Обжим тросов" eng="Rope crimping" est="Trossid krimpsutamine" />
+                <Text rus="Обжим тросов" eng="Rope crimping" est="Trossi pressimine" />
             </NavBarItem>
 
             <NavBarItem

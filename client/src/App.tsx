@@ -13,6 +13,7 @@ import Modal from './modules/Modal/Modal';
 import Header from './modules/Header/Header';
 import SearchBar from './modules/SearchBar/SearchBar';
 import MobileModal from './modules/MobileModal/MobileModal';
+import AppLoading from './AppLoading';
 
 function App() {
     const lang = useSelector((state: RootState) => state.langSlice.lang);
@@ -40,7 +41,7 @@ function App() {
 
     return (
         <div className="App">
-            {isFetching && <h1>Loading...</h1>}
+            {isFetching && <AppLoading />}
             {error && <h1>`${JSON.stringify(error)}`</h1>}
             {isSuccess && !isFetching && (
                 <div className="wrapper">

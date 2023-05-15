@@ -19,7 +19,6 @@
     padding-left: $_card_padding;
     padding-right: $_card_paddingDouble;
     padding-block: $_card_paddingDouble;
-    // margin-inline: auto;
 
     @media (max-width: $breakPointS) {
         gap: $_card_paddingDoubleS;

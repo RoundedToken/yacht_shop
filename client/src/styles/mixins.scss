@@ -134,16 +134,37 @@
         color: $color;
     }
 }
+//HOVER
 @mixin hover {
-    cursor: pointer;
-    &:hover {
-        transform: scale(1.1);
+    @media (hover: hover) and (pointer: fine) {
+        cursor: pointer;
+        &:hover {
+            transform: scale(1.1);
+        }
     }
 }
 @mixin hoverMini {
-    cursor: pointer;
-    &:hover {
-        transform: scale(1.03);
+    @media (hover: hover) and (pointer: fine) {
+        cursor: pointer;
+        &:hover {
+            transform: scale(1.03);
+        }
+    }
+}
+@mixin hoverColor($color) {
+    @media (hover: hover) and (pointer: fine) {
+        cursor: pointer;
+        &:hover {
+            color: $color;
+        }
+    }
+}
+@mixin hoverFilter($filter) {
+    @media (hover: hover) and (pointer: fine) {
+        cursor: pointer;
+        &:hover {
+            filter: $filter;
+        }
     }
 }
 @mixin checkbox {
@@ -151,10 +172,4 @@
     opacity: 0;
     height: 0;
     width: 0;
-}
-@mixin hoverColor($color) {
-    cursor: pointer;
-    &:hover {
-        color: $color;
-    }
 }

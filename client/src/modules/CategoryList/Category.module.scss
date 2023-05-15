@@ -2,25 +2,58 @@
 
 .categoryListContainer {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    row-gap: 2vw;
-    column-gap: 2vw;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 10px;
+    column-gap: 10px;
+
+    @media (max-width: 1250px) {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: $breakPointM) {
+        grid-template-columns: 1fr;
+    }
 
     .categoryItem {
-        @include flexStartCenter;
-        @include fontDesktopXM($blue);
         @include hoverMini;
-
-        gap: 1vw;
-        border-radius: 1vh;
-        padding-block: 1vh;
+        @include flexStartCenter;
+        width: calc(100% - 2vw);
+        min-width: calc(100% - 2vw);
+        font-size: 17px;
+        font-weight: 800;
+        color: $blue;
+        gap: 20px;
+        border-radius: 0 20px 20px 20px;
+        padding-top: 10px;
+        padding-bottom: 15px;
         padding-inline: 1vw;
-        box-shadow: 0px 3px 2px $cardBoxShadow;
+        background-color: $white;
 
-        img {
-            border-radius: 1vh;
-            width: 160px;
-            height: 100px;
+        .imageContainer {
+            min-width: 120px;
+            width: 120px;
+            height: 120px;
+            position: relative;
+
+            .mask {
+                width: calc(100% - 32px);
+                height: calc(100% - 32px);
+                border: 16px solid $darkAqua;
+                box-shadow: 4px 4px 4px gray, 4px 4px 4px gray inset;
+                border-radius: 100%;
+                position: absolute;
+                z-index: 1;
+            }
+
+            img {
+                position: absolute;
+                width: calc(100% - 32px);
+                height: calc(100% - 32px);
+                top: 16px;
+                left: 16px;
+                border-radius: 100%;
+                object-fit: contain;
+            }
         }
     }
 }

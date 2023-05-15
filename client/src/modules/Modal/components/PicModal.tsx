@@ -41,8 +41,8 @@ const PicModal: FC<IPicModal> = ({ styles }) => {
                     //@ts-ignore
                     onSwiper={setThumbsSwiper}
                     loop={true}
-                    spaceBetween={10}
-                    slidesPerView={picL}
+                    slidesPerView={4}
+                    spaceBetween={20}
                     freeMode={true}
                     watchSlidesProgress={true}
                     modules={[FreeMode, Navigation, Thumbs]}
