@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { useLocation } from 'react-router-dom';
 import HistoryMenu from './components/SearchInput';
 import PageTitle from './components/PageTitle';

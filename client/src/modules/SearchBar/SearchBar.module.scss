@@ -12,7 +12,7 @@
     padding-inline: $_search_paddingDouble;
     z-index: 2;
     gap: $_search_paddingDouble * 2;
-    box-shadow: 1px 1px 7px rgba(2, 31, 128, 0.792);
+    box-shadow: 0px 1px 7px rgba(2, 31, 128, 0.792);
 
     @media (max-width: $breakPointL) {
         width: calc(100% - $_search_paddingDoubleL * 2 - 2px);
@@ -120,6 +120,15 @@
                 font-size: 14px;
                 font-weight: 500;
                 white-space: nowrap;
+            }
+
+            .symbol {
+                font-size: 18px;
+
+                &Last {
+                    justify-self: flex-end;
+                    align-self: flex-end;
+                }
             }
         }
     }

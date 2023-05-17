@@ -3,15 +3,11 @@
 .addToCart,
 .remove {
     @include flexCenterCenter;
-    @include hover;
+    @include hoverFilter($yellowFilter);
     width: min-content;
 
     img {
         width: 32px;
         filter: $lightBlueFilter;
-
-        // @media (max-width: $breakPointL) {
-        //     width: 24px;
-        // }
     }
 }

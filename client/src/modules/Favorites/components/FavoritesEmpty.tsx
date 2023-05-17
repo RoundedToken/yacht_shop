@@ -10,16 +10,20 @@ const FavoritesEmpty: FC<IFavoritesEmpty> = ({ styles }) => {
     return (
         <div className={styles.favoritesEmpty}>
             <Text
-                rus="У вас пока нет избранных товаров"
-                eng="You don't have any favorite products yet"
-                est="Teil pole veel lemmiktooteid"
+                rus="Вы еще не выбрали товары..."
+                eng="You haven't chosen any products yet..."
+                est="Te pole veel ühtegi toodet valinud..."
             />
-            <div className={styles.container}>
+
+            <span>
                 <Text
-                    rus="Вы можете добавить товары в избранное"
-                    eng="You can add items to your favorites"
-                    est="Saate lisada üksusi oma lemmikute hulka"
+                    rus="Добавьте товары в избранное"
+                    eng="Add products to your favorites"
+                    est="Lisage tooteid oma lemmikute hulka"
                 />
+            </span>
+
+            <div className={styles.imgContainer}>
                 <img className={styles.heart} src={starImg} alt="" />
                 <img className={styles.arrow} src={arrowImg} alt="" />
                 <img className={styles.heartFilled} src={starFilledImg} alt="" />

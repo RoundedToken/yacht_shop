@@ -5,7 +5,7 @@ const OrderListHeader = () => {
     return (
         <thead>
             <tr>
-                <th></th>
+                <th>№</th>
 
                 <th>
                     <Text rus="Товар" eng="Product" est="Toode" />
@@ -20,7 +20,7 @@ const OrderListHeader = () => {
                 </th>
 
                 <th>
-                    <Text rus="Кол-во" eng="Amount" est="Kogus" />
+                    <Text rus="К-во" eng="Amount" est="Kogus" />
                 </th>
 
                 <th>

@@ -1,4 +1,5 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useRef } from 'react';
+import { useInView } from 'react-intersection-observer';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { webCartProductList } from '../../services/webCartProductList';
@@ -12,11 +13,13 @@ import { ICart } from './interfaces/ICart';
 
 const Cart: FC<ICart> = () => {
     const productList = useSelector((state: RootState) => state.cartSlice.productList);
+    const fixedOrderRef = useRef<HTMLDivElement>(null);
     const idList = productList.map((product) => product.id);
     const lang = useSelector((state: RootState) => state.langSlice.lang);
     const cartUpdate = useSelector((state: RootState) => state.cartSlice.update);
     const [update, { data, isFetching, error }] =
         webCartProductList.useLazyFetchCartProductListQuery();
+    const { ref, inView } = useInView();
 
     //lang
     useEffect(() => {
@@ -31,6 +34,13 @@ const Cart: FC<ICart> = () => {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [cartUpdate]);
+
+    useEffect(() => {
+        if (fixedOrderRef.current) {
+            if (inView) fixedOrderRef.current.style.display = 'none';
+            else fixedOrderRef.current.style.display = 'flex';
+        }
+    }, [inView]);
 
     if (!idList || idList.length === 0)
         return (
@@ -57,8 +67,18 @@ const Cart: FC<ICart> = () => {
             {data && (
                 <div className={styles.cart}>
                     <CartProductList styles={styles} data={data} productList={productList} />
-                    <CartSummary styles={styles} />
-                    <CartMenu styles={styles} />
+
+                    <div ref={ref} className={styles.orderContainer}>
+                        <CartSummary styles={styles} />
+
+                        <CartMenu styles={styles} />
+                    </div>
+
+                    <div ref={fixedOrderRef} className={styles.fixedOrder}>
+                        <CartSummary styles={styles} />
+
+                        <CartMenu styles={styles} />
+                    </div>
                 </div>
             )}
         </div>

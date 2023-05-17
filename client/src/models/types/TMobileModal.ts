@@ -1,1 +1,1 @@
-export type TMobileModal = 'search' | 'lang' | null;
+export type TMobileModal = 'search' | 'lang' | 'breadcrumbs' | null;

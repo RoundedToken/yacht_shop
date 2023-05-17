@@ -1,63 +1,103 @@
 @import '../../styles/index.scss';
 
+.close {
+    width: 40px;
+    height: 40px;
+    background-color: rgb(215, 215, 215);
+    color: $yellow;
+    font-size: 38px;
+    line-height: 1;
+    font-weight: 700;
+    vertical-align: middle;
+    text-align: center;
+    z-index: 2;
+    text-shadow: 0 -1px 2px rgb(163, 162, 162);
+    cursor: pointer;
+    @include hoverColor($blue);
+}
+
 .categoryDropdown {
-    @include fontDesktopS($blue);
+    color: $blue;
+    font-size: 14px;
+    font-weight: 600;
     position: absolute;
-    top: 0;
-    left: 100%;
-    background-color: $yellow;
+    top: 40px;
+    left: 40px;
+    background-color: rgb(255, 170, 43);
     z-index: 6;
-    width: 18.4vw;
+    width: 250px;
+    border-radius: 0 10px 10px 10px;
 
     .nestedDropdown {
-        border: 0.2vw solid $blue;
-        display: none;
+        display: block;
         list-style-type: none;
         margin: 0;
         padding: 0;
+        padding-block: 10px;
         z-index: 6;
-        width: 18vw;
+        width: 100%;
         top: 0;
-    }
+        left: 0;
+        border-radius: 0 10px 10px 10px;
 
+        .symbol {
+            font-size: 11px;
+        }
+
+        .content {
+            line-height: 1;
+        }
+    }
     .nestedDropdown li {
+        display: flex;
+        gap: 5px;
         cursor: pointer;
-        width: calc(100% - 0.4vw);
-        padding-inline: 0.2vw;
-        padding-block: 0.2vw;
+        width: calc(100% - 15px);
+        padding-block: 2px;
         position: relative;
         z-index: 6;
-        line-height: 1vw;
+        padding-left: 10px;
+        padding-right: 5px;
     }
 
     .nestedDropdown ul {
-        left: calc(100% + 0.1vw);
+        left: calc(100%);
+        padding-block: 10px;
+        padding-left: 10px;
         position: absolute;
-        top: -0.2vw;
-        background-color: $yellow;
-        border: 0.2vw solid $blue;
+        top: -10px;
+        background-color: rgb(255, 170, 43);
+        border-radius: 0 10px 10px 10px;
         display: none;
         list-style-type: none;
         margin: 0;
-        padding: 0;
-        width: 18vw;
+        width: 230px;
+
+        li {
+            width: calc(100% - 5px);
+            padding-left: 0;
+        }
+
+        .symbol {
+            font-size: 15px;
+            line-height: 0.8;
+        }
     }
 
     .nestedDropdown ul ul {
-        left: calc(100% + 0.05vw);
+        left: calc(100%);
         position: absolute;
-        top: -0.2vw;
-        width: 18vw;
+        top: -10px;
+        width: 230px;
     }
 
     .nestedDropdown li:hover {
-        background-color: rgba(0, 0, 0, 0.23);
+        background-color: $yellow;
         > ul {
             display: block;
         }
         ul[hidden] {
             display: none;
-            background-color: red;
         }
     }
 }

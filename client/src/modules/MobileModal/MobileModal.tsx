@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import closeImg from '../../assets/images/close.png';
 import { RootState } from '../../redux/store';
 import { switchMobileModalDisplay } from '../../redux/stylesSlice';
+import BreadcrumbsModal from './components/BreadcrumbsModal';
 import LangModal from './components/LangModal';
 import SearchModal from './components/SearchModal';
 import styles from './MobileModal.module.scss';
@@ -39,6 +40,8 @@ const MobileModal = () => {
                 {modalType === 'lang' && <LangModal styles={styles} />}
 
                 {modalType === 'search' && <SearchModal styles={styles} />}
+
+                {modalType === 'breadcrumbs' && <BreadcrumbsModal styles={styles} />}
             </div>
         </div>
     );

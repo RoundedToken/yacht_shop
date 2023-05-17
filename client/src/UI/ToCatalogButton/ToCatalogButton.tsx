@@ -8,8 +8,10 @@ import styles from './ToCatalogButton.module.scss';
 const ToCatalogButton = () => {
     return (
         <Link to={routeConstants.CATEGORIES_ROUTE} className={styles.toCatalog}>
-            <img src={catalogImg} alt="" />
-            <Text rus="Перейти в каталог" eng="Go to catalog" est="Mine kataloogi" />
+            <div className={styles.imgContainer}>
+                <img src={catalogImg} alt="" />
+            </div>
+            <Text rus="К товарам" eng="To the goods" est="Kauba juurde" />
         </Link>
     );
 };

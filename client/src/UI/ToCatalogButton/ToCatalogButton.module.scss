@@ -1,13 +1,33 @@
 @import '../../styles/index.scss';
 
 .toCatalog {
-    @include flexCenterCenter;
+    @include columnCenterStart;
+    @include hoverMini;
     color: $blue;
-    gap: 1vw;
+    gap: 15px;
     cursor: pointer;
 
-    img {
-        width: 3vw;
-        filter: $blueFilter;
+    .imgContainer {
+        @include flexCenterCenter;
+        background-image: $yellowRadial;
+        width: 120px;
+        height: 120px;
+        border-radius: 100%;
+        box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.668);
+
+        img {
+            width: 60px;
+            filter: $blueFilter;
+        }
+    }
+
+    div {
+        line-clamp: 2;
+        white-space: pre;
+        text-align: center;
+        color: $gray;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 1;
     }
 }

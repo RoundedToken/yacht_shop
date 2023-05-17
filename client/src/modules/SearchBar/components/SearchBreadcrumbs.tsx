@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { FC, useEffect } from 'react';
+import Skeleton from 'react-loading-skeleton';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { RootState } from '../../../redux/store';
@@ -23,9 +24,10 @@ const SearchBreadcrumbs: FC<ISearchBreadcrumbs> = ({ styles }) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id]);
 
+    if (isFetching) return <Skeleton containerClassName="skeleton" />;
+
     return (
         <div className={styles.breadcrumbs}>
-            {isFetching && <h1>Loading...</h1>}
             {error && <h1>Error!</h1>}
             {!isFetching &&
                 category?.routes.map((route, i, arr) => (

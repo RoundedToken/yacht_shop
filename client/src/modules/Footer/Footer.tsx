@@ -2,7 +2,7 @@ import React from 'react';
 import Text from '../../UI/Text/Text';
 import styles from './Footer.module.scss';
 import whatsUpImg from '../../assets/images/whatsUp.png';
-import mailImg from '../../assets/images/mail.png';
+import mailImg from '../../assets/images/mail.svg';
 import phoneImg from '../../assets/images/phone.png';
 import locationImg from '../../assets/images/location.png';
 

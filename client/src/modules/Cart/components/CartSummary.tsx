@@ -13,20 +13,12 @@ const CartSummary: FC<ICartSummary> = ({ styles }) => {
     return (
         <div className={styles.cartSummary}>
             <div className={styles.totalCount}>
-                <Text
-                    rus="Количество товаров в корзине: "
-                    eng="Number of items in the cart: "
-                    est="Kaupade arv ostukorvis: "
-                />
+                <Text rus="Товары" eng="Products" est="Kaubad" />
                 &nbsp;
-                {totalCount}
+                <div className={styles.totalCountNumber}>{`(${totalCount})`}</div>
             </div>
 
-            <div className={styles.totalSum}>
-                <Text rus="Общая сумма: " eng="Total amount: " est="Kogu summa: " />
-                &nbsp;
-                {eurFormatter.format(totalSum)}
-            </div>
+            <div className={styles.totalSum}>{eurFormatter.format(totalSum)}</div>
         </div>
     );
 };

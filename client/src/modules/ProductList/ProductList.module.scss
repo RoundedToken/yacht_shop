@@ -7,11 +7,15 @@
     .productListGrid {
         width: 100%;
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
         row-gap: 10px;
         column-gap: 10px;
 
-        @media (max-width: 1250px) {
+        @media (max-width: 1950px) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @media (max-width: 1400px) {
             grid-template-columns: 1fr;
         }
     }

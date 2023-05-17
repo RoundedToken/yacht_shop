@@ -23,17 +23,23 @@ const EmptyCart: FC<IEmptyCart> = ({ styles }) => {
     return (
         <div className={styles.emptyCart}>
             <div className={styles.emptyCartTitle}>
-                <Text rus="Корзина пустая" eng="Cart is empty" est="Ostukorv on tühi" />
+                <Text
+                    rus="Ваша корзина пуста..."
+                    eng="Your cart is empty..."
+                    est="Teie ostukorv on tühi..."
+                />
             </div>
 
             <div className={styles.emptyCartMenu}>
                 {isCopy && (
                     <div className={styles.restoreCart} onClick={restoreCartOnClick}>
-                        <img src={restoreImg} alt="" />
+                        <div className={styles.restoreImg}>
+                            <img src={restoreImg} alt="" />
+                        </div>
                         <Text
-                            rus="Восстановить корзину"
-                            eng="Restore cart"
-                            est="Taasta ostukorvi"
+                            rus={`Восстановить\nкорзину`}
+                            eng={`Restore\ncart`}
+                            est={`Taasta\nostukorvi`}
                         />
                     </div>
                 )}

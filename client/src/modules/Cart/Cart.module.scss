@@ -4,10 +4,10 @@
     min-height: inherit;
 }
 .cart {
-    @include columnCenterCenter;
+    @include columnStartStart;
     min-height: inherit;
     height: 100%;
-    gap: 5vw;
+    gap: 40px;
 
     .cardProductList {
         @include columnStartStart;
@@ -15,37 +15,332 @@
         width: 100%;
     }
 
-    .cartSummary {
-        @include columnCenterCenter;
-        @include fontDesktopL($blue);
+    .orderContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        position: fixed;
+        top: 224px;
+        left: 1170px;
+        width: 250px;
+        border-radius: 10px 10px 10px 10px;
+        background-color: $white;
 
-        .totalCount,
-        .totalSum {
-            @include flexCenterCenter;
+        @media (max-width: 1439px) {
+            gap: 20px;
+            position: static;
+            width: 100%;
+            max-width: 930px;
+            height: 100%;
+            background-color: transparent;
+        }
+
+        .cartSummary {
+            @include columnCenterCenter;
+            color: $blue;
+            font-size: 22px;
+            gap: 14px;
+            margin-top: 20px;
+
+            @media (max-width: 1439px) {
+                flex-direction: row;
+                margin-top: 0;
+                gap: 80px;
+            }
+
+            .totalCount {
+                @include flexCenterCenter;
+
+                &Number {
+                    font-size: 19px;
+                }
+            }
+
+            .totalSum {
+                @include flexCenterCenter;
+                font-weight: 800;
+            }
+        }
+
+        .cartMenu {
+            @include columnCenterCenter;
+            width: 100%;
+            gap: 40px;
+            flex-direction: column-reverse;
+
+            @media (max-width: 1439px) {
+            }
+
+            .emptyTheCart {
+                @include flexCenterCenter;
+                border: 1px solid $gray;
+                border-radius: 20px;
+                width: 140px;
+                padding-inline: 20px;
+                height: 38px;
+                margin-bottom: 20px;
+                background-color: $white;
+                cursor: pointer;
+
+                @media (hover: hover) and (pointer: fine) {
+                    &:hover {
+                        background-color: $gray;
+
+                        div {
+                            color: $white;
+                        }
+                    }
+                }
+
+                &Img {
+                    @media (max-width: 1439px) {
+                        @include flexCenterCenter;
+                    }
+
+                    img {
+                        filter: $blueFilter;
+                        width: 32px;
+                    }
+                }
+
+                div {
+                    color: $gray;
+                    font-size: 16px;
+                    text-align: center;
+                    line-height: 0.9;
+                    font-weight: 600;
+                }
+            }
+
+            .checkout {
+                @include columnCenterStart;
+                @include hoverMini;
+                gap: 14px;
+                font-weight: 700;
+                cursor: pointer;
+
+                &Img {
+                    @include flexCenterCenter;
+                    background-image: $yellowRadial;
+                    width: 120px;
+                    height: 120px;
+                    border-radius: 100%;
+                    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.668);
+
+                    img {
+                        filter: $blueFilter;
+                        width: 54px;
+                    }
+                }
+
+                div {
+                    line-clamp: 2;
+                    white-space: pre;
+                    text-align: center;
+                    color: $gray;
+                    font-size: 20px;
+                    line-height: 1;
+                }
+            }
         }
     }
 
-    .cartMenu {
-        @include flexBetweenCenter;
-        @include fontDesktopL($blue);
-        width: 100%;
+    .fixedOrder {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: calc(100vw - 60px);
+        height: 70px;
+        background-color: rgb(221, 252, 252);
+        z-index: 5;
+        box-shadow: 0px -1px 7px rgba(128, 128, 128, 0.613);
+        padding-inline: 30px;
 
-        img {
-            filter: $blueFilter;
-            width: 3vw;
+        @media (max-width: 1439px) {
+            display: flex;
         }
 
-        .emptyTheCart,
-        .checkout {
-            @include hover;
+        @media (max-width: $breakPointL) {
+            width: calc(100% - 40px);
+            padding-inline: 20px;
+        }
+
+        @media (max-width: $breakPointM) {
+            bottom: 71px;
+            height: 40px;
+            width: calc(100% - 45px);
+            padding-right: 25px;
+        }
+
+        @media (max-width: $breakPointS) {
+            width: calc(100% - 20px);
+            padding-inline: 10px;
+        }
+
+        .cartSummary {
             @include flexCenterCenter;
-            gap: 1vw;
+            @include fontDesktopL($blue);
+            gap: 62px;
+
+            @media (max-width: $breakPointL) {
+                gap: 40px;
+            }
+
+            @media (max-width: $breakPointS) {
+                flex-direction: row-reverse;
+                gap: 15px;
+            }
+
+            .totalCount {
+                @include flexCenterCenter;
+                font-size: 22px;
+
+                @media (max-width: $breakPointL) {
+                    font-size: 20px;
+                }
+
+                @media (max-width: $breakPointM) {
+                    font-size: 18px;
+                }
+
+                @media (max-width: $breakPointS) {
+                    font-size: 14px;
+                    color: $gray;
+                }
+            }
+
+            .totalSum {
+                @include flexCenterCenter;
+                font-size: 26px;
+                font-weight: 800;
+
+                @media (max-width: $breakPointL) {
+                    font-size: 24px;
+                }
+
+                @media (max-width: $breakPointM) {
+                    font-size: 22px;
+                }
+
+                @media (max-width: $breakPointS) {
+                    font-size: 19px;
+                }
+            }
+        }
+
+        .cartMenu {
+            @include flexCenterCenter;
+            justify-content: flex-end;
+            gap: 40px;
+            width: 100%;
+
+            @media (max-width: $breakPointL) {
+                gap: 20px;
+            }
+
+            @media (max-width: $breakPointM) {
+                gap: 30px;
+            }
+
+            @media (max-width: $breakPointS) {
+                gap: 10px;
+            }
+
+            img {
+                filter: $blueFilter;
+                width: 3vw;
+            }
+
+            .emptyTheCart {
+                @include flexCenterCenter;
+                border: 1px solid $gray;
+                height: 38px;
+                border-radius: 20px;
+                width: 140px;
+                padding-inline: 20px;
+                background-color: $white;
+                cursor: pointer;
+                gap: 4px;
+
+                @media (hover: hover) and (pointer: fine) {
+                    &:hover {
+                        background-color: $gray;
+
+                        div {
+                            color: $white;
+                        }
+                    }
+                }
+
+                @media (max-width: $breakPointM) {
+                    width: 20px;
+                    background-color: $gray;
+                    border-color: $gray;
+                }
+
+                img {
+                    width: 32px;
+                }
+
+                div:last-child {
+                    color: $gray;
+                    font-size: 16px;
+                    text-align: center;
+                    line-height: 0.9;
+                    font-weight: 600;
+                    @media (max-width: $breakPointM) {
+                        display: none;
+                    }
+                }
+            }
+
+            .checkout {
+                @include flexCenterCenter;
+                border: 1px solid $yellowLight;
+                height: 38px;
+                border-radius: 20px;
+                width: 140px;
+                padding-inline: 20px;
+                cursor: pointer;
+                background-color: $yellowLight;
+                gap: 4px;
+
+                @media (hover: hover) and (pointer: fine) {
+                    &:hover {
+                        background-color: $yellow;
+                    }
+                }
+
+                @media (max-width: $breakPointM) {
+                    width: 20px;
+                    border-color: $yellow;
+                    border-color: $yellowLight;
+                }
+
+                img {
+                    width: 30px;
+                }
+
+                div:last-child {
+                    color: $blue;
+                    font-size: 16px;
+                    text-align: center;
+                    line-height: 0.9;
+                    font-weight: 600;
+                    @media (max-width: $breakPointM) {
+                        display: none;
+                    }
+                }
+            }
         }
     }
 
     .emptyCart {
         @include columnCenterCenter;
-        gap: 15vw;
+        width: 100%;
+        gap: 80px;
+        margin-top: 40px;
 
         img {
             width: 3vw;
@@ -53,18 +348,49 @@
         }
 
         .emptyCartTitle {
-            @include fontDesktopXXL($blue);
+            color: $blue;
+            font-size: 35px;
+            font-weight: 700;
+            margin-left: 30px;
+
+            @media (max-width: $breakPointS) {
+                font-size: 30px;
+                margin-left: 15px;
+            }
         }
 
         .emptyCartMenu {
-            @include flexCenterCenter;
-            @include fontDesktopL($blue);
-            gap: 30vw;
+            display: flex;
+            gap: 50px;
 
             .restoreCart {
-                @include flexCenterCenter;
-                gap: 1vw;
+                @include columnCenterStart;
+                @include hoverMini;
+                gap: 15px;
+                font-weight: 700;
                 cursor: pointer;
+
+                .restoreImg {
+                    @include flexCenterCenter;
+                    background-image: $yellowRadial;
+                    width: 120px;
+                    height: 120px;
+                    border-radius: 100%;
+                    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.668);
+
+                    img {
+                        width: 54px;
+                    }
+                }
+
+                div {
+                    line-clamp: 2;
+                    white-space: pre;
+                    text-align: center;
+                    color: $gray;
+                    font-size: 18px;
+                    line-height: 1;
+                }
             }
         }
     }

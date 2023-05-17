@@ -1,11 +1,23 @@
 import React, { FC } from 'react';
+import { useDispatch } from 'react-redux';
+import { deleteResponse } from '../../../redux/cartSlice';
+import { switchModalDisplay } from '../../../redux/stylesSlice';
 import Text from '../../../UI/Text/Text';
+import ToCatalogButton from '../../../UI/ToCatalogButton/ToCatalogButton';
 import { IResponse } from '../interfaces/IResponse';
 import OrderListHeader from './OrderListHeader';
 import ResponseListItem from './ResponseListItem';
 import ResponseSummary from './ResponseSummary';
 
 const Response: FC<IResponse> = ({ styles, response }) => {
+    const dispatch = useDispatch();
+
+    const toCatalog = () => {
+        document.body.style.overflow = 'auto';
+        dispatch(deleteResponse());
+        dispatch(switchModalDisplay());
+    };
+
     return (
         <div className={styles.modalContent}>
             <div className={styles.title}>
@@ -27,6 +39,10 @@ const Response: FC<IResponse> = ({ styles, response }) => {
                     <ResponseSummary productList={response.orderList} />
                 </tbody>
             </table>
+
+            <div className={styles.toCatalogButton} onClick={toCatalog}>
+                <ToCatalogButton />
+            </div>
         </div>
     );
 };

@@ -24,15 +24,10 @@ const SearchBrandSelect: FC<ISearchBrandSelect> = ({
 
     return (
         <>
-            {isFetching && <h1>Loading...</h1>}
             {error && <h1>Error!</h1>}
             {!isFetching &&
                 sortByBrands(
-                    Array.from(
-                        new Set(
-                            searchProductList?.map((product) => product.brand) || []
-                        )
-                    ),
+                    Array.from(new Set(searchProductList?.map((product) => product.brand) || [])),
                     selectedBrands
                 )?.map((brand) => (
                     <BrandSelectItem

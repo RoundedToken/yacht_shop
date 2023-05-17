@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-const AppLoading = () => {
+export interface IAppLoading {
+    className?: string;
+}
+
+const AppLoading: FC<IAppLoading> = ({ className }) => {
     return (
-        <div className="spinner">
+        <div className={`spinner ${className}`}>
             <div className="lds-spinner">
                 <div></div>
                 <div></div>

@@ -5,18 +5,21 @@ import catalogImg from '../../../assets/images/catalog.svg';
 import rightArrowImg from '../../../assets/images/rightArrow.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
-import { switchDropdownDisplay } from '../../../redux/stylesSlice';
+import { switchModalDisplay } from '../../../redux/stylesSlice';
 import Text from '../../../UI/Text/Text';
-import QuickNav from '../../QuickNav/QuickNav';
 import { ICatalog } from '../interfaces/ICatalog';
+import { setModalType } from '../../../redux/modalSlice';
 
 const Catalog: FC<ICatalog> = ({ styles }) => {
     const isChecked =
         useSelector((state: RootState) => state.stylesSlice.dropdownDisplay) === 'block';
     const dispatch = useDispatch();
+    const isTouchDevice = 'ontouchstart' in document.documentElement;
 
     const switchOnClick = (e: React.ChangeEvent<HTMLInputElement>) => {
-        dispatch(switchDropdownDisplay());
+        dispatch(setModalType('nav'));
+        dispatch(switchModalDisplay());
+        document.body.style.overflow = 'hidden';
     };
 
     return (
@@ -27,7 +30,10 @@ const Catalog: FC<ICatalog> = ({ styles }) => {
             className={`${styles.navBar__item} ${styles.catalog}`}
             switcher={
                 <>
-                    <label className={styles.dropdownSwitcher}>
+                    <label
+                        style={isTouchDevice ? { display: 'none' } : {}}
+                        className={styles.dropdownSwitcher}
+                    >
                         <input
                             id="switcher"
                             type="checkbox"
@@ -37,8 +43,6 @@ const Catalog: FC<ICatalog> = ({ styles }) => {
 
                         <img id="switcher" src={rightArrowImg} alt="" />
                     </label>
-
-                    <QuickNav />
                 </>
             }
         >

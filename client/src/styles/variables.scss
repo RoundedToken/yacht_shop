@@ -37,7 +37,8 @@ $orderTrEven: rgba(2, 32, 128, 0.5);
 $orderTrOdd: rgba(2, 32, 128, 0.2);
 $hrColor: rgba(2, 31, 128, 0.508);
 $cardBoxShadow: rgba(0, 42, 181, 0.545);
-$gray: #8888888d;
+// $gray: #8888888d;
+$gray: rgb(189, 189, 189);
 $lightGray: rgb(236, 236, 236);
 $lightBlue: rgb(49, 71, 145);
 $aqua: rgb(39, 172, 198);
@@ -48,6 +49,15 @@ $blueFilter: invert(15%) sepia(49%) saturate(4274%) hue-rotate(221deg) brightnes
     contrast(112%);
 $footerGradient: linear-gradient(to bottom, rgb(21, 58, 124), rgb(0, 21, 91));
 $headerGradient: linear-gradient(to top, rgb(2, 32, 128), rgb(64, 105, 240));
+$yellowRadial: radial-gradient(
+    $yellow,
+    $yellow,
+    $yellow,
+    rgb(218, 131, 17),
+    rgb(146, 84, 3),
+    rgb(63, 36, 0)
+);
+// $yellowRadial: radial-gradient(red, black);
 $footerFilter: invert(100%) sepia(0%) saturate(2090%) hue-rotate(47deg) brightness(103%)
     contrast(105%) opacity(0.5);
 $redFilter: invert(52%) sepia(68%) saturate(4429%) hue-rotate(331deg) brightness(107%)

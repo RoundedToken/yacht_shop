@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
+import AppLoading from '../../../AppLoading';
 import { RootState } from '../../../redux/store';
 import { webCartProductList } from '../../../services/webCartProductList';
 import { IOrderList } from '../interfaces/IOrderList';
@@ -17,7 +18,7 @@ const OrderList: FC<IOrderList> = ({ styles }) => {
         lang,
     });
 
-    if (isFetching) return <h1>Loading...</h1>;
+    if (isFetching) return <AppLoading />;
     if (error) return <h1>Error!</h1>;
 
     return (

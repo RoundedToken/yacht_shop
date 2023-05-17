@@ -3,16 +3,19 @@ import faviconImg from '../../../assets/images/favicon.png';
 import lifebuoyImg from '../../../assets/images/lifebuoy.svg';
 import translationImg from '../../../assets/images/translation.png';
 import contactsImg from '../../../assets/images/contacts.svg';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { routeConstants } from '../../../models/enums/EConstants';
 import { useDispatch } from 'react-redux';
 import { switchMobileModalDisplay } from '../../../redux/stylesSlice';
 import { setMobileModalType } from '../../../redux/modalSlice';
 import { IMobileMenu } from '../interfaces/IMobileMenu';
 import PageTitle from '../../SearchBar/components/PageTitle';
+import Breadcrumbs from './Breadcrumbs';
 
 const MobileMenu: FC<IMobileMenu> = ({ styles }) => {
     const dispatch = useDispatch();
+    const location = useLocation().pathname.split('/')[1];
+    const breadcrumbsPaths = ['category', 'product_list', 'product'];
 
     const langOnClick = () => {
         document.body.style.overflow = 'hidden';
@@ -30,7 +33,11 @@ const MobileMenu: FC<IMobileMenu> = ({ styles }) => {
                 <img src={faviconImg} alt="" />
             </Link>
 
-            <PageTitle styles={styles} />
+            {breadcrumbsPaths.includes(location) ? (
+                <Breadcrumbs styles={styles} />
+            ) : (
+                <PageTitle styles={styles} />
+            )}
 
             <img
                 className={styles._mobileSearch}

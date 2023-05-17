@@ -8,6 +8,7 @@ import PicModal from './components/PicModal';
 import { deleteResponse } from '../../redux/cartSlice';
 import { routeConstants } from '../../models/enums/EConstants';
 import { useNavigate } from 'react-router-dom';
+import NavModal from './components/NavModal';
 
 const Modal = () => {
     const modalRef = useRef<HTMLDivElement>(null);
@@ -50,11 +51,29 @@ const Modal = () => {
         if (modalRef.current) modalRef.current.style.display = modalDisplay;
     }, [modalDisplay]);
 
-    if (modalDisplay === 'none') return null;
+    useEffect(() => {
+        const onResize = () => {
+            if (window.innerWidth <= 1000 && modalRef.current && modalType === 'nav')
+                modalRef.current.style.display = 'none';
+        };
+
+        window.addEventListener('resize', onResize);
+        return () => {
+            window.removeEventListener('resize', onResize);
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <div ref={modalRef} className={styles.modal}>
-            <div className={styles.modalContentContainer}>
+            <div
+                style={modalType === 'nav' ? { display: 'none' } : {}}
+                className={
+                    modalType === 'order'
+                        ? styles.orderModalContainer
+                        : styles.modalContentContainer
+                }
+            >
                 <div className={styles.modalClose} onClick={closeOnClick}>
                     &times;
                 </div>
@@ -62,6 +81,10 @@ const Modal = () => {
                 {modalType === 'order' && <OrderModal styles={styles} />}
 
                 {modalType === 'pic' && <PicModal styles={styles} />}
+            </div>
+
+            <div style={modalType === 'nav' ? {} : { display: 'none' }}>
+                <NavModal />
             </div>
         </div>
     );

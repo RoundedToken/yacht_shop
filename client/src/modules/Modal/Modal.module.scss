@@ -28,7 +28,7 @@
         width: 60%;
         height: calc(100% - 30px);
         overflow: scroll;
-        padding-bottom: 30px;
+        padding-bottom: 50px;
 
         @media (max-width: $breakPointL) {
             width: 80%;
@@ -37,6 +37,7 @@
         @media (max-width: $breakPointM) {
             width: 100%;
             border-radius: 0 0 50px 50px;
+            margin-top: 40px;
         }
 
         @media (max-width: $breakPointS) {
@@ -59,6 +60,7 @@
             color: $yellow;
             font-size: 30px;
             font-weight: 700;
+            line-height: 1;
             vertical-align: middle;
             z-index: 2;
             text-shadow: 0 -1px 2px rgb(163, 162, 162);
@@ -66,135 +68,11 @@
 
         .modalContent {
             @include columnCenterCenter;
-            gap: 2vw;
+            gap: 20px;
 
             img {
                 max-width: 70%;
                 max-height: 70%;
-            }
-
-            .title {
-                @include fontDesktopXL($blue);
-            }
-
-            .orderList {
-                @include fontDesktopM($blue);
-                thead {
-                    tr {
-                        background-color: transparent !important;
-                    }
-
-                    th:first-child {
-                        background-color: transparent !important;
-                        border-right: none;
-                    }
-                }
-
-                th {
-                    background-color: $yellow;
-                    text-align: start;
-
-                    &:first-child {
-                        background-color: transparent;
-                    }
-                }
-
-                tr {
-                    &:nth-child(even) {
-                        background-color: $orderTrEven;
-                    }
-
-                    &:nth-child(odd) {
-                        background-color: $orderTrOdd;
-                    }
-
-                    &:last-child {
-                        background-color: transparent;
-
-                        td {
-                            border-right: none;
-
-                            &:nth-child(1) {
-                                background-color: transparent !important;
-                            }
-                            &:nth-child(4) {
-                                background-color: $yellow;
-                                border-right: 0.1vw solid gray;
-                                font-weight: bold;
-                            }
-                            &:nth-child(5) {
-                                background-color: $yellow;
-                                border-right: 0.1vw solid gray;
-                                font-weight: bold;
-                            }
-                            &:nth-child(6) {
-                                background-color: $yellow;
-                                font-weight: bold;
-                            }
-                        }
-                    }
-                }
-
-                th,
-                td {
-                    padding-inline: 0.5vw;
-                    border-right: 0.1vw solid gray;
-
-                    &:first-child {
-                        background-color: $yellow !important;
-                        font-weight: bold;
-                    }
-
-                    &:last-child {
-                        border-right: none;
-                    }
-                }
-            }
-
-            .orderForm {
-                @include columnCenterCenter;
-                @include fontDesktopXM($blue);
-                gap: 1vw;
-                width: 30vw;
-
-                input,
-                textarea {
-                    @include fontDesktopM($blue);
-                    border: 0.2vw solid $blue;
-                    border-radius: 0.2vw;
-                }
-
-                .formName,
-                .formEmail,
-                .formPhone {
-                    @include flexStartCenter;
-                    width: 100%;
-                    gap: 1vw;
-
-                    input {
-                        padding: 0.1vw;
-                        width: 100%;
-                    }
-                }
-
-                .formComments {
-                    width: 100%;
-                    textarea {
-                        width: 100%;
-                        padding: 0.1vw;
-                        height: 5vw;
-                        resize: none;
-                    }
-                }
-
-                .formSubmit {
-                    @include fontDesktopXM($blue);
-                    @include hover;
-                    padding: 0.1vw;
-                    border: 0.2vw solid $blue;
-                    border-radius: 0.2vw;
-                    background-color: transparent;
-                }
             }
         }
 
@@ -248,10 +126,15 @@
 
             .bottomSwiper {
                 height: calc(20% - 10px);
-                aspect-ratio: 4.42/1;
+                aspect-ratio: 4.43/1;
                 padding: 5px;
 
                 @media (max-width: $breakPointL) {
+                    aspect-ratio: 4.53/1;
+                }
+
+                @media (max-width: $breakPointS) {
+                    aspect-ratio: 4.61/1;
                 }
 
                 .swiperSlide {
@@ -273,6 +156,339 @@
                     width: 100%;
                     height: 100%;
                     object-fit: contain;
+                }
+            }
+        }
+    }
+
+    .orderModalContainer {
+        position: relative;
+        background-color: $white;
+        margin-inline: auto;
+        border: 1px solid #888;
+        border-radius: 0 50px 50px 50px;
+        width: 60%;
+        height: calc(100% - 30px);
+        overflow: scroll;
+        padding-bottom: 30px;
+
+        @media (max-width: $breakPointL) {
+            width: 80%;
+        }
+
+        @media (max-width: $breakPointM) {
+            width: 100%;
+            height: calc(100vh - 71px - 30px - 2px - 40px);
+            border-radius: 0 50px 50px 50px;
+            margin-top: 40px;
+        }
+
+        .modalClose {
+            @include hover;
+            @include flexCenterCenter;
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            background-color: rgb(215, 215, 215);
+            width: 30px;
+            height: 30px;
+            color: $yellow;
+            font-size: 30px;
+            font-weight: 700;
+            line-height: 1;
+            vertical-align: middle;
+            z-index: 2;
+            text-shadow: 0 -1px 2px rgb(163, 162, 162);
+        }
+
+        .modalContent {
+            @include columnCenterCenter;
+            gap: 28px;
+
+            img {
+                max-width: 70%;
+                max-height: 70%;
+            }
+
+            .toCatalogButton {
+                margin-top: 40px;
+            }
+
+            .title {
+                @include fontDesktopXL($blue);
+                margin-top: 30px;
+                line-height: 1;
+                font-size: 24px;
+                text-align: center;
+
+                @media (max-width: $breakPointM) {
+                    margin-inline: 70px;
+                    font-size: 20px;
+                }
+
+                @media (max-width: $breakPointS) {
+                    margin-inline: 70px;
+                }
+            }
+
+            .orderList {
+                @include fontDesktopM($blue);
+                line-height: 1;
+
+                @media (max-width: $breakPointS) {
+                    font-size: 14px;
+                }
+
+                thead {
+                    th {
+                        text-align: center;
+
+                        &:nth-child(2) {
+                            text-align: start;
+                        }
+
+                        &:nth-child(3) {
+                            font-size: 16px;
+
+                            @media (max-width: $breakPointS) {
+                                display: none;
+                            }
+                        }
+
+                        &:nth-child(4) {
+                            text-align: center;
+                        }
+
+                        &:last-child {
+                            text-align: center;
+                        }
+                    }
+                }
+
+                th {
+                    background-color: $yellow;
+                    text-align: start;
+                    white-space: nowrap;
+                }
+
+                tr {
+                    &:nth-child(even) {
+                        background-color: $orderTrEven;
+                    }
+
+                    &:nth-child(odd) {
+                        background-color: $orderTrOdd;
+                    }
+
+                    &:last-child {
+                        background-color: transparent;
+
+                        td {
+                            border-right: none;
+
+                            &:nth-child(1) {
+                                background-color: transparent !important;
+                            }
+                            &:nth-child(4) {
+                                background-color: $yellow;
+                                border-right: 1px solid $blue;
+                                font-weight: bold;
+                            }
+                            &:nth-child(5) {
+                                background-color: $yellow;
+                                border-right: 1px solid $blue;
+                                font-weight: bold;
+                            }
+                            &:nth-child(6) {
+                                background-color: $yellow;
+                                font-weight: bold;
+                            }
+                        }
+                    }
+                }
+
+                th,
+                td {
+                    padding-block: 5px;
+                    padding-right: 5px;
+                    padding-left: 10px;
+                    border-right: 1px solid $blue;
+
+                    @media (max-width: $breakPointS) {
+                        padding-left: 5px;
+                    }
+
+                    &:first-child {
+                        padding-left: 10px;
+                        font-weight: 800;
+                        vertical-align: text-top;
+                        text-align: end;
+                        font-size: 14px;
+
+                        @media (max-width: $breakPointS) {
+                            font-size: 12px;
+                            padding-left: 5px;
+                        }
+                    }
+
+                    //CODE
+                    &:nth-child(3) {
+                        font-size: 12px;
+
+                        @media (max-width: $breakPointS) {
+                            display: none;
+                        }
+                    }
+
+                    //PRICE
+                    &:nth-child(4) {
+                        text-align: end;
+                    }
+
+                    //COUNT
+                    &:nth-child(5) {
+                        text-align: center;
+                        padding-left: 5px;
+                    }
+
+                    &:last-child {
+                        border-right: none;
+                        text-align: end;
+                        padding-left: 5px;
+                        padding-right: 10px;
+                    }
+                }
+            }
+
+            .orderForm {
+                display: grid;
+                grid-template-columns: 250px 200px;
+                column-gap: 30px;
+                grid-template-rows: 40px 40px 40px 40px 40px 40px;
+                row-gap: 0;
+                color: $blue;
+
+                @media (max-width: $breakPointS) {
+                    display: flex;
+                    flex-direction: column;
+                    position: relative;
+                    padding-top: 50px;
+                    gap: 10px;
+                }
+
+                input,
+                textarea {
+                    @include fontDesktopM($blue);
+                    border: 1px solid $blue;
+                    border-radius: 0.2vw;
+                }
+
+                .formName,
+                .formEmail {
+                    @include flexStartCenter;
+                    width: 100%;
+                    gap: 10px;
+                    font-size: 18px;
+
+                    input {
+                        padding-inline: 5px;
+                        width: 100%;
+                        border: 2px solid $gray;
+                        border-radius: 6px;
+                        height: 30px;
+                    }
+                }
+
+                .formName {
+                    input {
+                        width: 176px;
+                        margin-left: auto;
+                        justify-self: flex-end;
+                    }
+                }
+
+                .delivery {
+                    border: 2px solid $gray;
+                    border-radius: 20px;
+
+                    @media (max-width: $breakPointS) {
+                        position: absolute;
+                        top: 0;
+                        width: 100%;
+                    }
+
+                    select {
+                        width: calc(100% - 15px - 5px);
+                        height: 36px;
+                        border-radius: 20px;
+                        color: $blue;
+                        text-align: center;
+                        font-size: 18px;
+                        padding-left: 17px;
+                        margin-left: 5px;
+                        border: 0;
+                        outline: 0;
+                        cursor: pointer;
+                    }
+                }
+
+                .formComments {
+                    width: 100%;
+                    height: 100%;
+                    grid-column: 1/2;
+                    grid-row: 3/7;
+                    font-size: 15px;
+                    line-height: 25px;
+                    font-weight: 600;
+                    color: $gray;
+
+                    textarea {
+                        width: calc(100% - 8px - 2px);
+                        height: 92px;
+                        padding: 3px;
+                        padding-left: 5px;
+                        border-radius: 6px;
+                        border: 2px solid $gray;
+                        resize: none;
+                        color: $lightBlue;
+                    }
+                }
+
+                .formSubmit {
+                    @include hoverMini;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    height: 100%;
+                    width: 100%;
+                    grid-row: 2/7;
+                    grid-column: 2/3;
+                    gap: 10px;
+
+                    button {
+                        @include flexCenterCenter;
+                        width: 120px;
+                        height: 120px;
+                        background-image: $yellowRadial;
+                        box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.668);
+                        border-radius: 100%;
+                        background-color: transparent;
+                        cursor: pointer;
+
+                        img {
+                            width: 65px;
+                            filter: $blueFilter;
+                        }
+                    }
+
+                    div {
+                        text-align: center;
+                        color: $gray;
+                        font-size: 18px;
+                        font-weight: 700;
+                        line-height: 1;
+                    }
                 }
             }
         }

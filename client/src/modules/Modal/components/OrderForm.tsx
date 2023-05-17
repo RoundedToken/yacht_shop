@@ -11,6 +11,8 @@ import { RootState } from '../../../redux/store';
 import { webOrderApi } from '../../../services/webOrder';
 import Text from '../../../UI/Text/Text';
 import { IOrderForm } from '../interfaces/IOrderForm';
+import sentImg from '../../../assets/images/sent.png';
+import AppLoading from '../../../AppLoading';
 
 const OrderForm: FC<IOrderForm> = ({ styles }) => {
     const [sendProductList, { data, isLoading, error }] = webOrderApi.useFetchOrderMutation();
@@ -48,7 +50,7 @@ const OrderForm: FC<IOrderForm> = ({ styles }) => {
         }
     }, [data, dispatch]);
 
-    if (isLoading) return <h1>Loading...</h1>;
+    if (isLoading) return <AppLoading className="orderSpinner" />;
 
     if (error) return <h1>Error!</h1>;
 
@@ -67,6 +69,20 @@ const OrderForm: FC<IOrderForm> = ({ styles }) => {
                     maxLength={25}
                     required
                 />
+            </div>
+
+            <div className={styles.delivery}>
+                <select ref={deliveryRef} required>
+                    <option value="">
+                        <Text rus="тип доставки" eng="delivery type" est="kohaletoimetamise tüüp" />
+                    </option>
+                    <option value="pickUp">
+                        <Text rus="Самовывоз" eng="Pickup" est="Korja üles" />
+                    </option>
+                    <option value="post">
+                        <Text rus="Omnivia" eng="Omnivia" est="Omnivia" />
+                    </option>
+                </select>
             </div>
 
             <div className={styles.formEmail}>
@@ -89,31 +105,12 @@ const OrderForm: FC<IOrderForm> = ({ styles }) => {
                 <textarea ref={commentsRef} name="comments" />
             </div>
 
-            <div>
-                <select ref={deliveryRef} required>
-                    <option value="">
-                        <Text
-                            rus="Выберите тип доставки"
-                            eng="Select delivery type"
-                            est="Valige kohaletoimetamise tüüp"
-                        />
-                    </option>
-                    <option value="pickUp">
-                        <Text rus="Самовывоз" eng="Pickup" est="Korja üles" />
-                    </option>
-                    <option value="post">
-                        <Text
-                            rus="Отправка службой Omnivia"
-                            eng="Sending by Omnivia"
-                            est="Saatmine Omnivia kaudu"
-                        />
-                    </option>
-                </select>
-            </div>
-
-            <button className={styles.formSubmit} type="submit">
+            <div className={styles.formSubmit}>
+                <button type="submit">
+                    <img src={sentImg} alt="" />
+                </button>
                 <Text rus="Отправить заказ" eng="Send an order" est="Saatke tellimus" />
-            </button>
+            </div>
         </form>
     );
 };
