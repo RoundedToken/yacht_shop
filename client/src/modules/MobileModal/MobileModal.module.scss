@@ -25,13 +25,21 @@
         padding-block: 20px;
 
         .modalClose {
-            @include hover;
-            z-index: 2;
-            position: absolute;
             right: 20px;
             top: 20px;
-            filter: $yellowFilter;
-            width: 4vh;
+            @include hover;
+            @include flexCenterCenter;
+            position: absolute;
+            background-color: rgb(215, 215, 215);
+            width: 30px;
+            height: 30px;
+            color: $yellow;
+            font-size: 30px;
+            font-weight: 700;
+            line-height: 1;
+            vertical-align: middle;
+            z-index: 2;
+            text-shadow: 0 -1px 2px rgb(163, 162, 162);
         }
 
         .content {

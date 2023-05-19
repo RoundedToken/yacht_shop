@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import Text from '../../../UI/Text/Text';
-import { IProductListFilter } from '../interfaces/IProductListFilter';
-import ProductListFilterItem from './ProductListFilterItem';
+import { IFavoritesFilter } from '../interfaces/IFavoritesFilter';
+import FavoritesFilterItem from './FavoritesFilterItem';
 
-const ProductListFilter: FC<IProductListFilter> = ({ styles }) => {
+const FavoritesFilter: FC<IFavoritesFilter> = ({ styles }) => {
     return (
         <>
-            <ProductListFilterItem
+            <FavoritesFilterItem
                 styles={styles}
                 value="inStock"
                 name={<Text rus="В наличии" eng="In stock" est="Laos" />}
@@ -15,4 +15,4 @@ const ProductListFilter: FC<IProductListFilter> = ({ styles }) => {
     );
 };
 
-export default ProductListFilter;
+export default FavoritesFilter;

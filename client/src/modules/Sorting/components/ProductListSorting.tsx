@@ -17,6 +17,12 @@ const ProductListSorting: FC<IProductListSorting> = ({ styles }) => {
                 value="price"
                 name={<Text rus="Цена" eng="Price" est="Hind" />}
             />
+
+            <ProductListSortingItem
+                styles={styles}
+                value="brand"
+                name={<Text rus="Бренд" eng="Brand" est="Brändi" />}
+            />
         </>
     );
 };

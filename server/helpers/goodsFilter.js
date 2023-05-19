@@ -20,6 +20,9 @@ export function goodsFilter(data) {
             //Create inStock
             item.inStock = item.inStockCount > 0 ? true : false;
 
+            //If src is null
+            if (item.src === null) item.src = 'http://undefind.ee';
+
             //Check src for URL otherwise create URL
             if (!item.src.startsWith('http'))
                 item.src = [`${process.env.IMG_URL}/${item.brand}/${item.src}`];

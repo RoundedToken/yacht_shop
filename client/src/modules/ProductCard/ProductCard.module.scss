@@ -9,16 +9,28 @@
 }
 
 .rootContainer {
+    container-name: card;
+    container-type: inline-size;
     @include flexStartNormal;
     border-radius: 0 10px 10px 10px;
     background-color: $white;
     max-width: $_card_widthCardMax;
     gap: $_card_paddingDouble;
     width: calc(100% - $_card_padding - $_card_paddingDouble);
-    height: $_card_heightCard;
+    // height: $_card_heightCard;
+    height: max-content;
     padding-left: $_card_padding;
     padding-right: $_card_paddingDouble;
     padding-block: $_card_paddingDouble;
+
+    // @container card (max-width: 540px) {
+    //     gap: $_card_paddingDoubleS;
+    //     width: calc(100% - $_card_paddingDoubleS * 2);
+    //     height: $_card_heightCardS;
+    //     padding-inline: $_card_paddingDoubleS;
+    //     padding-top: $_card_paddingDoubleS;
+    //     padding-bottom: $_card_paddingS;
+    // }
 
     @media (max-width: $breakPointS) {
         gap: $_card_paddingDoubleS;
@@ -37,8 +49,14 @@
         display: flex;
         min-width: $_card_heightCard;
         width: $_card_heightCard;
-        height: 100%;
+        height: $_card_heightCard;
         position: relative;
+
+        @container card (max-width: 500px) {
+            min-width: $_card_heightCard;
+            width: $_card_heightCard;
+            height: $_card_heightCard;
+        }
 
         @media (max-width: $breakPointS) {
             min-width: $_card_heightCard;
@@ -66,6 +84,16 @@
                 font-size: $_card_fontSizeName;
                 font-weight: $_card_fontWeightName;
 
+                @container card (max-width: 700px) {
+                    font-size: $_card_fontSizeNameM;
+                    font-weight: $_card_fontWeightNameM;
+                }
+
+                @container card (max-width: 500px) {
+                    font-size: $_card_fontSizeNameS;
+                    font-weight: $_card_fontWeightNameS;
+                }
+
                 @media (max-width: $breakPointM) {
                     font-size: $_card_fontSizeNameM;
                     font-weight: $_card_fontWeightNameM;
@@ -86,6 +114,16 @@
                 min-width: $_card_widthCardPrice;
                 font-size: $_card_fontSizePrice;
                 font-weight: $_card_fontWeightPrice;
+
+                @container card (max-width: 700px) {
+                    min-width: $_card_widthCardPriceM;
+                    font-size: $_card_fontSizePriceM;
+                    font-weight: $_card_fontWeightPriceM;
+                }
+
+                @container card (max-width: 500px) {
+                    display: none;
+                }
 
                 @media (max-width: $breakPointM) {
                     min-width: $_card_widthCardPriceM;
@@ -112,6 +150,14 @@
             height: calc($_card_heightCard / 2 - $_card_padding / 2);
             margin-top: $_card_padding;
 
+            @container card (max-width: 500px) {
+                display: grid;
+                grid-template-columns: auto auto;
+                row-gap: $_card_paddingS;
+                column-gap: 0;
+                height: fit-content;
+            }
+
             @media (max-width: $breakPointS) {
                 display: grid;
                 grid-template-columns: auto auto;
@@ -127,6 +173,11 @@
                 height: 45px;
                 font-size: $_card_fontSizeDetails;
                 font-weight: $_card_fontWeightDetails;
+
+                @container card (max-width: 500px) {
+                    width: 100%;
+                    grid-column: 1/3;
+                }
 
                 @media (max-width: $breakPointS) {
                     width: 100%;
@@ -157,6 +208,20 @@
             ._mobilePrice {
                 display: none;
 
+                @container card (max-width: 500px) {
+                    width: $_card_heightCard;
+                    display: block;
+                    font-size: $_card_fontSizePriceS;
+                    font-weight: $_card_fontWeightPriceS;
+                    color: $blue;
+                    height: 100%;
+                    margin-left: -$_card_heightCard - 20px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    text-align: center;
+                }
+
                 @media (max-width: $breakPointS) {
                     width: $_card_heightCard;
                     display: block;
@@ -164,7 +229,7 @@
                     font-weight: $_card_fontWeightPriceS;
                     color: $blue;
                     height: 100%;
-                    margin-left: -$_card_heightCard - $_card_paddingDoubleS;
+                    margin-left: -$_card_heightCard - 20px;
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
@@ -181,6 +246,15 @@
                 display: flex;
                 height: 45px;
                 width: $_card_menuWidth;
+
+                @container card (max-width: 700px) {
+                    width: $_card_menuWidthM;
+                }
+
+                @container card (max-width: 500px) {
+                    width: $_card_menuWidthM;
+                    height: 42px;
+                }
 
                 @media (max-width: $breakPointM) {
                     width: $_card_menuWidthM;
@@ -201,6 +275,16 @@
 
                 &__item {
                     @include flexStartEnd;
+                }
+
+                @container card (max-width: 700px) {
+                    width: $_card_menuWidthM;
+                }
+
+                @container card (max-width: 500px) {
+                    width: $_card_menuWidthM;
+                    justify-self: flex-end;
+                    height: 42px;
                 }
 
                 @media (max-width: $breakPointM) {

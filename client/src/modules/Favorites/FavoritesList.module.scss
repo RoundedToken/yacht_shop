@@ -6,9 +6,19 @@
     min-height: inherit;
 
     .favoritesList {
-        @include columnStartStart;
-        gap: 10px;
         width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        row-gap: 10px;
+        column-gap: 10px;
+
+        @media (max-width: 1950px) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @media (max-width: 1170px) {
+            grid-template-columns: 1fr;
+        }
     }
     .favoritesEmpty {
         @include columnCenterCenter;

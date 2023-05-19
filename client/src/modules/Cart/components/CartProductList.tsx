@@ -12,7 +12,7 @@ const CartProductList: FC<ICartProductList> = ({ styles, productList, data }) =>
     const brands = useSelector((state: RootState) => state.sideBarSlice.cartBrands);
     const filters = useSelector((state: RootState) => state.sideBarSlice.cartListFilters);
     const favoritesList = useSelector((state: RootState) => state.favoritesSlice.favoritesList);
-    const filteredList = cartListFilter(productList, brands, filters, favoritesList);
+    const filteredList = cartListFilter(productList, brands, filters, favoritesList, data);
     const sortRules = useSelector((state: RootState) => state.sideBarSlice.cartSorting);
     const sortedList = cartSort(filteredList, data, sortRules);
 

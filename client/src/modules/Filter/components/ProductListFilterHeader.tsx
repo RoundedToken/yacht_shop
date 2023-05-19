@@ -1,13 +1,11 @@
-import React, { FC } from 'react';
+import React, { FC, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
 import Text from '../../../UI/Text/Text';
-import upArrowImg from '../../../assets/images/upArrow.png';
-import downArrowImg from '../../../assets/images/downArrow.png';
 import { switchFilterDisplay } from '../../../redux/stylesSlice';
 import { clearProductListFilters } from '../../../redux/sideBarSlice';
-import closeImg from '../../../assets/images/close.png';
 import { IProductListFilterHeader } from '../interfaces/IProductListFilterHeader';
+import arrowImg from '../../../assets/images/arrow.png';
 
 const ProductListFilterHeader: FC<IProductListFilterHeader> = ({ styles }) => {
     const dispatch = useDispatch();
@@ -15,29 +13,35 @@ const ProductListFilterHeader: FC<IProductListFilterHeader> = ({ styles }) => {
     const isFilters = Object.values(
         useSelector((state: RootState) => state.sideBarSlice.productListFilters)
     ).some((val) => val);
+    const clearRef = useRef<HTMLDivElement>(null);
 
-    const switchDisplay = () => {
-        dispatch(switchFilterDisplay());
+    const switchDisplay = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        if (e.target !== clearRef.current) {
+            dispatch(switchFilterDisplay());
+        }
     };
     const clearOnClick = () => {
         dispatch(clearProductListFilters());
     };
 
     return (
-        <div className={styles.filterHeader}>
-            <div className={styles.headerTitle}>
-                <Text rus="Фильтр" eng="Filter" est="Filter" />
-                <img
-                    onClick={switchDisplay}
-                    src={filterDisplay === 'none' ? downArrowImg : upArrowImg}
-                    alt=""
-                />
+        <div className={styles.filterHeader} onClick={(e) => switchDisplay(e)}>
+            <div
+                ref={clearRef}
+                onClick={clearOnClick}
+                className={styles.closeContainer}
+                style={!isFilters ? { display: 'none' } : {}}
+            >
+                &times;
             </div>
 
-            <button onClick={clearOnClick} hidden={!isFilters}>
-                <img src={closeImg} alt="" width={16} height={16} />
-                <Text rus="Очистить" eng="Clear" est="Selge" />
-            </button>
+            <Text rus="Фильтр" eng="Filter" est="Filter" />
+
+            <img
+                className={filterDisplay === 'none' ? styles.rightArrow : styles.downArrow}
+                src={arrowImg}
+                alt=""
+            />
         </div>
     );
 };

@@ -1,17 +1,17 @@
 import React, { FC, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { clearCartListFilters } from '../../../redux/sideBarSlice';
+import { clearFavoritesFilters } from '../../../redux/sideBarSlice';
 import { RootState } from '../../../redux/store';
 import { switchFilterDisplay } from '../../../redux/stylesSlice';
 import Text from '../../../UI/Text/Text';
-import { ICartListFilterHeader } from '../interfaces/ICartListFilterHeader';
+import { IFavoritesFilterHeader } from '../interfaces/IFavoritesFilterHeader';
 import arrowImg from '../../../assets/images/arrow.png';
 
-const CartListFilterHeader: FC<ICartListFilterHeader> = ({ styles }) => {
+const FavoritesFilterHeader: FC<IFavoritesFilterHeader> = ({ styles }) => {
     const dispatch = useDispatch();
     const filterDisplay = useSelector((state: RootState) => state.stylesSlice.filterDisplay);
     const isFilters = Object.values(
-        useSelector((state: RootState) => state.sideBarSlice.cartListFilters)
+        useSelector((state: RootState) => state.sideBarSlice.favoritesFilters)
     ).some((val) => val);
     const clearRef = useRef<HTMLDivElement>(null);
 
@@ -21,7 +21,7 @@ const CartListFilterHeader: FC<ICartListFilterHeader> = ({ styles }) => {
         }
     };
     const clearOnClick = () => {
-        dispatch(clearCartListFilters());
+        dispatch(clearFavoritesFilters());
     };
 
     return (
@@ -46,4 +46,4 @@ const CartListFilterHeader: FC<ICartListFilterHeader> = ({ styles }) => {
     );
 };
 
-export default CartListFilterHeader;
+export default FavoritesFilterHeader;

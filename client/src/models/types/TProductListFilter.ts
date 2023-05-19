@@ -1,7 +1,1 @@
-export type TProductListFilter =
-    | 'inStock'
-    | 'notInStock'
-    | 'inCart'
-    | 'notInCart'
-    | 'inFavorites'
-    | 'notInFavorites';
+export type TProductListFilter = 'inStock';

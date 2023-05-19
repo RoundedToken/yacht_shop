@@ -350,9 +350,11 @@
 
             .dropdownSwitcher {
                 @include flexCenterCenter;
+
                 cursor: pointer;
 
                 img {
+                    @include hoverFilter($yellowFilter);
                     width: 26px;
                     height: 26px;
                 }

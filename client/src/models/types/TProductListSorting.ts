@@ -1,1 +1,1 @@
-export type TProductListSorting = 'name' | 'price';
+export type TProductListSorting = 'name' | 'price' | 'brand';

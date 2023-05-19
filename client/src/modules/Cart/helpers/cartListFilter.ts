@@ -1,3 +1,4 @@
+import { IWebCartProductListRes } from './../../../models/interfaces/RTKQuery/IWebCartProductList';
 import { ICartListFilters } from './../../../models/interfaces/slices/ISideBarState';
 import { ICartProduct } from '../../../models/interfaces/slices/ICartState';
 
@@ -5,18 +6,17 @@ export function cartListFilter(
     cartList: ICartProduct[],
     brands: string[],
     filters: ICartListFilters,
-    favoritesList: number[]
+    favoritesList: number[],
+    data: IWebCartProductListRes[]
 ) {
     const filteredList =
         brands.length === 0 ? cartList : cartList.filter((item) => brands.includes(item.brand));
 
     return filteredList.filter((product) => {
         let status = true;
+        const dataProduct = data.find((p) => product.id === p.id) as IWebCartProductListRes;
 
-        if (filters.inFavorites && !filters.notInFavorites)
-            status = favoritesList.includes(product.id);
-        else if (filters.notInFavorites && !filters.inFavorites)
-            status = !favoritesList.includes(product.id);
+        if (filters.inStock) status = dataProduct.inStock;
 
         return status;
     });

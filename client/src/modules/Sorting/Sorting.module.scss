@@ -3,58 +3,70 @@
 .sortingContainer {
     @include columnStartStart;
     max-height: 45vh;
-    width: calc(100% - 1vh);
+    width: 168px;
     overflow-y: scroll;
-    margin-top: 2vh;
-    gap: 4px;
+    gap: 5px;
     background-color: $yellowLight;
-    margin-left: 1vh;
-    border-block: 0.5vh solid $yellowLight;
-    border-radius: 0.5vh;
+    border-radius: 0 15px 15px 0;
+    height: max-content;
+    padding-bottom: 5px;
+    transition: 0.5s ease-in-out;
+    margin-top: 20px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.339);
 
-    .sortingHeader {
-        @include columnCenterCenter;
-        @include fontDesktopXM($blue);
+    .header {
+        @include flexBetweenCenter;
         position: sticky;
+        height: 30px;
         top: 0;
         z-index: 5;
-        background-color: $yellowLight;
-        width: 100%;
-        padding-bottom: 4px;
+        background-color: $yellow;
+        border-radius: 0 20px 20px 0;
+        width: calc(100% - 22px);
+        padding-left: 20px;
+        padding-right: 2px;
+        font-size: 20px;
+        color: $blue;
+        font-weight: 600;
+        cursor: pointer;
 
-        .headerTitle {
+        .closeContainer {
             @include flexCenterCenter;
-            gap: 1vh;
-
-            img {
-                @include hover;
-                filter: $blueFilter;
-                height: 25px;
-            }
+            background-color: $white;
+            width: 22px;
+            height: 22px;
+            border-radius: 100%;
+            font-size: 22px;
+            line-height: 22px;
+            font-weight: 800;
+            cursor: pointer;
         }
 
-        button {
-            @include fontDesktopM($blue);
-            @include flexCenterCenter;
-            @include hover;
-            gap: 2px;
-            visibility: hidden;
+        .rightArrow {
+            filter: $blueFilter;
+            width: 30px;
+            cursor: pointer;
+        }
 
-            &[hidden] {
-                visibility: hidden;
-            }
-
-            img {
-                filter: $redFilter;
-            }
+        .downArrow {
+            filter: $blueFilter;
+            transform: rotate(90deg);
+            width: 30px;
+            cursor: pointer;
+            margin-right: 2px;
         }
     }
 
     .group {
-        @include flexCenterCenter;
-        @include fontDesktopS($blue);
-        margin-left: 5px;
-        gap: 5px;
+        @include flexBetweenCenter;
+        color: $blue;
+        font-size: 13px;
+        font-weight: 400;
+        margin-left: 22px;
+        flex-direction: row-reverse;
+        gap: 8px;
+        cursor: default;
+        width: 115px;
 
         .container {
             display: flex;
@@ -64,8 +76,8 @@
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
-            height: 1.3em;
-            width: 1.3em;
+            height: 18px;
+            width: 18px;
 
             input {
                 position: absolute;
@@ -78,14 +90,18 @@
                 text-align: center;
                 height: 100%;
                 width: 100%;
-                background-color: #e0e0e0;
+                background-color: $white;
+                border-radius: 100%;
             }
         }
-        .container:hover input ~ .checkMark {
-            background-color: #b5b5b5;
-        }
-        .container:hover input:checked ~ .checkMark {
-            background-color: $yellowDark;
+
+        @media (hover: hover) and (pointer: fine) {
+            .container:hover input ~ .checkMark {
+                background-color: #b5b5b5;
+            }
+            .container:hover input:checked ~ .checkMark {
+                background-color: $yellow;
+            }
         }
 
         .container input:checked ~ .checkMark {

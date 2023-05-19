@@ -1,13 +1,11 @@
-import React, { FC } from 'react';
+import React, { FC, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearFavoritesBrands } from '../../../redux/sideBarSlice';
 import { RootState } from '../../../redux/store';
 import { switchBrandsDisplay } from '../../../redux/stylesSlice';
 import Text from '../../../UI/Text/Text';
 import { IFavoritesBrandSelectHeader } from '../interfaces/IFavoritesBrandSelectHeader';
-import upArrowImg from '../../../assets/images/upArrow.png';
-import downArrowImg from '../../../assets/images/downArrow.png';
-import closeImg from '../../../assets/images/close.png';
+import arrowImg from '../../../assets/images/arrow.png';
 
 const FavoritesBrandSelectHeader: FC<IFavoritesBrandSelectHeader> = ({
     styles,
@@ -15,29 +13,35 @@ const FavoritesBrandSelectHeader: FC<IFavoritesBrandSelectHeader> = ({
 }) => {
     const dispatch = useDispatch();
     const brandsDisplay = useSelector((state: RootState) => state.stylesSlice.brandsDisplay);
+    const clearRef = useRef<HTMLDivElement>(null);
 
     const clearOnClick = () => {
         dispatch(clearFavoritesBrands());
     };
-    const switchDisplay = () => {
-        dispatch(switchBrandsDisplay());
+    const switchDisplay = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        if (e.target !== clearRef.current) {
+            dispatch(switchBrandsDisplay());
+        }
     };
 
     return (
-        <div className={styles.header}>
-            <div className={styles.headerTitle}>
-                <Text rus="Бренды" eng="Brands" est="Kaubamärgid" />
-                <img
-                    onClick={switchDisplay}
-                    src={brandsDisplay === 'none' ? downArrowImg : upArrowImg}
-                    alt=""
-                />
+        <div className={styles.header} onClick={(e) => switchDisplay(e)}>
+            <div
+                ref={clearRef}
+                onClick={clearOnClick}
+                className={styles.closeContainer}
+                style={selectedBrands.length === 0 ? { display: 'none' } : {}}
+            >
+                &times;
             </div>
 
-            <button onClick={clearOnClick} hidden={selectedBrands.length === 0}>
-                <img src={closeImg} alt="" width={16} height={16} />
-                <Text rus="Очистить" eng="Clear" est="Selge" />
-            </button>
+            <Text rus="Бренды" eng="Brands" est="Kaubamärgid" />
+
+            <img
+                className={brandsDisplay === 'none' ? styles.rightArrow : styles.downArrow}
+                src={arrowImg}
+                alt=""
+            />
         </div>
     );
 };

@@ -9,8 +9,8 @@ export function cartSort(
     sortRules: ICartSorting
 ) {
     return cartList.slice().sort((a, b) => {
-        const newA = data.find((item) => item.id === a.id);
-        const newB = data.find((item) => item.id === b.id);
+        const newA = data.find((item) => item.id === a.id) as IWebCartProductListRes;
+        const newB = data.find((item) => item.id === b.id) as IWebCartProductListRes;
         const key = sortRules.sortKey;
 
         if (!newA || !newB) return 0;
@@ -20,7 +20,7 @@ export function cartSort(
             const numB = b.count * b.price;
 
             return sortByType(numA, numB, sortRules.sortType);
-        }
+        } else if (key === 'brand') return sortByType(newA.brand, newB.brand, sortRules.sortType);
 
         return sortByType(newA.name, newB.name, sortRules.sortType);
     });

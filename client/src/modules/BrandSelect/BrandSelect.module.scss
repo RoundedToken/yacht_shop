@@ -2,56 +2,65 @@
 
 .brandsContainer {
     @include columnStartStart;
-    max-height: 45vh;
-    width: calc(100% - 1vh);
+    max-height: 375px;
+    width: 168px;
     overflow-y: scroll;
-    gap: 4px;
+    gap: 5px;
     background-color: $yellowLight;
-    margin-left: 1vh;
-    border-block: 0.5vh solid $yellowLight;
-    border-radius: 0.5vh;
+    border-radius: 0 15px 15px 0;
+    padding-bottom: 5px;
+    transition: 0.5s ease-in-out;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.339);
 
     .header {
-        @include columnCenterCenter;
-        @include fontDesktopXM($blue);
+        @include flexBetweenCenter;
         position: sticky;
+        height: 30px;
         top: 0;
         z-index: 5;
-        background-color: $yellowLight;
-        width: 100%;
-        padding-bottom: 4px;
+        background-color: $yellow;
+        border-radius: 0 20px 20px 0;
+        width: calc(100% - 22px);
+        padding-left: 20px;
+        padding-right: 2px;
+        font-size: 20px;
+        color: $blue;
+        font-weight: 600;
+        cursor: pointer;
 
-        .headerTitle {
+        .closeContainer {
             @include flexCenterCenter;
-            gap: 1vh;
-
-            img {
-                @include hover;
-                filter: $blueFilter;
-                height: 25px;
-            }
+            background-color: $white;
+            width: 22px;
+            height: 22px;
+            border-radius: 100%;
+            font-size: 22px;
+            line-height: 22px;
+            font-weight: 800;
+            cursor: pointer;
         }
 
-        button {
-            @include fontDesktopM($blue);
-            @include flexCenterCenter;
-            @include hover;
-            gap: 2px;
+        .rightArrow {
+            filter: $blueFilter;
+            width: 30px;
+            cursor: pointer;
+        }
 
-            &[hidden] {
-                visibility: hidden;
-            }
-
-            img {
-                filter: $redFilter;
-            }
+        .downArrow {
+            filter: $blueFilter;
+            transform: rotate(90deg);
+            width: 30px;
+            cursor: pointer;
+            margin-right: 2px;
         }
     }
 
     .container {
-        @include fontDesktopS($blue);
+        color: $blue;
+        font-size: 13px;
+        font-weight: 400;
         position: relative;
-        padding-left: 25px;
+        padding-left: 28px;
         cursor: pointer;
         -webkit-user-select: none;
         -moz-user-select: none;
@@ -59,8 +68,7 @@
         user-select: none;
         max-width: calc(100% - 25px - 1.5vh);
         overflow-wrap: break-word;
-        margin-left: 0.5vh;
-        margin-right: 1vh;
+        margin-left: 22px;
 
         input {
             position: absolute;
@@ -74,17 +82,20 @@
             position: absolute;
             top: 0;
             left: 0;
-            height: 1.3em;
-            width: 1.3em;
-            background-color: #e0e0e0;
+            height: 18px;
+            width: 18px;
+            background-color: $white;
+            border-radius: 100%;
         }
     }
 
-    .container:hover input ~ .checkMark {
-        background-color: #b5b5b5;
-    }
-    .container:hover input:checked ~ .checkMark {
-        background-color: $yellowDark;
+    @media (hover: hover) and (pointer: fine) {
+        .container:hover input ~ .checkMark {
+            background-color: #b5b5b5;
+        }
+        .container:hover input:checked ~ .checkMark {
+            background-color: $yellow;
+        }
     }
 
     .container input:checked ~ .checkMark {
@@ -102,10 +113,10 @@
     }
 
     .container .checkMark:after {
-        left: 5px;
-        top: 1px;
-        width: 5px;
-        height: 10px;
+        left: 6px;
+        top: 3px;
+        width: 4px;
+        height: 7px;
         border: solid white;
         border-width: 0 2px 2px 0;
         -webkit-transform: rotate(45deg);

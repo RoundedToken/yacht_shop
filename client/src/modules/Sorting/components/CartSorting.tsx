@@ -15,7 +15,13 @@ const CartSorting: FC<ICartSorting> = ({ styles }) => {
             <CartSortingItem
                 styles={styles}
                 value="sum"
-                name={<Text rus="Всего" eng="Total" est="Kokku" />}
+                name={<Text rus="Цена" eng="Price" est="Hind" />}
+            />
+
+            <CartSortingItem
+                styles={styles}
+                value="brand"
+                name={<Text rus="Бренд" eng="Brand" est="Brändi" />}
             />
         </>
     );

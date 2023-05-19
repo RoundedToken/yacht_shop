@@ -7,16 +7,14 @@ import { TListMode } from './../../types/TListMode';
 
 export interface IProductListFilters {
     inStock: boolean;
-    notInStock: boolean;
-    inCart: boolean;
-    notInCart: boolean;
-    inFavorites: boolean;
-    notInFavorites: boolean;
 }
 
 export interface ICartListFilters {
-    inFavorites: boolean;
-    notInFavorites: boolean;
+    inStock: boolean;
+}
+
+export interface IFavoritesFilters {
+    inStock: boolean;
 }
 
 export interface ICartSorting {
@@ -43,6 +41,7 @@ export interface ISideBarState {
     listMode: TListMode;
     productListFilters: IProductListFilters;
     cartListFilters: ICartListFilters;
+    favoritesFilters: IFavoritesFilters;
     favoritesSorting: IFavoritesSorting;
     cartSorting: ICartSorting;
     categorySorting: ICategorySorting;

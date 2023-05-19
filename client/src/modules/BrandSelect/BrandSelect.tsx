@@ -31,6 +31,7 @@ const BrandSelect: FC<IBrandSelect> = () => {
     const selectedFavoritesBrands = useSelector(
         (state: RootState) => state.sideBarSlice.favoritesBrands
     );
+    const brandsDisplay = useSelector((state: RootState) => state.stylesSlice.brandsDisplay);
     const dispatch = useDispatch();
 
     const brandOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -50,7 +51,10 @@ const BrandSelect: FC<IBrandSelect> = () => {
     };
 
     return (
-        <div className={`${styles.brandsContainer} brandsContainer`}>
+        <div
+            style={brandsDisplay === 'none' ? {} : { width: '100%' }}
+            className={`${styles.brandsContainer} brandsContainer`}
+        >
             {(locationPath === routeConstants.CATEGORIES_ROUTE ||
                 locationPath === routeConstants.PRODUCT_LIST_ROUTE) && (
                 <>

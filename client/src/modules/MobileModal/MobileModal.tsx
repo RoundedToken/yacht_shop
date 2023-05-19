@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import closeImg from '../../assets/images/close.png';
 import { RootState } from '../../redux/store';
 import { switchMobileModalDisplay } from '../../redux/stylesSlice';
 import BreadcrumbsModal from './components/BreadcrumbsModal';
@@ -35,7 +34,9 @@ const MobileModal = () => {
     return (
         <div ref={modalRef} className={styles.modal}>
             <div className={styles.modalContentContainer}>
-                <img onClick={closeOnClick} className={styles.modalClose} src={closeImg} alt="" />
+                <div onClick={closeOnClick} className={styles.modalClose}>
+                    &times;
+                </div>
 
                 {modalType === 'lang' && <LangModal styles={styles} />}
 

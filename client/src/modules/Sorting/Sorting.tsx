@@ -1,6 +1,8 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { routeConstants } from '../../models/enums/EConstants';
+import { RootState } from '../../redux/store';
 import CartSorting from './components/CartSorting';
 import CategorySorting from './components/CategorySorting';
 import FavoritesSorting from './components/FavoritesSorting';
@@ -10,9 +12,13 @@ import styles from './Sorting.module.scss';
 
 const Sorting = () => {
     const location = '/' + useLocation().pathname.split('/')[1];
+    const sortingDisplay = useSelector((state: RootState) => state.stylesSlice.sortingDisplay);
 
     return (
-        <div className={styles.sortingContainer}>
+        <div
+            style={sortingDisplay === 'none' ? {} : { width: '100%' }}
+            className={styles.sortingContainer}
+        >
             <SortingHeader styles={styles} />
 
             {routeConstants.CART_ROUTE === location && <CartSorting styles={styles} />}

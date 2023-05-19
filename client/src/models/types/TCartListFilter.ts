@@ -1,1 +1,1 @@
-export type TCartListFilter = 'inFavorites' | 'notInFavorites';
+export type TCartListFilter = 'inStock';

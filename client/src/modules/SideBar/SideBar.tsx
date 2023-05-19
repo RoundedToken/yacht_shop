@@ -35,7 +35,8 @@ const SideBar = () => {
 
             {(routeConstants.PRODUCT_LIST_ROUTE === location ||
                 routeConstants.CART_ROUTE === location ||
-                routeConstants.SEARCH_ROUTE === location) && <Filter />}
+                routeConstants.SEARCH_ROUTE === location ||
+                routeConstants.FAVORITES_ROUTE === location) && <Filter />}
         </div>
     );
 };

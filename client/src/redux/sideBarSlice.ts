@@ -1,3 +1,4 @@
+import { TFavoritesFilter } from './../models/types/TFavoritesFilter';
 import { TCartListFilter } from './../models/types/TCartListFilter';
 import { TProductListFilter } from './../models/types/TProductListFilter';
 import { TListMode } from './../models/types/TListMode';
@@ -17,15 +18,12 @@ const initialState: ISideBarState = {
     //FILTER
     productListFilters: {
         inStock: false,
-        notInStock: false,
-        inCart: false,
-        notInCart: false,
-        inFavorites: false,
-        notInFavorites: false,
     },
     cartListFilters: {
-        inFavorites: false,
-        notInFavorites: false,
+        inStock: false,
+    },
+    favoritesFilters: {
+        inStock: false,
     },
 
     //SORTING
@@ -59,11 +57,6 @@ export const sideBarSlice = createSlice({
         clearProductListFilters(state) {
             state.productListFilters = {
                 inStock: false,
-                notInStock: false,
-                inCart: false,
-                notInCart: false,
-                inFavorites: false,
-                notInFavorites: false,
             };
         },
         setCartListFilter(
@@ -74,8 +67,18 @@ export const sideBarSlice = createSlice({
         },
         clearCartListFilters(state) {
             state.cartListFilters = {
-                inFavorites: false,
-                notInFavorites: false,
+                inStock: false,
+            };
+        },
+        setFavoritesFilter(
+            state,
+            action: PayloadAction<{ filter: TFavoritesFilter; status: boolean }>
+        ) {
+            state.favoritesFilters[action.payload.filter] = action.payload.status;
+        },
+        clearFavoritesFilters(state) {
+            state.favoritesFilters = {
+                inStock: false,
             };
         },
 
@@ -136,6 +139,8 @@ export const {
     clearProductListFilters,
     setCartListFilter,
     clearCartListFilters,
+    setFavoritesFilter,
+    clearFavoritesFilters,
     setCategorySorting,
     setCartSorting,
     setProductListSorting,

@@ -8,16 +8,8 @@ const CartListFilter: FC<ICartListFilter> = ({ styles }) => {
         <>
             <CartListFilterItem
                 styles={styles}
-                value="inFavorites"
-                name={<Text rus="В избранных" eng="Featured" est="Esiletõstetud" />}
-            />
-
-            <CartListFilterItem
-                styles={styles}
-                value="notInFavorites"
-                name={
-                    <Text rus="Не в избранных" eng="Not in favorites" est="Pole lemmikute hulgas" />
-                }
+                value="inStock"
+                name={<Text rus="В наличии" eng="In stock" est="Laos" />}
             />
         </>
     );

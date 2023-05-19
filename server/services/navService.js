@@ -12,17 +12,17 @@ class navService {
 
         const data = (
             await sql.query(
-                `SELECT DISTINCT 
+                `SELECT DISTINCT
                 par.featurename,
-                goods.tovar AS id, 
-                goods.${name} AS name, 
-                goods.brand, 
-                goods.marka AS code, 
-                goods.priceEU AS price, 
-                goods.OstPARNU AS inStockCount, 
-                par.featurevalue AS src 
-                FROM goods INNER JOIN par ON goods.tovar = par.tovar 
-                WHERE goods.subr=${id} AND goods.avail<>0 AND par.featurename LIKE 'pic%'
+                goods.tovar AS id,
+                goods.${name} AS name,
+                goods.brand,
+                goods.marka AS code,
+                goods.priceEU AS price,
+                goods.OstPARNU AS inStockCount,
+                par.featurevalue AS src
+                FROM goods LEFT JOIN par ON goods.tovar = par.tovar
+                WHERE goods.subr=${id} AND goods.avail<>0 AND (par.featurename LIKE 'pic%' OR par.tovar IS NULL)
                 ORDER BY par.featurename`
             )
         ).recordset;

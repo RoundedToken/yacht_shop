@@ -27,13 +27,10 @@ const FavoritesBrandSelect: FC<IFavoritesBrandSelect> = ({
     }, [locationPath, favoritesUpdate, lang, updateFavorites]);
     return (
         <>
-            {isFetching && <h1>Loading...</h1>}
             {error && <h1>Error!</h1>}
             {!isFetching &&
                 sortByBrands(
-                    Array.from(
-                        new Set(favoritesList?.map((product) => product.brand) || [])
-                    ),
+                    Array.from(new Set(favoritesList?.map((product) => product.brand) || [])),
                     selectedBrands
                 )?.map((brand) => (
                     <BrandSelectItem
