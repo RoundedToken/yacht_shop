@@ -46,9 +46,10 @@ class navService {
                 goods.brand, 
                 goods.priceEU AS price, 
                 goods.ostParnu AS inStockCount,
-                par.featurevalue AS src 
+                par.featurevalue AS src,
+                par.featurename 
                 FROM goods INNER JOIN par ON goods.tovar = par.tovar
-                WHERE goods.tovar = ${id} AND par.featurename LIKE 'pic%'
+                WHERE goods.tovar = ${id}
                 ORDER BY par.featurename`
             )
         ).recordset;
