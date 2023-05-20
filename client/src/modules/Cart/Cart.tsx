@@ -57,6 +57,18 @@ const Cart: FC<ICart> = () => {
                         <ProductCardSkeleton key={id} />
                     ))}
                 </div>
+
+                <div ref={ref} className={styles.orderContainer}>
+                    <CartSummary styles={styles} />
+
+                    <CartMenu styles={styles} />
+                </div>
+
+                <div ref={fixedOrderRef} className={styles.fixedOrder}>
+                    <CartSummary styles={styles} />
+
+                    <CartMenu styles={styles} />
+                </div>
             </div>
         );
     }

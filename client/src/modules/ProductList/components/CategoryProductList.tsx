@@ -12,6 +12,9 @@ import TableProductList from './TableProductList';
 const CategoryProductList: FC<ICategoryProductList> = ({ styles, brands, lang }) => {
     const id = Number(useParams<TId>().id);
     const listMode = useSelector((state: RootState) => state.sideBarSlice.listMode);
+    const productCount = useSelector((state: RootState) => state.navSlice.categoryList).find(
+        (category) => category.id === id
+    )?.productCount as number;
     const {
         data: productList,
         isFetching,
@@ -22,7 +25,7 @@ const CategoryProductList: FC<ICategoryProductList> = ({ styles, brands, lang })
         <>
             {isFetching && (
                 <div className={styles.productListGrid}>
-                    {Array(8)
+                    {Array(productCount)
                         .fill(null)
                         .map((_, i) => (
                             <ProductCardSkeleton key={i} />

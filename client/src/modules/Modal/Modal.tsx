@@ -9,6 +9,7 @@ import { deleteResponse } from '../../redux/cartSlice';
 import { routeConstants } from '../../models/enums/EConstants';
 import { useNavigate } from 'react-router-dom';
 import NavModal from './components/NavModal';
+import { setModalType } from '../../redux/modalSlice';
 
 const Modal = () => {
     const modalRef = useRef<HTMLDivElement>(null);
@@ -49,7 +50,8 @@ const Modal = () => {
 
     useEffect(() => {
         if (modalRef.current) modalRef.current.style.display = modalDisplay;
-    }, [modalDisplay]);
+        if (modalDisplay === 'none') dispatch(setModalType('null'));
+    }, [modalDisplay, dispatch]);
 
     useEffect(() => {
         const onResize = () => {

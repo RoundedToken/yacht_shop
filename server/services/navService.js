@@ -22,7 +22,7 @@ class navService {
                 goods.OstPARNU AS inStockCount,
                 par.featurevalue AS src
                 FROM goods LEFT JOIN par ON goods.tovar = par.tovar
-                WHERE goods.subr=${id} AND goods.avail<>0 AND (par.featurename LIKE 'pic%' OR par.tovar IS NULL)
+                WHERE goods.subr=${id} AND goods.avail<>0 
                 ORDER BY par.featurename`
             )
         ).recordset;
@@ -66,19 +66,22 @@ class navService {
         let data = (
             await sql.query(
                 `SELECT DISTINCT
-                nav.id, 
-                nav.parentid, 
-                nav.${name} AS name, 
-                nav.name AS alterName, 
-                goods.brand 
+                nav.id,
+                nav.parentid,
+                nav.${name} AS name,
+                nav.name AS alterName,
+                goods.brand,
+                COUNT(goods.tovar) AS productCount
                 FROM nav LEFT JOIN goods ON (goods.subr = nav.id AND goods.avail<>0)
-                WHERE (nav.id IN (SELECT DISTINCT subr FROM goods WHERE avail<>0) 
-                OR nav.id IN (SELECT DISTINCT parentid 
-                FROM nav WHERE id IN (SELECT DISTINCT subr FROM goods WHERE avail<>0)))`
+                WHERE (nav.id IN (SELECT DISTINCT subr FROM goods WHERE avail<>0)
+                OR nav.id IN (SELECT DISTINCT parentid
+                FROM nav WHERE id IN (SELECT DISTINCT subr FROM goods WHERE avail<>0)))
+                GROUP BY nav.id, nav.parentid, nav.${name}, nav.name, goods.brand
+                ORDER BY nav.id`
             )
         ).recordset;
 
-        //Grouping by brands and filter wrong categories
+        //Grouping by id and uniting together brands and productCount
         data = groupingByBrands(data);
 
         //Build the hierarchy

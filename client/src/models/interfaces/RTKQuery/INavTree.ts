@@ -12,4 +12,5 @@ export interface INavTreeItem {
     name: string;
     children?: INavTreeItem[];
     src: string;
+    productCount: number;
 }

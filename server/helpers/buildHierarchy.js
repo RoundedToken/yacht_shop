@@ -14,6 +14,7 @@ export function buildHierarchy(arr) {
             routes: [{ id: item.id, name: item.name }],
             name: item.name,
             brands: item.brands,
+            productCount: item.productCount,
         });
     }
 

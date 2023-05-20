@@ -4,7 +4,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TMobileModal } from '../models/types/TMobileModal';
 
 const initialState: IModalState = {
-    modalType: null,
+    modalType: 'null',
     picSrc: [],
     mobileModalType: null,
 };

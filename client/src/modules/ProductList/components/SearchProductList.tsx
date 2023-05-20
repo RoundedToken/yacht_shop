@@ -22,7 +22,7 @@ const SearchProductList: FC<ISearchProductList> = ({ styles, brands, lang }) => 
         <>
             {isFetching && (
                 <div className={styles.productListGrid}>
-                    {Array(8)
+                    {Array(10)
                         .fill(null)
                         .map((_, i) => (
                             <ProductCardSkeleton key={i} />

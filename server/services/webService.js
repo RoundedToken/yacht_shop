@@ -28,9 +28,10 @@ class WebService {
             goods.marka as code, 
             goods.priceEU as price, 
             goods.ostPARNU as inStockCount, 
-            par.featurevalue AS src 
+            par.featurevalue AS src,
+            par.featurename
             FROM goods INNER JOIN par ON goods.tovar = par.tovar
-            WHERE goods.tovar in (${idList}) AND par.featurename LIKE 'pic%'
+            WHERE goods.tovar in (${idList}) 
             ORDER BY par.featurename`
             )
         ).recordset;
