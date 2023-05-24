@@ -48,13 +48,14 @@ class navService {
                 goods.ostParnu AS inStockCount,
                 par.featurevalue AS src,
                 par.featurename 
-                FROM goods INNER JOIN par ON goods.tovar = par.tovar
+                FROM goods LEFT JOIN par ON goods.tovar = par.tovar
                 WHERE goods.tovar = ${id}
                 ORDER BY par.featurename`
             )
         ).recordset;
 
-        data[0].brandLogo = `${process.env.BRAND_IMG_URL}/${data[0].brand}.gif`;
+        data[0].brandLogo = `${process.env.BRAND_IMG_URL}/${data[0].brand}.png`;
+
         const filteredData = goodsFilter(data);
 
         return filteredData[0];

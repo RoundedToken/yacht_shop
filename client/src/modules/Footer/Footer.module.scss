@@ -4,6 +4,10 @@
     @include fontDesktopM($footerColor);
     margin-top: auto;
 
+    @media (max-width: $breakPointM) {
+        display: none;
+    }
+
     .footerContainer {
         @include flexCenterCenter;
         position: relative;

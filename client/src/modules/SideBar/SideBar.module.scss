@@ -12,19 +12,20 @@
 
     .switchContainer {
         @include flexCenterCenter;
-        gap: 1vh;
-        background-color: $yellowLight;
-        width: calc(100% - 1vh);
-        margin-left: 1vh;
-        padding-block: 0.5vh;
-        border-radius: 0.5vh;
+        gap: 15px;
+        width: calc(100% - 50px);
+        margin-left: 20px;
         margin-bottom: 20px;
 
         label {
             @include flexCenterCenter;
-            @include hover;
+            @include hoverBackColor($yellowLight);
+            width: 43px;
+            height: 43px;
             position: relative;
             cursor: pointer;
+            background-color: $darkAqua;
+            border-radius: 100%;
         }
 
         input {
@@ -34,7 +35,7 @@
         }
 
         img {
-            width: 40px;
+            width: 28px;
             filter: $blueFilter;
         }
     }

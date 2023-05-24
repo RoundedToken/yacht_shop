@@ -1,74 +1,63 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { FreeMode, Navigation, Thumbs, Zoom } from 'swiper';
+import { FreeMode, Navigation, Pagination } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
-import 'swiper/css/thumbs';
-import 'swiper/css/zoom';
+import 'swiper/css/pagination';
 import fullScreenImg from '../../../assets/images/fullScreen.png';
 import { useDispatch } from 'react-redux';
 import { setModalType, setPicSrc } from '../../../redux/modalSlice';
 import { switchModalDisplay } from '../../../redux/stylesSlice';
 import { IProductSwiper } from '../interfaces/IProductSwiper';
+import defaultProductImg from '../../../assets/images/defaultProduct.svg';
 
 const ProductSwiper: FC<IProductSwiper> = ({ picSrc, styles }) => {
-    const [thumbsSwiper, setThumbsSwiper] = useState(null);
-    const picL = picSrc.length;
     const dispatch = useDispatch();
+    const [isClickable, setIsClickable] = useState(true);
+    const imgRef = useRef<HTMLImageElement>(null);
 
     const fullScreenOnClick = () => {
         dispatch(setPicSrc(picSrc));
         dispatch(setModalType('pic'));
         dispatch(switchModalDisplay());
+        document.body.style.overflow = 'hidden';
+    };
+    const onImgError = () => {
+        if (imgRef.current) {
+            imgRef.current.src = defaultProductImg;
+            imgRef.current.className = styles.defaultProductPic;
+        }
+        setIsClickable(false);
     };
 
     return (
-        <div className={styles.swiper}>
+        <div className={styles.image}>
             <img
-                onClick={fullScreenOnClick}
-                className={styles.fullScreenImg}
+                onClick={isClickable ? fullScreenOnClick : undefined}
+                className={styles.fullScreen}
                 src={fullScreenImg}
                 alt=""
             />
 
             <Swiper
-                centeredSlides={true}
-                centeredSlidesBounds={true}
-                loop={true}
+                style={{
+                    //@ts-ignore
+                    '--swiper-navigation-size': '30px',
+                }}
                 navigation={true}
-                zoom={true}
-                thumbs={{ swiper: thumbsSwiper }}
-                modules={[FreeMode, Navigation, Thumbs, Zoom]}
-                className={picL === 1 ? styles.singleSwiper : styles.topSwiper}
+                mousewheel={true}
+                loop={true}
+                pagination={true}
+                modules={[FreeMode, Navigation, Pagination]}
+                className={styles.swiper}
             >
-                {picSrc.map((src) => (
-                    <SwiperSlide className={styles.swiperSlide} key={src}>
-                        <div className="swiper-zoom-container">
-                            <img src={src} alt="" />
-                        </div>
+                {picSrc.map((src, i) => (
+                    <SwiperSlide className={styles.swiperSlide} key={i}>
+                        <img ref={imgRef} src={src} alt="" onError={onImgError} />
                     </SwiperSlide>
                 ))}
             </Swiper>
-            {picL > 1 && (
-                <Swiper
-                    //@ts-ignore
-                    onSwiper={setThumbsSwiper}
-                    loop={true}
-                    spaceBetween={10}
-                    slidesPerView={picL}
-                    freeMode={true}
-                    watchSlidesProgress={true}
-                    modules={[FreeMode, Navigation, Thumbs]}
-                    className={styles.bottomSwiper}
-                >
-                    {picSrc.map((src) => (
-                        <SwiperSlide className={styles.swiperSlide} key={src}>
-                            <img src={src} alt="" />
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
-            )}
         </div>
     );
 };

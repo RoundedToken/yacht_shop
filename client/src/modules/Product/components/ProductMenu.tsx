@@ -8,13 +8,19 @@ import { IProductName } from '../interfaces/IProductName';
 const ProductMenu: FC<IProductName> = ({ styles, price, brand, id }) => {
     return (
         <div className={styles.menu}>
-            <div className={styles.menuPrice}>{eurFormatter.format(price)}</div>
+            <div className={styles.price}>{eurFormatter.format(price)}</div>
 
-            <FavoritesButton id={id} />
+            <div className={styles.favorites}>
+                <FavoritesButton id={id} />
+            </div>
 
-            <CartButton id={id} brand={brand} price={price} />
+            <div className={styles.cart}>
+                <div className={styles.cartControl}>
+                    <CartButton id={id} brand={brand} price={price} />
+                </div>
 
-            <CountControl id={id} />
+                <CountControl id={id} />
+            </div>
         </div>
     );
 };

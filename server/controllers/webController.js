@@ -51,6 +51,18 @@ class WebController {
             next(error);
         }
     }
+
+    async webRelatedProducts(req, res, next) {
+        try {
+            const reqData = req.query;
+
+            const sqlResDat = await webService.webRelatedProducts(reqData);
+
+            return res.json(sqlResDat);
+        } catch (error) {
+            next(error);
+        }
+    }
 }
 
 export default new WebController();

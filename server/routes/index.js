@@ -12,6 +12,7 @@ router.get('/web_tovar_parameters', webController.webTovarParameters);
 router.get('/web_cart_product_list', webController.webCartProductList);
 router.post('/web_order', webController.webOrder);
 router.get('/web_search', webController.webSearch);
+router.get('/web_relatedProducts', webController.webRelatedProducts);
 
 //For dev only
 async function dev() {

@@ -10,9 +10,9 @@
     padding-block: 5px;
     width: calc(100% - $_search_paddingDouble * 2);
     padding-inline: $_search_paddingDouble;
-    z-index: 2;
+    z-index: 3;
     gap: $_search_paddingDouble * 2;
-    box-shadow: 0px 1px 7px rgba(2, 31, 128, 0.792);
+    box-shadow: 0px 2px 5px rgba(2, 31, 128, 0.792);
 
     @media (max-width: $breakPointL) {
         width: calc(100% - $_search_paddingDoubleL * 2 - 2px);
@@ -64,7 +64,6 @@
             height: 70%;
             left: 0;
             border-radius: 20px;
-            transition: 0.5s ease-in-out;
             position: absolute;
             padding-left: 33px;
             padding-right: 10px;
@@ -76,13 +75,19 @@
             }
 
             &:focus {
-                left: 50px;
                 width: 210px;
                 padding-inline: 10px;
                 position: absolute;
 
+                & + img {
+                    left: calc(100% + 45px);
+
+                    @media (max-width: $breakPointL) {
+                        left: calc(100% + 25px);
+                    }
+                }
+
                 @media (max-width: $breakPointL) {
-                    left: 40px;
                     width: 160px;
                 }
             }

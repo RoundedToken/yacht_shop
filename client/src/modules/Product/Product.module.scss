@@ -1,138 +1,369 @@
 @import '../../styles/index.scss';
+@import '../Header/variables.scss';
 
-.productContainer {
-    width: 60%;
-    margin-bottom: 100px;
-    margin-inline: auto;
+.rootContainer {
+    width: calc(100% - 20px);
     display: flex;
-    border-radius: 1vh;
+    margin-left: 20px;
+    flex-direction: column;
 
-    .swiper {
-        width: 50%;
-        aspect-ratio: 1/1;
-        position: relative;
-        margin-right: 20px;
-        padding: 1vh;
-        border-radius: 1vh;
+    @media (max-width: $breakPointL) {
+        margin-left: 0;
+        width: 100%;
+    }
 
-        .fullScreenImg {
-            @include hover;
-            position: absolute;
-            right: 0;
-            width: 30px;
-            z-index: 5;
-            filter: $blueFilter;
+    @media (max-width: $breakPointM) {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: calc($_header_imgWidth + $_header_paddingDouble * 3 - 36px) 1fr;
+        grid-template-rows: auto auto auto;
+
+        @media (max-width: $breakPointL) {
+            grid-template-columns: calc($_header_imgWidthL + $_header_paddingDoubleL * 3 - 40px) 1fr;
         }
 
-        .singleSwiper {
-            margin-bottom: 1vh;
-            height: 100%;
-            border-radius: 1vh;
+        @media (max-width: $breakPointM) {
+            grid-template-columns: auto;
+            grid-template-rows: auto;
+            margin-top: 20px;
         }
 
-        .topSwiper {
-            margin-bottom: 1vh;
-            height: 77%;
-            border-radius: 1vh;
+        .menu {
+            @include columnCenterStart;
+            background-color: $skyBlue;
+            margin-left: -20px;
+            margin-top: -20px;
+            padding: 20px;
+            gap: 20px;
 
-            width: 100%;
-        }
+            @media (max-width: $breakPointL) {
+                margin-left: -20px;
+            }
 
-        .swiperSlide {
-            text-align: center;
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+            @media (max-width: $breakPointM) {
+                margin-top: 0;
+                margin-left: 0;
+                grid-row: 2/3;
+                flex-direction: row;
+                padding-left: 5px;
+                background-color: $white;
+            }
 
-        .bottomSwiper {
-            height: 20%;
-            border-radius: 1vh;
+            @media (max-width: $breakPointS) {
+                padding-left: 30px;
+                padding-block: 10px;
+                padding-left: 15px;
+            }
 
-            .swiperSlide {
-                opacity: 0.4;
-                border-radius: 1vh;
-                cursor: pointer;
+            .price {
+                font-size: 28px;
+                font-weight: 800;
+                color: $blue;
+                margin-bottom: 40px;
 
-                &:nth-child(1) {
-                    margin-left: 0;
+                @media (max-width: $breakPointM) {
+                    margin-bottom: 0;
                 }
             }
 
+            .favorites {
+                @media (max-width: $breakPointM) {
+                    margin-left: auto;
+                }
+            }
+
+            .cart {
+                @include columnCenterCenter;
+                flex-direction: column-reverse;
+                height: 86px;
+                gap: 20px;
+
+                @media (max-width: $breakPointM) {
+                    height: auto;
+                    flex-direction: row-reverse;
+                }
+
+                &Control {
+                    height: 100%;
+                }
+            }
+        }
+
+        .description {
+            padding-left: 20px;
+            display: flex;
+
+            @media (max-width: $breakPointM) {
+                grid-row: 1/2;
+                padding-left: 5px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            @media (max-width: $breakPointS) {
+                display: flex;
+                flex-direction: column;
+                padding-left: 5px;
+            }
+
+            .image {
+                width: 340px;
+                min-width: 340px;
+                height: 285px;
+                position: relative;
+                background-color: $white;
+
+                @media (max-width: $breakPointM) {
+                    margin-top: 0;
+                    margin-inline: auto;
+                }
+
+                .fullScreen {
+                    @include hoverFilter($blueFilter);
+                    cursor: pointer;
+                    width: 35px;
+                    position: absolute;
+                    top: 20px;
+                    filter: $grayFilter;
+                    z-index: 2;
+                }
+
+                .swiper {
+                    width: 95%;
+                    height: 100%;
+
+                    img {
+                        width: 100%;
+                        height: 90%;
+                        object-fit: contain;
+                    }
+
+                    .defaultProductPic {
+                        filter: $lightGrayFilter;
+                        height: 67%;
+                        width: 100%;
+                        object-fit: contain;
+                        margin-top: 25px;
+                    }
+                }
+            }
+
+            .details {
+                display: flex;
+                flex-direction: column;
+                padding-bottom: 20px;
+                gap: 0px;
+
+                @media (max-width: $breakPointM) {
+                    padding-bottom: 0;
+                }
+
+                @media (max-width: $breakPointS) {
+                    margin-top: 10px;
+                    margin-left: 10px;
+                }
+
+                .name {
+                    font-size: 28px;
+                    line-height: 30px;
+                    font-weight: 800;
+                    color: $blue;
+
+                    @media (max-width: $breakPointM) {
+                        margin-bottom: 20px;
+                    }
+                }
+
+                &Item {
+                    display: flex;
+                    gap: 10px;
+                    color: $blue;
+                    font-size: 16px;
+                    font-weight: 400px;
+
+                    &:nth-child(2) {
+                        margin-top: auto;
+                    }
+
+                    .inStock {
+                        font-weight: 800;
+                    }
+
+                    .count {
+                        font-weight: 800;
+                    }
+
+                    .brand {
+                        font-weight: 800;
+                    }
+                }
+
+                ._mobileBrandLogo {
+                    display: none;
+
+                    @media (max-width: $breakPointM) {
+                        display: flex;
+                        height: 65px;
+                        width: 150px;
+                        margin-top: 20px;
+                    }
+
+                    @media (max-width: $breakPointS) {
+                        margin-top: 10px;
+                    }
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: contain;
+                    }
+                }
+            }
+        }
+
+        .brandLogo {
+            margin-inline: auto;
+            margin-top: 20px;
+            width: calc(100% - 20px);
+            height: 65px;
+            padding-right: 20px;
+
+            @media (max-width: $breakPointL) {
+                width: calc(100% + 20px);
+                padding-right: 0;
+                margin-left: -20px;
+            }
+
+            @media (max-width: $breakPointM) {
+                display: none;
+            }
+
             img {
-                display: block;
                 width: 100%;
                 height: 100%;
-                object-fit: cover;
-                border-radius: 1vh;
+                object-fit: contain;
             }
         }
-    }
 
-    .description {
-        @include columnBetweenNormal;
-        width: 50%;
-        display: flex;
-        flex-direction: column;
-        padding: 5px;
+        .info {
+            grid-column: 2/3;
+            width: 100%;
 
-        .menu {
-            @include flexBetweenCenter;
+            @media (max-width: $breakPointM) {
+                grid-column: auto;
+                grid-row: 3/4;
+            }
+
+            &Container {
+                height: max-content;
+                padding-bottom: 20px;
+                max-width: 100%;
+
+                @media (max-width: $breakPointS) {
+                    padding-bottom: 10px;
+                }
+
+                .infoTitle {
+                    width: calc(100% - 20px);
+                    font-size: 24px;
+                    font-weight: 800;
+                    color: $blue;
+                    background-color: $skyBlue;
+                    padding-block: 5px;
+                    padding-inline: 20px;
+                    border-radius: 0 0 0 20px;
+                    margin-bottom: 20px;
+
+                    @media (max-width: $breakPointM) {
+                        width: calc(100% - 4px);
+                        margin-left: -20px;
+                        padding-inline: 22px;
+                    }
+
+                    @media (max-width: $breakPointS) {
+                        width: calc(100% - 24px);
+                        margin-left: -10px;
+                        margin-bottom: 10px;
+                        padding-inline: 22px;
+                    }
+                }
+
+                .infoItem {
+                    color: $blue;
+                    display: flex;
+                    gap: 10px;
+                    margin-inline: 20px;
+
+                    @media (max-width: $breakPointM) {
+                        margin-left: 5px;
+                    }
+
+                    @media (max-width: $breakPointS) {
+                        margin-left: 12px;
+                    }
+
+                    &Title {
+                        font-weight: 800;
+                    }
+                }
+            }
+        }
+
+        .related {
+            background-color: $lightGray;
+            grid-column: 1/3;
+            padding-inline: 20px;
+            padding-top: 10px;
+            padding-bottom: 32px;
+            height: max-content;
+            border-radius: 0 20px 20px 20px;
             margin-top: 20px;
 
-            border-radius: 1vh;
-            padding: 5px;
+            @media (max-width: $breakPointM) {
+                grid-column: auto;
+                margin-left: -20px;
+                width: calc(100% + 0px);
+                padding-inline: 20px;
+            }
 
-            &Price {
-                @include fontDesktopL($blue);
+            @media (max-width: $breakPointS) {
+                width: 100%;
+                padding-inline: 10px;
+                margin-top: 10px;
+                padding-top: 5px;
+                padding-bottom: 20px;
+                margin-left: -10px;
+            }
+
+            &Title {
+                font-size: 24px;
+                font-weight: 800;
+                color: $blue;
+                margin-bottom: 5px;
+
+                @media (max-width: $breakPointS) {
+                    margin-left: 10px;
+                }
+            }
+
+            &Grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                row-gap: 10px;
+                column-gap: 10px;
+
+                @media (max-width: 1150px) {
+                    grid-template-columns: 1fr 1fr;
+                }
+
+                @media (max-width: 810px) {
+                    grid-template-columns: 1fr;
+                }
             }
         }
-
-        &Name {
-            @include fontDesktopXM($blue);
-            margin-bottom: 20px;
-
-            padding: 5px;
-            border-radius: 1vh;
-        }
-
-        &Brand {
-            @include flexBetweenCenter;
-            padding: 5px;
-            border-radius: 1vh;
-
-            img {
-                max-height: 40px;
-            }
-        }
-
-        &Detail {
-            padding: 5px;
-            border-radius: 1vh;
-        }
-
-        &Item {
-            @include fontDesktopM($blue);
-            display: flex;
-            gap: 10px;
-        }
-
-        .itemTitle {
-            @include fontDesktopM($blue);
-        }
     }
-}
-
-.infoContainer {
-    .infoTitle {
-        @include fontDesktopXL($blue);
-        @include flexCenterCenter;
-
-        margin-bottom: 20px;
-    }
-
-    width: 60%;
-    margin-inline: auto;
 }

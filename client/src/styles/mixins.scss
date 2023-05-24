@@ -159,6 +159,14 @@
         }
     }
 }
+@mixin hoverBackColor($color) {
+    @media (hover: hover) and (pointer: fine) {
+        cursor: pointer;
+        &:hover {
+            background-color: $color;
+        }
+    }
+}
 @mixin hoverFilter($filter) {
     @media (hover: hover) and (pointer: fine) {
         cursor: pointer;

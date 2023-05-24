@@ -1,6 +1,7 @@
 @import '../../styles/index.scss';
 
 .close {
+    float: right;
     width: 40px;
     height: 40px;
     background-color: rgb(215, 215, 215);
@@ -21,11 +22,11 @@
     font-size: 14px;
     font-weight: 600;
     position: absolute;
-    top: 40px;
-    left: 40px;
+    top: 0;
+    left: 0;
     background-color: rgb(255, 170, 43);
     z-index: 6;
-    width: 250px;
+    width: 270px;
     border-radius: 0 10px 10px 10px;
 
     .nestedDropdown {
@@ -45,7 +46,7 @@
         }
 
         .content {
-            line-height: 1;
+            line-height: 1.1;
         }
     }
     .nestedDropdown li {
@@ -53,7 +54,9 @@
         gap: 5px;
         cursor: pointer;
         width: calc(100% - 15px);
-        padding-block: 2px;
+        // padding-block: 2px;
+        padding-top: 3px;
+        padding-bottom: 3px;
         position: relative;
         z-index: 6;
         padding-left: 10px;
@@ -71,7 +74,7 @@
         display: none;
         list-style-type: none;
         margin: 0;
-        width: 230px;
+        width: 250px;
 
         li {
             width: calc(100% - 5px);

@@ -1,3 +1,4 @@
+import { webRelatedProductsApi } from './../services/webRelatedProducts';
 import modalSlice from './modalSlice';
 import sideBarSlice from './sideBarSlice';
 import { webSearchApi } from './../services/webSearch';
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
     [webOrderApi.reducerPath]: webOrderApi.reducer,
     [navTreeApi.reducerPath]: navTreeApi.reducer,
     [webSearchApi.reducerPath]: webSearchApi.reducer,
+    [webRelatedProductsApi.reducerPath]: webRelatedProductsApi.reducer,
     navSlice,
     langSlice,
     cartSlice,
@@ -42,7 +44,8 @@ export const setupStore = () => {
                 webCartProductList.middleware,
                 webOrderApi.middleware,
                 navTreeApi.middleware,
-                webSearchApi.middleware
+                webSearchApi.middleware,
+                webRelatedProductsApi.middleware
             ),
     });
 };

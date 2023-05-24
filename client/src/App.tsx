@@ -14,11 +14,14 @@ import Header from './modules/Header/Header';
 import SearchBar from './modules/SearchBar/SearchBar';
 import MobileModal from './modules/MobileModal/MobileModal';
 import AppLoading from './AppLoading';
+import { useLocation } from 'react-router-dom';
+import { routeConstants } from './models/enums/EConstants';
 
 function App() {
     const lang = useSelector((state: RootState) => state.langSlice.lang);
     const [update, { isSuccess, isFetching, error }] = navTreeApi.useLazyFetchAllIdQuery();
     const dispatch = useDispatch();
+    const location = '/' + useLocation().pathname.split('/')[1];
 
     useEffect(() => {
         update(lang);
@@ -63,7 +66,18 @@ function App() {
             {isFetching && <AppLoading />}
             {error && <h1>`${JSON.stringify(error)}`</h1>}
             {isSuccess && !isFetching && (
-                <div className="wrapper">
+                <div
+                    className="wrapper"
+                    style={
+                        location === routeConstants.CART_ROUTE
+                            ? { backgroundColor: 'rgb(211, 240, 243)' }
+                            : location === routeConstants.FAVORITES_ROUTE
+                            ? { backgroundColor: 'rgb(255, 231, 224)' }
+                            : location === routeConstants.PRODUCT_ROUTE
+                            ? { backgroundColor: 'white' }
+                            : {}
+                    }
+                >
                     <ScrollToTop />
 
                     <Header />

@@ -12,7 +12,10 @@ const SideBar = () => {
     const location = '/' + useLocation().pathname.split('/')[1];
 
     return (
-        <div className={`${styles.sideBar} sideBar`}>
+        <div
+            style={location === routeConstants.PRODUCT_ROUTE ? { display: 'none' } : {}}
+            className={`${styles.sideBar} sideBar`}
+        >
             {(location === routeConstants.MAIN_ROUTE ||
                 location === routeConstants.CRIMPING_ROUTE ||
                 location === routeConstants.CONTACTS_ROUTE ||

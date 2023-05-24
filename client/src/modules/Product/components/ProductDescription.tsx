@@ -1,29 +1,68 @@
-import React, { FC } from 'react';
+import React, { FC, useRef } from 'react';
 import { IProductDescription } from '../interfaces/IProductDescription';
-import ProductBrand from './ProductBrand';
-import ProductDetail from './ProductDetail';
-import ProductMenu from './ProductMenu';
+import ProductSwiper from './ProductSwiper';
+import defaultBrandImg from '../../../assets/images/defaultBrand.png';
+import Text from '../../../UI/Text/Text';
 
 const ProductDescription: FC<IProductDescription> = ({ styles, product }) => {
+    const imgRef = useRef<HTMLImageElement>(null);
+
+    const onImgError = () => {
+        if (imgRef.current) {
+            imgRef.current.src = defaultBrandImg;
+            imgRef.current.className = styles.defaultProductPic;
+        }
+    };
     return (
         <div className={styles.description}>
-            <div className={styles.descriptionName}>{product.name}</div>
+            <ProductSwiper styles={styles} picSrc={product.src} />
 
-            <ProductBrand styles={styles} brand={product.brand} brandLogo={product.brandLogo} />
+            <div className={styles.details}>
+                <div className={styles.name}>{product.name}</div>
 
-            <ProductDetail
-                styles={styles}
-                inStock={product.inStock}
-                inStockCount={product.inStockCount}
-                code={product.code}
-            />
+                <div className={styles.detailsItem}>
+                    <div className={styles.detailsItemTitle}>
+                        <Text rus="В наличии" eng="In stock" est="Laos" />
+                    </div>
 
-            <ProductMenu
-                styles={styles}
-                id={product.id}
-                price={product.price}
-                brand={product.brand}
-            />
+                    <div className={styles.inStock}>
+                        {product.inStock ? (
+                            <Text rus="Да" eng="Yes" est="Jah" />
+                        ) : (
+                            <Text rus="Нет" eng="No" est="Ei" />
+                        )}
+                    </div>
+                </div>
+
+                <div className={styles.detailsItem}>
+                    <div className={styles.detailsItemTitle}>
+                        <Text rus="Количество в наличии" eng="Quantity in stock" est="Kogus laos" />
+                    </div>
+
+                    <div className={styles.count}>{product.inStockCount}</div>
+                </div>
+
+                <div className={styles.detailsItem}>
+                    <div className={styles.detailsItemTitle}>
+                        {' '}
+                        <Text rus="Код" eng="Code" est="Kood" />
+                    </div>
+
+                    <div className={styles.code}>{product.code}</div>
+                </div>
+
+                <div className={styles.detailsItem}>
+                    <div className={styles.detailsItemTitle}>
+                        <Text rus="Бренд" eng="Brand" est="Brändi" />
+                    </div>
+
+                    <div className={styles.brand}>{product.brand}</div>
+                </div>
+
+                <div className={styles._mobileBrandLogo}>
+                    <img ref={imgRef} src={product.brandLogo} alt="" onError={onImgError} />
+                </div>
+            </div>
         </div>
     );
 };

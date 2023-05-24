@@ -8,9 +8,9 @@ class WebService {
 
         request.input('tovar', sql.Int, tovar);
 
-        const data = (await request.execute('[dbo].[web_tovar_parameters]')).recordset;
+        const data = (await request.execute('[dbo].[web_tovar_parameters_new]')).recordset;
 
-        const res = data.map((record) => record['']);
+        const res = data.map((record) => [record['n'], record[''][0]]);
 
         return res;
     }
@@ -45,7 +45,10 @@ class WebService {
         const name = langParser(lang);
         if (!name) throw new Error();
 
-        const formattedString = searchStr.split(' ').join('%');
+        const condition = searchStr
+            .split(' ')
+            .map((str) => `goods.${name} LIKE '%${str}%'`)
+            .join(' AND ');
 
         const data = (
             await sql.query(`
@@ -58,11 +61,10 @@ class WebService {
         goods.brand,
         goods.${name} AS name,
         par.featurevalue AS src
-        FROM goods INNER JOIN par ON goods.tovar = par.tovar
+        FROM goods LEFT JOIN par ON goods.tovar = par.tovar
         WHERE goods.subr IS NOT NULL
         AND goods.avail<>0
-        AND par.featurename LIKE 'pic%' 
-        AND goods.${name} LIKE '%${formattedString}%'
+        AND ${condition}
         ORDER BY par.featurename`)
         ).recordset;
 
@@ -109,6 +111,33 @@ class WebService {
         ).recordset;
 
         return { orderId, orderList: data };
+    }
+
+    async webRelatedProducts({ id, lang }) {
+        const name = langParser(lang);
+        if (!name) throw new Error();
+
+        const data = (
+            await sql.query(`
+        SELECT DISTINCT
+        par.featurename,
+        goods.tovar AS id,
+        goods.marka AS code,
+        goods.priceEU AS price,
+        goods.OstPARNU AS rest,
+        goods.brand,
+        goods.${name} AS name,
+        par.featurevalue AS src
+        FROM goods LEFT JOIN par ON goods.tovar = par.tovar
+        WHERE goods.tovar IN 
+        (SELECT convert(int, value) FROM string_split((SELECT par.featurevalue FROM par WHERE par.tovar = ${id} AND par.featurename LIKE 'and'), ','))
+        AND par.featurename LIKE 'pic' AND goods.avail<>0
+        `)
+        ).recordset;
+
+        const filteredData = goodsFilter(data);
+
+        return filteredData;
     }
 }
 

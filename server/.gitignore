@@ -5,3 +5,7 @@ devService.js
 /.vscode
 ecosystem.config.cjs
 deployBackend.sh
+/pic
+/images
+products.txt
+productImagesFetch.sh

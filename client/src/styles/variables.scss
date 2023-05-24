@@ -42,7 +42,8 @@ $gray: rgb(189, 189, 189);
 $lightGray: rgb(236, 236, 236);
 $lightBlue: rgb(49, 71, 145);
 $aqua: rgb(39, 172, 198);
-$darkAqua: rgb(78, 160, 207);
+$darkAqua: rgb(139, 181, 205);
+$skyBlue: rgb(168, 200, 250);
 
 /* FILTERS */
 $blueFilter: invert(15%) sepia(49%) saturate(4274%) hue-rotate(221deg) brightness(81%)
@@ -73,3 +74,4 @@ $lightBlueFilter: invert(21%) sepia(86%) saturate(823%) hue-rotate(198deg) brigh
 $lightGrayFilter: invert(100%) sepia(0%) saturate(2651%) hue-rotate(340deg) brightness(117%)
     contrast(85%);
 $aquaFilter: invert(60%) sepia(32%) saturate(865%) hue-rotate(142deg) brightness(89%) contrast(102%);
+$grayFilter: invert(84%) sepia(0%) saturate(23%) hue-rotate(154deg) brightness(87%) contrast(104%);

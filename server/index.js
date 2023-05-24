@@ -16,6 +16,7 @@ app.use(
 );
 app.use(express.json());
 app.use('/api', router);
+app.use(express.static('images'));
 
 const start = () => {
     try {
