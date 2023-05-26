@@ -57,7 +57,13 @@ const Product = () => {
                             <ProductInfo styles={styles} />
                         </div>
 
-                        <RelatedProducts styles={styles} id={product.id} />
+                        {product.relatedCount !== 0 && (
+                            <RelatedProducts
+                                styles={styles}
+                                id={product.id}
+                                relatedCount={product.relatedCount}
+                            />
+                        )}
                     </div>
                 ) : (
                     <ProductNotFound />

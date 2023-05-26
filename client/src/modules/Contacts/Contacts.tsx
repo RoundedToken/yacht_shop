@@ -3,9 +3,7 @@ import styles from './Contacts.module.scss';
 import GoogleMap from './components/GoogleMap';
 import shopImg from '../../assets/images/shop.jpg';
 import Text from '../../UI/Text/Text';
-import whatsUpImg from '../../assets/images/whatsUp.png';
 import mailImg from '../../assets/images/mail.png';
-import phoneImg from '../../assets/images/phone.png';
 import locationImg from '../../assets/images/location.png';
 
 const Contacts = () => {
@@ -24,12 +22,12 @@ const Contacts = () => {
                         <Text rus="Вс - 12-17" eng="Sun - 12-17" est="P - 12-17" />
                     </div>
                     <div className={styles.Item}>
-                        <img src={phoneImg} alt="" width={24} height={24} />
+                        {/* <img src={phoneImg} alt="" width={24} height={24} /> */}
                         +372 589 45 074
                     </div>
                     <div className={styles.Item}>
                         <a href="https://wa.me/79854549470" target="_blank" rel="noreferrer">
-                            <img src={whatsUpImg} alt="" width={28} height={28} />
+                            {/* <img src={whatsUpImg} alt="" width={28} height={28} /> */}
                             <Text rus="Наш Whats'up" eng="Our Whats'up" est="Meie Whats'up" />
                         </a>
                     </div>

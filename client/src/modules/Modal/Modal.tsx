@@ -76,7 +76,11 @@ const Modal = () => {
                         : styles.modalContentContainer
                 }
             >
-                <div className={styles.modalClose} onClick={closeOnClick}>
+                <div
+                    style={modalType === 'order' ? { display: 'none' } : {}}
+                    className={styles.modalClose}
+                    onClick={closeOnClick}
+                >
                     &times;
                 </div>
 

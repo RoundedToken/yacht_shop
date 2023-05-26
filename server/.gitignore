@@ -9,3 +9,4 @@ deployBackend.sh
 /images
 products.txt
 productImagesFetch.sh
+deployImages.sh

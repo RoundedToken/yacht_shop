@@ -17,6 +17,10 @@
         margin-left: 20px;
         margin-bottom: 20px;
 
+        .active {
+            background-color: $yellow;
+        }
+
         label {
             @include flexCenterCenter;
             @include hoverBackColor($yellowLight);

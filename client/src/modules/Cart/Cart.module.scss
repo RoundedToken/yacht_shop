@@ -158,7 +158,6 @@
         padding-inline: 30px;
 
         @media (max-width: 1439px) {
-            display: flex;
         }
 
         @media (max-width: $breakPointL) {
@@ -387,7 +386,7 @@
                     line-clamp: 2;
                     white-space: pre;
                     text-align: center;
-                    color: $gray;
+                    color: $darkAqua;
                     font-size: 18px;
                     line-height: 1;
                 }

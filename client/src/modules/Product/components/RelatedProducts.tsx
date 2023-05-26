@@ -7,7 +7,7 @@ import ProductCard from '../../ProductCard/ProductCard';
 import ProductCardSkeleton from '../../ProductCard/ProductCardSkeleton';
 import { IRelatedProducts } from '../interfaces/IRelatedProducts';
 
-const RelatedProducts: FC<IRelatedProducts> = ({ styles, id }) => {
+const RelatedProducts: FC<IRelatedProducts> = ({ styles, id, relatedCount }) => {
     const lang = useSelector((state: RootState) => state.langSlice.lang);
     const { data, isFetching } = webRelatedProductsApi.useFetchRelatedProductsQuery({ id, lang });
     const cartProductList = useSelector((state: RootState) => state.cartSlice.productList);
@@ -20,7 +20,7 @@ const RelatedProducts: FC<IRelatedProducts> = ({ styles, id }) => {
                 </div>
 
                 <div className={styles.relatedGrid}>
-                    {Array(6)
+                    {Array(relatedCount)
                         .fill(0)
                         .map((item, i) => (
                             <ProductCardSkeleton key={i} />

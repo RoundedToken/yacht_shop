@@ -54,9 +54,17 @@ class navService {
             )
         ).recordset;
 
+        const countRelatedData = (
+            await sql.query(
+                `
+            (SELECT COUNT(convert(int, value)) AS relatedCount FROM string_split((SELECT par.featurevalue FROM par WHERE par.tovar = ${id} AND par.featurename LIKE 'and'), ','))`
+            )
+        ).recordset;
+
         data[0].brandLogo = `${process.env.BRAND_IMG_URL}/${data[0].brand}.png`;
 
         const filteredData = goodsFilter(data);
+        filteredData[0].relatedCount = countRelatedData[0].relatedCount;
 
         return filteredData[0];
     }

@@ -17,7 +17,7 @@ const ListModeSwitch: FC<IListModeSwitch> = ({ styles }) => {
 
     return (
         <div className={styles.switchContainer}>
-            <label>
+            <label className={listMode === 'table' ? styles.active : undefined}>
                 <img src={tableViewImg} alt="" />
 
                 <input
@@ -29,7 +29,7 @@ const ListModeSwitch: FC<IListModeSwitch> = ({ styles }) => {
                 />
             </label>
 
-            <label>
+            <label className={listMode === 'grid' ? styles.active : undefined}>
                 <img src={gridViewImg} alt="" />
 
                 <input

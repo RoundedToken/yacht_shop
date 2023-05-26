@@ -3,4 +3,5 @@ export interface IRelatedProducts {
         readonly [key: string]: string;
     };
     id: number;
+    relatedCount: number;
 }

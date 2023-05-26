@@ -1,10 +1,12 @@
 import React from 'react';
 import Text from '../../UI/Text/Text';
 import styles from './Footer.module.scss';
-import whatsUpImg from '../../assets/images/whatsUp.png';
 import mailImg from '../../assets/images/mail.svg';
-import phoneImg from '../../assets/images/phone.png';
-import locationImg from '../../assets/images/location.png';
+import contactsImg from '../../assets/images/contacts.svg';
+import shellImg from '../../assets/images/shell.png';
+import shell2Img from '../../assets/images/shell2.png';
+import ringImg from '../../assets/images/ring.svg';
+import navWaveImg from '../../assets/images/navWave.png';
 
 const Footer = () => {
     return (
@@ -17,30 +19,50 @@ const Footer = () => {
                     <div className={`${styles.wave}  ${styles.wave4}`}></div>
                 </div>
 
-                <div className={styles.content}>
+                {/* <img className={styles.navWave} src={navWaveImg} alt="" /> */}
+
+                <div className={styles.grid}>
                     <div className={styles.address}>
-                        <img src={locationImg} alt="" />
-                        Parnu JahtKlubi, Lootsi tn 6, Parnu
-                        <div className={styles.workingMode}>
-                            <Text rus="Пн,Вт - вых" eng="Mon,Tue - day off" est="E,T - puhkepäev" />
-                            <Text rus="Ср-Сб - 12-20" eng="Wed-Sat - 12-20" est="K-L - 12-20" />
-                            <Text rus="Вс - 12-17" eng="Sun - 12-17" est="P - 12-17" />
+                        <img src={contactsImg} alt="" />
+                        <div className={styles.addressText}>
+                            Parnu JahtKlubi
+                            <br /> Lootsi tn 6
+                            <br /> Parnu
                         </div>
                     </div>
 
-                    <div className={styles.item}>
-                        <img src={phoneImg} alt="" />
-                        +372 589 45 074
+                    <div className={styles.workingMode}>
+                        <img src={shellImg} alt="" />
+
+                        <Text
+                            rus={`Ср\u{2013}Сб \u{25CF} 12\u{2013}20`}
+                            eng={`Wed\u{2013}Sat \u{25CF} 12\u{2013}20`}
+                            est={`K\u{2013}L \u{25CF} 12\u{2013}20`}
+                        />
+
+                        <Text
+                            rus={`Вс \u{25CF} 12\u{2013}17`}
+                            eng={`Sun \u{25CF} 12\u{2013}17`}
+                            est={`P \u{25CF} 12\u{2013}17`}
+                        />
+                        <img src={shell2Img} alt="" />
+
+                        <Text
+                            rus={`Пн\u{2013}Вт \u{25CF} закрыто`}
+                            eng={`Mon,Tue \u{25CF} сlosed`}
+                            est={`E,T \u{25CF} suletud`}
+                        />
                     </div>
 
-                    <div className={styles.item}>
+                    <div className={styles.contacts}>
+                        <img src={ringImg} alt="" />
+                        +372 589 450 74
                         <a href="https://wa.me/79854549470" target="_blank" rel="noreferrer">
-                            <img src={whatsUpImg} alt="" />
                             <Text rus="Наш Whats'up" eng="Our Whats'up" est="Meie Whats'up" />
                         </a>
                     </div>
 
-                    <div className={styles.item}>
+                    <div className={styles.email}>
                         <img src={mailImg} alt="" />
                         shop@yachtshop.ee
                     </div>

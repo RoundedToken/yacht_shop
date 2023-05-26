@@ -204,6 +204,7 @@
         .modalContent {
             @include columnCenterCenter;
             gap: 28px;
+            position: relative;
 
             img {
                 max-width: 70%;
@@ -216,10 +217,15 @@
 
             .title {
                 @include fontDesktopXL($blue);
-                margin-top: 30px;
+                position: sticky;
+                top: 0;
+                padding-top: 30px;
+                padding-bottom: 20px;
                 line-height: 1;
                 font-size: 24px;
                 text-align: center;
+                width: 100%;
+                background-color: $white;
 
                 @media (max-width: $breakPointM) {
                     margin-inline: 70px;
@@ -460,12 +466,12 @@
                     justify-content: center;
                     align-items: center;
                     flex-direction: column;
-                    height: 100%;
+                    height: min-content;
                     width: 100%;
                     grid-row: 2/7;
                     grid-column: 2/3;
                     gap: 10px;
-                    margin-top: -7px;
+                    margin-top: 17px;
 
                     button {
                         @include flexCenterCenter;
@@ -489,6 +495,7 @@
                         font-size: 18px;
                         font-weight: 700;
                         line-height: 1;
+                        white-space: nowrap;
                     }
                 }
             }

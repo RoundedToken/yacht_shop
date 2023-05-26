@@ -11,6 +11,7 @@ export interface INavProductRes {
     brandLogo: string;
     inStock: boolean;
     src: string[];
+    relatedCount: number;
 }
 
 export interface INavProductReq {

@@ -47,7 +47,7 @@ const SearchInput: FC<ISearchInput> = ({ styles }) => {
                 required
             />
 
-            <img src={lifebuoyImg} alt="" />
+            <input className={styles.submit} type="image" src={lifebuoyImg} alt="" />
         </form>
     );
 };

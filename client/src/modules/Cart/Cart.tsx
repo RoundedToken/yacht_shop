@@ -40,7 +40,8 @@ const Cart: FC<ICart> = () => {
             if (inView) fixedOrderRef.current.style.display = 'none';
             else fixedOrderRef.current.style.display = 'flex';
         }
-    }, [inView]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [inView, fixedOrderRef.current]);
 
     if (!idList || idList.length === 0)
         return (

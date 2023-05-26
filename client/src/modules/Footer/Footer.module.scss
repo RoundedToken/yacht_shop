@@ -3,19 +3,28 @@
 .footer {
     @include fontDesktopM($footerColor);
     margin-top: auto;
+    width: 100%;
 
     @media (max-width: $breakPointM) {
-        display: none;
+        margin-bottom: 71px;
     }
 
     .footerContainer {
         @include flexCenterCenter;
         position: relative;
-        width: calc(100vw - 8vw);
+        width: calc(100% - 40px);
         background-image: $footerGradient;
-        height: 7vh;
-        padding: 2vh 4vw;
+        padding-block: 20px;
+        padding-inline: 20px;
         z-index: 2;
+
+        .navWave {
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            filter: $waveFilter;
+            opacity: 0.7;
+        }
 
         .waves {
             .wave {
@@ -72,12 +81,16 @@
             }
         }
 
-        .content {
-            @include flexBetweenCenter;
+        .grid {
             flex-grow: 1;
             z-index: 2;
-            max-width: 100%;
-            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+
+            @media (max-width: $breakPointM) {
+                grid-template-columns: 1fr 1fr;
+                row-gap: 20px;
+            }
 
             img {
                 width: 2vw;
@@ -85,21 +98,62 @@
             }
 
             .address {
-                @include flexBetweenCenter;
+                @include columnCenterCenter;
+                gap: 10px;
 
-                .workingMode {
-                    margin-left: 1vw;
+                img {
+                    width: 36px;
+                }
+
+                &Text {
+                    text-align: center;
+                    font-size: 14px;
                 }
             }
 
-            .item {
-                @include flexCenterCenter;
-                gap: 0.4vw;
+            .workingMode {
+                @include columnCenterCenter;
+                font-size: 13px;
+                line-height: 20px;
+
+                img {
+                    &:nth-child(1) {
+                        width: 28px;
+                    }
+
+                    &:nth-child(4) {
+                        width: 22px;
+                        margin-top: 5px;
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+
+            .contacts {
+                @include columnCenterCenter;
+                font-size: 14px;
+                line-height: 24px;
+
+                img {
+                    width: 36px;
+                    margin-bottom: 10px;
+                }
 
                 a {
                     @include flexCenterCenter;
+                    @include hoverColor($yellow);
                     gap: 0.4vw;
-                    color: var(--footerColor);
+                    color: $footerColor;
+                }
+            }
+            .email {
+                @include columnCenterCenter;
+                gap: 5px;
+                font-size: 14px;
+
+                img {
+                    transform: rotate(-20deg);
+                    width: 60px;
                 }
             }
         }
