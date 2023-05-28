@@ -14,6 +14,20 @@
     margin-top: 20px;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.339);
 
+    @media (max-width: $breakPointL) {
+        width: 140px;
+    }
+
+    @media (max-width: $breakPointM) {
+        max-height: none;
+        width: 100% !important;
+        background-color: $white;
+        box-shadow: none;
+        gap: 7px;
+        overflow-y: hidden;
+        margin-top: 10px;
+    }
+
     .header {
         @include flexBetweenCenter;
         position: sticky;
@@ -25,10 +39,35 @@
         width: calc(100% - 22px);
         padding-left: 20px;
         padding-right: 2px;
-        font-size: 20px;
+        font-size: 18px;
         color: $blue;
-        font-weight: 600;
+        font-weight: 800;
         cursor: pointer;
+
+        @media (max-width: $breakPointL) {
+            width: calc(100% - 12px);
+            padding-left: 10px;
+            font-size: 16px;
+            font-weight: 800;
+        }
+
+        @media (max-width: $breakPointM) {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 13px;
+            background-color: transparent;
+            font-size: 22px;
+            font-weight: 800;
+            margin-top: 10px;
+            padding-right: 20px;
+            width: calc(100% - 40px);
+            grid-column: 1/3;
+        }
+
+        @media (max-width: $breakPointS) {
+            grid-column: 1/2;
+        }
 
         .closeContainer {
             @include flexCenterCenter;
@@ -46,6 +85,10 @@
             filter: $blueFilter;
             width: 30px;
             cursor: pointer;
+
+            @media (max-width: $breakPointM) {
+                display: none;
+            }
         }
 
         .downArrow {
@@ -54,6 +97,10 @@
             width: 30px;
             cursor: pointer;
             margin-right: 2px;
+
+            @media (max-width: $breakPointM) {
+                display: none;
+            }
         }
     }
 
@@ -67,6 +114,22 @@
         gap: 8px;
         cursor: default;
         width: 115px;
+        line-height: 20px;
+
+        @media (max-width: $breakPointL) {
+            max-width: calc(100% - 28px - 12px - 4px);
+            margin-left: 12px;
+            font-size: 12px;
+            padding-right: 4px;
+        }
+
+        @media (max-width: $breakPointM) {
+            display: flex !important;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 26px;
+            width: 130px;
+        }
 
         .container {
             display: flex;
@@ -78,6 +141,11 @@
             user-select: none;
             height: 18px;
             width: 18px;
+
+            @media (max-width: $breakPointM) {
+                width: 22px;
+                height: 22px;
+            }
 
             input {
                 position: absolute;
@@ -94,6 +162,11 @@
                 width: 100%;
                 background-color: $white;
                 border-radius: 100%;
+
+                @media (max-width: $breakPointM) {
+                    line-height: 22px;
+                    background-color: $lightGray;
+                }
             }
         }
 

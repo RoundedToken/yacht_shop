@@ -5,6 +5,7 @@ import { setLang } from '../../../redux/langSlice';
 import { switchMobileModalDisplay } from '../../../redux/stylesSlice';
 import Text from '../../../UI/Text/Text';
 import { ILangModal } from '../interfaces/ILangModal';
+import ModalHeader from './ModalHeader';
 
 const LangModal: FC<ILangModal> = ({ styles }) => {
     const dispatch = useDispatch();
@@ -17,9 +18,10 @@ const LangModal: FC<ILangModal> = ({ styles }) => {
 
     return (
         <div className={styles.content}>
-            <div className={styles.modalTitle}>
-                <Text rus="Выбор языка" eng="Language selection" est="Keele valik" />
-            </div>
+            <ModalHeader
+                styles={styles}
+                title={<Text rus="Выбор языка" eng="Language selection" est="Keele valik" />}
+            />
 
             <div className={styles.itemsContainer}>
                 <div onClick={() => changeLang('est')} className={styles.item}>

@@ -6,6 +6,7 @@ import BreadcrumbsModal from './components/BreadcrumbsModal';
 import LangModal from './components/LangModal';
 import SearchModal from './components/SearchModal';
 import styles from './MobileModal.module.scss';
+import FilterModal from './components/FilterModal';
 
 const MobileModal = () => {
     const modalRef = useRef<HTMLDivElement>(null);
@@ -20,11 +21,6 @@ const MobileModal = () => {
         }
     };
 
-    const closeOnClick = () => {
-        dispatch(switchMobileModalDisplay());
-        document.body.style.overflow = 'auto';
-    };
-
     useEffect(() => {
         if (modalRef.current) modalRef.current.style.display = modalDisplay;
     }, [modalDisplay]);
@@ -34,15 +30,13 @@ const MobileModal = () => {
     return (
         <div ref={modalRef} className={styles.modal}>
             <div className={styles.modalContentContainer}>
-                <div onClick={closeOnClick} className={styles.modalClose}>
-                    &times;
-                </div>
-
                 {modalType === 'lang' && <LangModal styles={styles} />}
 
                 {modalType === 'search' && <SearchModal styles={styles} />}
 
                 {modalType === 'breadcrumbs' && <BreadcrumbsModal styles={styles} />}
+
+                {modalType === 'filter' && <FilterModal styles={styles} />}
             </div>
         </div>
     );

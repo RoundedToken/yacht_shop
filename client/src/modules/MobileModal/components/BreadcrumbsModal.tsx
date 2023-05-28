@@ -7,6 +7,7 @@ import { switchMobileModalDisplay } from '../../../redux/stylesSlice';
 import { navProductApi } from '../../../services/navProductService';
 import Text from '../../../UI/Text/Text';
 import { IBreadcrumbsModal } from '../interfaces/IBreadrumbsModal';
+import ModalHeader from './ModalHeader';
 
 const BreadcrumbsModal: FC<IBreadcrumbsModal> = ({ styles }) => {
     const location = useLocation().pathname.split('/');
@@ -31,13 +32,15 @@ const BreadcrumbsModal: FC<IBreadcrumbsModal> = ({ styles }) => {
 
     return (
         <div className={styles.content}>
-            <div className={styles.modalTitle}>
-                <Text rus="Навигация" eng="Navigation" est="Navigeerimine" />
-            </div>
+            <ModalHeader
+                styles={styles}
+                title={<Text rus="Навигация" eng="Navigation" est="Navigeerimine" />}
+            />
 
             <div className={styles.itemsContainer}>
                 {category?.routes.map((route) => (
                     <Link
+                        key={route.id}
                         onClick={closeOnclick}
                         to={
                             route.hasChildren

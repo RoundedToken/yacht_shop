@@ -21,7 +21,7 @@ class WebService {
 
         const data = (
             await sql.query(
-                `SELECT
+                `SELECT DISTINCT
             goods.tovar as id,
             goods.${name} as name, 
             goods.brand, 

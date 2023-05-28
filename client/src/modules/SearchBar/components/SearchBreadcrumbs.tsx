@@ -24,8 +24,6 @@ const SearchBreadcrumbs: FC<ISearchBreadcrumbs> = ({ styles }) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id]);
 
-    if (isFetching) return <Skeleton containerClassName="skeleton" />;
-
     return (
         <div className={styles.breadcrumbs}>
             {error && <h1>Error!</h1>}

@@ -10,20 +10,63 @@
     margin-bottom: 55px;
     margin-top: 20px;
 
-    @media (max-width: $breakPointL) {
+    @media (max-width: $breakPointM) {
         width: calc(100% - 20px);
         margin-left: 20px;
         gap: 0;
     }
 
     @media (max-width: $breakPointM) {
-        margin-top: 40px;
+        margin-top: 50px;
         margin-bottom: 71px;
     }
 
     @media (max-width: $breakPointS) {
         width: calc(100% - 10px);
         margin-left: 10px;
+    }
+
+    .filterButton {
+        display: none;
+        opacity: 0.8;
+
+        @media (max-width: $breakPointM) {
+            top: 40px;
+            left: 60px;
+            display: block;
+            position: fixed;
+            z-index: 2;
+            width: 0;
+            cursor: pointer;
+            border-top: 40px solid $middleBlue;
+            border-left: 30px solid transparent;
+            border-right: 30px solid transparent;
+        }
+
+        @media (max-width: $breakPointS) {
+            left: 46px;
+        }
+    }
+
+    .filterImg {
+        display: none;
+        opacity: 0.8;
+
+        @media (max-width: $breakPointM) {
+            top: 43px;
+            left: 76px;
+            display: block;
+            position: fixed;
+            z-index: 2;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            filter: $skyBlueFilter;
+        }
+
+        @media (max-width: $breakPointS) {
+            left: 62px;
+        }
     }
 
     .sideBarContainer {

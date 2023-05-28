@@ -35,7 +35,7 @@ const FavoritesBrandSelectHeader: FC<IFavoritesBrandSelectHeader> = ({
                 &times;
             </div>
 
-            <Text rus="Бренды" eng="Brands" est="Kaubamärgid" />
+            <Text rus="Бренды" eng="Brands" est="Brändi" />
 
             <img
                 className={brandsDisplay === 'none' ? styles.rightArrow : styles.downArrow}

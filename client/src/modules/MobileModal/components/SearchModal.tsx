@@ -6,6 +6,7 @@ import { RootState } from '../../../redux/store';
 import { switchMobileModalDisplay } from '../../../redux/stylesSlice';
 import Text from '../../../UI/Text/Text';
 import { ISearchModal } from '../interfaces/ISearchModal';
+import ModalHeader from './ModalHeader';
 
 const SearchModal: FC<ISearchModal> = ({ styles }) => {
     const formRef = useRef<HTMLFormElement>(null);
@@ -30,9 +31,7 @@ const SearchModal: FC<ISearchModal> = ({ styles }) => {
 
     return (
         <div className={styles.content}>
-            <div className={styles.modalTitle}>
-                <Text rus="Поиск" eng="Search" est="Otsing" />
-            </div>
+            <ModalHeader styles={styles} title={<Text rus="Поиск" eng="Search" est="Otsing" />} />
 
             <form
                 ref={formRef}

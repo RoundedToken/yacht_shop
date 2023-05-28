@@ -38,7 +38,7 @@ class navService {
 
         const data = (
             await sql.query(
-                `SELECT 
+                `SELECT DISTINCT
                 goods.tovar AS id,
                 goods.subr AS parentId, 
                 goods.${name} AS name, 
