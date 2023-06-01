@@ -4,7 +4,7 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import { TLang } from '../models/types/TLang';
 
 const initialState: ILangState = {
-    lang: localStorage.lang ? localStorage.lang : 'rus',
+    lang: localStorage.lang ? localStorage.lang : 'est',
 };
 
 export const langSlice = createSlice({

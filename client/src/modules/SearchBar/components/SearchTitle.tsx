@@ -10,7 +10,7 @@ const SearchTitle: FC<ISearchTitle> = ({ searchStr }) => {
     const lang = useSelector((state: RootState) => state.langSlice.lang);
     const { data, isFetching, error } = webSearchApi.useFetchProductListQuery({ lang, searchStr });
 
-    if (isFetching) return <Skeleton containerClassName="skeleton" />;
+    if (isFetching) return null;
 
     if (error) return <h3>Error!</h3>;
 

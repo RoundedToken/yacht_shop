@@ -4,7 +4,7 @@
 .logo {
     position: absolute;
     z-index: 5;
-    top: 30px;
+    top: 29px;
     left: $_header_paddingDouble;
     height: $_header_heightImg;
 
@@ -267,6 +267,7 @@
         top: 13px;
         left: 20px;
         filter: $blueFilter;
+        cursor: pointer;
 
         @media (max-width: $breakPointL) {
             left: 16px;

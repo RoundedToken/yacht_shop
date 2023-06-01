@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import styles from './Header.module.scss';
 import logoImg from '../../assets/images/logo.png';
+import logoSVGImg from '../../assets/images/logo.svg';
+import logo2Img from '../../assets/images/logo2.png';
 import Name from './components/Name';
 import Lang from './components/Lang';
 import NavBar from './components/NavBar';
@@ -49,7 +51,7 @@ const Header = () => {
     return (
         <>
             <Link to={routeConstants.MAIN_ROUTE}>
-                <img ref={logoRef} className={styles.logo} src={logoImg} alt="" />
+                <img ref={logoRef} className={styles.logo} src={logo2Img} alt="" />
             </Link>
 
             <div ref={topContainerRef} className={styles.topContainer}>
@@ -70,7 +72,9 @@ const Header = () => {
             </div>
 
             <div ref={bottomContainerRef} className={styles.bottomContainer}>
-                <img ref={miniLogoRef} className={styles.miniLogo} src={miniLogoImg} alt="" />
+                <Link to={routeConstants.MAIN_ROUTE}>
+                    <img ref={miniLogoRef} className={styles.miniLogo} src={miniLogoImg} alt="" />
+                </Link>
 
                 <NavBar styles={styles} />
             </div>
