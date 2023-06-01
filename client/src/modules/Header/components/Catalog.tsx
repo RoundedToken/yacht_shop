@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { routeConstants } from '../../../models/enums/EConstants';
 import NavBarItem from './NavBarItem';
 import catalogImg from '../../../assets/images/catalog.svg';
-import rightArrowImg from '../../../assets/images/rightArrow.png';
+import arrowImg from '../../../assets/images/arrow.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
 import { switchModalDisplay } from '../../../redux/stylesSlice';
@@ -25,7 +25,7 @@ const Catalog: FC<ICatalog> = ({ styles }) => {
     return (
         <NavBarItem
             styles={styles}
-            route={routeConstants.CATEGORIES_ROUTE}
+            route={routeConstants.CATEGORIES_ROUTE + '/0'}
             src={catalogImg}
             className={`${styles.navBar__item} ${styles.catalog}`}
             switcher={
@@ -41,7 +41,7 @@ const Catalog: FC<ICatalog> = ({ styles }) => {
                             onChange={(e) => switchOnClick(e)}
                         />
 
-                        <img id="switcher" src={rightArrowImg} alt="" />
+                        <img id="switcher" src={arrowImg} alt="" />
                     </label>
                 </>
             }

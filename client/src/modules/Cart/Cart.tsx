@@ -35,13 +35,13 @@ const Cart: FC<ICart> = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [cartUpdate]);
 
-    useEffect(() => {
-        if (fixedOrderRef.current) {
-            if (inView) fixedOrderRef.current.style.display = 'none';
-            else fixedOrderRef.current.style.display = 'flex';
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [inView, fixedOrderRef.current]);
+    // useEffect(() => {
+    //     if (fixedOrderRef.current) {
+    //         if (inView) fixedOrderRef.current.style.display = 'none';
+    //         else fixedOrderRef.current.style.display = 'flex';
+    //     }
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [inView, fixedOrderRef.current]);
 
     if (!idList || idList.length === 0)
         return (
@@ -50,7 +50,7 @@ const Cart: FC<ICart> = () => {
             </div>
         );
 
-    if (isFetching) {
+    if (isFetching || !data) {
         return (
             <div className={styles.cart}>
                 <div className={styles.cardProductList}>
@@ -65,11 +65,11 @@ const Cart: FC<ICart> = () => {
                     <CartMenu styles={styles} />
                 </div>
 
-                <div ref={fixedOrderRef} className={styles.fixedOrder}>
+                {inView && <div ref={fixedOrderRef} className={styles.fixedOrder}>
                     <CartSummary styles={styles} />
 
                     <CartMenu styles={styles} />
-                </div>
+                </div>}
             </div>
         );
     }
@@ -87,11 +87,11 @@ const Cart: FC<ICart> = () => {
                         <CartMenu styles={styles} />
                     </div>
 
-                    <div ref={fixedOrderRef} className={styles.fixedOrder}>
+                    {inView && <div ref={fixedOrderRef} className={styles.fixedOrder}>
                         <CartSummary styles={styles} />
 
                         <CartMenu styles={styles} />
-                    </div>
+                    </div>}
                 </div>
             )}
         </div>

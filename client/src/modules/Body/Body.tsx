@@ -21,7 +21,12 @@ const Body = () => {
 
     return (
         <div
-            style={location === routeConstants.PRODUCT_ROUTE ? { gap: '0px' } : {}}
+            style={
+                location === routeConstants.PRODUCT_ROUTE ||
+                location === routeConstants.CONTACTS_ROUTE
+                    ? { gap: '0px' }
+                    : {}
+            }
             className={styles.body}
         >
             {(location === routeConstants.CATEGORIES_ROUTE ||

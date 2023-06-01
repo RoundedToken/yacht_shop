@@ -22,6 +22,10 @@
         margin-left: 20px;
         margin-bottom: 20px;
 
+        @media (max-width: $breakPointL) {
+            width: calc(100% - 30px);
+        }
+
         .active {
             background-color: $yellow;
         }

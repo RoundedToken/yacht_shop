@@ -2,7 +2,9 @@
 @import './variables.scss';
 
 .searchBar {
-    @include flexStartCenter;
+    // @include flexStartCenter;
+    display: flex;
+    align-items: center;
     position: sticky;
     top: calc($_search_heightImg * 0.27 + 20px);
     background-color: $aqua;
@@ -41,6 +43,7 @@
         height: 100%;
         position: relative;
         min-width: $_search_imgWidth;
+        z-index: 5;
 
         @media (max-width: $breakPointL) {
             min-width: $_search_imgWidthL;
@@ -70,6 +73,7 @@
             padding-left: 33px;
             padding-right: 10px;
             color: $blue;
+            font-size: 16px;
 
             @media (max-width: $breakPointL) {
                 width: $_search_imgWidthL - 15px - 27px;
@@ -78,14 +82,15 @@
 
             &:focus {
                 width: 210px;
-                padding-inline: 10px;
+                padding-left: 10px;
+                padding-right: 30px;
                 position: absolute;
 
                 & + .submit {
-                    left: calc(100% + 45px);
+                    left: calc(100% + 65px);
 
                     @media (max-width: $breakPointL) {
-                        left: calc(100% + 25px);
+                        left: calc(100% + 45px);
                     }
                 }
 
@@ -107,34 +112,121 @@
     }
 
     .breadcrumbs {
-        @include flexStartCenter;
+        display: flex;
+        align-items: center;
         @include fontDesktopS($white);
-        gap: 7px;
-        max-width: calc(100%);
-        overflow: scroll;
+        gap: 5px;
+        width: fit-content;
+        overflow-y: visible;
         margin-left: 5px;
+        height: 100%;
+
+        .arrow {
+            float: right;
+            width: 14px;
+            min-width: 14px;
+            height: 14px;
+            border-radius: 100%;
+            border: 1px solid $skyBlue;
+            background-color: $skyBlue;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                filter: $blueFilter;
+                transition: transform 0.25s ease-in-out;
+            }
+
+            &Last {
+                justify-self: flex-end;
+                align-self: flex-end;
+            }
+        }
 
         .breadcrumbsItem {
-            @include flexCenterCenter;
             @include fontDesktopXS($lightBlue);
+            position: relative;
+            min-height: 100%;
+            overflow: visible;
+            display: flex;
+            align-items: center;
 
-            gap: 7px;
+            @media (hover: hover) and (pointer: fine) {
+                &:hover {
+                    .dropdown {
+                        display: flex;
+                    }
 
-            a {
+                    + .arrow {
+                        img {
+                            transform: rotate(90deg);
+                        }
+                    }
+                }
+            }
+
+            &Link {
                 @include hoverColor($yellow);
                 @include activeColor($blue);
                 color: $lightBlue;
-                font-size: 14px;
-                font-weight: 500;
-                white-space: nowrap;
+                font-size: 13px;
+                font-weight: 600;
+                line-height: 14px;
+                width: fit-content;
+                text-align: center;
+                letter-spacing: -0.5px;
+                min-height: 100%;
+
+                @media (max-width: $breakPointL) {
+                    font-size: 12px;
+                    line-height: 12px;
+                    letter-spacing: -0.8px;
+                    font-weight: 700;
+                }
             }
 
-            .symbol {
-                font-size: 18px;
+            .dropdown {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                width: 225px;
+                display: none;
+                flex-direction: column;
+                z-index: 0;
+                background-color: $skyBlue;
+                gap: 8px;
+                overflow-y: scroll;
+                max-height: 65vh;
+                border-radius: 15px 0 15px 15px;
+                padding-top: 10px;
+                padding-bottom: 5px;
+                padding-right: 10px;
+                padding-left: 10px;
+                transition: display 0.5s;
 
-                &Last {
-                    justify-self: flex-end;
-                    align-self: flex-end;
+                @media (max-width: $breakPointL) {
+                    width: 186px;
+                }
+
+                &Item {
+                    display: flex;
+                    gap: 3px;
+                    width: 100%;
+                    height: fit-content;
+                    white-space: initial;
+                    line-height: 14px;
+                    font-size: 13px;
+                    font-weight: 600;
+                    color: $lightBlue;
+
+                    .symbol {
+                        font-size: 10px;
+                    }
+
+                    &:hover {
+                        color: $white;
+                    }
                 }
             }
         }

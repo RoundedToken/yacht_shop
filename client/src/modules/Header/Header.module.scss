@@ -358,7 +358,7 @@
                     height: 26px;
                 }
 
-                @media (max-width: $breakPointL) {
+                @media (max-width: $breakPointL) or (max-height: 800px) {
                     display: none;
                 }
             }

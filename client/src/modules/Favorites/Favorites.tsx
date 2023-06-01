@@ -32,7 +32,9 @@ const Favorites = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [favoritesUpdate]);
 
-    if (isFetching)
+    if (favoritesIdList.length === 0) return <FavoritesEmpty styles={styles} />;
+
+    if (isFetching || !data)
         return (
             <div className={styles.favoritesContainer}>
                 <div className={styles.favoritesList}>
@@ -46,11 +48,7 @@ const Favorites = () => {
     return (
         <div className={styles.favoritesContainer}>
             {error && <h1>Error!</h1>}
-            {data ? (
-                <FavoritesList styles={styles} brands={brands} data={data} />
-            ) : (
-                <FavoritesEmpty styles={styles} />
-            )}
+            {data && <FavoritesList styles={styles} brands={brands} data={data} />}
         </div>
     );
 };

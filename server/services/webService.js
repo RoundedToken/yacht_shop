@@ -139,6 +139,19 @@ class WebService {
 
         return filteredData;
     }
+
+    async webCrimping({ wire, end1, end2, length }) {
+        const request = new sql.Request();
+
+        request.input('wire', sql.Int, wire);
+        request.input('end1', sql.VarChar, end1);
+        request.input('end2', sql.VarChar, end2);
+        request.input('Lenght', sql.VarChar, length);
+
+        const data = (await request.execute('[dbo].[web_swage_calc_new]')).recordset;
+        console.log(data);
+        return data;
+    }
 }
 
 export default new WebService();

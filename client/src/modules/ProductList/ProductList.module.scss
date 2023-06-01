@@ -22,9 +22,9 @@
 
     table {
         @include fontDesktopM($blue);
-        border-spacing: 0vw 0.5vw;
         position: relative;
         background-color: $white;
+        width: 100%;
 
         .pic {
             height: 100%;
@@ -47,35 +47,123 @@
             position: sticky;
             top: 104px;
             background-color: $white;
+
+            @media (max-width: $breakPointL) {
+                top: 86px;
+            }
         }
+
         th {
             @include fontDesktopXM($blue);
             white-space: nowrap;
-            padding-block: 1vw;
-            padding-inline: 1vw;
+            border-bottom: 4px solid $lightGray;
+            font-size: 15px;
+            font-weight: 800;
+            padding-top: 10px;
+            padding-bottom: 15px;
+            padding-inline: 8px;
+
+            @media (max-width: $breakPointL) {
+                padding-inline: 4px;
+            }
+
+            &:nth-child(4) {
+                padding-inline: 0;
+            }
         }
 
         td {
+            padding-inline: 8px;
+            padding-block: 2px;
+            border-bottom: 4px solid $lightGray;
             vertical-align: middle;
             text-align: center;
-            padding-inline: 1vw;
+
+            @media (max-width: $breakPointL) {
+                padding-inline: 4px;
+                padding-block: 4px;
+            }
         }
 
         .productName {
-            @include flexStartCenter;
-            gap: 1vw;
-            width: 25vw;
-            max-width: 30vw;
-            text-align: start;
-            margin-inline: 1vw;
+            padding-left: 2px;
 
-            img {
-                width: 64px;
-                height: 64px;
+            &Container {
+                @include flexStartCenter;
+                gap: 5px;
+                text-align: start;
+
+                img {
+                    width: 64px;
+                    height: 64px;
+                }
+
+                a {
+                    color: $blue;
+                    line-height: 21px;
+                    font-size: 17px;
+
+                    @media (max-width: $breakPointL) {
+                        font-size: 14px;
+                        font-weight: 500;
+                    }
+                }
             }
+        }
 
-            a {
-                color: $blue;
+        .brand {
+            font-size: 16px;
+            font-weight: 700;
+
+            @media (max-width: $breakPointL) {
+                font-size: 13px;
+                font-weight: 800;
+            }
+        }
+
+        .code {
+            font-size: 11px;
+            padding-inline: 10px;
+        }
+
+        .inStock {
+            padding-inline: 0;
+            &True {
+                width: 14px;
+                height: 14px;
+                border: 2px solid $blue;
+                border-radius: 100%;
+                background-color: $yellow;
+                margin-inline: auto;
+            }
+            &False {
+                width: 14px;
+                height: 14px;
+                border: 2px solid $blue;
+                border-radius: 100%;
+                margin-inline: auto;
+            }
+        }
+        .price {
+            font-size: 16px;
+            font-weight: 700;
+
+            @media (max-width: $breakPointL) {
+                font-size: 14px;
+                font-weight: 800;
+            }
+        }
+
+        .productCart {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 8px;
+            height: 100%;
+
+            @media (max-width: $breakPointL) {
+                flex-direction: column;
+                gap: 12px;
             }
         }
     }

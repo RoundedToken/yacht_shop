@@ -16,12 +16,14 @@ import MobileModal from './modules/MobileModal/MobileModal';
 import AppLoading from './AppLoading';
 import { useLocation } from 'react-router-dom';
 import { routeConstants } from './models/enums/EConstants';
+import { setListMode } from './redux/sideBarSlice';
 
 function App() {
     const lang = useSelector((state: RootState) => state.langSlice.lang);
     const [update, { isSuccess, isFetching, error }] = navTreeApi.useLazyFetchAllIdQuery();
     const dispatch = useDispatch();
     const location = '/' + useLocation().pathname.split('/')[1];
+    const displayMode = useSelector((state: RootState) => state.sideBarSlice.listMode);
 
     useEffect(() => {
         update(lang);
@@ -43,6 +45,12 @@ function App() {
     }, [dispatch]);
 
     useEffect(() => {
+        window.addEventListener('resize', () => {
+            if (window.innerWidth <= 750) {
+                dispatch(setListMode('grid'));
+            }
+        });
+
         window.addEventListener('error', (e) => {
             if (e.message === 'ResizeObserver loop limit exceeded') {
                 const resizeObserverErrDiv = document.getElementById(
@@ -59,6 +67,8 @@ function App() {
                 }
             }
         });
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
@@ -73,7 +83,10 @@ function App() {
                             ? { backgroundColor: 'rgb(211, 240, 243)' }
                             : location === routeConstants.FAVORITES_ROUTE
                             ? { backgroundColor: 'rgb(255, 231, 224)' }
-                            : location === routeConstants.PRODUCT_ROUTE
+                            : location === routeConstants.PRODUCT_ROUTE ||
+                              location === routeConstants.CONTACTS_ROUTE ||
+                              (location === routeConstants.PRODUCT_LIST_ROUTE &&
+                                  displayMode === 'table')
                             ? { backgroundColor: 'white' }
                             : {}
                     }

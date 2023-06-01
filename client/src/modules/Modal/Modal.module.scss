@@ -166,7 +166,7 @@
         background-color: $white;
         margin-inline: auto;
         border: 1px solid #888;
-        border-radius: 0 50px 50px 50px;
+        border-radius: 0 40px 40px 40px;
         width: 60%;
         height: calc(100% - 30px);
         overflow: scroll;
@@ -179,17 +179,16 @@
         @media (max-width: $breakPointM) {
             width: 100%;
             height: calc(100vh - 71px - 30px - 2px - 40px);
-            border-radius: 0 50px 50px 50px;
             margin-top: 40px;
         }
 
         .modalClose {
-            @include hover;
+            @include hoverColor($blue);
             @include flexCenterCenter;
             position: absolute;
-            left: 20px;
-            top: 20px;
-            background-color: rgb(215, 215, 215);
+            left: 17px;
+            top: 17px;
+            background-color: white;
             width: 30px;
             height: 30px;
             color: $yellow;
@@ -219,13 +218,15 @@
                 @include fontDesktopXL($blue);
                 position: sticky;
                 top: 0;
-                padding-top: 30px;
+                padding-top: 20px;
                 padding-bottom: 20px;
                 line-height: 1;
                 font-size: 24px;
                 text-align: center;
                 width: 100%;
-                background-color: $white;
+                border-radius: 0 40px 40px 0;
+                background-color: $yellow;
+                box-shadow: 0 1px 5px rgb(100, 100, 100);
 
                 @media (max-width: $breakPointM) {
                     margin-inline: 70px;
@@ -272,14 +273,14 @@
                 }
 
                 th {
-                    background-color: $yellow;
+                    background-color: $yellowLight;
                     text-align: start;
                     white-space: nowrap;
                 }
 
                 tr {
                     &:nth-child(even) {
-                        background-color: $orderTrEven;
+                        background-color: $white;
                     }
 
                     &:nth-child(odd) {
@@ -447,6 +448,7 @@
                     line-height: 25px;
                     font-weight: 600;
                     color: $gray;
+                    margin-top: 5px;
 
                     textarea {
                         width: calc(100% - 8px - 2px);
@@ -470,8 +472,12 @@
                     width: 100%;
                     grid-row: 2/7;
                     grid-column: 2/3;
-                    gap: 10px;
-                    margin-top: 17px;
+                    gap: 13px;
+                    margin-top: 20px;
+
+                    @media (max-width: $breakPointS) {
+                        margin-top: 10px;
+                    }
 
                     button {
                         @include flexCenterCenter;

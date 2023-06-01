@@ -3,11 +3,9 @@ import { IGoogleMap } from '../interfaces/IGoogleMap';
 
 const GoogleMap: FC<IGoogleMap> = ({ styles }) => {
     return (
-        <div className={styles.Google__Map}>
+        <div className={styles.googleMap}>
             <iframe
                 title="Map"
-                height={252}
-                style={{ border: '0' }}
                 loading="lazy"
                 allowFullScreen
                 referrerPolicy="no-referrer-when-downgrade"

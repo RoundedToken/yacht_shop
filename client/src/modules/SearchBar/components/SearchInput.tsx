@@ -40,6 +40,7 @@ const SearchInput: FC<ISearchInput> = ({ styles }) => {
                 className={styles.searchInput}
                 type="text"
                 minLength={3}
+                maxLength={50}
                 onFocus={(e) => searchOnFocus(e)}
                 onChange={(e) => {
                     setSearchValue(e.target.value);

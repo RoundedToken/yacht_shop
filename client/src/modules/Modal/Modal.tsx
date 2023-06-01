@@ -55,8 +55,13 @@ const Modal = () => {
 
     useEffect(() => {
         const onResize = () => {
-            if (window.innerWidth <= 1000 && modalRef.current && modalType === 'nav')
+            if (
+                (window.innerWidth <= 1000 || window.innerHeight <= 800) &&
+                modalRef.current &&
+                modalType === 'nav'
+            ) {
                 modalRef.current.style.display = 'none';
+            }
         };
 
         window.addEventListener('resize', onResize);
@@ -64,7 +69,7 @@ const Modal = () => {
             window.removeEventListener('resize', onResize);
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [modalRef.current]);
 
     return (
         <div ref={modalRef} className={styles.modal}>

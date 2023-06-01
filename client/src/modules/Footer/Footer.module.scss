@@ -6,7 +6,7 @@
     width: 100%;
 
     @media (max-width: $breakPointM) {
-        margin-bottom: 71px;
+        margin-bottom: 70px;
     }
 
     .footerContainer {
@@ -18,23 +18,15 @@
         padding-inline: 20px;
         z-index: 2;
 
-        .navWave {
-            position: absolute;
-            width: 100%;
-            bottom: 0;
-            filter: $waveFilter;
-            opacity: 0.7;
-        }
-
         .waves {
             .wave {
                 position: absolute;
-                top: -3vh;
+                top: -30px;
                 left: 0;
                 width: 100%;
-                height: 3vh;
+                height: 30px;
                 background: url('../../assets/images/wave.png');
-                background-size: 40vw 3vh;
+                background-size: 40vw 30px;
                 filter: $waveFilter;
             }
 
@@ -93,16 +85,25 @@
             }
 
             img {
-                width: 2vw;
                 filter: $footerFilter;
             }
 
             .address {
                 @include columnCenterCenter;
                 gap: 10px;
+                color: $footerColor;
+
+                @media (hover: hover) and (pointer: fine) {
+                    &:hover {
+                        color: $yellow;
+                        img {
+                            filter: $yellowFilter;
+                        }
+                    }
+                }
 
                 img {
-                    width: 36px;
+                    width: 38px;
                 }
 
                 &Text {
@@ -122,9 +123,10 @@
                     }
 
                     &:nth-child(4) {
-                        width: 22px;
-                        margin-top: 5px;
-                        transform: rotate(180deg);
+                        width: 25px;
+                        margin-top: 7px;
+                        margin-bottom: 3px;
+                        transform: rotate(0deg);
                     }
                 }
             }
@@ -132,7 +134,7 @@
             .contacts {
                 @include columnCenterCenter;
                 font-size: 14px;
-                line-height: 24px;
+                line-height: 26px;
 
                 img {
                     width: 36px;
@@ -140,9 +142,7 @@
                 }
 
                 a {
-                    @include flexCenterCenter;
                     @include hoverColor($yellow);
-                    gap: 0.4vw;
                     color: $footerColor;
                 }
             }
@@ -151,9 +151,15 @@
                 gap: 5px;
                 font-size: 14px;
 
+                a {
+                    @include hoverColor($yellow);
+                    color: $footerColor;
+                }
+
                 img {
                     transform: rotate(-20deg);
-                    width: 60px;
+                    width: 70px;
+                    margin-left: 8px;
                 }
             }
         }

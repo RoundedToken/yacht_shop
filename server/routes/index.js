@@ -13,6 +13,7 @@ router.get('/web_cart_product_list', webController.webCartProductList);
 router.post('/web_order', webController.webOrder);
 router.get('/web_search', webController.webSearch);
 router.get('/web_relatedProducts', webController.webRelatedProducts);
+router.get('/web_crimping', webController.webCrimping);
 
 //For dev only
 async function dev() {

@@ -63,6 +63,18 @@ class WebController {
             next(error);
         }
     }
+
+    async webCrimping(req, res, next) {
+        try {
+            const reqData = req.query;
+
+            const sqlResDat = await webService.webCrimping(reqData);
+
+            return res.json(sqlResDat);
+        } catch (error) {
+            next(error);
+        }
+    }
 }
 
 export default new WebController();

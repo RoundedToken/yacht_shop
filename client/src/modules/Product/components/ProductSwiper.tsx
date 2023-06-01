@@ -54,7 +54,13 @@ const ProductSwiper: FC<IProductSwiper> = ({ picSrc, styles }) => {
             >
                 {picSrc.map((src, i) => (
                     <SwiperSlide className={styles.swiperSlide} key={i}>
-                        <img ref={imgRef} src={src} alt="" onError={onImgError} />
+                        <img
+                            ref={imgRef}
+                            src={src}
+                            alt=""
+                            onError={onImgError}
+                            onClick={isClickable ? fullScreenOnClick : undefined}
+                        />
                     </SwiperSlide>
                 ))}
             </Swiper>

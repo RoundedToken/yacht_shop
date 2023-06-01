@@ -18,14 +18,13 @@ const ProductListHeader = () => {
                 </th>
 
                 <th>
-                    <Text rus="Цена" eng="Price" est="Hind" />
+                    <Text rus="Наличие" eng="In stock" est="Laos" />
                 </th>
 
                 <th>
-                    <Text rus="В наличии" eng="In stock" est="Laos" />
+                    <Text rus="Цена" eng="Price" est="Hind" />
                 </th>
-                <th></th>
-                <th></th>
+
                 <th></th>
             </tr>
         </thead>

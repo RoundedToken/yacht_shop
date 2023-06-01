@@ -53,20 +53,24 @@
         opacity: 0.8;
 
         @media (max-width: $breakPointM) {
-            top: 43px;
-            left: 76px;
+            top: 45px;
+            left: 77px;
             display: block;
             position: fixed;
             z-index: 2;
-            width: 30px;
-            height: 30px;
+            width: 25px;
+            height: 25px;
             cursor: pointer;
             filter: $skyBlueFilter;
         }
 
         @media (max-width: $breakPointS) {
-            left: 62px;
+            left: 64px;
         }
+    }
+
+    .filterActive {
+        filter: $yellowFilter !important;
     }
 
     .sideBarContainer {

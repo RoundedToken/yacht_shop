@@ -12,9 +12,11 @@ const BrandSelectItem: FC<IBrandSelectItem> = ({
     const labelRef = useRef<HTMLLabelElement>(null);
     const brandsDisplay = useSelector((state: RootState) => state.stylesSlice.brandsDisplay);
 
-    useEffect(() => {
-        if (labelRef.current) labelRef.current.style.display = brandsDisplay;
-    }, [brandsDisplay]);
+    // useEffect(() => {
+    //     if (labelRef.current) labelRef.current.style.display = brandsDisplay;
+    // }, [brandsDisplay]);
+
+    if (brandsDisplay === 'none') return null;
 
     return (
         <label ref={labelRef} className={styles.container}>

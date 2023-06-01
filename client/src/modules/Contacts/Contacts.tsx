@@ -1,44 +1,177 @@
 import React from 'react';
 import styles from './Contacts.module.scss';
 import GoogleMap from './components/GoogleMap';
-import shopImg from '../../assets/images/shop.jpg';
+import shopImage from '../../assets/images/shopImage.jpg';
 import Text from '../../UI/Text/Text';
-import mailImg from '../../assets/images/mail.png';
-import locationImg from '../../assets/images/location.png';
+import locationScreenImg from '../../assets/images/locationScreen.jpg';
+import contactsImg from '../../assets/images/contacts.svg';
+import mailImg from '../../assets/images/mail.svg';
+import ringImg from '../../assets/images/ring.svg';
+import { Zoom } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import compassImg from '../../assets/images/compass.jpg';
 
 const Contacts = () => {
     return (
-        <div className={styles.Contacts}>
-            <GoogleMap styles={styles} />
-            <div className={styles.Bottom__Container}>
-                <div className={styles.Content}>
-                    <div className={styles.Address}>
-                        <img src={locationImg} alt="" width={32} height={32} />
-                        Parnu JahtKlubi, Lootsi tn 6, Parnu
+        <>
+            <div className={styles.rootContainer}>
+                <div className={styles.leftContainer}>
+                    <div className={styles.address}>
+                        <img src={contactsImg} alt="" />
+                        <div className={styles.addressText}>
+                            Pärnu JahtKlubi
+                            <br /> Lootsi tn 6
+                            <br /> Pärnu
+                        </div>
                     </div>
-                    <div className={styles.Working__Mode}>
-                        <Text rus="Пн,Вт - вых" eng="Mon,Tue - day off" est="E,T - puhkepäev" />
-                        <Text rus="Ср-Сб - 12-20" eng="Wed-Sat - 12-20" est="K-L - 12-20" />
-                        <Text rus="Вс - 12-17" eng="Sun - 12-17" est="P - 12-17" />
-                    </div>
-                    <div className={styles.Item}>
-                        {/* <img src={phoneImg} alt="" width={24} height={24} /> */}
-                        +372 589 45 074
-                    </div>
-                    <div className={styles.Item}>
+
+                    <div className={styles.contacts}>
+                        <img src={ringImg} alt="" />
+                        +372 589 450 74
                         <a href="https://wa.me/79854549470" target="_blank" rel="noreferrer">
-                            {/* <img src={whatsUpImg} alt="" width={28} height={28} /> */}
-                            <Text rus="Наш Whats'up" eng="Our Whats'up" est="Meie Whats'up" />
+                            <Text rus="Наш WhatsApp" eng="Our WhatsApp" est="Meie WhatsApp" />
                         </a>
                     </div>
-                    <div className={styles.Item}>
-                        <img src={mailImg} alt="" width={28} height={28} />
-                        shop@yachtshop.ee
+
+                    <div className={styles.email}>
+                        <img src={mailImg} alt="" />
+                        <a href="mailto:shop@yachtshop.ee">shop@yachtshop.ee</a>
+                    </div>
+
+                    <div className={styles.compass}>
+                        <img src={compassImg} alt="" />
                     </div>
                 </div>
-                <img className={styles.Shop__Img} src={shopImg} alt="" width={252} height={252} />
+
+                <div className={styles.rightContainer}>
+                    <div className={styles.topContainer}>
+                        <div className={styles.topContainerLeft}>
+                            <img src={shopImage} alt="" />
+                        </div>
+
+                        <div className={styles.topContainerRight}>
+                            <Text rus="Открыто" eng="Open" est="Avatud" />
+
+                            <Text
+                                rus={`Среда \u{25CF} Суббота`}
+                                eng={`Wednesday \u{25CF} Saturday`}
+                                est={`Kolmapäev \u{25CF} Laupäev`}
+                            />
+
+                            <div>
+                                12<sup>00</sup> &ndash; 20<sup>00</sup>
+                            </div>
+
+                            <Text rus="Воскресенье" eng="Sunday" est="Pühapäev" />
+
+                            <div>
+                                12<sup>00</sup> &ndash; 17<sup>00</sup>
+                            </div>
+
+                            <Text rus="Закрыто" eng="Closed" est="Suletud" />
+
+                            <Text
+                                rus={`Понедельник \u{25CF} Вторник`}
+                                eng={`Monday \u{25CF} Tuesday`}
+                                est={`Esmaspäev \u{25CF} Teisipäev`}
+                            />
+                        </div>
+                    </div>
+
+                    <div className={styles.bottomContainer}>
+                        <GoogleMap styles={styles} />
+
+                        <Swiper modules={[Zoom]} zoom={true} className={styles.circleContainer}>
+                            <SwiperSlide>
+                                <div className="swiper-zoom-container">
+                                    <img src={locationScreenImg} alt="" />
+                                </div>
+                            </SwiperSlide>
+                        </Swiper>
+                    </div>
+                </div>
             </div>
-        </div>
+
+            <div className={styles._mobileRootContainer}>
+                <div className={styles.shopImg}>
+                    <img src={shopImage} alt="" />
+                </div>
+
+                <div className={styles.details}>
+                    <div className={styles.compass}>
+                        <img src={compassImg} alt="" />
+                    </div>
+                    <div className={styles.address}>
+                        <img src={contactsImg} alt="" />
+                        <div className={styles.addressText}>
+                            Pärnu JahtKlubi
+                            <br />
+                            Lootsi tn 6, Pärnu
+                        </div>
+                    </div>
+
+                    <div className={styles.workingMode}>
+                        <Text rus="Открыто" eng="Open" est="Avatud" />
+
+                        <Text
+                            rus={`Среда \u{25CF} Суббота`}
+                            eng={`Wednesday \u{25CF} Saturday`}
+                            est={`Kolmapäev \u{25CF} Laupäev`}
+                        />
+
+                        <div>
+                            12<sup>00</sup> &ndash; 20<sup>00</sup>
+                        </div>
+
+                        <Text rus="Воскресенье" eng="Sunday" est="Pühapäev" />
+
+                        <div>
+                            12<sup>00</sup> &ndash; 17<sup>00</sup>
+                        </div>
+
+                        <Text rus="Закрыто" eng="Closed" est="Suletud" />
+
+                        <Text
+                            rus={`Понедельник \u{25CF} Вторник`}
+                            eng={`Monday \u{25CF} Tuesday`}
+                            est={`Esmaspäev \u{25CF} Teisipäev`}
+                        />
+                    </div>
+
+                    <div className={styles.contacts}>
+                        <img src={ringImg} alt="" />
+
+                        <div className={styles.contactsText}>
+                            +372 589 450 74
+                            <a href="https://wa.me/79854549470" target="_blank" rel="noreferrer">
+                                <Text
+                                    rus="&nbsp;Наш WhatsApp"
+                                    eng="&nbsp;Our WhatsApp"
+                                    est="&nbsp;Meie WhatsApp"
+                                />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div className={styles.bottomContainer}>
+                    <GoogleMap styles={styles} />
+
+                    <div className={styles.email}>
+                        <img src={mailImg} alt="" />
+                        <a href="mailto:shop@yachtshop.ee">shop@yachtshop.ee</a>
+                    </div>
+
+                    <Swiper modules={[Zoom]} zoom={true} className={styles.circleContainer}>
+                        <SwiperSlide>
+                            <div className="swiper-zoom-container">
+                                <img src={locationScreenImg} alt="" />
+                            </div>
+                        </SwiperSlide>
+                    </Swiper>
+                </div>
+            </div>
+        </>
     );
 };
 

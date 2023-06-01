@@ -23,7 +23,7 @@
         grid-template-rows: auto auto auto;
 
         @media (max-width: $breakPointL) {
-            grid-template-columns: calc($_header_imgWidthL + $_header_paddingDoubleL * 3 - 40px) 1fr;
+            grid-template-columns: calc($_header_imgWidthL + $_header_paddingDoubleL * 3 - 20px) 1fr;
         }
 
         @media (max-width: $breakPointM) {
@@ -41,7 +41,7 @@
             gap: 20px;
 
             @media (max-width: $breakPointL) {
-                margin-left: -20px;
+                margin-left: 0;
             }
 
             @media (max-width: $breakPointM) {
@@ -127,7 +127,7 @@
                     cursor: pointer;
                     width: 35px;
                     position: absolute;
-                    top: 20px;
+                    top: 5px;
                     filter: $grayFilter;
                     z-index: 2;
                 }
@@ -140,6 +140,7 @@
                         width: 100%;
                         height: 90%;
                         object-fit: contain;
+                        cursor: pointer;
                     }
 
                     .defaultProductPic {
@@ -229,13 +230,12 @@
             margin-inline: auto;
             margin-top: 20px;
             width: calc(100% - 20px);
-            height: 65px;
+            height: 75px;
             padding-right: 20px;
 
             @media (max-width: $breakPointL) {
-                width: calc(100% + 20px);
+                width: calc(100%);
                 padding-right: 0;
-                margin-left: -20px;
             }
 
             @media (max-width: $breakPointM) {
