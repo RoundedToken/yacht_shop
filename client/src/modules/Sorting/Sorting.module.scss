@@ -5,6 +5,7 @@
     max-height: 45vh;
     width: 168px;
     overflow-y: scroll;
+    overflow-x: hidden;
     gap: 5px;
     background-color: $yellowLight;
     border-radius: 0 15px 15px 0;
@@ -125,7 +126,6 @@
         line-height: 20px;
 
         @media (max-width: $breakPointL) {
-            max-width: calc(100% - 28px - 12px - 4px);
             margin-left: 12px;
             font-size: 12px;
             padding-right: 4px;

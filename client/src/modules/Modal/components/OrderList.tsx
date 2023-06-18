@@ -4,14 +4,11 @@ import AppLoading from '../../../AppLoading';
 import { RootState } from '../../../redux/store';
 import { webCartProductList } from '../../../services/webCartProductList';
 import { IOrderList } from '../interfaces/IOrderList';
-import OrderListHeader from './OrderListHeader';
-import OrderListItem from './OrderListItem';
-import OrderListSummary from './OrderListSummary';
+import SummaryTable from '../../../UI/SummaryTable/SummaryTable';
 
 const OrderList: FC<IOrderList> = ({ styles }) => {
-    const idList = useSelector((state: RootState) => state.cartSlice.productList).map(
-        (product) => product.id
-    );
+    const cartList = useSelector((state: RootState) => state.cartSlice.productList);
+    const idList = cartList.map((product) => product.id);
     const lang = useSelector((state: RootState) => state.langSlice.lang);
     const { data, isFetching, error } = webCartProductList.useFetchCartProductListQuery({
         idList,
@@ -22,18 +19,21 @@ const OrderList: FC<IOrderList> = ({ styles }) => {
     if (error) return <h1>Error!</h1>;
 
     return (
-        <table className={styles.orderList}>
-            <OrderListHeader />
-
-            <tbody>
-                {data &&
-                    data.map((product, index) => (
-                        <OrderListItem key={product.id} product={product} index={index} />
-                    ))}
-
-                <OrderListSummary />
-            </tbody>
-        </table>
+        <>
+            {data && (
+                <SummaryTable
+                    list={data.map((product) => {
+                        return {
+                            id: product.id,
+                            name: product.name,
+                            code: product.code,
+                            price: product.price,
+                            count: cartList.find((p) => p.id === product.id)?.count as number,
+                        };
+                    })}
+                />
+            )}
+        </>
     );
 };
 

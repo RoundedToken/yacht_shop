@@ -1,7 +1,7 @@
 import React from 'react';
-import Text from '../../../UI/Text/Text';
+import Text from '../../Text/Text';
 
-const OrderListHeader = () => {
+const TableHeader = () => {
     return (
         <thead>
             <tr>
@@ -31,4 +31,4 @@ const OrderListHeader = () => {
     );
 };
 
-export default OrderListHeader;
+export default TableHeader;

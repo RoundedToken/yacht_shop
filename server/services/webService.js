@@ -19,6 +19,8 @@ class WebService {
         const name = langParser(lang);
         if (!name) throw new Error();
 
+        console.log(idList);
+
         const data = (
             await sql.query(
                 `SELECT DISTINCT
@@ -29,12 +31,15 @@ class WebService {
             goods.priceEU as price, 
             goods.ostPARNU as inStockCount, 
             par.featurevalue AS src,
-            par.featurename
-            FROM goods INNER JOIN par ON goods.tovar = par.tovar
+            par.featurename,
+            goods.decimal AS isDecimals
+            FROM goods LEFT JOIN par ON goods.tovar = par.tovar
             WHERE goods.tovar in (${idList}) 
             ORDER BY par.featurename`
             )
         ).recordset;
+
+        console.log(data);
 
         const filteredData = goodsFilter(data);
 
@@ -60,7 +65,8 @@ class WebService {
         goods.OstPARNU AS rest,
         goods.brand,
         goods.${name} AS name,
-        par.featurevalue AS src
+        par.featurevalue AS src,
+        goods.decimal AS isDecimals
         FROM goods LEFT JOIN par ON goods.tovar = par.tovar
         WHERE goods.subr IS NOT NULL
         AND goods.avail<>0
@@ -104,7 +110,8 @@ class WebService {
         goods.brand,
         goods.marka AS code,
         ordStr.price,
-        ordStr.qty AS count
+        ordStr.qty AS count,
+        goods.decimal AS isDecimals
         FROM ordStr INNER JOIN goods ON ordStr.tovar = goods.tovar
         WHERE ordStr.orderID = ${orderId}
         `)
@@ -127,7 +134,8 @@ class WebService {
         goods.OstPARNU AS rest,
         goods.brand,
         goods.${name} AS name,
-        par.featurevalue AS src
+        par.featurevalue AS src,
+        goods.decimal AS isDecimals
         FROM goods LEFT JOIN par ON goods.tovar = par.tovar
         WHERE goods.tovar IN 
         (SELECT convert(int, value) FROM string_split((SELECT par.featurevalue FROM par WHERE par.tovar = ${id} AND par.featurename LIKE 'and'), ','))
@@ -140,17 +148,36 @@ class WebService {
         return filteredData;
     }
 
-    async webCrimping({ wire, end1, end2, length }) {
-        const request = new sql.Request();
+    async webCrimping({ diameter, end1, end2, length, lang }) {
+        const name = langParser(lang);
+        if (!name) throw new Error();
 
-        request.input('wire', sql.Int, wire);
+        const request = new sql.Request();
+        request.input('thick', sql.VarChar, diameter);
         request.input('end1', sql.VarChar, end1);
         request.input('end2', sql.VarChar, end2);
-        request.input('Lenght', sql.VarChar, length);
+        request.input('Lenght', sql.VarChar, length.toString());
 
-        const data = (await request.execute('[dbo].[web_swage_calc_new]')).recordset;
-        console.log(data);
-        return data;
+        const dataP = (await request.execute('[dbo].[web_swage_calc_new]')).recordset;
+
+        const idList = dataP.map((v) => v.tovar).join(',');
+
+        const data = (
+            await sql.query(`
+        SELECT
+        ${name} AS name,
+        brand,
+        marka AS code,
+        priceEU AS price,
+        decimal AS isDecimals
+        FROM goods
+        WHERE tovar IN (${idList})
+        `)
+        ).recordset;
+
+        return dataP.map((v, i) => {
+            return { id: v.tovar, count: v.qty, ...data[i] };
+        });
     }
 }
 

@@ -6,7 +6,7 @@ import CountControl from '../../../UI/CountControl/CountControl';
 import FavoritesButton from '../../../UI/FavoritesButton/FavoritesButton';
 import { IMenu } from '../interfaces/IMenu';
 
-const Menu: FC<IMenu> = ({ styles, id, brand, price }) => {
+const Menu: FC<IMenu> = ({ styles, id, brand, price, isDecimals }) => {
     const count = useSelector(
         (state: RootState) =>
             state.cartSlice.productList.find((product) => product.id === id)?.count
@@ -15,14 +15,14 @@ const Menu: FC<IMenu> = ({ styles, id, brand, price }) => {
     return (
         <div className={styles.menu}>
             <div className={`${styles.cartButton} ${styles.menu__item}`}>
-                <CartButton id={id} brand={brand} price={price} />
+                <CartButton id={id} brand={brand} price={price} isDecimals={isDecimals} />
             </div>
 
             <div
                 style={!count ? { display: 'none' } : {}}
                 className={`${styles.countControl} ${styles.menu__item}`}
             >
-                <CountControl id={id} />
+                <CountControl id={id} isDecimals={isDecimals} />
             </div>
 
             <div className={`${styles.favoritesButton} ${styles.menu__item}`}>

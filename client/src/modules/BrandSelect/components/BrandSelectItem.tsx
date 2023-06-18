@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef } from 'react';
+import React, { FC, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
 import { IBrandSelectItem } from '../interfaces/IBrandSelectItem';
@@ -11,10 +11,6 @@ const BrandSelectItem: FC<IBrandSelectItem> = ({
 }) => {
     const labelRef = useRef<HTMLLabelElement>(null);
     const brandsDisplay = useSelector((state: RootState) => state.stylesSlice.brandsDisplay);
-
-    // useEffect(() => {
-    //     if (labelRef.current) labelRef.current.style.display = brandsDisplay;
-    // }, [brandsDisplay]);
 
     if (brandsDisplay === 'none') return null;
 

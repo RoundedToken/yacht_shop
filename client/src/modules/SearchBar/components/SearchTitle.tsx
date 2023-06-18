@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import Skeleton from 'react-loading-skeleton';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
 import { webSearchApi } from '../../../services/webSearch';

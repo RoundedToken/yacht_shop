@@ -7,4 +7,5 @@ export interface IProductCard {
     brand: string;
     code: string;
     inStock: boolean;
+    isDecimals: boolean;
 }

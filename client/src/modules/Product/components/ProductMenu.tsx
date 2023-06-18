@@ -5,7 +5,7 @@ import CountControl from '../../../UI/CountControl/CountControl';
 import FavoritesButton from '../../../UI/FavoritesButton/FavoritesButton';
 import { IProductName } from '../interfaces/IProductName';
 
-const ProductMenu: FC<IProductName> = ({ styles, price, brand, id }) => {
+const ProductMenu: FC<IProductName> = ({ styles, price, brand, id, isDecimals }) => {
     return (
         <div className={styles.menu}>
             <div className={styles.price}>{eurFormatter.format(price)}</div>
@@ -16,10 +16,10 @@ const ProductMenu: FC<IProductName> = ({ styles, price, brand, id }) => {
 
             <div className={styles.cart}>
                 <div className={styles.cartControl}>
-                    <CartButton id={id} brand={brand} price={price} />
+                    <CartButton id={id} brand={brand} price={price} isDecimals={isDecimals} />
                 </div>
 
-                <CountControl id={id} />
+                <CountControl id={id} isDecimals={isDecimals} />
             </div>
         </div>
     );

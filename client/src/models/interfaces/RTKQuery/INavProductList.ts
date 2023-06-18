@@ -9,6 +9,7 @@ export interface INavProductListRes {
     inStock: boolean;
     price: number;
     rest: number;
+    isDecimals: boolean;
 }
 
 export interface INavProductListReq {

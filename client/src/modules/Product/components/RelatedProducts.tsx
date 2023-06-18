@@ -49,6 +49,7 @@ const RelatedProducts: FC<IRelatedProducts> = ({ styles, id, relatedCount }) => 
                             inStock={product.inStock}
                             price={product.price}
                             src={product.src}
+                            isDecimals={product.isDecimals}
                             count={
                                 cartProductList.find((cartProduct) => cartProduct.id === product.id)
                                     ?.count as number

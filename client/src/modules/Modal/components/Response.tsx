@@ -5,9 +5,7 @@ import { switchModalDisplay } from '../../../redux/stylesSlice';
 import Text from '../../../UI/Text/Text';
 import ToCatalogButton from '../../../UI/ToCatalogButton/ToCatalogButton';
 import { IResponse } from '../interfaces/IResponse';
-import OrderListHeader from './OrderListHeader';
-import ResponseListItem from './ResponseListItem';
-import ResponseSummary from './ResponseSummary';
+import SummaryTable from '../../../UI/SummaryTable/SummaryTable';
 
 const Response: FC<IResponse> = ({ styles, response }) => {
     const dispatch = useDispatch();
@@ -28,17 +26,17 @@ const Response: FC<IResponse> = ({ styles, response }) => {
                 />
             </div>
 
-            <table className={styles.orderList}>
-                <OrderListHeader />
-
-                <tbody>
-                    {response.orderList.map((product, index) => (
-                        <ResponseListItem key={product.id} product={product} index={index} />
-                    ))}
-
-                    <ResponseSummary productList={response.orderList} />
-                </tbody>
-            </table>
+            <SummaryTable
+                list={response.orderList.map((product) => {
+                    return {
+                        id: product.id,
+                        name: product.name,
+                        code: product.code,
+                        price: product.price,
+                        count: product.count,
+                    };
+                })}
+            />
 
             <div className={styles.toCatalogButton} onClick={toCatalog}>
                 <ToCatalogButton />

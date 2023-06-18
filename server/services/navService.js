@@ -20,7 +20,8 @@ class navService {
                 goods.marka AS code,
                 goods.priceEU AS price,
                 goods.OstPARNU AS inStockCount,
-                par.featurevalue AS src
+                par.featurevalue AS src,
+                goods.decimal AS isDecimals
                 FROM goods LEFT JOIN par ON goods.tovar = par.tovar
                 WHERE goods.subr=${id} AND goods.avail<>0 
                 ORDER BY par.featurename`
@@ -47,7 +48,8 @@ class navService {
                 goods.priceEU AS price, 
                 goods.ostParnu AS inStockCount,
                 par.featurevalue AS src,
-                par.featurename 
+                par.featurename,
+                goods.decimal AS isDecimals 
                 FROM goods LEFT JOIN par ON goods.tovar = par.tovar
                 WHERE goods.tovar = ${id}
                 ORDER BY par.featurename`

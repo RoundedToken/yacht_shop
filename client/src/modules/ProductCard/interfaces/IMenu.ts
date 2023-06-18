@@ -5,4 +5,5 @@ export interface IMenu {
     id: number;
     brand: string;
     price: number;
+    isDecimals: boolean;
 }

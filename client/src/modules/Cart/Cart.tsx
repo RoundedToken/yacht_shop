@@ -65,11 +65,13 @@ const Cart: FC<ICart> = () => {
                     <CartMenu styles={styles} />
                 </div>
 
-                {inView && <div ref={fixedOrderRef} className={styles.fixedOrder}>
-                    <CartSummary styles={styles} />
+                {!inView && (
+                    <div ref={fixedOrderRef} className={styles.fixedOrder}>
+                        <CartSummary styles={styles} />
 
-                    <CartMenu styles={styles} />
-                </div>}
+                        <CartMenu styles={styles} />
+                    </div>
+                )}
             </div>
         );
     }
@@ -87,11 +89,13 @@ const Cart: FC<ICart> = () => {
                         <CartMenu styles={styles} />
                     </div>
 
-                    {inView && <div ref={fixedOrderRef} className={styles.fixedOrder}>
-                        <CartSummary styles={styles} />
+                    {!inView && (
+                        <div ref={fixedOrderRef} className={styles.fixedOrder}>
+                            <CartSummary styles={styles} />
 
-                        <CartMenu styles={styles} />
-                    </div>}
+                            <CartMenu styles={styles} />
+                        </div>
+                    )}
                 </div>
             )}
         </div>

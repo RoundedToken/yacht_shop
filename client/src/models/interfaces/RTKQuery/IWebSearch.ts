@@ -9,6 +9,7 @@ export interface IWebSearchRes {
     inStock: boolean;
     price: number;
     rest: number;
+    isDecimals: boolean;
 }
 
 export interface IWebSearchReq {

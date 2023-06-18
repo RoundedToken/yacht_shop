@@ -23,6 +23,7 @@ const FavoritesList: FC<ITableFavoritesList> = ({ styles, data, brands }) => {
                     brand={product.brand}
                     code={product.code}
                     price={product.price}
+                    isDecimals={product.isDecimals}
                     count={
                         cartList.find((cartProduct) => cartProduct.id === product.id)
                             ?.count as number

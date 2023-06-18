@@ -7,7 +7,7 @@ import { ICartSummary } from '../interfaces/ICartSummary';
 
 const CartSummary: FC<ICartSummary> = ({ styles }) => {
     const productList = useSelector((state: RootState) => state.cartSlice.productList);
-    const totalCount = productList.reduce((pV, cV) => pV + cV.count, 0);
+    const totalCount = productList.length;
     const totalSum = productList.reduce((pV, cV) => pV + cV.count * cV.price, 0);
 
     return (

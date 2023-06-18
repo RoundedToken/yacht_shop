@@ -17,6 +17,7 @@ export interface IWebOrderResItem {
     code: string;
     price: number;
     count: number;
+    isDecimals: boolean;
 }
 export interface IWebOrderRes {
     orderId: number;

@@ -41,6 +41,7 @@ const Product = () => {
                 (product.name ? (
                     <div className={styles.grid}>
                         <ProductMenu
+                            isDecimals={product.isDecimals}
                             styles={styles}
                             id={product.id}
                             brand={product.brand}

@@ -7,12 +7,12 @@ import { RootState } from '../../redux/store';
 import { addToCart, removeFromCart, toTrueCartUpdate } from '../../redux/cartSlice';
 import styles from './CartButton.module.scss';
 
-const CartButton: FC<ICartButton> = ({ id, price, brand }) => {
+const CartButton: FC<ICartButton> = ({ id, price, brand, isDecimals }) => {
     const cartProductList = useSelector((state: RootState) => state.cartSlice.productList);
     const dispatch = useDispatch();
 
     const addToCartOnClick = (id: number, price: number, brand: string) => {
-        dispatch(addToCart({ id, count: 1, price, brand }));
+        dispatch(addToCart({ id, count: isDecimals ? 0.5 : 1, price, brand }));
         dispatch(toTrueCartUpdate());
     };
     const removeFromCartOnClick = (id: number) => {

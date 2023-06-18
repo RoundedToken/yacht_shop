@@ -35,6 +35,7 @@ const CardProductList: FC<ICardProductList> = ({ styles, productList, brands }) 
                             ?.count as number
                     }
                     inStock={product.inStock}
+                    isDecimals={product.isDecimals}
                     src={product.src}
                 />
             ))}

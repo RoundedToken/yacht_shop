@@ -4,6 +4,7 @@
     @include columnStartStart;
     max-height: 400px;
     overflow-y: scroll;
+    overflow-x: hidden;
     width: 168px;
     gap: 5px;
     background-color: $yellowLight;
@@ -139,6 +140,7 @@
         overflow-wrap: break-word;
         margin-left: 22px;
         line-height: 20px;
+        max-width: calc(100% - 22px - 28px);
 
         @media (max-width: $breakPointL) {
             max-width: calc(100% - 28px - 12px - 4px);

@@ -34,7 +34,7 @@
 
         .menu {
             @include columnCenterStart;
-            background-color: $skyBlue;
+            background-color: $softBlue;
             margin-left: -20px;
             margin-top: -20px;
             padding: 20px;
@@ -234,8 +234,8 @@
             padding-right: 20px;
 
             @media (max-width: $breakPointL) {
-                width: calc(100%);
-                padding-right: 0;
+                width: calc(100% - 10px);
+                padding-inline: 5px;
             }
 
             @media (max-width: $breakPointM) {

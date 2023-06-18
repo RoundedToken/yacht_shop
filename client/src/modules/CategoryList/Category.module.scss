@@ -43,7 +43,7 @@
                 width: calc(100% - 32px);
                 height: calc(100% - 32px);
                 border: 16px solid $darkAqua;
-                box-shadow: 4px 4px 4px gray, 4px 4px 4px gray inset;
+                box-shadow: 4px 4px 4px gray, 4px 4px 4px rgba(2, 31, 128, 0.471) inset;
                 border-radius: 100%;
                 position: absolute;
                 z-index: 1;
@@ -51,12 +51,16 @@
 
             img {
                 position: absolute;
-                width: calc(100% - 32px);
-                height: calc(100% - 32px);
+                width: calc(100% - 30px);
+                height: calc(100% - 30px);
                 top: 16px;
                 left: 16px;
                 border-radius: 100%;
                 object-fit: contain;
+            }
+
+            .defaultProductPic {
+                opacity: 0.4;
             }
         }
     }

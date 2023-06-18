@@ -12,6 +12,7 @@ export interface INavProductRes {
     inStock: boolean;
     src: string[];
     relatedCount: number;
+    isDecimals: boolean;
 }
 
 export interface INavProductReq {

@@ -5,4 +5,5 @@ export interface IProductName {
     price: number;
     id: number;
     brand: string;
+    isDecimals: boolean;
 }

@@ -9,6 +9,7 @@ export interface IWebCartProductListRes {
     inStockCount: number;
     inStock: boolean;
     src: string[];
+    isDecimals: boolean;
 }
 
 export interface IWebCartProductListReq {

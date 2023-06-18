@@ -32,6 +32,7 @@ const CartProductList: FC<ICartProductList> = ({ styles, productList, data }) =>
                     count={product.count}
                     brand={data.find((item) => item.id === product.id)?.brand || ''}
                     code={data.find((item) => item.id === product.id)?.code || ''}
+                    isDecimals={data.find((item) => item.id === product.id)?.isDecimals || false}
                     inStock={data.find((item) => item.id === product.id)?.inStock || false}
                 />
             ))}

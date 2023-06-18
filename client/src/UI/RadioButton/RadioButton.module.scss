@@ -1,0 +1,51 @@
+@import '../../styles/index.scss';
+
+.container {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 22px;
+    height: 22px;
+}
+
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    @include flexCenterCenter;
+    height: 22px;
+    width: 22px;
+    background-color: $gray;
+    border-radius: 100%;
+}
+
+.container:hover input ~ .checkmark {
+    background-color: $yellowLight;
+}
+
+.container input:checked ~ .checkmark {
+    background-color: $yellow;
+}
+
+.checkmark:after {
+    content: '';
+    display: none;
+}
+
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.container .checkmark:after {
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    background: $blue;
+}

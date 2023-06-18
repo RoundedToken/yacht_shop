@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import { eurFormatter } from '../../../helpers/eurFormatter';
-import { IResponseListItem } from '../interfaces/IResponseListItem';
+import { ITableItem } from '../interfaces/ITableItem';
 
-const ResponseListItem: FC<IResponseListItem> = ({ index, product }) => {
+const TableItem: FC<ITableItem> = ({ index, product }) => {
     return (
-        <tr key={product.id}>
+        <tr>
             <td>{index + 1}</td>
 
             <td>{product.name}</td>
@@ -20,4 +20,4 @@ const ResponseListItem: FC<IResponseListItem> = ({ index, product }) => {
     );
 };
 
-export default ResponseListItem;
+export default TableItem;

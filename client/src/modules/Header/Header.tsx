@@ -1,7 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import styles from './Header.module.scss';
-import logoImg from '../../assets/images/logo.png';
-import logoSVGImg from '../../assets/images/logo.svg';
 import logo2Img from '../../assets/images/logo2.png';
 import Name from './components/Name';
 import Lang from './components/Lang';

@@ -36,9 +36,14 @@ const ProductListItem: FC<IProductListItem> = ({ product, styles }) => {
 
             <td>
                 <div className={styles.productCart}>
-                    <CartButton id={product.id} brand={product.brand} price={product.price} />
+                    <CartButton
+                        id={product.id}
+                        brand={product.brand}
+                        price={product.price}
+                        isDecimals={product.isDecimals}
+                    />
 
-                    <CountControl id={product.id} />
+                    <CountControl id={product.id} isDecimals={product.isDecimals} />
 
                     <FavoritesButton id={product.id} />
                 </div>

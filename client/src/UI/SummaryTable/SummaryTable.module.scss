@@ -1,0 +1,131 @@
+@import '../../styles/index.scss';
+
+.table {
+    @include fontDesktopM($blue);
+    line-height: 1;
+    height: min-content;
+
+    @media (max-width: $breakPointS) {
+        font-size: 14px;
+    }
+
+    thead {
+        th {
+            text-align: center;
+
+            &:nth-child(2) {
+                text-align: start;
+            }
+
+            &:nth-child(3) {
+                font-size: 16px;
+
+                @media (max-width: $breakPointS) {
+                    display: none;
+                }
+            }
+
+            &:nth-child(4) {
+                text-align: center;
+            }
+
+            &:last-child {
+                text-align: center;
+            }
+        }
+    }
+
+    th {
+        background-color: $yellowLight;
+        text-align: start;
+        white-space: nowrap;
+    }
+
+    tr {
+        &:nth-child(even) {
+            background-color: $white;
+        }
+
+        &:nth-child(odd) {
+            background-color: $orderTrOdd;
+        }
+
+        &:nth-last-child(2) {
+            td {
+                border-bottom: 1px solid $blue;
+            }
+        }
+
+        &:last-child {
+            background-color: transparent;
+
+            td {
+                border-right: none;
+
+                &:nth-child(1) {
+                    background-color: transparent !important;
+                }
+                &:nth-child(5) {
+                    background-color: $yellow;
+                    font-weight: bold;
+                }
+                &:nth-child(6) {
+                    background-color: $yellow;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+    th,
+    td {
+        padding-block: 5px;
+        padding-right: 5px;
+        padding-left: 10px;
+        border-right: 1px solid $blue;
+
+        @media (max-width: $breakPointS) {
+            padding-left: 5px;
+        }
+
+        &:first-child {
+            padding-left: 10px;
+            font-weight: 800;
+            vertical-align: text-top;
+            text-align: end;
+            font-size: 14px;
+
+            @media (max-width: $breakPointS) {
+                font-size: 12px;
+                padding-left: 5px;
+            }
+        }
+
+        //CODE
+        &:nth-child(3) {
+            font-size: 12px;
+
+            @media (max-width: $breakPointS) {
+                display: none;
+            }
+        }
+
+        //PRICE
+        &:nth-child(4) {
+            text-align: end;
+        }
+
+        //COUNT
+        &:nth-child(5) {
+            text-align: center;
+            padding-left: 5px;
+        }
+
+        &:last-child {
+            border-right: none;
+            text-align: end;
+            padding-left: 5px;
+            padding-right: 10px;
+        }
+    }
+}
