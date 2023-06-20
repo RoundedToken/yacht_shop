@@ -15,7 +15,7 @@ import defaultProductImg from '../../../assets/images/defaultProduct.svg';
 const ProductSwiper: FC<IProductSwiper> = ({ picSrc, styles }) => {
     const dispatch = useDispatch();
     const [isClickable, setIsClickable] = useState(true);
-    const imgRef = useRef<HTMLImageElement>(null);
+    const imgRef = useRef<Array<HTMLImageElement | null>>([]);
 
     const fullScreenOnClick = () => {
         dispatch(setPicSrc(picSrc));
@@ -23,12 +23,13 @@ const ProductSwiper: FC<IProductSwiper> = ({ picSrc, styles }) => {
         dispatch(switchModalDisplay());
         document.body.style.overflow = 'hidden';
     };
-    const onImgError = () => {
-        if (imgRef.current) {
-            imgRef.current.src = defaultProductImg;
-            imgRef.current.className = styles.defaultProductPic;
+    const onImgError = (i: number) => {
+        if (imgRef.current[i]) {
+            //@ts-ignore
+            imgRef.current[i].src = defaultProductImg;
+            //@ts-ignore
+            imgRef.current[i].className = styles.defaultProductPic;
         }
-        setIsClickable(false);
     };
 
     return (
@@ -55,10 +56,10 @@ const ProductSwiper: FC<IProductSwiper> = ({ picSrc, styles }) => {
                 {picSrc.map((src, i) => (
                     <SwiperSlide className={styles.swiperSlide} key={i}>
                         <img
-                            ref={imgRef}
+                            ref={(el) => (imgRef.current[i] = el)}
                             src={src}
                             alt=""
-                            onError={onImgError}
+                            onError={() => onImgError(i)}
                             onClick={isClickable ? fullScreenOnClick : undefined}
                         />
                     </SwiperSlide>

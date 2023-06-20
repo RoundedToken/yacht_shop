@@ -39,8 +39,6 @@ class WebService {
             )
         ).recordset;
 
-        console.log(data);
-
         const filteredData = goodsFilter(data);
 
         return filteredData;

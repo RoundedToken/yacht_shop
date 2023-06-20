@@ -116,7 +116,7 @@ export const sideBarSlice = createSlice({
             state.cartBrands.push(action.payload);
         },
         removeCartBrand(state, action: PayloadAction<string>) {
-            state.cartBrands.splice(state.brands.indexOf(action.payload), 1);
+            state.cartBrands.splice(state.cartBrands.indexOf(action.payload), 1);
         },
         clearCartBrands(state) {
             state.cartBrands = [];
@@ -125,7 +125,7 @@ export const sideBarSlice = createSlice({
             state.favoritesBrands.push(action.payload);
         },
         removeFavoritesBrand(state, action: PayloadAction<string>) {
-            state.favoritesBrands.splice(state.brands.indexOf(action.payload), 1);
+            state.favoritesBrands.splice(state.favoritesBrands.indexOf(action.payload), 1);
         },
         clearFavoritesBrands(state) {
             state.favoritesBrands = [];
