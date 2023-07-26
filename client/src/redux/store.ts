@@ -15,6 +15,7 @@ import { webProductInfoApi } from '../services/webProductInfo';
 import { webCartProductList } from '../services/webCartProductList';
 import { webOrderApi } from '../services/webOrder';
 import { webCrimpingApi } from '../services/webCrimping';
+import { webNewsApi } from '../services/webNews';
 
 const rootReducer = combineReducers({
     [navProductListApi.reducerPath]: navProductListApi.reducer,
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
     [webSearchApi.reducerPath]: webSearchApi.reducer,
     [webRelatedProductsApi.reducerPath]: webRelatedProductsApi.reducer,
     [webCrimpingApi.reducerPath]: webCrimpingApi.reducer,
+    [webNewsApi.reducerPath]: webNewsApi.reducer,
     navSlice,
     langSlice,
     cartSlice,
@@ -48,7 +50,8 @@ export const setupStore = () => {
                 navTreeApi.middleware,
                 webSearchApi.middleware,
                 webRelatedProductsApi.middleware,
-                webCrimpingApi.middleware
+                webCrimpingApi.middleware,
+                webNewsApi.middleware
             ),
     });
 };

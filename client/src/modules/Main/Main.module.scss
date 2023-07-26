@@ -1,0 +1,376 @@
+@import '../../styles/index.scss';
+
+.root {
+    margin-top: -20px;
+    width: calc(100% + 20px);
+    min-height: 100%;
+    display: flex;
+    height: 110%;
+
+    @media (max-width: $breakPointM) {
+        margin-top: -10px;
+    }
+
+    @media (max-width: $breakPointS) {
+        width: 100%;
+    }
+
+    .leftContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 20px;
+        gap: 20px;
+        padding-inline: 6px;
+        width: 188px;
+        min-width: 188px;
+        background-color: $softBlue;
+        z-index: 2;
+
+        @media (max-width: $breakPointM) {
+            margin-left: -20px;
+            padding-top: 20px;
+        }
+
+        @media (max-width: $breakPointS) {
+            background-color: transparent;
+            margin-left: -10px;
+            margin-top: 62vw;
+            padding-top: 0;
+            gap: 50px;
+            padding-left: 5px;
+            z-index: -1;
+            gap: 10px;
+        }
+
+        .symbol {
+            color: $blue;
+        }
+
+        .newsItem {
+            color: $blue;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 3px;
+
+            .newsTitle {
+                text-align: center;
+                font-size: 18px;
+                line-height: 22px;
+                font-weight: 800;
+            }
+
+            .newsContent {
+                font-size: 15px;
+                line-height: 18px;
+                text-align: center;
+            }
+
+            .newsDate {
+                font-size: 11px;
+                font-weight: 800;
+            }
+        }
+
+        .imageContainer {
+            min-width: 120px;
+            width: 120px;
+            height: 120px;
+            position: relative;
+
+            @media (max-width: $breakPointS) {
+                width: auto;
+                height: auto;
+                min-width: auto;
+
+                &:first-child {
+                    display: none;
+                }
+            }
+
+            .imgSymbol {
+                display: none;
+
+                @media (max-width: $breakPointS) {
+                    display: block;
+                    color: $blue;
+                }
+            }
+
+            .mask {
+                width: calc(100% - 32px);
+                height: calc(100% - 32px);
+                border: 16px solid $darkAqua;
+                box-shadow: 4px 4px 4px gray, 4px 4px 4px rgba(2, 31, 128, 0.471) inset;
+                border-radius: 100%;
+                position: absolute;
+                z-index: 1;
+
+                @media (max-width: $breakPointS) {
+                    display: none;
+                }
+            }
+
+            img {
+                position: absolute;
+                width: calc(100% - 30px);
+                height: calc(100% - 30px);
+                top: 16px;
+                left: 16px;
+                border-radius: 100%;
+                object-fit: contain;
+
+                @media (max-width: $breakPointS) {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .content {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: min-content min-content;
+        row-gap: 50px;
+        position: sticky;
+        top: 103px;
+        height: min-content;
+        margin-bottom: 160px;
+
+        @media (max-width: $breakPointL) {
+            grid-template-rows: min-content min-content min-content;
+            row-gap: 20px;
+            top: 87px;
+            margin-bottom: 160px;
+        }
+
+        @media (max-width: $breakPointM) {
+            grid-template-rows: min-content min-content min-content;
+            top: 40px;
+            margin-bottom: 300px;
+        }
+
+        .topImg {
+            grid-column: 1/6;
+
+            @media (max-width: $breakPointL) {
+                grid-column: 1/11;
+                padding-inline: 25px;
+            }
+
+            @media (max-width: $breakPointS) {
+                grid-column: 1/11;
+                padding-inline: 0;
+                margin-left: -200px;
+                width: calc(100% + 170px);
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                border-radius: 0 0 30px 0;
+                object-fit: cover;
+
+                @media (max-width: $breakPointL) {
+                    grid-column: 2/10;
+                    border-radius: 0 0 30px 30px;
+                }
+            }
+        }
+
+        .swiperContainer {
+            grid-column: 1/4;
+            grid-row: 2/3;
+            width: 100%;
+            height: 100%;
+            border-radius: 0 30px 30px 0;
+
+            @media (max-width: $breakPointL) {
+                grid-column: 1/7;
+                width: calc(100% - 30px);
+            }
+
+            @media (max-width: $breakPointS) {
+                display: none;
+            }
+
+            .swiper {
+                border-radius: 0 30px 30px 0;
+                width: 100%;
+                height: 100%;
+            }
+
+            .swiperSlide {
+                border-radius: 0 30px 30px 0;
+                text-align: center;
+                font-size: 18px;
+                background: #fff;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .swiperSlide img {
+                border-radius: 0 30px 30px 0;
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .bottomImg {
+            grid-column: 6/11;
+            margin-top: 50px;
+            margin-left: 50px;
+
+            @media (max-width: $breakPointL) {
+                grid-row: 3/4;
+                grid-column: 3/11;
+                margin-top: 0;
+                margin-left: 0;
+            }
+
+            @media (max-width: $breakPointS) {
+                display: none;
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                border-radius: 0 30px 30px 30px;
+                object-fit: cover;
+            }
+        }
+
+        .bellImg {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 100%;
+            position: absolute;
+            grid-row: 1/2;
+            bottom: -150px;
+            grid-column: 4/7;
+            z-index: 2;
+
+            @media (max-width: $breakPointL) {
+                grid-column: 7/11;
+                right: 10px;
+                bottom: -220px;
+            }
+
+            @media (max-width: $breakPointM) {
+                bottom: -150px;
+            }
+
+            @media (max-width: $breakPointS) {
+                bottom: -40vw;
+                grid-column: 2/11;
+                margin-right: -10px;
+            }
+
+            img {
+                border: 5px solid white;
+                width: 100%;
+                height: 100%;
+                min-height: 100%;
+                border-radius: 100%;
+                object-fit: cover;
+
+                @media (max-width: $breakPointS) {
+                    border-width: 4px;
+                }
+            }
+        }
+
+        .wheelImg {
+            display: none;
+            position: absolute;
+            bottom: -130px;
+            right: 0;
+            z-index: -1;
+            overflow-y: hidden;
+            opacity: 0.5;
+
+            @media (max-width: $breakPointL) {
+                width: 450px;
+                height: 450px;
+                display: block;
+                bottom: 90px;
+                left: -250px;
+                overflow-y: visible;
+                opacity: 0.3;
+            }
+
+            @media (max-width: $breakPointM) {
+                width: 330px;
+                height: 330px;
+                left: -140px;
+                bottom: 130px;
+            }
+
+            @media (max-width: $breakPointS) {
+                bottom: -400px;
+                left: -130px;
+                width: 80vw;
+                height: 80vw;
+                // overflow: hidden;
+                overflow: hidden;
+                // overflow-y: visible;
+                opacity: 0.25;
+            }
+
+            img {
+                transform: rotate(5deg);
+                width: 100%;
+                height: 100%;
+                margin-top: 150px;
+                object-fit: cover;
+
+                @media (max-width: $breakPointS) {
+                    transform: rotate(0);
+                    // margin-top: 50px;
+                    margin-left: 50px;
+                    margin-top: 0;
+                }
+            }
+        }
+
+        .colorsImg {
+            grid-row: 2/3;
+            grid-column: 4/8;
+            padding-inline: 25px;
+
+            @media (max-width: $breakPointL) {
+                display: none;
+            }
+
+            img {
+                border-radius: 0 30px 30px 30px;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .glovesImg {
+            grid-row: 2/3;
+            grid-column: 8/11;
+
+            @media (max-width: $breakPointL) {
+                display: none;
+            }
+
+            img {
+                border-radius: 0 30px 30px 30px;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+}

@@ -15,7 +15,8 @@ const SideBar = () => {
             style={
                 location === routeConstants.PRODUCT_ROUTE ||
                 location === routeConstants.CONTACTS_ROUTE ||
-                location === routeConstants.CRIMPING_ROUTE
+                location === routeConstants.CRIMPING_ROUTE ||
+                location === routeConstants.MAIN_ROUTE
                     ? { display: 'none' }
                     : {}
             }

@@ -177,6 +177,22 @@ class WebService {
             return { id: v.tovar, count: v.qty, ...data[i] };
         });
     }
+
+    async webNews({ lang }) {
+        const head = lang === 'rus' ? 'HeadRUS' : lang === 'eng' ? 'HeadENG' : 'HeadEST';
+        const text = lang === 'rus' ? 'TextRUS' : lang === 'eng' ? 'TextENG' : 'TextEST';
+
+        const data = (
+            await sql.query(`SELECT
+        ${head} as title,
+        ${text} as content,
+        Date as date
+        FROM news
+        `)
+        ).recordset;
+
+        return data;
+    }
 }
 
 export default new WebService();

@@ -44,9 +44,9 @@ class WebController {
         try {
             const reqData = req.query;
 
-            const sqlResDat = await webService.webSearch(reqData);
+            const sqlResData = await webService.webSearch(reqData);
 
-            return res.json(sqlResDat);
+            return res.json(sqlResData);
         } catch (error) {
             next(error);
         }
@@ -56,9 +56,9 @@ class WebController {
         try {
             const reqData = req.query;
 
-            const sqlResDat = await webService.webRelatedProducts(reqData);
+            const sqlResData = await webService.webRelatedProducts(reqData);
 
-            return res.json(sqlResDat);
+            return res.json(sqlResData);
         } catch (error) {
             next(error);
         }
@@ -68,9 +68,20 @@ class WebController {
         try {
             const reqData = req.query;
 
-            const sqlResDat = await webService.webCrimping(reqData);
+            const sqlResData = await webService.webCrimping(reqData);
 
-            return res.json(sqlResDat);
+            return res.json(sqlResData);
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    async webNews(req, res, next) {
+        try {
+            const reqData = req.query;
+            const sqlResData = await webService.webNews(reqData);
+
+            return res.json(sqlResData);
         } catch (error) {
             next(error);
         }

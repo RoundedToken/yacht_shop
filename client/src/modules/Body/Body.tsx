@@ -23,7 +23,8 @@ const Body = () => {
         <div
             style={
                 location === routeConstants.PRODUCT_ROUTE ||
-                location === routeConstants.CONTACTS_ROUTE
+                location === routeConstants.CONTACTS_ROUTE ||
+                location === routeConstants.MAIN_ROUTE
                     ? { gap: '0px' }
                     : location === routeConstants.CRIMPING_ROUTE
                     ? { gap: '0px', marginBottom: '0px' }

@@ -83,7 +83,8 @@ function App() {
                             ? { backgroundColor: 'rgb(211, 240, 243)' }
                             : location === routeConstants.FAVORITES_ROUTE
                             ? { backgroundColor: 'rgb(252, 248, 211	)' }
-                            : location === routeConstants.CRIMPING_ROUTE ||
+                            : location === routeConstants.MAIN_ROUTE ||
+                              location === routeConstants.CRIMPING_ROUTE ||
                               location === routeConstants.PRODUCT_ROUTE ||
                               location === routeConstants.CONTACTS_ROUTE ||
                               (location === routeConstants.PRODUCT_LIST_ROUTE &&
