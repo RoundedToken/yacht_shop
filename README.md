@@ -1,7 +1,7 @@
 # [***RopeBox***](https://yachtshop.ee) web store of yacht equipment
 
 ## Technical task
-1. Redesign of an [previous version of the site](http://www.old.yachtshop.ee/index.asp?view=98&id=0) ✅
+1. Redesign of an [previous version of the site](http://www.ropebox.ru/) ✅
 2. Front-end and back-end new technology stack ✅
 3. Implement a powerful shopping cart system with favorites ✅
 4. Make the project as scalable as possible for future features ✅
