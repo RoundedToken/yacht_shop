@@ -17,6 +17,8 @@
 ## Front-end stack 
 
 <p>
+<img background-color='#ECD53F' width='64' src='https://github.com/RoundedToken/yacht_shop_admin/assets/117864556/b3ae4356-16be-454d-97dd-1d5d30f49413'/>
+&emsp;
 <img background-color='#ECD53F' width='64' src='https://user-images.githubusercontent.com/117864556/231820036-c18eedb0-8f17-4316-988b-12f1e331b2f3.svg'/>
 &emsp;
 <img background-color='#ECD53F' width='64' src='https://user-images.githubusercontent.com/117864556/231822337-e7f5ac40-8640-4be1-b23a-d43fd642262c.svg'/>
@@ -28,6 +30,8 @@
 ## Back-end stack
 
 <p>
+<img background-color='#ECD53F' width='64' src='https://github.com/RoundedToken/yacht_shop_admin/assets/117864556/1b62b65e-4f98-4380-af9f-b88054427eae'/>
+&emsp;
 <img background-color='#ECD53F' width='64' src='https://user-images.githubusercontent.com/117864556/231824252-08d1c71a-1e9c-492a-9762-e72268ab52b8.svg'/>
 &emsp;
 <img background-color='#ECD53F' width='64' src='https://user-images.githubusercontent.com/117864556/231853059-42dbeb92-46e5-464c-96fb-1f96c318f2b3.svg'/>
