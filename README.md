@@ -48,7 +48,7 @@
 - Various `animation` elements were added
 - Custom `internationalization` was implemented, supporting Estonian, English and Russian languages
 - Powerful tools like `quick navigation`, `navigation breadcrumbs`, also product `sorting`, `filtering` and `search` were implemented
-- `Responsive` `cross-platform` `adaptive` layout was implemented with support for mobile, tablet and all screen sizes, including via classic `@media` queries and progressive `@container`
+- `Responsive` `cross-platform` `adaptive` layout was implemented with support for mobile, tablet and all screen sizes, including via classic `@media` and progressive `@container` queries
 - Convenient viewing of product photos is implemented using the `Swiper.JS` library
 - A user-friendly interface was made for the custom wire rope swaging program
 - Modern `skeleton loaders` were added for most loading states
