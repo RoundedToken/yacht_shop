@@ -20,7 +20,10 @@ app.use(express.static('images'));
 
 const start = () => {
     try {
-        sql.connect(sqlConfig, console.log('DB connected'));
+        sql.connect(sqlConfig, (error) => {
+            if (error) console.log(error);
+            else console.log('DB connected');
+        });
         app.listen(PORT, process.env.ADDRESS, console.log(`Server started on ${PORT}`));
     } catch (error) {
         console.log(error);
