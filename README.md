@@ -28,7 +28,7 @@
 &emsp;
 <img background-color='#ECD53F' width='64' src='https://user-images.githubusercontent.com/117864556/231853059-42dbeb92-46e5-464c-96fb-1f96c318f2b3.svg'/>
 
-### IaC and CI/CD
+### DevOps stack
 <p>
 <img background-color='#ECD53F' width='64' src='https://github.com/RoundedToken/yacht_shop/assets/117864556/9d33c06d-9eec-402f-b901-df0678630a27'/>
 &emsp;
