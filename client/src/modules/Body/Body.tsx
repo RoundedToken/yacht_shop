@@ -49,7 +49,7 @@ const Body = () => {
                 </>
             )}
 
-            <div className={styles.sideBarContainer}>
+            <div>
                 <SideBar />
             </div>
 

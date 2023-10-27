@@ -95,10 +95,9 @@ class navService {
 
         //Grouping by id and uniting together brands and productCount
         data = groupingByBrands(data);
-
         //Build the hierarchy
         const tree = buildHierarchy(data);
-
+        console.log('tree', tree);
         //Formatting brands and sort by name and creating src
         formattingBrands(tree);
 

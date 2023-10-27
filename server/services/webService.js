@@ -38,7 +38,7 @@ class WebService {
             ORDER BY par.featurename`
             )
         ).recordset;
-
+        console.log(data);
         const filteredData = goodsFilter(data);
 
         return filteredData;
@@ -149,17 +149,17 @@ class WebService {
     async webCrimping({ diameter, end1, end2, length, lang }) {
         const name = langParser(lang);
         if (!name) throw new Error();
-
+        console.log(+diameter);
         const request = new sql.Request();
-        request.input('thick', sql.VarChar, diameter);
+        request.input('thick', sql.Decimal, +diameter);
         request.input('end1', sql.VarChar, end1);
         request.input('end2', sql.VarChar, end2);
-        request.input('Lenght', sql.VarChar, length.toString());
+        request.input('Lenght', sql.VarChar, length);
 
         const dataP = (await request.execute('[dbo].[web_swage_calc_new]')).recordset;
-
+        console.log('HERERERERERER!!!!');
         const idList = dataP.map((v) => v.tovar).join(',');
-
+        console.log(idList);
         const data = (
             await sql.query(`
         SELECT

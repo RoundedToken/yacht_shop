@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import HistoryMenu from './components/SearchInput';
+import SearchInput from './components/SearchInput';
 import PageTitle from './components/PageTitle';
 import SearchBreadcrumbs from './components/SearchBreadcrumbs';
 import styles from './SearchBar.module.scss';
@@ -11,7 +11,7 @@ const SearchBar = () => {
 
     return (
         <div className={styles.searchBar}>
-            <HistoryMenu styles={styles} />
+            <SearchInput styles={styles} />
 
             {breadcrumbsPaths.includes(location) ? (
                 <SearchBreadcrumbs styles={styles} />

@@ -13,66 +13,12 @@ import NewsImg from './components/NewsImg';
 import newsImg2 from '../../assets/images/newsImg2.jpg';
 import newsImg3 from '../../assets/images/newsImg3.jpg';
 import newsImg1 from '../../assets/images/newImg1.jpg';
-import img1 from '../../assets/images/swiperImg1.jpg';
 import img2 from '../../assets/images/swiperImg2.jpg';
 import img3 from '../../assets/images/swiperImg3.jpg';
 
 const Main = () => {
     const lang = useSelector((state: RootState) => state.langSlice.lang);
     let { data } = webNewsApi.useFetchNewsQuery(lang);
-    // let data = [
-    //         {
-    //             date: '1',
-    //             title: 'SCAM ON YOU!!!!!',
-    //             content: '123 SCAM ON YOU!!!!! 123 123 1wqd SCAM ON YOU!!!!! asd asd',
-    //         },
-    //         {
-    //             date: '2',
-    //             title: 'SCAM ON YOU!!!!!',
-    //             content:
-    //                 '123 SCAM ON YOU!!!!! 123 123 1wqd SCAM ON YOU!!!!! asd asd123 SCAM ON YOU!!!!! 123 123 1wqd SCAM ON YOU!!!!! asd asd',
-    //         },
-    //         {
-    //             date: '3',
-    //             title: 'SCAM ON YOU!!!!!',
-    //             content: '123 SCAM ON YOU!!!!! 123 123 1wqd SCAM ON YOU!!!!! asd asd',
-    //         },
-    //         {
-    //             date: '4',
-    //             title: 'SCAM ON YOU!!!!!',
-    //             content: '123 SCAM ON YOU!!!!! 123 123 1wqd SCAM ON YOU!!!!! asd asd',
-    //         },
-    //         {
-    //             date: '5',
-    //             title: 'SCAM ON YOU!!!!!',
-    //             content: '123 SCAM ON YOU!!!!! 123 123 1wqd SCAM ON YOU!!!!! asd asd',
-    //         },
-    //         {
-    //             date: '6',
-    //             title: 'SCAM ON YOU!!!!!',
-    //             content: '123 SCAM ON YOU!!!!! 123 123 1wqd SCAM ON YOU!!!!! asd asd',
-    //         },
-    //         {
-    //             date: '7',
-    //             title: 'SCAM ON YOU!!!!!',
-    //             content: '123 SCAM ON YOU!!!!! 123 123 1wqd SCAM ON YOU!!!!! asd asd',
-    //         },
-    //         {
-    //             date: '8',
-    //             title: 'SCAM ON YOU!!!!!',
-    //             content: '123 SCAM ON YOU!!!!! 123 123 1wqd SCAM ON YOU!!!!! asd asd',
-    //         },
-    //         {
-    //             date: '9',
-    //             title: 'SCAM ON YOU!!!!!',
-    //             content: '123 SCAM ON YOU!!!!! 123 123 1wqd SCAM ON YOU!!!!! asd asd',
-    //         },
-    //         {
-    //             date: '10',
-    //             title: 'SCAM ON YOU!!!!!',
-    //             content: '123 SCAM ON YOU!!!!! 123 123 1wqd SCAM ON YOU!!!!! asd asd',
-    //         },
-    // ];
     if (data) data = data.slice().sort((a, b) => b.date.localeCompare(a.date));
 
     return (
