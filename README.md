@@ -2,7 +2,7 @@
 
 ## Descrition
 
-[YachtShop](https://yachtshop.ee) is a delivery order website for a yacht equipment store in Estonia based on an existing large database of more than 40 thousand products
+[YachtShop](https://yachtshop.ee) is a delivery order website for a yacht equipment store in Pärnu, Estonia with over 2,000 products from the world’s leading manufacturers and branded cable crimping service
 
 ## Technologies
 
